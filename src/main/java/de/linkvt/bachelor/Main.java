@@ -3,14 +3,16 @@ package de.linkvt.bachelor;
 import de.linkvt.bachelor.document.DocumentBuilder;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import org.semanticweb.owlapi.model.OWLOntology;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * The entry point of the application.
  */
-public class Main {
+@SpringBootApplication() public class Main {
 
 	public static void main(String[] args) {
-		printSimpleOntology();
+		SpringApplication.run(Main.class, args);
 	}
 
 	private static void printSimpleOntology() {
