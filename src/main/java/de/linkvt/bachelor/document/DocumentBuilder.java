@@ -20,6 +20,11 @@ public class DocumentBuilder {
 		this.ontology = ontology;
 	}
 
+	public DocumentBuilder(OWLOntology ontology, OWLDocumentFormat documentFormat) {
+		this(ontology);
+		this.documentFormat = documentFormat;
+	}
+
 	public DocumentBuilder inTurtle() {
 		documentFormat = new TurtleDocumentFormat();
 		return this;
