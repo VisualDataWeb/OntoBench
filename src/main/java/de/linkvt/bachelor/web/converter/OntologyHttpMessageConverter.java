@@ -17,8 +17,7 @@ import java.io.IOException;
 /**
  * Converts ontologies to a string for the http message.
  */
-public abstract class OntologyHttpMessageConverter
-    extends AbstractHttpMessageConverter<OWLOntology> {
+public abstract class OntologyHttpMessageConverter extends AbstractHttpMessageConverter<OWLOntology> {
   private final OWLDocumentFormat documentFormat;
 
   public OntologyHttpMessageConverter(OWLDocumentFormat documentFormat, MediaType... mediaTypes) {
@@ -32,8 +31,7 @@ public abstract class OntologyHttpMessageConverter
   }
 
   @Override
-  protected OWLOntology readInternal(Class<? extends OWLOntology> aClass,
-                                     HttpInputMessage httpInputMessage) throws IOException, HttpMessageNotReadableException {
+  protected OWLOntology readInternal(Class<? extends OWLOntology> aClass, HttpInputMessage httpInputMessage) throws IOException, HttpMessageNotReadableException {
     return null;
   }
 

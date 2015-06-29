@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
  * The entry point of the application.
@@ -28,13 +27,6 @@ public class Application {
     OntologyHttpMessageConverter turtleConverter = new TurtleOntologyHttpMessageConverter();
     OntologyHttpMessageConverter rdfConverter = new RdfXmlOntologyHttpMessageConverter();
     return new HttpMessageConverters(turtleConverter, rdfConverter);
-  }
-
-  @Bean
-  public RequestMappingHandlerMapping disableDefaultSuffixPattern() {
-    RequestMappingHandlerMapping handlerMapping = new RequestMappingHandlerMapping();
-    handlerMapping.setUseSuffixPatternMatch(false);
-    return handlerMapping;
   }
 
 }
