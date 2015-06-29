@@ -19,6 +19,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
   @Override
   public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
     configurer.ignoreAcceptHeader(true)
+        .mediaType("owl", MediaType.TEXT_XML)
         .mediaType("rdf", MediaType.TEXT_XML)
         .mediaType("xml", MediaType.TEXT_XML)
         .mediaType("ttl", MediaType.TEXT_PLAIN);
