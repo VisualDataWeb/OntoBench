@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
  * Converts ontologies to the rdf/xml format.
  */
 public class RdfXmlOntologyHttpMessageConverter extends OntologyHttpMessageConverter {
-	public RdfXmlOntologyHttpMessageConverter() {
-		super(new RDFXMLDocumentFormat(), MediaType.TEXT_XML);
-	}
+  public RdfXmlOntologyHttpMessageConverter() {
+    super(new RDFXMLDocumentFormat(), MediaType.TEXT_XML);
+  }
 }
