@@ -9,8 +9,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Evaluates the features and creates the ontology.
@@ -18,8 +18,7 @@ import java.util.Set;
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class OntologyGenerator {
-
-  private Set<Feature> features = new HashSet<>();
+  private List<Feature> features = new ArrayList<>();
   private GeneratorResources resources;
 
   @Autowired
@@ -36,7 +35,7 @@ public class OntologyGenerator {
     features.add(feature);
   }
 
-  public void addFeatures(Set<Feature> features) {
+  public void addFeatures(List<Feature> features) {
     this.features.addAll(features);
   }
 

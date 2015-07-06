@@ -11,6 +11,9 @@ import java.util.Set;
  *
  */
 public class FeaturePool {
+  private static final String GENERIC_NAME = "Generic";
+  private Integer genericCounter = 0;
+
   Set<OWLClass> classPool = new HashSet<>();
   private OWLDataFactory factory;
 
@@ -18,10 +21,10 @@ public class FeaturePool {
     this.factory = factory;
   }
 
-  public OWLClass getReusableClass(String name) {
+  public OWLClass getReusableClass() {
     OWLClass owlClass;
     if (classPool.isEmpty()) {
-      owlClass = getNewClass(name);
+      owlClass = getExclusiveClass(createGenericName());
       classPool.add(owlClass);
     } else {
       owlClass = classPool.iterator().next();
@@ -29,11 +32,12 @@ public class FeaturePool {
     return owlClass;
   }
 
-  public OWLClass getNewClass(String name) {
+  private String createGenericName() {
+    return GENERIC_NAME + ++genericCounter;
+  }
+
+  public OWLClass getExclusiveClass(String name) {
     return factory.getOWLClass(IRI.create(name));
   }
 
-  public OWLDataFactory getFactory() {
-    return factory;
-  }
 }

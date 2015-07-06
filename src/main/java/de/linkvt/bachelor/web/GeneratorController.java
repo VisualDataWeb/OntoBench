@@ -1,5 +1,6 @@
 package de.linkvt.bachelor.web;
 
+import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.axioms.RdfsSubClassOfFeature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 
@@ -10,6 +11,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class GeneratorController {
@@ -30,7 +34,8 @@ public class GeneratorController {
   public OWLOntology ontology(@PathVariable String id) throws OWLOntologyCreationException {
     OntologyGenerator generator = createGenerator();
 
-    generator.addFeature(new RdfsSubClassOfFeature());
+    // TODO replace with parsing of url
+    generator.addFeatures(getFeatures());
 
     return generator.generate();
   }
@@ -39,4 +44,11 @@ public class GeneratorController {
     return applicationContext.getBean(OntologyGenerator.class);
   }
 
+  private List<Feature> getFeatures() {
+    List<Feature> features = new ArrayList<>();
+
+    features.add(new RdfsSubClassOfFeature());
+
+    return features;
+  }
 }
