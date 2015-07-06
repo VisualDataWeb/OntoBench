@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.axioms;
+package de.linkvt.bachelor.features.classes;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.generator.FeaturePool;
@@ -9,16 +9,14 @@ import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 
 /**
- * The rdfs:subClassOf axiom.
+ * An owl class.
  */
-public class RdfsSubClassOfFeature extends Feature {
-
+public class OwlClassFeature extends Feature {
   @Override
   public void addTo(OWLOntology ontology, OWLDataFactory factory, FeaturePool featurePool) {
-    OWLClass superClass = featurePool.getExclusiveClass("SuperClass");
-    OWLClass subClass = featurePool.getExclusiveClass("SubClass");
-    OWLAxiom subClassOfAxiom = factory.getOWLSubClassOfAxiom(subClass, superClass);
+    OWLClass owlClass = featurePool.getReusableClass();
+    OWLAxiom axiom = factory.getOWLDeclarationAxiom(owlClass);
 
-    addToOntology(ontology, subClassOfAxiom);
+    addToOntology(ontology, axiom);
   }
 }

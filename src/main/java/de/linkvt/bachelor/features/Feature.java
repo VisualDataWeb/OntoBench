@@ -3,6 +3,7 @@ package de.linkvt.bachelor.features;
 import de.linkvt.bachelor.generator.FeaturePool;
 import de.linkvt.bachelor.generator.GeneratorResources;
 
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 
@@ -18,7 +19,7 @@ public abstract class Feature {
    * @param factory     an owl factory
    * @param featurePool a pool for getting reusable or new features
    */
-  public abstract void addTo(OWLOntology ontology, OWLDataFactory factory, FeaturePool featurePool);
+  protected abstract void addTo(OWLOntology ontology, OWLDataFactory factory, FeaturePool featurePool);
 
   /**
    * Adds this feature to the passed ontology.
@@ -27,6 +28,10 @@ public abstract class Feature {
    */
   public void addTo(GeneratorResources resources) {
     addTo(resources.getOntology(), resources.getFactory(), resources.getFeaturePool());
+  }
+
+  protected void addToOntology(OWLOntology ontology, OWLAxiom axiom) {
+    ontology.getOWLOntologyManager().addAxiom(ontology, axiom);
   }
 
   /**
