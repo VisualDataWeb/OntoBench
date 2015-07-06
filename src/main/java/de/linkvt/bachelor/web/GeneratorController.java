@@ -4,6 +4,7 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.axioms.RdfsSubClassOfFeature;
 import de.linkvt.bachelor.features.properties.DomainlessPropertyFeature;
 import de.linkvt.bachelor.features.properties.RangelessPropertyFeature;
+import de.linkvt.bachelor.features.properties.UnboundPropertyFeature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -52,6 +53,7 @@ public class GeneratorController {
     features.add(new RdfsSubClassOfFeature());
     features.add(new DomainlessPropertyFeature());
     features.add(new RangelessPropertyFeature());
+    features.add(new UnboundPropertyFeature());
 
     return features;
   }
