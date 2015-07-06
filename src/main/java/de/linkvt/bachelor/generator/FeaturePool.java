@@ -12,9 +12,8 @@ import java.util.Set;
  */
 public class FeaturePool {
   private static final String GENERIC_NAME = "Generic";
-  private Integer genericCounter = 0;
-
   Set<OWLClass> classPool = new HashSet<>();
+  private Integer genericCounter = 0;
   private OWLDataFactory factory;
 
   public FeaturePool(OWLDataFactory factory) {

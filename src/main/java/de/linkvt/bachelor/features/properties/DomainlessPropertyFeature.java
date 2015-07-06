@@ -12,7 +12,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 /**
- * Property without a range.
+ * Property without a domain.
  */
 public class DomainlessPropertyFeature extends Feature {
   @Override

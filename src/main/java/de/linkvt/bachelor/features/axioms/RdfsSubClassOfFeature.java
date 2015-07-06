@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.axioms;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.generator.FeaturePool;
 
-import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
@@ -20,6 +19,6 @@ public class RdfsSubClassOfFeature extends Feature {
     OWLClass subClass = featurePool.getExclusiveClass("SubClass");
     OWLAxiom subClassOfAxiom = factory.getOWLSubClassOfAxiom(subClass, superClass);
 
-    ontology.getOWLOntologyManager().applyChange(new AddAxiom(ontology, subClassOfAxiom));
+    ontology.getOWLOntologyManager().addAxiom(ontology, subClassOfAxiom);
   }
 }

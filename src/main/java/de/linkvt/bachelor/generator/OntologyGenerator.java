@@ -27,7 +27,7 @@ public class OntologyGenerator {
   }
 
   public OWLOntology generate() {
-    features.forEach(this::visit);
+    features.forEach(this::addToOntology);
     return resources.getOntology();
   }
 
@@ -39,7 +39,7 @@ public class OntologyGenerator {
     this.features.addAll(features);
   }
 
-  private void visit(Feature feature) {
+  private void addToOntology(Feature feature) {
     feature.addTo(resources);
   }
 
