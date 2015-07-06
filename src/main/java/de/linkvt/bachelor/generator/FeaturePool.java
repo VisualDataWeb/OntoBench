@@ -1,42 +1,37 @@
 package de.linkvt.bachelor.generator;
 
-import org.semanticweb.owlapi.model.IRI;
+import de.linkvt.bachelor.generator.pools.ClassPool;
+import de.linkvt.bachelor.generator.pools.PropertyPool;
+
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
-
-import java.util.HashSet;
-import java.util.Set;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 /**
- *
+ * Encapsulates different more specific resource pools.
  */
 public class FeaturePool {
-  private static final String GENERIC_NAME = "Generic";
-  Set<OWLClass> classPool = new HashSet<>();
-  private Integer genericCounter = 0;
-  private OWLDataFactory factory;
+  private final ClassPool classPool;
+  private final PropertyPool propertyPool;
 
   public FeaturePool(OWLDataFactory factory) {
-    this.factory = factory;
+    classPool = new ClassPool(factory);
+    propertyPool = new PropertyPool(factory);
   }
 
   public OWLClass getReusableClass() {
-    OWLClass owlClass;
-    if (classPool.isEmpty()) {
-      owlClass = getExclusiveClass(createGenericName());
-      classPool.add(owlClass);
-    } else {
-      owlClass = classPool.iterator().next();
-    }
-    return owlClass;
-  }
-
-  private String createGenericName() {
-    return GENERIC_NAME + ++genericCounter;
+    return classPool.getReusableObject();
   }
 
   public OWLClass getExclusiveClass(String name) {
-    return factory.getOWLClass(IRI.create(name));
+    return classPool.getExclusiveObject(name);
   }
 
+  public OWLObjectProperty getReusableProperty() {
+    return propertyPool.getReusableObject();
+  }
+
+  public OWLObjectProperty getExclusiveProperty(String name) {
+    return propertyPool.getExclusiveObject(name);
+  }
 }
