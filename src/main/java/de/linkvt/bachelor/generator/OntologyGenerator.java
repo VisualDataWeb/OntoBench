@@ -1,35 +1,47 @@
 package de.linkvt.bachelor.generator;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AddAxiom;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
+import de.linkvt.bachelor.features.Feature;
+
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Evaluates the features and creates the ontology.
  */
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class OntologyGenerator {
-  private OWLOntologyManager ontologyManager;
-  private OWLDataFactory factory;
-  private OWLOntology ontology;
 
-  public OntologyGenerator() throws OWLOntologyCreationException {
-    ontologyManager = OWLManager.createOWLOntologyManager();
-    factory = ontologyManager.getOWLDataFactory();
-    ontology = ontologyManager.createOntology();
+  private Set<Feature> features = new HashSet<>();
+  private GeneratorResources resources;
+
+  @Autowired
+  public OntologyGenerator(GeneratorResources resources) throws OWLOntologyCreationException {
+    this.resources = resources;
   }
 
   public OWLOntology generate() {
-    OWLClass superClass = factory.getOWLClass(IRI.create("SuperClass"));
-    OWLClass subClass = factory.getOWLClass(IRI.create("SubClass"));
-    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(subClass, superClass);
-    ontologyManager.applyChange(new AddAxiom(ontology, axiom));
-
-    return ontology;
+    features.forEach(this::visit);
+    return resources.getOntology();
   }
+
+  public void addFeature(Feature feature) {
+    features.add(feature);
+  }
+
+  public void addFeatures(Set<Feature> features) {
+    this.features.addAll(features);
+  }
+
+  private void visit(Feature feature) {
+    feature.addTo(resources);
+  }
+
 }
