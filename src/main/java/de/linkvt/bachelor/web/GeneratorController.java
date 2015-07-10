@@ -3,6 +3,8 @@ package de.linkvt.bachelor.web;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.axioms.RdfsSubClassOfFeature;
 import de.linkvt.bachelor.features.classes.OwlClassFeature;
+import de.linkvt.bachelor.features.classes.OwlNothingFeature;
+import de.linkvt.bachelor.features.classes.OwlThingFeature;
 import de.linkvt.bachelor.features.properties.DomainlessPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlObjectPropertyFeature;
 import de.linkvt.bachelor.features.properties.RangelessPropertyFeature;
@@ -53,6 +55,8 @@ public class GeneratorController {
     List<Feature> features = new ArrayList<>();
 
     features.add(new OwlClassFeature());
+    features.add(new OwlThingFeature());
+    features.add(new OwlNothingFeature());
 
     features.add(new RdfsSubClassOfFeature());
 
