@@ -33,6 +33,10 @@ public class FeaturePool {
     return classPool.getReusableObject(preferredIri);
   }
 
+  public OWLClass getReusableClassAndRemoveFromPool() {
+    return classPool.getReusableObjectAndRemoveFromPool();
+  }
+
   public OWLClass getExclusiveClass(String name) {
     return classPool.getExclusiveObject(name);
   }
