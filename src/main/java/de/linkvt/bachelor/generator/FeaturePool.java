@@ -34,4 +34,8 @@ public class FeaturePool {
   public OWLObjectProperty getExclusiveProperty(String name) {
     return propertyPool.getExclusiveObject(name);
   }
+
+  public boolean removePropertyFromPool(OWLObjectProperty property) {
+    return propertyPool.removeFromPool(property);
+  }
 }

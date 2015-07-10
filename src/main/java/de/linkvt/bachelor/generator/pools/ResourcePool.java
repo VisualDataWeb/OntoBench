@@ -10,8 +10,9 @@ import java.util.Set;
  */
 public abstract class ResourcePool<T> {
   private static final String GENERIC_NAME = "Generic";
+
   protected OWLDataFactory factory;
-  Set<T> objectPool = new HashSet<>();
+  private Set<T> objectPool = new HashSet<>();
   private Integer genericCounter = 0;
 
   public ResourcePool(OWLDataFactory factory) {
@@ -31,6 +32,16 @@ public abstract class ResourcePool<T> {
 
   private String createGenericName() {
     return GENERIC_NAME + ++genericCounter;
+  }
+
+  /**
+   * Removes the passed object from the pool so it can't be used for other purposes.
+   *
+   * @param object the object that should be removed
+   * @return true, if removing was successful
+   */
+  public boolean removeFromPool(T object) {
+    return objectPool.remove(object);
   }
 
   public abstract T getExclusiveObject(String name);
