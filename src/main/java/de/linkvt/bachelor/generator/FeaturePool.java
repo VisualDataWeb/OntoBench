@@ -29,12 +29,20 @@ public class FeaturePool {
     return classPool.getReusableObject();
   }
 
+  public OWLClass getReusableClass(String preferredIri) {
+    return classPool.getReusableObject(preferredIri);
+  }
+
   public OWLClass getExclusiveClass(String name) {
     return classPool.getExclusiveObject(name);
   }
 
   public OWLObjectProperty getReusableProperty() {
     return propertyPool.getReusableObject();
+  }
+
+  public OWLObjectProperty getReusableProperty(String preferredIri) {
+    return propertyPool.getReusableObject(preferredIri);
   }
 
   public OWLObjectProperty getReusablePropertyAndRemoveFromPool() {

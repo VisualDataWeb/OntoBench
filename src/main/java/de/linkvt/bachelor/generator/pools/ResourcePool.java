@@ -17,10 +17,27 @@ public abstract class ResourcePool<T> {
     this.factory = factory;
   }
 
+  /**
+   * Returns if available an object from the pool or a new one if none is available. The new object
+   * will receive a generic iri.
+   *
+   * @return an object from the pool or if not available a new one with a generic name
+   */
   public T getReusableObject() {
+    return getReusableObject(createGenericName());
+  }
+
+  /**
+   * Returns if available an object from the pool or a new one if none is available. The new object
+   * will receive the passed iri.
+   *
+   * @param preferredIri the iri of a new object, if one has to be created
+   * @return an object from the pool or if not available a new one
+   */
+  public T getReusableObject(String preferredIri) {
     T object;
     if (objectPool.isEmpty()) {
-      object = getExclusiveObject(createGenericName());
+      object = getExclusiveObject(preferredIri);
       objectPool.add(object);
     } else {
       object = objectPool.iterator().next();
