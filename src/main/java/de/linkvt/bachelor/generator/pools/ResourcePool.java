@@ -28,6 +28,12 @@ public abstract class ResourcePool<T> {
     return object;
   }
 
+  public T getReusableObjectAndRemoveFromPool() {
+    T object = getReusableObject();
+    removeFromPool(object);
+    return object;
+  }
+
   private String createGenericName() {
     return getGenericNameBase() + increaseGenericObjectCount();
   }

@@ -14,8 +14,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 public class OwlFunctionalPropertyFeature extends Feature {
   @Override
   protected void addTo(OWLOntology ontology, OWLDataFactory factory, FeaturePool featurePool) {
-    OWLObjectProperty property = featurePool.getReusableProperty();
-    featurePool.removePropertyFromPool(property);
+    OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
 
     OWLFunctionalObjectPropertyAxiom axiom = factory.getOWLFunctionalObjectPropertyAxiom(property);
 

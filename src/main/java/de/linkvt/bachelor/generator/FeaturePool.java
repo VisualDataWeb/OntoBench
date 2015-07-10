@@ -31,11 +31,12 @@ public class FeaturePool {
     return propertyPool.getReusableObject();
   }
 
+  public OWLObjectProperty getReusablePropertyAndRemoveFromPool() {
+    return propertyPool.getReusableObjectAndRemoveFromPool();
+  }
+
   public OWLObjectProperty getExclusiveProperty(String name) {
     return propertyPool.getExclusiveObject(name);
   }
 
-  public boolean removePropertyFromPool(OWLObjectProperty property) {
-    return propertyPool.removeFromPool(property);
-  }
 }
