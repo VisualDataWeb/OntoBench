@@ -20,6 +20,6 @@ public class OwlFunctionalPropertyFeature extends Feature {
 
     OWLFunctionalObjectPropertyAxiom axiom = factory.getOWLFunctionalObjectPropertyAxiom(property);
 
-    addToOntology(ontology, axiom);
+    addAxiomToOntology(axiom);
   }
 }

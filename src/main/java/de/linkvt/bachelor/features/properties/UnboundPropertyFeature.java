@@ -19,6 +19,6 @@ public class UnboundPropertyFeature extends Feature {
     OWLProperty property = featurePool.getExclusiveProperty("HasNoDomainAndRange");
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(property);
 
-    addToOntology(ontology, axiom);
+    addAxiomToOntology(axiom);
   }
 }

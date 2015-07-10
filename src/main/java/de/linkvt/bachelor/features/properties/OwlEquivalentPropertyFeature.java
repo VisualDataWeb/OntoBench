@@ -29,9 +29,9 @@ public class OwlEquivalentPropertyFeature extends Feature {
     OWLAxiom domainAxiom = factory.getOWLObjectPropertyDomainAxiom(property, equivalentDomain);
     OWLAxiom rangeAxiom = factory.getOWLObjectPropertyRangeAxiom(property, equivalentRange);
 
-    addToOntology(ontology, equivalent1Axiom);
-    addToOntology(ontology, equivalent2Axiom);
-    addToOntology(ontology, domainAxiom);
-    addToOntology(ontology, rangeAxiom);
+    addAxiomToOntology(equivalent1Axiom);
+    addAxiomToOntology(equivalent2Axiom);
+    addAxiomToOntology(domainAxiom);
+    addAxiomToOntology(rangeAxiom);
   }
 }

@@ -21,6 +21,6 @@ public class RdfsSubClassOfFeature extends Feature {
     OWLClass subClass = featurePool.getExclusiveClass("SubClass");
     OWLAxiom subClassOfAxiom = factory.getOWLSubClassOfAxiom(subClass, superClass);
 
-    addToOntology(ontology, subClassOfAxiom);
+    addAxiomToOntology(subClassOfAxiom);
   }
 }

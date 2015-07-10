@@ -21,6 +21,6 @@ public class RangelessPropertyFeature extends Feature {
     OWLObjectProperty objectProperty = featurePool.getExclusiveProperty("HasNoRange");
     OWLAxiom axiom = factory.getOWLObjectPropertyDomainAxiom(objectProperty, domain);
 
-    addToOntology(ontology, axiom);
+    addAxiomToOntology(axiom);
   }
 }

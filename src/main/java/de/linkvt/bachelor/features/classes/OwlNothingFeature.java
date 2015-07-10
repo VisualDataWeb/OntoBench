@@ -19,6 +19,6 @@ public class OwlNothingFeature extends Feature {
     OWLClass owlNothing = factory.getOWLNothing();
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(owlNothing);
 
-    addToOntology(ontology, axiom);
+    addAxiomToOntology(axiom);
   }
 }

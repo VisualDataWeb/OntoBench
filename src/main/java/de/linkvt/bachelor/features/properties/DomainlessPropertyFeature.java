@@ -21,6 +21,6 @@ public class DomainlessPropertyFeature extends Feature {
     OWLObjectProperty objectProperty = featurePool.getExclusiveProperty("HasNoDomain");
     OWLAxiom axiom = factory.getOWLObjectPropertyRangeAxiom(objectProperty, range);
 
-    addToOntology(ontology, axiom);
+    addAxiomToOntology(axiom);
   }
 }

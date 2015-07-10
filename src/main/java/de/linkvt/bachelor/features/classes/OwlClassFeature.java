@@ -19,6 +19,6 @@ public class OwlClassFeature extends Feature {
     OWLClass owlClass = featurePool.getReusableClass();
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(owlClass);
 
-    addToOntology(ontology, axiom);
+    addAxiomToOntology(axiom);
   }
 }
