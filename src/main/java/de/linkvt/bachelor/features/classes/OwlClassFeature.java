@@ -1,19 +1,21 @@
 package de.linkvt.bachelor.features.classes;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.generator.FeaturePool;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLOntology;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * An owl class.
  */
+@Component
+@Scope(WebApplicationContext.SCOPE_REQUEST)
 public class OwlClassFeature extends Feature {
   @Override
-  public void addTo(OWLOntology ontology, OWLDataFactory factory, FeaturePool featurePool) {
+  public void addToOntology() {
     OWLClass owlClass = featurePool.getReusableClass();
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(owlClass);
 

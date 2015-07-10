@@ -1,20 +1,22 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.generator.FeaturePool;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.semanticweb.owlapi.model.OWLOntology;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * An owl equivalent property.
  */
+@Component
+@Scope(WebApplicationContext.SCOPE_REQUEST)
 public class OwlEquivalentPropertyFeature extends Feature {
   @Override
-  protected void addTo(OWLOntology ontology, OWLDataFactory factory, FeaturePool featurePool) {
+  public void addToOntology() {
     OWLObjectProperty property = featurePool.getExclusiveProperty("EquivalentPropertyBase");
     OWLObjectProperty equivalentProperty1 = featurePool.getExclusiveProperty("EquivalentProperty1");
     OWLObjectProperty equivalentProperty2 = featurePool.getExclusiveProperty("EquivalentProperty2");

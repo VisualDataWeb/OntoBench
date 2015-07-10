@@ -1,5 +1,6 @@
 package de.linkvt.bachelor;
 
+import de.linkvt.bachelor.config.OwlApiConfig;
 import de.linkvt.bachelor.config.WebMvcConfig;
 
 import org.springframework.boot.SpringApplication;
@@ -10,7 +11,7 @@ import org.springframework.context.annotation.Import;
  * The entry point of the application.
  */
 @SpringBootApplication
-@Import(WebMvcConfig.class)
+@Import({WebMvcConfig.class, OwlApiConfig.class})
 public class Application {
 
   public static void main(String[] args) {

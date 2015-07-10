@@ -50,24 +50,28 @@ public class GeneratorController {
   }
 
   private OntologyGenerator createGenerator() {
-    return applicationContext.getBean(OntologyGenerator.class);
+    return getBean(OntologyGenerator.class);
+  }
+
+  private <T> T getBean(Class<T> clazz) {
+    return applicationContext.getBean(clazz);
   }
 
   private List<Feature> getFeatures() {
     List<Feature> features = new ArrayList<>();
 
-    features.add(new OwlClassFeature());
-    features.add(new OwlThingFeature());
-    features.add(new OwlNothingFeature());
+    features.add(getBean(OwlClassFeature.class));
+    features.add(getBean(OwlThingFeature.class));
+    features.add(getBean(OwlNothingFeature.class));
 
-    features.add(new RdfsSubClassOfFeature());
+    features.add(getBean(RdfsSubClassOfFeature.class));
 
-    features.add(new OwlObjectPropertyFeature());
-    features.add(new OwlFunctionalPropertyFeature());
-    features.add(new OwlEquivalentPropertyFeature());
-    features.add(new DomainlessPropertyFeature());
-    features.add(new RangelessPropertyFeature());
-    features.add(new UnboundPropertyFeature());
+    features.add(getBean(OwlObjectPropertyFeature.class));
+    features.add(getBean(OwlFunctionalPropertyFeature.class));
+    features.add(getBean(OwlEquivalentPropertyFeature.class));
+    features.add(getBean(DomainlessPropertyFeature.class));
+    features.add(getBean(RangelessPropertyFeature.class));
+    features.add(getBean(UnboundPropertyFeature.class));
 
     return features;
   }

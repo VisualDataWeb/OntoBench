@@ -5,9 +5,9 @@ import de.linkvt.bachelor.features.Feature;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,19 +16,19 @@ import java.util.List;
  * Evaluates the features and creates the ontology.
  */
 @Component
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope(WebApplicationContext.SCOPE_REQUEST)
 public class OntologyGenerator {
   private List<Feature> features = new ArrayList<>();
-  private GeneratorResources resources;
+  private OWLOntology ontology;
 
   @Autowired
-  public OntologyGenerator(GeneratorResources resources) throws OWLOntologyCreationException {
-    this.resources = resources;
+  public OntologyGenerator(OWLOntology ontology) throws OWLOntologyCreationException {
+    this.ontology = ontology;
   }
 
   public OWLOntology generate() {
-    features.forEach(this::addToOntology);
-    return resources.getOntology();
+    features.forEach(Feature::addToOntology);
+    return ontology;
   }
 
   public void addFeature(Feature feature) {
@@ -37,10 +37,6 @@ public class OntologyGenerator {
 
   public void addFeatures(List<Feature> features) {
     this.features.addAll(features);
-  }
-
-  private void addToOntology(Feature feature) {
-    feature.addTo(resources);
   }
 
 }

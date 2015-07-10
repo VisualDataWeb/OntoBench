@@ -4,19 +4,25 @@ import de.linkvt.bachelor.generator.pools.ClassPool;
 import de.linkvt.bachelor.generator.pools.PropertyPool;
 
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * Encapsulates different more specific resource pools.
  */
+@Component
+@Scope(WebApplicationContext.SCOPE_REQUEST)
 public class FeaturePool {
-  private final ClassPool classPool;
-  private final PropertyPool propertyPool;
+  private ClassPool classPool;
+  private PropertyPool propertyPool;
 
-  public FeaturePool(OWLDataFactory factory) {
-    classPool = new ClassPool(factory);
-    propertyPool = new PropertyPool(factory);
+  @Autowired
+  public FeaturePool(ClassPool classPool, PropertyPool propertyPool) {
+    this.classPool = classPool;
+    this.propertyPool = propertyPool;
   }
 
   public OWLClass getReusableClass() {

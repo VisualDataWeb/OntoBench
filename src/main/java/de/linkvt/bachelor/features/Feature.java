@@ -1,34 +1,33 @@
 package de.linkvt.bachelor.features;
 
 import de.linkvt.bachelor.generator.FeaturePool;
-import de.linkvt.bachelor.generator.GeneratorResources;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Base class for ontology features.
  */
 public abstract class Feature {
 
-  /**
-   * Adds this feature to the passed ontology.
-   *
-   * @param ontology    the ontology this feature will be added to
-   * @param factory     an owl factory
-   * @param featurePool a pool for getting reusable or new features
-   */
-  protected abstract void addTo(OWLOntology ontology, OWLDataFactory factory, FeaturePool featurePool);
+  @Autowired
+  protected OWLDataFactory factory;
+
+  @Autowired
+  protected FeaturePool featurePool;
+
+  @Autowired
+  protected OWLOntology ontology;
+
 
   /**
    * Adds this feature to the passed ontology.
    *
-   * @param resources resources of the generator
+   * @param ontology the ontology this feature will be added to
    */
-  public void addTo(GeneratorResources resources) {
-    addTo(resources.getOntology(), resources.getFactory(), resources.getFeaturePool());
-  }
+  public abstract void addToOntology();
 
   protected void addToOntology(OWLOntology ontology, OWLAxiom axiom) {
     ontology.getOWLOntologyManager().addAxiom(ontology, axiom);

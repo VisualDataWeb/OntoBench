@@ -3,11 +3,18 @@ package de.linkvt.bachelor.generator.pools;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  * An owl class resource pool.
  */
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ClassPool extends ResourcePool<OWLClass> {
+  @Autowired
   public ClassPool(OWLDataFactory factory) {
     super(factory);
   }
