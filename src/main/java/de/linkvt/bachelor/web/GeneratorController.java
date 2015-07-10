@@ -10,6 +10,7 @@ import de.linkvt.bachelor.features.properties.DomainlessPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlDeprecatedPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlEquivalentPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlFunctionalPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlInverseFunctionalPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlObjectPropertyFeature;
 import de.linkvt.bachelor.features.properties.RangelessPropertyFeature;
 import de.linkvt.bachelor.features.properties.UnboundPropertyFeature;
@@ -72,6 +73,7 @@ public class GeneratorController {
     features.add(getBean(OwlObjectPropertyFeature.class));
     features.add(getBean(OwlDeprecatedPropertyFeature.class));
     features.add(getBean(OwlFunctionalPropertyFeature.class));
+    features.add(getBean(OwlInverseFunctionalPropertyFeature.class));
     features.add(getBean(OwlEquivalentPropertyFeature.class));
     features.add(getBean(DomainlessPropertyFeature.class));
     features.add(getBean(RangelessPropertyFeature.class));

@@ -13,12 +13,12 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @Component
 @Scope(WebApplicationContext.SCOPE_REQUEST)
-public class OwlFunctionalPropertyFeature extends Feature {
+public class OwlInverseFunctionalPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
 
-    OWLAxiom axiom = factory.getOWLFunctionalObjectPropertyAxiom(property);
+    OWLAxiom axiom = factory.getOWLInverseFunctionalObjectPropertyAxiom(property);
 
     addAxiomToOntology(axiom);
   }
