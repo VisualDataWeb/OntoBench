@@ -6,6 +6,8 @@ import de.linkvt.bachelor.features.classes.OwlClassFeature;
 import de.linkvt.bachelor.features.classes.OwlNothingFeature;
 import de.linkvt.bachelor.features.classes.OwlThingFeature;
 import de.linkvt.bachelor.features.properties.DomainlessPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlEquivalentPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlFunctionalPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlObjectPropertyFeature;
 import de.linkvt.bachelor.features.properties.RangelessPropertyFeature;
 import de.linkvt.bachelor.features.properties.UnboundPropertyFeature;
@@ -61,6 +63,8 @@ public class GeneratorController {
     features.add(new RdfsSubClassOfFeature());
 
     features.add(new OwlObjectPropertyFeature());
+    features.add(new OwlFunctionalPropertyFeature());
+    features.add(new OwlEquivalentPropertyFeature());
     features.add(new DomainlessPropertyFeature());
     features.add(new RangelessPropertyFeature());
     features.add(new UnboundPropertyFeature());
