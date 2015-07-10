@@ -16,4 +16,10 @@ public class PropertyPool extends ResourcePool<OWLObjectProperty> {
   public OWLObjectProperty getExclusiveObject(String name) {
     return factory.getOWLObjectProperty(IRI.create(name));
   }
+
+  @Override
+  protected String getGenericNameBase() {
+    return "Property";
+  }
+
 }

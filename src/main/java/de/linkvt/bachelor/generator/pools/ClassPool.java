@@ -16,4 +16,9 @@ public class ClassPool extends ResourcePool<OWLClass> {
   public OWLClass getExclusiveObject(String name) {
     return factory.getOWLClass(IRI.create(name));
   }
+
+  @Override
+  protected String getGenericNameBase() {
+    return "Class";
+  }
 }

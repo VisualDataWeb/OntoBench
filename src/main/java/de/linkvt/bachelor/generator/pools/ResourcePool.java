@@ -9,8 +9,6 @@ import java.util.Set;
  * A generic resource pool.
  */
 public abstract class ResourcePool<T> {
-  private static final String GENERIC_NAME = "Generic";
-
   protected OWLDataFactory factory;
   private Set<T> objectPool = new HashSet<>();
   private Integer genericCounter = 0;
@@ -31,7 +29,15 @@ public abstract class ResourcePool<T> {
   }
 
   private String createGenericName() {
-    return GENERIC_NAME + ++genericCounter;
+    return getGenericNameBase() + increaseGenericObjectCount();
+  }
+
+  protected String getGenericNameBase() {
+    return "Generic";
+  }
+
+  protected int increaseGenericObjectCount() {
+    return ++genericCounter;
   }
 
   /**
