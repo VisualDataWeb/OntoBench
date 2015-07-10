@@ -16,8 +16,8 @@ import org.springframework.web.context.WebApplicationContext;
 public class OwlObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass range = featurePool.getExclusiveClass("ObjectPropertyRange");
     OWLObjectProperty objectProperty = featurePool.getExclusiveProperty("ObjectProperty");
+    OWLClass range = featurePool.getExclusiveClass("ObjectPropertyRange");
 
     addToGenericDomainAndNewRange(objectProperty, range);
   }

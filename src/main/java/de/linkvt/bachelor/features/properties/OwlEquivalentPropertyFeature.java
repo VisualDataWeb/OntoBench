@@ -24,14 +24,10 @@ public class OwlEquivalentPropertyFeature extends Feature {
     OWLAxiom equivalent1Axiom = factory.getOWLEquivalentObjectPropertiesAxiom(property, equivalentProperty1);
     OWLAxiom equivalent2Axiom = factory.getOWLEquivalentObjectPropertiesAxiom(property, equivalentProperty2);
 
-    OWLClass equivalentDomain = featurePool.getReusableClass();
-    OWLClass equivalentRange = featurePool.getExclusiveClass("EquivalentPropertyTest");
-    OWLAxiom domainAxiom = factory.getOWLObjectPropertyDomainAxiom(property, equivalentDomain);
-    OWLAxiom rangeAxiom = factory.getOWLObjectPropertyRangeAxiom(property, equivalentRange);
+    OWLClass range = featurePool.getExclusiveClass("EquivalentPropertyRange");
+    addToGenericDomainAndNewRange(property, range);
 
     addAxiomToOntology(equivalent1Axiom);
     addAxiomToOntology(equivalent2Axiom);
-    addAxiomToOntology(domainAxiom);
-    addAxiomToOntology(rangeAxiom);
   }
 }

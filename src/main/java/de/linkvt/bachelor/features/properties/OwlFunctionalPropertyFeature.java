@@ -3,6 +3,7 @@ package de.linkvt.bachelor.features.properties;
 import de.linkvt.bachelor.features.Feature;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -17,9 +18,10 @@ public class OwlFunctionalPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
+    OWLClass range = featurePool.getExclusiveClass("FunctionalPropertyRange");
+    addToGenericDomainAndNewRange(property, range);
 
     OWLAxiom axiom = factory.getOWLFunctionalObjectPropertyAxiom(property);
-
     addAxiomToOntology(axiom);
   }
 }
