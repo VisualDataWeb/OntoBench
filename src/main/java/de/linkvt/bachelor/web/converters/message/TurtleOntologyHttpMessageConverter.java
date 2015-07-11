@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.web.converter;
+package de.linkvt.bachelor.web.converters.message;
 
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
 import org.springframework.http.MediaType;

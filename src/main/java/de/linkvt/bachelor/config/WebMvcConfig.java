@@ -1,8 +1,8 @@
 package de.linkvt.bachelor.config;
 
-import de.linkvt.bachelor.web.converter.OntologyHttpMessageConverter;
-import de.linkvt.bachelor.web.converter.RdfXmlOntologyHttpMessageConverter;
-import de.linkvt.bachelor.web.converter.TurtleOntologyHttpMessageConverter;
+import de.linkvt.bachelor.web.converters.message.OntologyHttpMessageConverter;
+import de.linkvt.bachelor.web.converters.message.RdfXmlOntologyHttpMessageConverter;
+import de.linkvt.bachelor.web.converters.message.TurtleOntologyHttpMessageConverter;
 
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLProperty;
@@ -13,6 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @Component
 @Scope(WebApplicationContext.SCOPE_REQUEST)
+@ParameterName("unbound")
 public class UnboundPropertyFeature extends Feature {
   @Override
   public void addToOntology() {

@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.web.converter;
+package de.linkvt.bachelor.web.converters.message;
 
 import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.springframework.http.MediaType;

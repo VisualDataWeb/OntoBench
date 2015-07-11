@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.classes;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -13,6 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @Component
 @Scope(WebApplicationContext.SCOPE_REQUEST)
+@ParameterName("owlclass")
 public class OwlClassFeature extends Feature {
   @Override
   public void addToOntology() {
