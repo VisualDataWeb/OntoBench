@@ -14,7 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @Component
 @Scope(WebApplicationContext.SCOPE_REQUEST)
-public class OwlDeprecatedClass extends Feature {
+public class OwlDeprecatedClassFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass owlClass = featurePool.getExclusiveClass("DeprecatedClass");
