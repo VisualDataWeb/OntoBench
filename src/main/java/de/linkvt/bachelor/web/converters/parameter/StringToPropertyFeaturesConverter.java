@@ -33,8 +33,9 @@ public class StringToPropertyFeaturesConverter implements Converter<String, List
     if (StringUtils.isEmpty(query)) {
       return Collections.emptyList();
     }
+    String lowerCaseQuery = query.toLowerCase();
 
-    List<String> parameters = Arrays.asList(query.split(","));
+    List<String> parameters = Arrays.asList(lowerCaseQuery.split(","));
     List<Feature> features = new ArrayList<>();
 
     for (String parameter : parameters) {
