@@ -2,60 +2,57 @@ package de.linkvt.bachelor.web.converters.parameter;
 
 import de.linkvt.bachelor.features.Feature;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Scope;
+import org.reflections.Reflections;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
  * Base class for mapping parameters to features.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
 public class FeatureParameterMapping {
-  private Map<String, Feature> featureMap = new HashMap<>();
+  private Map<String, Class<Feature>> featureMap = new HashMap<>();
 
-  @Autowired
-  public FeatureParameterMapping(ApplicationContext context) {
-    List<Feature> parameterFeatures = getParameterFeatures(context);
+  public FeatureParameterMapping() {
+    List<Class<Feature>> parameterFeatures = getParameterFeatures();
 
-    for (Feature feature : parameterFeatures) {
-      ParameterName parameterName = feature.getClass().getAnnotation(ParameterName.class);
+    for (Class<Feature> feature : parameterFeatures) {
+      ParameterName parameterName = feature.getAnnotation(ParameterName.class);
       register(parameterName.value(), feature);
     }
   }
 
-  private List<Feature> getParameterFeatures(ApplicationContext context) {
-    Collection<Object> parameters = context.getBeansWithAnnotation(ParameterName.class).values();
-    List<Feature> features = parameters.stream()
-        .filter(obj -> obj instanceof Feature)
-        .map(obj -> (Feature) obj)
+  private List<Class<Feature>> getParameterFeatures() {
+    Reflections reflections = new Reflections("de.linkvt.bachelor");
+    Set<Class<?>> parameters = reflections.getTypesAnnotatedWith(ParameterName.class);
+
+    List<Class<Feature>> features = parameters.stream()
+        .filter(Feature.class::isAssignableFrom)
+        .map(cls -> (Class<Feature>) cls)
         .collect(Collectors.toList());
 
     return features;
   }
 
-  private void register(String parameter, Feature feature) {
+  private void register(String parameter, Class<Feature> feature) {
     if (featureMap.containsKey(parameter)) {
       throw new IllegalArgumentException("Parameter already in use.");
     }
     featureMap.put(parameter, feature);
   }
 
-  public Feature get(String parameter) {
+  public Class<Feature> get(String parameter) {
     return featureMap.get(parameter);
   }
 
-  public List<Feature> getAll() {
-    List<Feature> features = featureMap.values().stream().collect(Collectors.toList());
+  public List<Class<Feature>> getAll() {
+    List<Class<Feature>> features = featureMap.values().stream().collect(Collectors.toList());
     return Collections.unmodifiableList(features);
   }
 }

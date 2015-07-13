@@ -78,6 +78,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>${sprint.boot.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.10</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

@@ -1,5 +1,6 @@
 package de.linkvt.bachelor.web;
 
+import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.web.converters.parameter.FeatureParameterMapping;
 
@@ -10,6 +11,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class GeneratorController {
@@ -32,7 +36,8 @@ public class GeneratorController {
     FeatureParameterMapping mapping = getBean(FeatureParameterMapping.class);
 
     // TODO replace with parsing of url
-    generator.addFeatures(mapping.getAll());
+    List<Feature> featureList = mapping.getAll().stream().map(this::getBean).collect(Collectors.toList());
+    generator.addFeatures(featureList);
 
     return generator.generate();
   }
