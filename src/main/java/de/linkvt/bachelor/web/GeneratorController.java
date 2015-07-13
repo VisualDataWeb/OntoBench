@@ -8,8 +8,8 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,25 +19,28 @@ import java.util.stream.Collectors;
 public class GeneratorController {
 
   private ApplicationContext applicationContext;
+  private FeatureParameterMapping featureMapping;
 
   @Autowired
-  public GeneratorController(ApplicationContext applicationContext) {
+  public GeneratorController(ApplicationContext applicationContext, FeatureParameterMapping featureMapping) {
     this.applicationContext = applicationContext;
+    this.featureMapping = featureMapping;
   }
 
-  @RequestMapping(value = "/ontology")
+  @RequestMapping("/ontology")
   public OWLOntology ontology() throws OWLOntologyCreationException {
-    return ontology(null);
+    return ontology(getFeatureBeansForClasses(featureMapping.getAll()));
   }
 
-  @RequestMapping(value = "/ontology/{id}")
-  public OWLOntology ontology(@PathVariable String id) throws OWLOntologyCreationException {
-    OntologyGenerator generator = getBean(OntologyGenerator.class);
-    FeatureParameterMapping mapping = getBean(FeatureParameterMapping.class);
+  private List<Feature> getFeatureBeansForClasses(List<Class<Feature>> classes) {
+    return classes.stream().map(this::getBean).collect(Collectors.toList());
+  }
 
-    // TODO replace with parsing of url
-    List<Feature> featureList = mapping.getAll().stream().map(this::getBean).collect(Collectors.toList());
-    generator.addFeatures(featureList);
+  @RequestMapping(value = "/ontology", params = {"features"})
+  public OWLOntology ontology(@RequestParam("features") List<Feature> features) {
+    OntologyGenerator generator = getBean(OntologyGenerator.class);
+
+    generator.addFeatures(features);
 
     return generator.generate();
   }
