@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.config;
 
 import de.linkvt.bachelor.web.converters.message.OntologyHttpMessageConverter;
+import de.linkvt.bachelor.web.converters.message.OwlMediaType;
 import de.linkvt.bachelor.web.converters.message.RdfXmlOntologyHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.TurtleOntologyHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.parameter.StringToFeaturesConverter;
@@ -10,7 +11,6 @@ import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -31,10 +31,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
   @Override
   public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
     configurer.ignoreAcceptHeader(true)
-        .mediaType("owl", MediaType.TEXT_XML)
-        .mediaType("rdf", MediaType.TEXT_XML)
-        .mediaType("xml", MediaType.TEXT_XML)
-        .mediaType("ttl", MediaType.TEXT_PLAIN);
+        .mediaType("owl", OwlMediaType.APPLICATION_RDF_XML)
+        .mediaType("rdf", OwlMediaType.APPLICATION_RDF_XML)
+        .mediaType("xml", OwlMediaType.APPLICATION_RDF_XML)
+        .mediaType("ttl", OwlMediaType.TEXT_PLAIN); // use text/plain for turtle for access without downloading
   }
 
   @Bean
