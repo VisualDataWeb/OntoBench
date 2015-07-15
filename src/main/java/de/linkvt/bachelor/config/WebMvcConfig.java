@@ -35,12 +35,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
   public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
     configurer.ignoreAcceptHeader(true)
         .ignoreUnknownPathExtensions(false)
+        .defaultContentType(MediaType.TEXT_PLAIN)
         .mediaType("owl", OwlMediaType.APPLICATION_RDF_XML)
         .mediaType("rdf", OwlMediaType.APPLICATION_RDF_XML)
         .mediaType("xml", OwlMediaType.APPLICATION_RDF_XML)
         .mediaType("ofn", OwlMediaType.TEXT_OWL_FUNCTIONAL)
         .mediaType("omn", OwlMediaType.TEXT_OWL_MANCHESTER)
-        .mediaType("ttl", MediaType.TEXT_PLAIN); // use text/plain for turtle for access without downloading
+        .mediaType("ttl", OwlMediaType.TEXT_TURTLE);
   }
 
   @Bean
