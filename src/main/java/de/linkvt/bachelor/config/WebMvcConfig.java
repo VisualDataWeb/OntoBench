@@ -2,8 +2,8 @@ package de.linkvt.bachelor.config;
 
 import de.linkvt.bachelor.web.converters.message.FunctionalSyntaxHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.ManchesterSyntaxHttpMessageConverter;
-import de.linkvt.bachelor.web.converters.message.OntologyHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.OwlMediaType;
+import de.linkvt.bachelor.web.converters.message.OwlXmlHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.RdfXmlOntologyHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.TurtleOntologyHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.parameter.StringToFeaturesConverter;
@@ -14,8 +14,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Configures the web module.
@@ -36,6 +40,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     configurer.ignoreAcceptHeader(true)
         .ignoreUnknownPathExtensions(false)
         .defaultContentType(MediaType.TEXT_PLAIN)
+        .mediaType("owx", OwlMediaType.APPLICATION_OWL_XML)
         .mediaType("owl", OwlMediaType.APPLICATION_RDF_XML)
         .mediaType("rdf", OwlMediaType.APPLICATION_RDF_XML)
         .mediaType("xml", OwlMediaType.APPLICATION_RDF_XML)
@@ -46,10 +51,14 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
   @Bean
   public HttpMessageConverters customConverters() {
-    OntologyHttpMessageConverter functionalConverter = new FunctionalSyntaxHttpMessageConverter();
-    OntologyHttpMessageConverter manchesterConverter = new ManchesterSyntaxHttpMessageConverter();
-    OntologyHttpMessageConverter rdfConverter = new RdfXmlOntologyHttpMessageConverter();
-    OntologyHttpMessageConverter turtleConverter = new TurtleOntologyHttpMessageConverter();
-    return new HttpMessageConverters(functionalConverter, manchesterConverter, rdfConverter, turtleConverter);
+    List<HttpMessageConverter<?>> converters = new ArrayList<>();
+
+    converters.add(new FunctionalSyntaxHttpMessageConverter());
+    converters.add(new ManchesterSyntaxHttpMessageConverter());
+    converters.add(new OwlXmlHttpMessageConverter());
+    converters.add(new RdfXmlOntologyHttpMessageConverter());
+    converters.add(new TurtleOntologyHttpMessageConverter());
+
+    return new HttpMessageConverters(converters);
   }
 }
