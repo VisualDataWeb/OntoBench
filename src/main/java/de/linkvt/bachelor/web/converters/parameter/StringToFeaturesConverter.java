@@ -17,13 +17,13 @@ import java.util.List;
  * Maps the query string to requested features.
  */
 @Component
-public class StringToPropertyFeaturesConverter implements Converter<String, List<Feature>> {
+public class StringToFeaturesConverter implements Converter<String, List<Feature>> {
 
   private ApplicationContext context;
   private FeatureParameterMapping mapping;
 
   @Autowired
-  public StringToPropertyFeaturesConverter(ApplicationContext context, FeatureParameterMapping mapping) {
+  public StringToFeaturesConverter(ApplicationContext context, FeatureParameterMapping mapping) {
     this.context = context;
     this.mapping = mapping;
   }

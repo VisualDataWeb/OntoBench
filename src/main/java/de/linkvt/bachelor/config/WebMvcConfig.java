@@ -3,7 +3,7 @@ package de.linkvt.bachelor.config;
 import de.linkvt.bachelor.web.converters.message.OntologyHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.RdfXmlOntologyHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.TurtleOntologyHttpMessageConverter;
-import de.linkvt.bachelor.web.converters.parameter.StringToPropertyFeaturesConverter;
+import de.linkvt.bachelor.web.converters.parameter.StringToFeaturesConverter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
@@ -21,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
   @Autowired
-  private StringToPropertyFeaturesConverter converter;
+  private StringToFeaturesConverter converter;
 
   @Override
   public void addFormatters(FormatterRegistry registry) {
