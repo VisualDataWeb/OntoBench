@@ -10,12 +10,13 @@ import org.springframework.http.MediaType;
 /**
  * Mime types for owl syntaxes.
  */
-public final class OwlMediaType extends MediaType {
+public class OwlMediaType {
 
-  public static final MediaType APPLICATION_RDF_XML = valueOf("application/rdf+xml");
-  public static final MediaType TEXT_TURTLE = valueOf("text/turtle");
+  public static final MediaType APPLICATION_RDF_XML = new MediaType("application", "rdf+xml");
+  public static final MediaType TEXT_OWL_FUNCTIONAL = new MediaType("text", "owl-functional");
+  public static final MediaType TEXT_OWL_MANCHESTER = new MediaType("text", "owl-manchester");
+  public static final MediaType TEXT_TURTLE = new MediaType("text", "turtle");
 
-  public OwlMediaType(String type) {
-    super(type);
+  private OwlMediaType() {
   }
 }
