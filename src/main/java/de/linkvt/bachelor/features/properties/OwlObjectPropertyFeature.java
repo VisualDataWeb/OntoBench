@@ -28,4 +28,9 @@ public class OwlObjectPropertyFeature extends Feature {
   public String getToken() {
     return "objectprop";
   }
+
+  @Override
+  public boolean isGeneral() {
+    return true;
+  }
 }

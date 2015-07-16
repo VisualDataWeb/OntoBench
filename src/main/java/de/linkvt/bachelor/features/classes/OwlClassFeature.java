@@ -28,4 +28,9 @@ public class OwlClassFeature extends Feature {
   public String getToken() {
     return "owlclass";
   }
+
+  @Override
+  public boolean isGeneral() {
+    return true;
+  }
 }

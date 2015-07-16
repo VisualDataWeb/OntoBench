@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.web.converters.parameter;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureComparator;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,9 @@ public class StringToFeaturesConverter implements Converter<String, List<Feature
     if (StringUtils.isEmpty(query)) {
       return Collections.emptyList();
     }
-    String lowerCaseQuery = query.toLowerCase();
 
-    List<String> parameters = Arrays.asList(lowerCaseQuery.split(","));
+    List<String> parameters = getParameters(query);
     List<Feature> features = new ArrayList<>();
-
     for (String parameter : parameters) {
       Feature feature = mapping.get(parameter);
 
@@ -43,6 +42,17 @@ public class StringToFeaturesConverter implements Converter<String, List<Feature
       }
     }
 
+    normalizeFeatureOrder(features);
+
     return Collections.unmodifiableList(features);
+  }
+
+  private void normalizeFeatureOrder(List<Feature> features) {
+    Collections.sort(features, new FeatureComparator());
+  }
+
+  private List<String> getParameters(String query) {
+    String lowerCaseQuery = query.toLowerCase();
+    return Arrays.asList(lowerCaseQuery.split(","));
   }
 }

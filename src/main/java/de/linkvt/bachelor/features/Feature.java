@@ -52,4 +52,16 @@ public abstract class Feature {
    */
   public abstract String getToken();
 
+
+  /**
+   * @return true, if this feature is a base feature
+   */
+  public boolean isGeneral() {
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    return getName();
+  }
 }
