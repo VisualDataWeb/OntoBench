@@ -4,6 +4,7 @@ import de.linkvt.bachelor.generator.FeaturePool;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -33,7 +34,7 @@ public abstract class Feature {
     ontology.getOWLOntologyManager().addAxiom(ontology, axiom);
   }
 
-  protected void addToGenericDomainAndNewRange(OWLObjectProperty property, OWLClass range) {
+  protected void addToGenericDomainAndNewRange(OWLObjectProperty property, OWLClassExpression range) {
     OWLClass domain = featurePool.getReusableClass();
     OWLAxiom domainAxiom = factory.getOWLObjectPropertyDomainAxiom(property, domain);
     OWLAxiom rangeAxiom = factory.getOWLObjectPropertyRangeAxiom(property, range);
