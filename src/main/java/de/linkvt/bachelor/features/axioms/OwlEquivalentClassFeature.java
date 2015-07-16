@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes;
+package de.linkvt.bachelor.features.axioms;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.web.converters.parameter.ParameterName;
