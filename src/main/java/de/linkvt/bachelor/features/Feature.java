@@ -47,6 +47,9 @@ public abstract class Feature {
    */
   public abstract String getName();
 
+  /**
+   * @return the unique token of this feature
+   */
   public abstract String getToken();
 
 }

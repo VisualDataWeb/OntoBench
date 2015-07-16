@@ -3,6 +3,7 @@ package de.linkvt.bachelor.web;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.web.converters.parameter.FeatureParameterMapping;
+import de.linkvt.bachelor.web.dtos.FeatureDto;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class GeneratorController {
@@ -42,6 +44,13 @@ public class GeneratorController {
 
   private <T> T getBean(Class<T> clazz) {
     return applicationContext.getBean(clazz);
+  }
+
+  @RequestMapping("/features")
+  public List<FeatureDto> features() {
+    List<Feature> features = featureMapping.getAll();
+
+    return features.stream().map(FeatureDto::new).collect(Collectors.toList());
   }
 
 }
