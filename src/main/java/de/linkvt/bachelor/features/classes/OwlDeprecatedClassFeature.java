@@ -1,21 +1,16 @@
 package de.linkvt.bachelor.features.classes;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * A deprecated owl class.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
-@ParameterName("deprecatedclass")
 public class OwlDeprecatedClassFeature extends Feature {
   @Override
   public void addToOntology() {
@@ -26,5 +21,15 @@ public class OwlDeprecatedClassFeature extends Feature {
     OWLAnnotation annotation = factory.getOWLAnnotation(factory.getOWLDeprecated(), factory.getOWLLiteral(true));
     OWLAxiom annotationAxiom = factory.getOWLAnnotationAssertionAxiom(owlClass.getIRI(), annotation);
     addAxiomToOntology(annotationAxiom);
+  }
+
+  @Override
+  public String getName() {
+    return "owl:DeprecatedClass";
+  }
+
+  @Override
+  public String getToken() {
+    return "deprecatedclass";
   }
 }

@@ -1,20 +1,15 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLProperty;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * Property without domain and range.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
-@ParameterName("unbound")
 public class UnboundPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
@@ -22,5 +17,15 @@ public class UnboundPropertyFeature extends Feature {
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(property);
 
     addAxiomToOntology(axiom);
+  }
+
+  @Override
+  public String getName() {
+    return "owl:ObjectProperty without domain and range";
+  }
+
+  @Override
+  public String getToken() {
+    return "unbound";
   }
 }

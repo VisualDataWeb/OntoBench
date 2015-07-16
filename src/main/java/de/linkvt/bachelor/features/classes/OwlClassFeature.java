@@ -1,20 +1,15 @@
 package de.linkvt.bachelor.features.classes;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * An owl class.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
-@ParameterName("owlclass")
 public class OwlClassFeature extends Feature {
   @Override
   public void addToOntology() {
@@ -22,5 +17,15 @@ public class OwlClassFeature extends Feature {
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(owlClass);
 
     addAxiomToOntology(axiom);
+  }
+
+  @Override
+  public String getName() {
+    return "owl:Class";
+  }
+
+  @Override
+  public String getToken() {
+    return "owlclass";
   }
 }

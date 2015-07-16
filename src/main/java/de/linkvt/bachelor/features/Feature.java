@@ -26,8 +26,6 @@ public abstract class Feature {
 
   /**
    * Adds this feature to the passed ontology.
-   *
-   * @param ontology the ontology this feature will be added to
    */
   public abstract void addToOntology();
 
@@ -45,10 +43,10 @@ public abstract class Feature {
   }
 
   /**
-   * @return a readable name of the feature
+   * @return the name of this feature
    */
-  public String getNiceName() {
-    return getClass().getSimpleName();
-  }
+  public abstract String getName();
+
+  public abstract String getToken();
 
 }

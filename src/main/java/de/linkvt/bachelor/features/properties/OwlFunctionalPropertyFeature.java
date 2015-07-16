@@ -1,21 +1,16 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * An owl functional property.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
-@ParameterName("functionalprop")
 public class OwlFunctionalPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
@@ -25,5 +20,15 @@ public class OwlFunctionalPropertyFeature extends Feature {
 
     OWLAxiom axiom = factory.getOWLFunctionalObjectPropertyAxiom(property);
     addAxiomToOntology(axiom);
+  }
+
+  @Override
+  public String getName() {
+    return "owl:FunctionalProperty";
+  }
+
+  @Override
+  public String getToken() {
+    return "functionalprop";
   }
 }

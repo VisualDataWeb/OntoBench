@@ -1,21 +1,16 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * Property without a domain.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
-@ParameterName("domainless")
 public class DomainlessPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
@@ -24,5 +19,15 @@ public class DomainlessPropertyFeature extends Feature {
     OWLAxiom axiom = factory.getOWLObjectPropertyRangeAxiom(objectProperty, range);
 
     addAxiomToOntology(axiom);
+  }
+
+  @Override
+  public String getName() {
+    return "owl:ObjectProperty without a domain";
+  }
+
+  @Override
+  public String getToken() {
+    return "domainless";
   }
 }

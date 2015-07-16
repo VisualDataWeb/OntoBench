@@ -1,21 +1,16 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * Property without a range.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
-@ParameterName("rangeless")
 public class RangelessPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
@@ -24,5 +19,15 @@ public class RangelessPropertyFeature extends Feature {
     OWLAxiom axiom = factory.getOWLObjectPropertyDomainAxiom(objectProperty, domain);
 
     addAxiomToOntology(axiom);
+  }
+
+  @Override
+  public String getName() {
+    return "owl:ObjectProperty without a range";
+  }
+
+  @Override
+  public String getToken() {
+    return "rangeless";
   }
 }

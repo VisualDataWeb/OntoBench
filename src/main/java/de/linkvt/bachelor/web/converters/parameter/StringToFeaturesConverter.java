@@ -4,7 +4,6 @@ import de.linkvt.bachelor.features.Feature;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -19,12 +18,10 @@ import java.util.List;
 @Component
 public class StringToFeaturesConverter implements Converter<String, List<Feature>> {
 
-  private ApplicationContext context;
   private FeatureParameterMapping mapping;
 
   @Autowired
-  public StringToFeaturesConverter(ApplicationContext context, FeatureParameterMapping mapping) {
-    this.context = context;
+  public StringToFeaturesConverter(FeatureParameterMapping mapping) {
     this.mapping = mapping;
   }
 
@@ -39,10 +36,10 @@ public class StringToFeaturesConverter implements Converter<String, List<Feature
     List<Feature> features = new ArrayList<>();
 
     for (String parameter : parameters) {
-      Class<Feature> featureClass = mapping.get(parameter);
+      Feature feature = mapping.get(parameter);
 
-      if (featureClass != null) {
-        features.add(context.getBean(featureClass));
+      if (feature != null) {
+        features.add(feature);
       }
     }
 

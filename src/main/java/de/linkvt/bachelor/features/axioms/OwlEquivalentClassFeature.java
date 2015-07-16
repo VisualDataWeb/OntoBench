@@ -1,20 +1,15 @@
 package de.linkvt.bachelor.features.axioms;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * Multiple equivalent owl classes.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
-@ParameterName("equivalentclass")
 public class OwlEquivalentClassFeature extends Feature {
   @Override
   public void addToOntology() {
@@ -24,5 +19,15 @@ public class OwlEquivalentClassFeature extends Feature {
     OWLAxiom equivalentAxiom = factory.getOWLEquivalentClassesAxiom(owlClass, equivalentClass1, equivalentClass2);
 
     addAxiomToOntology(equivalentAxiom);
+  }
+
+  @Override
+  public String getName() {
+    return "owl:equivalentClass";
+  }
+
+  @Override
+  public String getToken() {
+    return "equivalentclass";
   }
 }

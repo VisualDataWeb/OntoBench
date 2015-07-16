@@ -1,20 +1,15 @@
 package de.linkvt.bachelor.features.axioms;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.web.converters.parameter.ParameterName;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * The rdfs:subClassOf axiom.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
-@ParameterName("subclass")
 public class RdfsSubClassOfFeature extends Feature {
 
   @Override
@@ -24,5 +19,15 @@ public class RdfsSubClassOfFeature extends Feature {
     OWLAxiom subClassOfAxiom = factory.getOWLSubClassOfAxiom(subClass, superClass);
 
     addAxiomToOntology(subClassOfAxiom);
+  }
+
+  @Override
+  public String getName() {
+    return "rdfs:subClassOf";
+  }
+
+  @Override
+  public String getToken() {
+    return "subclass";
   }
 }

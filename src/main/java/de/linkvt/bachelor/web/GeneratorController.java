@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class GeneratorController {
@@ -29,11 +28,7 @@ public class GeneratorController {
 
   @RequestMapping("/ontology")
   public OWLOntology ontology() throws OWLOntologyCreationException {
-    return ontology(getFeatureBeansForClasses(featureMapping.getAll()));
-  }
-
-  private List<Feature> getFeatureBeansForClasses(List<Class<Feature>> classes) {
-    return classes.stream().map(this::getBean).collect(Collectors.toList());
+    return ontology(featureMapping.getAll());
   }
 
   @RequestMapping(value = "/ontology", params = {"features"})

@@ -7,6 +7,7 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -14,7 +15,7 @@ import org.springframework.web.context.WebApplicationContext;
  * Encapsulates different more specific resource pools.
  */
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
+@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class FeaturePool {
   private ClassPool classPool;
   private PropertyPool propertyPool;
