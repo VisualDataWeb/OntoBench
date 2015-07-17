@@ -33,6 +33,6 @@ public class OwlUnionOfFeature extends Feature {
 
   @Override
   public String getToken() {
-    return "owlunionof";
+    return "unionof";
   }
 }

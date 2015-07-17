@@ -33,6 +33,6 @@ public class OwlOneOfFeature extends Feature {
 
   @Override
   public String getToken() {
-    return "owloneof";
+    return "oneof";
   }
 }

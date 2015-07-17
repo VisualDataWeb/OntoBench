@@ -26,7 +26,7 @@ public class OwlClassFeature extends Feature {
 
   @Override
   public String getToken() {
-    return "owlclass";
+    return "class";
   }
 
   @Override

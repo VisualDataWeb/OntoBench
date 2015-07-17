@@ -26,6 +26,6 @@ public class OwlNothingFeature extends Feature {
 
   @Override
   public String getToken() {
-    return "owlnothing";
+    return "nothing";
   }
 }
