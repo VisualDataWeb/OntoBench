@@ -36,6 +36,10 @@ public abstract class Feature {
 
   protected void addToGenericDomainAndNewRange(OWLObjectProperty property, OWLClassExpression range) {
     OWLClass domain = featurePool.getReusableClass();
+    addProperty(property, domain, range);
+  }
+
+  protected void addProperty(OWLObjectProperty property, OWLClass domain, OWLClassExpression range) {
     OWLAxiom domainAxiom = factory.getOWLObjectPropertyDomainAxiom(property, domain);
     OWLAxiom rangeAxiom = factory.getOWLObjectPropertyRangeAxiom(property, range);
 
