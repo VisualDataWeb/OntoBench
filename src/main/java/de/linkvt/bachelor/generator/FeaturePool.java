@@ -11,6 +11,9 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 /**
  * Encapsulates different more specific resource pools.
  */
@@ -32,6 +35,10 @@ public class FeaturePool {
 
   public OWLClass getReusableClass(String preferredIri) {
     return classPool.getReusableObject(preferredIri);
+  }
+
+  public OWLClass getReusableClossDifferentFrom(OWLClass... differentFrom) {
+    return classPool.getResuableObjectDifferentFrom(new HashSet<>(Arrays.asList(differentFrom)));
   }
 
   public OWLClass getReusableClassAndRemoveFromPool() {

@@ -2,6 +2,7 @@ package de.linkvt.bachelor.generator.pools;
 
 import org.semanticweb.owlapi.model.OWLDataFactory;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,13 +36,29 @@ public abstract class ResourcePool<T> {
    * @return an object from the pool or if not available a new one
    */
   public T getReusableObject(String preferredIri) {
-    T object;
-    if (objectPool.isEmpty()) {
-      object = getExclusiveObject(preferredIri);
-      objectPool.add(object);
-    } else {
-      object = objectPool.iterator().next();
+    return getReusableObjectDifferentFrom(preferredIri, Collections.emptySet());
+  }
+
+  public T getResuableObjectDifferentFrom(Set<T> differentFrom) {
+    return getReusableObjectDifferentFrom(createGenericName(), differentFrom);
+  }
+
+  public T getReusableObjectDifferentFrom(String preferredIri, Set<T> differentFrom) {
+    // try to select an existing element which is not excluded by the parameter
+    if (!objectPool.isEmpty()) {
+      for (T object : objectPool) {
+        if (!differentFrom.contains(object)) {
+          return object;
+        }
+      }
     }
+    return createReusableObject(preferredIri);
+  }
+
+  private T createReusableObject(String preferredIri) {
+    T object;
+    object = getExclusiveObject(preferredIri);
+    objectPool.add(object);
     return object;
   }
 
