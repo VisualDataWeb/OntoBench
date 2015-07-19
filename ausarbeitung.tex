@@ -1,0 +1,238 @@
+% Dieses Dokument muss mit PDFLatex geestzt werden
+% Vorteil: Grafiken koennen als jpg, png, ... verwendet werden
+%          und die Links im Dokument sind auch gleich richtig
+%
+%Ermöglicht \\ bei der Titelseite (z.B. bei supervisor)
+%Siehe https://github.com/latextemplates/uni-stuttgart-cs-cover/issues/4
+\RequirePackage{kvoptions-patch}
+%
+\documentclass[
+               paper=a4,
+%               twoside, % fuer die Betrachtung am Schirm ungeschickt
+% Optionen fuer typearea.
+               BCOR1.92mm,DIV12,headinclude, %je höher der DIV-Wert, desto mehr geht auf eine Seite - Hack für BCOR. Bei BCOR2mm sind die Fuellpunkte beim Inhaltsverzeichnis falsch
+%               titlepage,
+               bibliography=totoc,
+%               idxtotoc,   %Index ins Inhaltsverzeichnis
+%				liststotoc, %List of X ins Inhaltsverzeichnis, mit liststotocnumbered werden die Abbildungsverzeichnisse nummeriert
+               headsepline,
+               cleardoublepage=empty,
+               parskip=half,
+%				pointlessnumbers, %f"ur englische Texte, dann unten \ifdeutsch und \ifenglisch anpassen.
+%               draft    % um zu sehen, wo noch nachgebessert werden muss - wichtig, da Bindungskorrektur mit drin
+               final   % ACHTUNG! - in pagestyle.tex noch Seitenstil anpassen
+               ]{scrbook}
+
+%Englisch:			   
+%\let\ifdeutsch\iffalse
+%\let\ifenglisch\iftrue
+
+%Deutsch:
+\let\ifdeutsch\iftrue
+\let\ifenglisch\iffalse
+
+			   
+\input{preambel/packages_and_options}
+
+ %Der untere Rand darf "flattern"
+\raggedbottom
+
+%%%
+% Wie tief wird das Inhaltsverzeichnis aufgeschlüsselt
+% 0 --\chapter
+% 1 --\section % fuer kuerzeres Inhaltsverzeichnis verwenden - oder minitoc benutzen
+% 2 --\subsection
+% 3 --\subsubsection
+% 4 --\paragraph
+\setcounter{tocdepth}{1}
+%
+%%%
+
+\makeindex
+
+%Angaben in die PDF-Infos uebernehmen
+\makeatletter
+\hypersetup{
+            pdftitle={}, %Titel der Arbeit
+            pdfauthor={}, %Author
+            pdfkeywords={}, % CR-Klassifikation und ggf. weitere Stichworte
+            pdfsubject={}
+}
+\makeatother
+
+\begin{document}
+%tex4ht-Konvertierung verschönern
+\iftex4ht
+% tell tex4ht to create picures also for formulas starting with '$'
+% WARNING: a tex4ht run now takes forever!
+\Configure{$}{\PicMath}{\EndPicMath}{} 
+%$ % <- syntax highlighting fix for emacs
+\Css{body {text-align:justify;}}
+
+%conversion of .pdf to .png
+\Configure{graphics*}  
+         {pdf}  
+         {\Needs{"convert \csname Gin@base\endcsname.pdf  
+                               \csname Gin@base\endcsname.png"}%  
+          \Picture[pict]{\csname Gin@base\endcsname.png}%  
+         }  
+\fi
+
+%Tipp von http://goemonx.blogspot.de/2012/01/pdflatex-ligaturen-und-copynpaste.html
+%siehe auch http://tex.stackexchange.com/questions/4397/make-ligatures-in-linux-libertine-copyable-and-searchable
+%
+%ONLY WORKS ON MiKTeX
+%On other systems, download glyphtounicode.tex from http://pdftex.sarovar.org/misc/
+%
+\input glyphtounicode.tex
+\pdfgentounicode=1
+
+\VerbatimFootnotes %verbatim text in Fußnoten erlauben. Geht normalerweise nicht.
+%\frontmatter
+\input{macros/commands}
+\pagenumbering{arabic}
+\Titelblatt
+
+%Eigener Seitenstil fuer die Kurzfassung und das Inhaltsverzeichnis
+\deftripstyle{preamble}{}{}{}{}{}{\pagemark}
+%Doku zu deftripstyle: scrguide.pdf
+\pagestyle{preamble}
+\renewcommand*{\chapterpagestyle}{preamble}
+
+%Kurzfassung / abstract
+%auch im Stil vom Inhaltsverzeichnis
+\ifdeutsch
+\section*{Kurzfassung}
+\else
+\section*{Abstract}
+\fi
+\ldots ... Short summary of the thesis ...
+\cleardoublepage
+
+
+% BEGIN: Verzeichnisse
+
+\iftex4ht
+\else
+\microtypesetup{protrusion=false}
+\fi
+
+%%%
+% Literaturverzeichnis ins TOC mit aufnehmen, aber nur wenn nichts anderes mehr hilft!
+% \addcontentsline{toc}{chapter}{Literaturverzeichnis}
+%
+% oder zB
+%\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+%\section*{Abkürzungsverzeichnis}
+%
+%%%
+
+%Inhaltsverzeichnis anlegen
+\tableofcontents
+
+% Bei einem ungünstigen Seitenumbruch im Inhaltsverzeichnis, kann dieser mit
+% \addtocontents{toc}{\protect\newpage}
+% an der passenden Stelle im Fließtext erzwungen werden.
+
+%listof* untereinandergesetzt
+%ACHTUNG! Falls ein anderer Kapitelstil gewählt wird, muss der Code hier evtl.
+%  angepasst werden
+\begingroup 
+\makeatletter
+  \def\@makeschapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ \raggedright \reset@font
+            \normalfont \vphantom{\@chapapp{} \thechapter}
+        \par\nobreak\vspace*{10\p@}%
+        \interlinepenalty\@M
+    {\huge \bfseries %
+	%
+	%Default-Schrift: Serifenhaft (fuer englische Dokumente)
+	% Dann sowohl A als auch B deaktivieren
+    %A) Fuer serifenlose Schrift folgende Zeile aktivieren:
+	\ifdeutsch
+    \fontfamily{phv}\selectfont
+	\fi
+	%B) Fuer Kapitaelchen folgende Zeile aktivieren:
+	%\fontseries{m}\fontshape{sc}\selectfont
+	%
+	#1\par\nobreak}
+    %\vspace*{1\p@}%
+\makebox[\textwidth]{\hrulefill}%    \hrulefill alone does not work
+    \par\nobreak
+    \vskip 5\p@
+  }}
+\makeatother
+\let\cleardoublepage\clearpage
+\listoffigures
+\let\cleardoublepage\relax
+\listoftables
+
+%Wird nur bei Verwendung von der lstlisting-Umgebung mit dem "caption"-Parameter benoetigt
+%\lstlistoflistings 
+%ansonsten:
+\ifdeutsch
+\listof{Listing}{Verzeichnis der Listings}
+\else
+\listof{Listing}{List of Listings}
+\fi
+
+%mittels \newfloat wurde die Algorithmus-Gleitumgebung definiert.
+%Mit folgendem Befehl werden alle floats dieses Typs ausgegeben
+\ifdeutsch
+\listof{Algorithmus}{Verzeichnis der Algorithmen}
+\else
+\listof{Algorithmus}{List of Algorithms}
+\fi
+%\listofalgorithms %Ist nur für Algorithmen, die mittels \begin{algorithm} umschlossen werden, nötig
+
+\endgroup
+
+\cleardoublepage
+
+\iftex4ht
+\else
+%Optischen Randausgleich und Grauwertkorrektur wieder aktivieren
+\microtypesetup{protrusion=true}
+\fi
+
+% END: Verzeichnisse
+
+
+\renewcommand*{\chapterpagestyle}{scrplain}
+\pagestyle{scrheadings}
+\input{preambel/pagestyle}
+%
+%
+% ** Hier wird der Text eingebunden **
+%
+\input{content/einleitung}
+%\input{...weitere Kapitel...}
+\input{content/kapitel2}
+\input{content/zusammenfassung_und_ausblick}
+%
+%
+%\renewcommand{\appendixtocname}{Anhang}
+%\renewcommand{\appendixname}{Anhang}
+%\renewcommand{\appendixpagename}{Anhang}
+\appendix
+\input{content/anhang}
+%\printindex
+%\bibliographystyle{alphadin}
+\ifdeutsch
+\bibliographystyle{bibliography/IAASde} %f"ur deutsche Texte
+\else
+\bibliographystyle{bibliography/IAAS} %f"ur englische Texte
+\fi
+\bibliography{bibliography/bibliography}
+\ifdeutsch
+Alle URLs wurden zuletzt am 17.\,03.\,2008 geprüft.
+\else
+All links were last followed on March 17, 2008.
+\fi
+
+\backmatter 
+\pagestyle{empty}
+\renewcommand*{\chapterpagestyle}{empty}
+\Versicherung
+\end{document}

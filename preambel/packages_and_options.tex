@@ -1,0 +1,647 @@
+%%%
+% Beschreibung:
+% In dieser Datei werden zuerst die benoetigten Pakete eingebunden und
+% danach diverse Optionen gesetzt. Achtung Reihenfolge ist entscheidend!
+%
+%%%
+
+
+%%%
+% Styleguide:
+%
+% Ein sehr kleiner Styleguide. Packages werden in Blöcken organisiert.
+% Ein Block beginnt mit drei % in einer Zeile, dann % <Blocküberschrift>, dann 
+% eine Liste der möglichen Optionen und deren Einstellungen, Gründe und Kommentare
+% eine % Zeile in der sonst nichts steht und dann wieder %%% in einer Zeile.
+%
+% Zwischen zwei Blöcken sind 2 Leerzeilen!
+% Zu jedem Paket werden soviele Optionen wie möglich/nötig angegeben
+%
+%%%
+
+%%%
+% Codierung
+% Wir sind im 21 Jahrhundert, utf-8 löst so viele Probleme.
+%
+% Mit UTF-8 funktionieren folgende Pakete nicht mehr. Bitte beachten!
+%   * fancyvrb mit § 
+%   * easylist -> http://www.ctan.org/tex-archive/macros/latex/contrib/easylist/ 
+\usepackage[utf8]{inputenc}
+%
+%%%
+
+%%%
+%Parallelbetrieb tex4ht und pdflatex
+\makeatletter
+\@ifpackageloaded{tex4ht}{\def\iftex4ht{\iftrue}}
+                         {\def\iftex4ht{\iffalse}}
+\makeatother
+%%%
+
+
+%%%
+%Farbdefinitionen
+\usepackage[hyperref,dvipsnames]{xcolor}
+%
+
+
+%%%
+% Neue deutsche Rechtschreibung und Literatur statt "Literature", Nachfolger von ngerman.sty
+\ifdeutsch
+\usepackage[ngerman]{babel}
+  %Ein "abstract" ist eine "Kurzfassung", keine "Zusammenfassung"
+  \addto\captionsngerman{%
+    \renewcommand\abstractname{Kurzfassung}%
+  }
+\else
+%
+%
+% if you are writing in english
+% für englische Texte, Hinweise zu weiteren, notwendigen Umstellungen in README.txt beachten
+\usepackage[american]{babel}
+\fi
+%
+%%%
+
+%%%
+% Anführungszeichen
+% Zitate in \enquote{...} setzen, dann werden automatisch die richtigen Anführungszeichen verwendet.
+\usepackage{csquotes}
+%%%
+
+
+%%%
+% erweitertes Enumerate
+\usepackage{paralist}
+%
+%%%
+
+
+%%%
+% fancyheadings (nicht nur) fuer koma
+\usepackage[automark]{scrpage2} 
+%
+%%%
+
+
+%%%
+%Mathematik
+%
+\usepackage[fleqn,leqno]{amsmath} % Viele Mathematik-Sachen: Doku: /usr/share/doc/texmf/latex/amsmath/amsldoc.dvi.gz
+%fleqn (=Gleichungen linksbündig platzieren) funktioniert nicht direkt. Es muss noch ein Patch gemacht werden:
+\addtolength\mathindent{1em}%work-around ams-math problem with align and 9 -> 10
+\usepackage{mathtools} %fixes bugs in AMS math
+%
+%for theorems, replacement for amsthm
+\usepackage[amsmath,hyperref]{ntheorem}
+\theorempreskipamount 2ex plus1ex minus0.5ex
+\theorempostskipamount 2ex plus1ex minus0.5ex
+\theoremstyle{break}
+\newtheorem{definition}{Definition}[section]
+%
+%%%
+
+
+%%%
+% Intelligentes Leerzeichen um hinter Abkürzungen die richtigen Abstände zu erhalten, auch leere.
+% siehe commands.tex \gq{}
+\usepackage{xspace}
+%Macht \xspace und \enquote kompatibel
+\makeatletter
+\xspaceaddexceptions{\grqq \grq \csq@qclose@i \} }
+\makeatother
+%
+%%%
+
+
+%%%
+% Anhang
+\usepackage{appendix}
+%[toc,page,title,header]
+%
+%%%
+
+
+%%%
+% Grafikeinbindungen
+\usepackage{graphicx}%Parameter "pdftex" unnoetig
+\graphicspath{{\getgraphicspath}}
+\newcommand{\getgraphicspath}{graphics/}
+%
+%%%
+
+
+%%%
+% Enables inclusion of SVG graphics - 1:1 approach
+% This is NOT the approach of http://www.ctan.org/tex-archive/info/svg-inkscape,
+% which allows text in SVG to be typeset using LaTeX
+% We just include the SVG as is
+\usepackage{epstopdf}
+\epstopdfDeclareGraphicsRule{.svg}{pdf}{.pdf}{%
+  inkscape -z -D --file=#1 --export-pdf=\OutputFile
+}
+%
+%%%
+
+
+%%%
+% Enables inclusion of SVG graphics - text-rendered-with-LaTeX-approach
+% This is the approach of http://www.ctan.org/tex-archive/info/svg-inkscape,
+\newcommand{\executeiffilenewer}[3]{%
+\IfFileExists{#2}
+{
+%\message{file #2 exists}
+\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+{\pdffilemoddate{#2}}>0%
+{\immediate\write18{#3}}
+\else
+{%\message{file up to date #2}
+}
+\fi%
+}{
+%\message{file #2 doesn't exist}
+%\message{argument: #3}
+%\immediate\write18{echo "test" > xoutput.txt}
+\immediate\write18{#3}
+}
+}
+\newcommand{\includesvg}[1]{%
+\executeiffilenewer{#1.svg}{#1.pdf}%
+{
+inkscape -z -D --file=\getgraphicspath#1.svg %
+--export-pdf=\getgraphicspath#1.pdf --export-latex}%
+\input{\getgraphicspath#1.pdf_tex}%
+}
+%%%
+
+%%%
+% Tabellenerweiterungen
+\usepackage{array} %increases tex's buffer size and enables ``>'' in tablespecs
+\usepackage{longtable}
+%
+%%%
+
+%%%
+% Eine Zelle, die sich über mehrere Zeilen erstreckt.
+% Siehe Beispieltabelle in Kapitel 2
+\usepackage{multirow}
+%
+%%%
+
+
+%%%
+% Links verhalten sich so, wie sie sollen
+\usepackage{url}
+%
+%%%
+
+
+%%%
+% Index über Begriffe, Abkürzungen
+%\usepackage{makeidx} makeidx ist out -> http://xindy.sf.net verwenden
+%
+%%%
+
+%%%
+%lustiger Hack fuer das Abkuerzungsverzeichnis
+%nach latex durchlauf folgendes ausfuehren
+%makeindex ausarbeitung.nlo -s nomencl.ist -o ausarbeitung.nls 
+%danach nochmal latex
+%\usepackage{nomencl}
+%	\let\abk\nomenclature %Deutsche Ueberschrift setzen
+%	  	\renewcommand{\nomname}{List of Abbreviations}
+%		%Punkte zw. Abkuerzung und Erklaerung
+%	  	\setlength{\nomlabelwidth}{.2\hsize}
+%	  	\renewcommand{\nomlabel}[1]{#1 \dotfill}
+%		%Zeilenabstaende verkleinern
+%	  	\setlength{\nomitemsep}{-\parsep}
+%	\makenomenclature
+%
+%%%
+
+%%%
+% Logik für Tex
+\usepackage{ifthen} %fuer if-then-else @ commands.tex
+%
+%%%
+
+
+%%%
+% unterschiedliche Fancy-Chapter-Styles
+%\usepackage[Bjarne]{fncychap}
+%\usepackage[Lenny]{fncychap}
+%
+%%%
+
+
+%%%
+%
+\usepackage{listings}
+%
+%%%
+
+
+%%%
+%Alternative zu Listings ist fancyvrb. Kann auch beides gleichzeitig benutzt werden.
+\usepackage{fancyvrb}
+%\fvset{fontsize=\small} %Groesse fuer den Fliesstext. Falls deaktiviert: \normalsize
+%Funktioniert mit UTF-8 nicht mehr
+%\DefineShortVerb{\§} %Somit kann im Text ganz einfach |verbatim| text gesetzt werden.
+\RecustomVerbatimEnvironment{Verbatim}{Verbatim}{fontsize=\footnotesize}
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{fontsize=\footnotesize}
+%
+%%%
+
+
+%%%
+% Bildunterschriften bei floats genauso formatieren wie bei Listings
+% Anpassung wird unten bei den newfloat-Deklarationen vorgenommen
+% Caption2 vielleicht besser
+\usepackage{caption}
+%
+%%%
+
+
+%%%
+% Ermoeglicht es, Abbildungen um 90 Grad zu drehen
+% Alternatives Paket: rotating Allerdings wird hier nur das Bild gedreht, während bei lscape auch die PDF-Seite gedreht wird. 
+%Das Paket lscape dreht die Seite auch nicht 
+\usepackage{pdflscape}
+%
+%%%
+
+
+%%%
+% Fuer listings
+% Wird für fancyvrb und für lstlistings verwendet
+\usepackage{float}
+
+%\usepackage{floatrow}
+%% zustäzlich für den Paramter [H] = Floats WIRKLICH da wo sie deklariert wurden paltzieren - ganz ohne Kompromisse
+% floatrow ist der Nachfolger von float
+% Allerdings macht floatrow in manchen Konstellationen Probleme. Deshalb ist das Paket deaktiviert.
+%
+%%%
+
+
+%%%
+% Fuer Abbildungen innerhalb von Abbildungen
+% Ersetzt das Paket subfigure
+%\usepackage{subfig}
+%
+%%%
+
+
+%%%
+%Fuer Tabellen mit Variablen Spaltenbreiten
+%\usepackage{tabularx}
+%\usepackage{tabulary}
+%
+%%%
+
+
+%%%
+% Fußnoten
+% 
+%\usepackage{dblfnote}  %Zweispaltige Fußnoten
+%
+% Keine hochgestellten Ziffern in der Fußnote (KOMA-Script-spezifisch):
+%\deffootnote[1.5em]{0pt}{1em}{\makebox[1.5em][l]{\bfseries\thefootnotemark}} 
+%
+% Abstand zwischen Fußnoten vergrößern:
+%\setlength{\footnotesep}{.85\baselineskip}
+%
+%
+\renewcommand{\footnoterule}{}             % Keine Trennlinie zur Fußnote 
+\addtolength{\skip\footins}{\baselineskip} % Abstand Text <-> Fußnote
+% Fußnoten immer ganz unten auf einer \raggedbottom-Seite
+\usepackage{fnpos}
+%
+%%%
+
+
+%%%
+%
+\raggedbottom     % Variable Seitenhöhen zulassen
+%
+%%%
+
+
+%%%
+% Falls die Seitenzahl bei einer Referenz auf eine Abbildung nur dann angegeben werden soll,
+% falls sich die Abbildung nicht auf der selben Seite befindet...
+\iftex4ht
+%tex4ht does not work well with vref, therefore we emulate vref behavior
+\newcommand{\vref}[1]{\ref{#1}}
+\else
+\ifdeutsch
+\usepackage[ngerman]{varioref}
+\else
+\usepackage{varioref}
+\fi
+\fi
+%%%
+
+%%%
+% Noch schoenere Tabellen als mit booktabs mit http://www.zvisionwelt.de/downloads.html
+\usepackage{booktabs} 
+%
+%\usepackage[section]{placeins}
+%
+%%%
+
+
+%%%
+%Fuer Graphiken. Allerdings funktioniert es nicht zusammen mit pdflatex
+%\usepackage{gastex} % \tolarance kann dann nicht mehr umdefiniert werden
+%
+%%%
+
+
+%%%
+%
+%\usepackage{multicol}
+%\usepackage{setspace} % kollidiert mit diplomarbeit.sty
+%
+%http://www.tex.ac.uk/cgi-bin/texfaq2html?label=floats
+%\usepackage{flafter} %floats IMMER nach ihrer Deklaration platzieren
+%
+%%%
+
+
+%%%
+%schoene TODOs
+\usepackage{todonotes}
+\let\xtodo\todo
+\renewcommand{\todo}[1]{\xtodo[inline,color=black!5]{#1}}
+\newcommand{\utodo}[1]{\xtodo[inline,color=green!5]{#1}}
+\newcommand{\itodo}[1]{\xtodo[inline]{#1}}
+%
+%%%
+
+
+%%%
+% Neue Pakete bitte VOR hyperref einbinden. Insbesondere bei Verwendung des
+% Pakets "index" wichtig, da sonst die Referenzierung nicht funktioniert.
+% Für die Indizierung selbst ist unter http://xindy.sourceforge.net
+% ein gutes Tool zu erhalten 
+%%%
+
+
+%%%
+%
+% hier also neue packages einbinden
+%
+%%%
+
+
+%%%
+% ggf.in der Endversion komplett rausnehmen. dann auch \href in commands.tex aktivieren
+% Alle Optionen nach \hypersetup verschoben, sonst crash
+%
+\usepackage[]{hyperref}%siehe auch: "Praktisches LaTeX" - www.itp.uni-hannover.de/~kreutzm
+%
+%% Da es mit KOMA 3 und xcolor zu Problemen mit den global Options kommt MÜSSEN die Optionen so gesetzt werden.
+%
+
+% Eigene Farbdefinitionen ohne die Namen des xcolor packages
+\definecolor{darkblue}{rgb}{0,0,.5}
+\definecolor{black}{rgb}{0,0,0}
+
+\hypersetup{
+	breaklinks=true,
+	bookmarksnumbered=true,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,
+	breaklinks=true,
+	colorlinks=true,
+	pdfstartview=Fit,
+	pdfpagelayout=SinglePage,
+	%
+	filecolor=darkblue,
+	urlcolor=darkblue,
+	linkcolor=black,
+	citecolor=black
+}
+%
+%%%
+
+
+%%%
+% cleveref für cref statt autoref, da cleveref auch bei Definitionen funktioniert
+\ifdeutsch
+\usepackage[ngerman,capitalise,nameinlink]{cleveref}
+\else
+\usepackage[capitalise,nameinlink]{cleveref}
+\fi
+%%%
+
+
+%%%
+% Zur Darstellung von Algorithmen
+% Algorithm muss nach hyperref geladen werden
+\usepackage[chapter]{algorithm} 
+\usepackage[]{algpseudocode}
+%
+%%%
+
+
+%%%
+% Schriften
+\input{preambel/fonts}
+%
+%%%
+
+
+%%%
+% Links auf Gleitumgebungen springen nicht zur Beschriftung,
+% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
+% sondern zum Anfang der Gleitumgebung
+\usepackage[all]{hypcap}
+%%%
+
+
+%%%
+% Deckblattstyle
+%
+% für englische Ausarbeitungen "language=english" benutzen
+\usepackage[
+	title={Förderungswürdigkeit der F\"{o}rderung von Öl},
+	author={Lars K.},
+	type=bachelor,
+	institute=iaas,
+	number=12345,
+	course=se,
+	examiner={Prof.\ Dr.\ Uwe Fessor},
+	supervisor={Dipl.-Inf.\ Roman Tiker,\\Dipl.-Inf.\ Laura Stern},
+	startdate={5.\ Juli 2013}, % English: July 5, 2013;    ISO: 2013-07-05
+	enddate={5.\ Januar 2014}, % English: January 5, 2014; ISO: 2014-01-05
+	crk={I.7.2},
+	language=german
+	%language=english
+	]{uni-stuttgart-cs-cover}
+%
+%%%
+
+
+%%%
+%Bugfixes packages
+%\usepackage{fixltx2e} %Fuer neueste LaTeX-Installationen nicht mehr benoetigt - bereinigte einige Ungereimtheiten, die auf Grund von Rueckwaertskompatibilitaet beibahlten wurden.
+%\usepackage{mparhack} %Fixt die Position von marginpars (die in DAs selten bis gar nicht gebraucht werden}
+%\usepackage{ellipsis} %Fixt die Abstaende vor \ldots. Wird wohl auch nicht benoetigt.
+%
+%%%
+
+
+%%%
+% Rand
+\input{preambel/margins}
+%
+%%%
+
+
+%%%
+% Optionen                                                                  
+%
+%Skip=0 funktioniert nicht
+\captionsetup{format=hang,labelfont=bf,justification=justified,singlelinecheck=false,skip=0pt}
+%
+%neue float Umgebung fuer Listings, die mittels fancyvrb gesetzt werden sollen
+\floatstyle{ruled}
+\newfloat{Listing}{tbp}{code}[chapter]
+\newfloat{Algorithmus}{tbp}{alg}[chapter]
+%
+%amsmath
+%\numberwithin{equation}{section}
+%\renewcommand{\theequation}{\thesection.\Roman{equation}}
+%
+%pdftex
+\pdfcompresslevel=9
+%
+%Tabellen (array.sty)
+\setlength{\extrarowheight}{1pt}
+%
+%
+\input{preambel/chapterheads}
+%
+%%%
+
+
+%%%
+%Minitoc-Einstellungen
+%\dominitoc
+%\renewcommand{\mtctitle}{Inhaltsverzeichnis dieses Kapitels}
+%
+% Disable single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+%
+% Disable single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000
+%
+%http://groups.google.de/group/de.comp.text.tex/browse_thread/thread/f97da71d90442816/f5da290593fd647e?lnk=st&q=tolerance+emergencystretch&rnum=5&hl=de#f5da290593fd647e
+%Mehr Infos unter http://www.tex.ac.uk/cgi-bin/texfaq2html?label=overfull
+\tolerance=2000
+\setlength{\emergencystretch}{3pt}   % kann man evtl. auf 20 erhoehen
+\setlength{\hfuzz}{1pt}
+%
+%%%
+
+
+%%%
+% Fuer listings.sty
+\lstset{language=XML,
+        showstringspaces=false,
+        extendedchars=true,
+        basicstyle=\footnotesize\ttfamily,
+        commentstyle=\slshape,
+        stringstyle=\ttfamily, %Original: \rmfamily, damit werden die Strings im Quellcode hervorgehoben		zusaetzlich evtl.: \scshape oder \rmfamily durch \ttfamily ersetzen. Dann sieht's aus, wie bei fancyvrb
+        breaklines=true,
+        breakatwhitespace=true,
+        columns=flexible,
+        aboveskip=0mm, %deaktivieren, falls man lstlistings direkt als floating object benutzt (\begin{lstlisting}[float,...])
+        belowskip=0mm, %deaktivieren, falls man lstlistings direkt als floating object benutzt (\begin{lstlisting}[float,...])
+        captionpos=b
+}
+\ifdeutsch
+\renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
+\fi
+%
+%%%
+
+
+%%%
+%fuer algorithm.sty: - falls Deutsch und nicht Englisch. Falls Englisch als Sprache gewählt wurde, bitte die folgenden beiden Zeilen auskommentieren.
+\floatname{algorithm}{Algorithmus}
+\ifdeutsch
+\renewcommand{\listalgorithmname}{Verzeichnis der Algorithmen}
+\fi
+%
+%%%
+
+
+%%%
+% Das Euro Zeichen 
+% Fuer Palatino (mathpazo.sty): richtiges Euro-Zeichen
+% Alternative: \usepackage{eurosym}
+\newcommand{\EUR}{\ppleuro}
+%
+%%%
+
+
+%%%
+%
+% Float-placements - http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/LatexTips.html#figplacement
+% and http://people.cs.uu.nl/piet/floats/node1.html
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+%\setcounter{totalnumber}{5}
+%
+%%%
+
+%%%
+%
+% Bei Gleichungen nur dann die Nummer zeigen, wenn die Gleichung auch referenziert wird
+%
+% Funktioniert mit MiKTeX Stand 2012-01-13 nicht. Deshalb ist dieser Schalter deaktiviert.
+%
+%\mathtoolsset{showonlyrefs}
+%
+%%%
+
+%%%
+%Optischer Randausgleich
+\usepackage{microtype}
+%%%
+
+%%%
+% Rueckverweise aus dem Literaturverzeichnis
+\usepackage[hyperpageref]{backref}
+\ifdeutsch
+% Deutscher Text
+\newcommand{\babelbackrefnotcited}{\relax}
+\newcommand{\babelbackrefcitedsingle}[1]{(Zitiert auf Seite~#1)}
+\newcommand{\babelbackrefcitedmulti}[1]{(Zitiert auf den Seiten~#1)}
+\newcommand{\babelbackrefand}{und}
+\else
+% Englischer Text
+\newcommand{\babelbackrefnotcited}{\relax}
+\newcommand{\babelbackrefcitedsingle}[1]{(Cited on page~#1)}
+\newcommand{\babelbackrefcitedmulti}[1]{(Cited on pages~#1)}
+\newcommand{\babelbackrefand}{and}
+\fi
+% Tweak backref
+\renewcommand{\backreftwosep}{ \babelbackrefand~} % seperate 2 pages
+\renewcommand{\backreflastsep}{ \babelbackrefand~} % seperate last of longer list
+\renewcommand*{\backref}[1]{} % Standard deaktivieren
+\renewcommand*{\backrefalt}[4]{% 
+\ifcase #1 %
+\babelbackrefnotcited%
+\or
+\babelbackrefcitedsingle{#2}%
+\else
+\babelbackrefcitedmulti{#2}%
+\fi}
+%
+%%%
