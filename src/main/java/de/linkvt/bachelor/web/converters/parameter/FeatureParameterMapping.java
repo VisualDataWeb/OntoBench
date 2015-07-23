@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -38,6 +39,13 @@ public class FeatureParameterMapping {
 
   public Feature get(String parameter) {
     return featureMap.get(parameter);
+  }
+
+  public List<Feature> get(Collection<String> parameters) {
+    return parameters.stream()
+        .map(this::get)
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
   }
 
   public List<Feature> getAll() {
