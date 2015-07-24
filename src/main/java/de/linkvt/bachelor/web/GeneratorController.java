@@ -67,6 +67,10 @@ public class GeneratorController {
   @RequestMapping("/ontology/{id}")
   public OWLOntology ontologyFromId(@PathVariable("id") Long id) {
     StoredGeneration storedGeneration = repository.findOne(id);
+    if (storedGeneration == null) {
+      throw new IllegalArgumentException("No generation stored for the passed id.");
+    }
+
     List<Feature> usedFeatures = featureMapping.get(storedGeneration.getParameters());
 
     return ontology(usedFeatures);
