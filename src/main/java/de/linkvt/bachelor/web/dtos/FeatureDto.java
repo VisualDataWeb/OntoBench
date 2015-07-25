@@ -3,7 +3,7 @@ package de.linkvt.bachelor.web.dtos;
 import de.linkvt.bachelor.features.Feature;
 
 /**
- * Contains all informations the REST api consumers need.
+ * Contains all feature informations the REST api consumers need.
  */
 public class FeatureDto {
   private String token;

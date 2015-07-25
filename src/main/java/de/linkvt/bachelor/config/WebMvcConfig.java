@@ -2,7 +2,7 @@ package de.linkvt.bachelor.config;
 
 import de.linkvt.bachelor.web.converters.message.FunctionalSyntaxHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.ManchesterSyntaxHttpMessageConverter;
-import de.linkvt.bachelor.web.converters.message.OwlMediaType;
+import de.linkvt.bachelor.web.converters.message.OntologySyntax;
 import de.linkvt.bachelor.web.converters.message.OwlXmlHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.RdfXmlOntologyHttpMessageConverter;
 import de.linkvt.bachelor.web.converters.message.TurtleOntologyHttpMessageConverter;
@@ -40,13 +40,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     configurer.ignoreAcceptHeader(true)
         .ignoreUnknownPathExtensions(false)
         .defaultContentType(MediaType.TEXT_PLAIN)
-        .mediaType("owx", OwlMediaType.APPLICATION_OWL_XML)
-        .mediaType("owl", OwlMediaType.APPLICATION_RDF_XML)
-        .mediaType("rdf", OwlMediaType.APPLICATION_RDF_XML)
-        .mediaType("xml", OwlMediaType.APPLICATION_RDF_XML)
-        .mediaType("ofn", OwlMediaType.TEXT_OWL_FUNCTIONAL)
-        .mediaType("omn", OwlMediaType.TEXT_OWL_MANCHESTER)
-        .mediaType("ttl", OwlMediaType.TEXT_TURTLE);
+        .mediaType("owx", OntologySyntax.OWL_XML.getMediaType())
+        .mediaType("owl", OntologySyntax.RDF_XML.getMediaType())
+        .mediaType("rdf", OntologySyntax.RDF_XML.getMediaType())
+        .mediaType("xml", OntologySyntax.RDF_XML.getMediaType())
+        .mediaType("ofn", OntologySyntax.FUNCTIONAL.getMediaType())
+        .mediaType("omn", OntologySyntax.MANCHESTER.getMediaType())
+        .mediaType("ttl", OntologySyntax.TURTLE.getMediaType());
   }
 
   @Bean

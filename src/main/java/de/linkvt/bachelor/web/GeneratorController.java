@@ -4,8 +4,10 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.persistence.StoredGeneration;
 import de.linkvt.bachelor.persistence.StoredGenerationRepository;
+import de.linkvt.bachelor.web.converters.message.OntologySyntax;
 import de.linkvt.bachelor.web.converters.parameter.FeatureParameterMapping;
 import de.linkvt.bachelor.web.dtos.FeatureDto;
+import de.linkvt.bachelor.web.dtos.FormatDto;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -85,6 +88,13 @@ public class GeneratorController {
     List<Feature> features = featureMapping.getAll();
 
     return features.stream().map(FeatureDto::new).collect(Collectors.toList());
+  }
+
+  @RequestMapping("/formats")
+  public List<FormatDto> formats() {
+    List<OntologySyntax> syntaxes = Arrays.asList(OntologySyntax.values());
+
+    return syntaxes.stream().map(FormatDto::new).collect(Collectors.toList());
   }
 
 }

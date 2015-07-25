@@ -13,6 +13,9 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Converts ontologies to a string for the http message.
@@ -20,9 +23,13 @@ import java.io.IOException;
 public abstract class OntologyHttpMessageConverter extends AbstractHttpMessageConverter<OWLOntology> {
   private final OWLDocumentFormat documentFormat;
 
-  public OntologyHttpMessageConverter(OWLDocumentFormat documentFormat, MediaType... mediaTypes) {
-    super(mediaTypes);
-    this.documentFormat = documentFormat;
+  public OntologyHttpMessageConverter(OntologySyntax ontologySyntax, MediaType... additionalMediaTypes) {
+    List<MediaType> mediaTypes = new ArrayList<>();
+    mediaTypes.add(ontologySyntax.getMediaType());
+    mediaTypes.addAll(Arrays.asList(additionalMediaTypes));
+    setSupportedMediaTypes(mediaTypes);
+
+    this.documentFormat = ontologySyntax.getDocumentFormat();
   }
 
   @Override
