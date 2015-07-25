@@ -9,17 +9,21 @@
     <h1 class="ui header">Ontology Visualization Benchmark Generator</h1>
 
     <div class="ui top attached tabular menu">
-        <div class="active item" data-tab="features">Features</div>
-        <div class="item" data-tab="output">Output</div>
+        <a class="item" data-tab="features">Features</a>
+        <a class="active item" data-tab="output">Output</a>
     </div>
-    <div class="ui bottom attached active tab segment" data-tab="features">
+    <div class="ui bottom attached tab segment" data-tab="features">
         <div id="feature-list" class="ui list"></div>
+    </div>
+    <div class="ui bottom attached tab active segment" data-tab="output" id="output-tab">
+        <select id="format-list" class="ui search dropdown">
+            <option value="">Ontology Syntax</option>
+        </select>
 
         <div class="ui divider"></div>
 
-        <button id="generate-button" class="ui primary button">Generate</button>
+        <div id="ontology-container" class="ui container text"></div>
     </div>
-    <div class="ui bottom attached tab segment" data-tab="output"></div>
 </div>
 </body>
 <script src="vendor.js"></script>

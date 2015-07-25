@@ -2,12 +2,15 @@ var ui = require("ui");
 
 ui.initialize();
 
-
 $.getJSON("/features.json")
     .done(function (features) {
               displayFeatures(features);
           });
 
+$.getJSON("/formats.json")
+    .done(function (formats) {
+              displayFormats(formats);
+          });
 
 function displayFeatures(features) {
     features.forEach(function (feature) {
@@ -18,10 +21,17 @@ function displayFeatures(features) {
 }
 
 function createFeatureCheckbox(feature) {
-    var name = feature.token + "-feature";
+    var id = feature.token + "-feature";
 
     var container = $("<div>").data(feature).addClass("ui checkbox");
-    $("<input type='checkbox' id='" + name + "'>").appendTo(container);
-    $("<label>").attr("for", name).text(feature.name).appendTo(container);
+    $("<input type='checkbox' id='" + id + "'>").appendTo(container);
+    $("<label>").attr("for", id).text(feature.name).appendTo(container);
     return container;
+}
+
+function displayFormats(formats) {
+    formats.forEach(function (format) {
+        var option = $("<option value='" + format.extension + "'>").text(format.name);
+        option.appendTo("#format-list");
+    });
 }
