@@ -1,3 +1,8 @@
+var ui = require("ui");
+
+ui.initialize();
+
+
 $.getJSON("/features.json")
     .done(function (features) {
               displayFeatures(features);
