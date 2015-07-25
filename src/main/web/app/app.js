@@ -12,6 +12,15 @@ $.getJSON("/formats.json")
               displayFormats(formats);
           });
 
+$("#generate-button").click(function () {
+    $.ajax({
+        url: "/ontology",
+        dataType: "text"
+    }).done(function (ontology) {
+        $("#ontology-text").text(ontology.toString());
+    });
+});
+
 function displayFeatures(features) {
     features.forEach(function (feature) {
         var checkbox = createFeatureCheckbox(feature);
