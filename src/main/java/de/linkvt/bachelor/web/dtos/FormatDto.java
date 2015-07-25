@@ -8,6 +8,7 @@ import de.linkvt.bachelor.web.converters.message.OntologySyntax;
 public class FormatDto {
   private String extension;
   private String name;
+  private boolean isDefault;
 
   public FormatDto() {
   }
@@ -15,6 +16,7 @@ public class FormatDto {
   public FormatDto(OntologySyntax format) {
     this.extension = format.getExtension();
     this.name = format.getDocumentFormat().getKey();
+    this.isDefault = format.isDefault();
   }
 
   public String getExtension() {
@@ -31,5 +33,13 @@ public class FormatDto {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public boolean isDefault() {
+    return isDefault;
+  }
+
+  public void setIsDefault(boolean isDefault) {
+    this.isDefault = isDefault;
   }
 }

@@ -21,16 +21,24 @@ public enum OntologySyntax {
   MANCHESTER(new ManchesterSyntaxDocumentFormat(), "omn", new MediaType("text", "owl-manchester")),
   OWL_XML(new OWLXMLDocumentFormat(), "owx", new MediaType("application", "owl+xml")),
   RDF_XML(new RDFXMLDocumentFormat(), "owl", new MediaType("application", "rdf+xml")),
-  TURTLE(new TurtleDocumentFormat(), "ttl", new MediaType("text", "turtle"));
+  TURTLE(new TurtleDocumentFormat(), "ttl", new MediaType("text", "turtle"), true);
 
   private OWLDocumentFormat documentFormat;
   private String extension;
   private MediaType mediaType;
+  private boolean isDefault = false;
 
   private OntologySyntax(OWLDocumentFormat documentFormat, String extension, MediaType mediaType) {
     this.documentFormat = documentFormat;
     this.extension = extension;
     this.mediaType = mediaType;
+  }
+
+  private OntologySyntax(OWLDocumentFormat documentFormat, String extension, MediaType mediaType, boolean isDefault) {
+    this.documentFormat = documentFormat;
+    this.extension = extension;
+    this.mediaType = mediaType;
+    this.isDefault = isDefault;
   }
 
   public OWLDocumentFormat getDocumentFormat() {
@@ -43,5 +51,9 @@ public enum OntologySyntax {
 
   public MediaType getMediaType() {
     return mediaType;
+  }
+
+  public boolean isDefault() {
+    return isDefault;
   }
 }

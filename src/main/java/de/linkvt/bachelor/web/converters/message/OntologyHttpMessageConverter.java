@@ -14,7 +14,6 @@ import org.springframework.http.converter.HttpMessageNotWritableException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -23,10 +22,12 @@ import java.util.List;
 public abstract class OntologyHttpMessageConverter extends AbstractHttpMessageConverter<OWLOntology> {
   private final OWLDocumentFormat documentFormat;
 
-  public OntologyHttpMessageConverter(OntologySyntax ontologySyntax, MediaType... additionalMediaTypes) {
+  public OntologyHttpMessageConverter(OntologySyntax ontologySyntax) {
     List<MediaType> mediaTypes = new ArrayList<>();
     mediaTypes.add(ontologySyntax.getMediaType());
-    mediaTypes.addAll(Arrays.asList(additionalMediaTypes));
+    if (ontologySyntax.isDefault()) {
+      mediaTypes.add(MediaType.TEXT_PLAIN);
+    }
     setSupportedMediaTypes(mediaTypes);
 
     this.documentFormat = ontologySyntax.getDocumentFormat();
