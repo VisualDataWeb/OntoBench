@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "auto-reload-brunch": "^1.8.0",
+    "brunch": "^1.8.3",
     "clean-css-brunch": "^1.7.2",
     "javascript-brunch": "^1.7.1",
     "less-brunch": "^1.8.1",
