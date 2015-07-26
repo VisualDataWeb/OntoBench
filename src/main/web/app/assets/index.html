@@ -16,15 +16,29 @@
         <div id="feature-list" class="ui list"></div>
     </div>
     <div class="ui bottom attached tab active segment" data-tab="output" id="output-tab">
-        <select id="format-list" class="ui search dropdown">
-            <option value="">Ontology Syntax</option>
-        </select>
-        <button id="generate-button" class="ui primary button">Generate</button>
+
+        <div class="ui column grid">
+            <div class="row">
+                <div class="four wide column">
+                    <select id="format-list" class="ui fluid search dropdown">
+                        <option value="">Ontology Syntax</option>
+                    </select>
+                </div>
+                <div class="four wide column">
+                    <button id="generate-button" class="ui primary button">Generate</button>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui fluid input">
+                        <input id="ontology-url" placeholder="Ontology URL" readonly="" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="ui divider"></div>
 
         <pre>
-            <div id="ontology-text" class="ui container code"></div>
+            <code id="ontology-text" class="ui container"></code>
         </pre>
     </div>
 </div>

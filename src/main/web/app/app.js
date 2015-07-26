@@ -13,8 +13,11 @@ $.getJSON("/formats.json")
           });
 
 $("#generate-button").click(function () {
+    var url = location.href + "ontology";
+
+    $("#ontology-url").val(url);
     $.ajax({
-        url: "/ontology",
+        url: url,
         dataType: "text"
     }).done(function (ontology) {
         $("#ontology-text").text(ontology.toString());
