@@ -13,7 +13,8 @@ $.getJSON("/formats.json")
           });
 
 $("#generate-button").click(function () {
-    var url = location.href + "ontology";
+    var extension = getSelectedExtension();
+    var url = location.href + "ontology" + extension;
 
     $("#ontology-url").val(url);
     $.ajax({
@@ -43,7 +44,18 @@ function createFeatureCheckbox(feature) {
 
 function displayFormats(formats) {
     formats.forEach(function (format) {
-        var option = $("<option value='" + format.extension + "'>").text(format.name);
+        var option = $("<div class='item' data-value='" + format.extension
+                       + "'>").text(format.name);
         option.appendTo("#format-list");
     });
+}
+
+function getSelectedExtension() {
+    var extension = $("#format-list").find(".selected.item").attr("data-value");
+    if (extension) {
+        extension = "." + extension;
+    } else {
+        extension = "";
+    }
+    return extension;
 }

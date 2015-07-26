@@ -17,12 +17,16 @@
     </div>
     <div class="ui bottom attached tab active segment" data-tab="output" id="output-tab">
 
-        <div class="ui column grid">
+        <div class="ui grid">
             <div class="row">
                 <div class="four wide column">
-                    <select id="format-list" class="ui fluid search dropdown">
-                        <option value="">Ontology Syntax</option>
-                    </select>
+                    <div class="ui fluid selection dropdown">
+                        <input type="hidden" name="gender">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Ontology Syntax</div>
+                        <div id="format-list" class="menu">
+                        </div>
+                    </div>
                 </div>
                 <div class="four wide column">
                     <button id="generate-button" class="ui primary button">Generate</button>
