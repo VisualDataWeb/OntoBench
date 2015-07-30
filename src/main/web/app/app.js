@@ -3,6 +3,7 @@ var ui = require("ui");
 var htmlIds = {
     generateButton: "#generate-button",
     featureList: "#feature-list",
+    formatDropdown: "#format-dropdown",
     formatList: "#format-list",
     ontologyUrl: "#ontology-url",
     ontologyText: "#ontology-text"
@@ -52,10 +53,18 @@ function createFeatureCheckbox(feature) {
 
 function displayFormats(formats) {
     formats.forEach(function (format) {
-        var option = $("<div class='item' data-value='" + format.extension
-                       + "'>").text(format.name);
+        var option = $("<div class='item' data-value='" + format.extension + "'>");
+        option.data(format).text(format.name);
         option.appendTo(htmlIds.formatList);
     });
+
+    var defaultFormat = formats.find(function (format) {
+        return format.default;
+    });
+
+    if (defaultFormat) {
+        $(htmlIds.formatDropdown).dropdown("set selected", defaultFormat.extension);
+    }
 }
 
 function getSelectedExtension() {
