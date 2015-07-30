@@ -1,5 +1,13 @@
 var ui = require("ui");
 
+var htmlIds = {
+    generateButton: "#generate-button",
+    featureList: "#feature-list",
+    formatList: "#format-list",
+    ontologyUrl: "#ontology-url",
+    ontologyText: "#ontology-text"
+};
+
 ui.initialize();
 
 $.getJSON("/features.json")
@@ -12,16 +20,16 @@ $.getJSON("/formats.json")
               displayFormats(formats);
           });
 
-$("#generate-button").click(function () {
-    var extension = getSelectedExtension();
-    var url = location.href + "ontology" + extension;
+$(htmlIds.generateButton).click(function () {
+    var url = location.href + "ontology" + getSelectedExtension() + "?features="
+              + getFeatureString();
 
-    $("#ontology-url").val(url);
+    $(htmlIds.ontologyUrl).val(url);
     $.ajax({
         url: url,
         dataType: "text"
     }).done(function (ontology) {
-        $("#ontology-text").text(ontology.toString());
+        $(htmlIds.ontologyText).text(ontology.toString());
     });
 });
 
@@ -29,7 +37,7 @@ function displayFeatures(features) {
     features.forEach(function (feature) {
         var checkbox = createFeatureCheckbox(feature);
         var container = $("<div>").addClass("item").append(checkbox);
-        container.appendTo("#feature-list");
+        container.appendTo(htmlIds.featureList);
     });
 }
 
@@ -46,16 +54,26 @@ function displayFormats(formats) {
     formats.forEach(function (format) {
         var option = $("<div class='item' data-value='" + format.extension
                        + "'>").text(format.name);
-        option.appendTo("#format-list");
+        option.appendTo(htmlIds.formatList);
     });
 }
 
 function getSelectedExtension() {
-    var extension = $("#format-list").find(".selected.item").attr("data-value");
+    var extension = $(htmlIds.formatList).find(".selected.item").attr("data-value");
     if (extension) {
         extension = "." + extension;
     } else {
         extension = "";
     }
     return extension;
+}
+
+function getFeatureString() {
+    var selectedCheckboxes = $(htmlIds.featureList + " :checked").parent();
+
+    var tokens = selectedCheckboxes.map(function () {
+        return $(this).data().token;
+    });
+
+    return tokens.get().join(",");
 }
