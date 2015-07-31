@@ -11,3 +11,6 @@ exports.config =
     stylesheets:
       joinTo:
         "app.css": /^(vendor|bower_components|app)/
+  plugins:
+    babel:
+      ignore: [/(vendor|bower_components)/]
