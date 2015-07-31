@@ -55,16 +55,18 @@ public class GeneratorController {
   }
 
   @RequestMapping(value = "/ontology", params = "features", method = RequestMethod.POST)
-  public void storeAndRedirect(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
+  public OWLOntology storeAndGenerate(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
     List<String> tokens = features.stream().map(Feature::getToken).collect(Collectors.toList());
     StoredGeneration generation = repository.save(new StoredGeneration(tokens));
 
-    response.sendRedirect("/ontology/" + generation.getId());
+    response.addHeader("Short-Path", "/ontology/" + generation.getId());
+
+    return ontology(features);
   }
 
   @RequestMapping(value = "/ontology-store", params = "features", method = RequestMethod.GET)
-  public void devStoreAndRedirect(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
-    storeAndRedirect(response, features);
+  public OWLOntology devStoreAndGenerate(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
+    return storeAndGenerate(response, features);
   }
 
   @RequestMapping("/ontology/{id}")
