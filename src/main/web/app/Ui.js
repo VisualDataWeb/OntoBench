@@ -3,6 +3,11 @@ import Generator from "./Generator";
 export default class Ui {
     static initializeDefaults() {
         $(".menu .item").tab();
+        $('.message .close').on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });
+
+        Ui._setupQuickGuide();
 
         Ui._initializeSelectionButtons(Ui.featureTab);
         $("#generate-button").click(() => {
@@ -134,6 +139,20 @@ export default class Ui {
             $(this).parent().parent().find(":checkbox").each(function () {
                 $(this).prop("checked", !$(this).prop("checked"));
             });
+        });
+    }
+
+    static _setupQuickGuide() {
+        const COOKIE_NAME = "hide-quick-guide";
+        let quickGuide = $("#quick-guide");
+
+        let hideQuickGuide = Cookies.get(COOKIE_NAME);
+        if (!hideQuickGuide) {
+            quickGuide.removeClass("hidden");
+        }
+
+        quickGuide.find(".close").on("click", () => {
+            Cookies.set(COOKIE_NAME, true, {expires: 10 * 365})
         });
     }
 

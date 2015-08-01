@@ -6,6 +6,7 @@
   "dependencies": {
     "babel-polyfill": "https://bitbucket.org/linkvt/babel-polyfill.git#master",
     "jquery": "~2.1.4",
-    "semantic-ui": "git://github.com/linkvt/Semantic-UI.git#master"
+    "semantic-ui": "git://github.com/linkvt/Semantic-UI.git#master",
+    "js-cookie": "~2.0.3"
   }
 }
