@@ -55,29 +55,29 @@ public class GeneratorController {
   }
 
   @RequestMapping(value = "/ontology", params = "features", method = RequestMethod.POST)
-  public OWLOntology storeAndGenerate(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
+  public void storeAndRedirect(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
     List<String> tokens = features.stream().map(Feature::getToken).collect(Collectors.toList());
     StoredGeneration generation = repository.save(new StoredGeneration(tokens));
 
-    response.addHeader("Short-Path", "/ontology/" + generation.getId());
-
-    return ontology(features);
+    response.sendRedirect("/ontology/" + generation.getId());
   }
 
   @RequestMapping(value = "/ontology-store", params = "features", method = RequestMethod.GET)
-  public OWLOntology devStoreAndGenerate(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
-    return storeAndGenerate(response, features);
+  public void devStoreAndRedirect(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
+    storeAndRedirect(response, features);
   }
 
   @RequestMapping("/ontology/{id}")
-  public OWLOntology ontologyFromId(@PathVariable("id") Long id) {
+  public OWLOntology ontologyFromId(HttpServletResponse response, @PathVariable("id") Long id) {
     StoredGeneration storedGeneration = repository.findOne(id);
     if (storedGeneration == null) {
       throw new IllegalArgumentException("No generation stored for the passed id.");
     }
 
-    List<Feature> usedFeatures = featureMapping.get(storedGeneration.getParameters());
+    // required because the web app can't tell to which URL the POST request went
+    response.addHeader("Short-Path", "/ontology/" + id);
 
+    List<Feature> usedFeatures = featureMapping.get(storedGeneration.getParameters());
     return ontology(usedFeatures);
   }
 
