@@ -1,6 +1,9 @@
 # See http://brunch.io/#documentation for docs.
 exports.config =
   notifications: false
+  modules:
+    autoRequire:
+      "app.js": ["app"]
   paths:
     public: "../../../static"
   files:
