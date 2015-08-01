@@ -4,18 +4,16 @@ export default class FeatureContainer {
     static displayFeatures(features) {
         let categoryMap = FeatureContainer._createCategoryMap(features);
 
-        categoryMap.forEach((features, key) => {
-            let container = $("<div class='ui segment'>");
-            $("<h3>").text(key).appendTo(container);
-
-            let list = $("<div class='ui list'>").appendTo(container);
-            for (let feature of features) {
-                let checkbox = FeatureContainer._createFeatureCheckbox(feature);
-                $("<div class='item'>").append(checkbox).appendTo(list);
+        let row;
+        categoryMap.forEach((features, category) => {
+            if (FeatureContainer._needsNewRow()) {
+                row = $("<div class='row'>").appendTo(Ui.featureContainer);
             }
+            let column = $("<div class='ui stretched column'>").appendTo(row);
+            let container = $("<div class='ui segment'>").appendTo(column);
 
-            let column = $("<div class='ui stretched column'>").append(container);
-            Ui.featureContainer.append(column);
+            container.append("<h3>" + category + "</h3>");
+            container.append(FeatureContainer._createFeatureList(features));
         });
 
         Ui.initializeCheckboxes();
@@ -38,6 +36,15 @@ export default class FeatureContainer {
         return map;
     }
 
+    static _createFeatureList(features) {
+        let list = $("<div class='ui list'>");
+        for (let feature of features) {
+            let checkbox = FeatureContainer._createFeatureCheckbox(feature);
+            $("<div class='item'>").append(checkbox).appendTo(list);
+        }
+        return list;
+    }
+
     static _createFeatureCheckbox(feature) {
         let id = feature.token + "-feature";
 
@@ -46,5 +53,10 @@ export default class FeatureContainer {
         $("<label>").attr("for", id).text(feature.name).appendTo(container);
 
         return container;
+    }
+
+    static _needsNewRow() {
+        const MAX_CATEGORIES_PER_ROW = 3;
+        return Ui.featureContainer.find(".column").length % MAX_CATEGORIES_PER_ROW === 0;
     }
 }
