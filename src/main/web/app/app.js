@@ -1,27 +1,11 @@
 import Ui from "./Ui";
+import FeatureList from "./FeatureList";
 import Generator from "./Generator";
 
 Ui.initializeDefaults();
 
-$.getJSON("/features.json").done(displayFeatures);
+$.getJSON("/features.json").done(FeatureList.displayFeatures);
 $.getJSON("/formats.json").done(displayFormats);
-
-function displayFeatures(features) {
-    features.forEach(function (feature) {
-        var checkbox = createFeatureCheckbox(feature);
-        var container = $("<div>").addClass("item").append(checkbox);
-        container.appendTo("#feature-list");
-    });
-}
-
-function createFeatureCheckbox(feature) {
-    let id = feature.token + "-feature";
-
-    let container = $("<div>").data(feature).addClass("ui checkbox");
-    $("<input type='checkbox' id='" + id + "'>").appendTo(container);
-    $("<label>").attr("for", id).text(feature.name).appendTo(container);
-    return container;
-}
 
 function displayFormats(formats) {
     formats.forEach(function (format) {
