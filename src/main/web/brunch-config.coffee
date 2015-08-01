@@ -17,3 +17,6 @@ exports.config =
   plugins:
     babel:
       ignore: [/(vendor|bower_components)/]
+    assetsmanager:
+      copyTo:
+        "themes/default": ["bower_components/semantic-ui/dist/themes/default/*"]

@@ -13,6 +13,7 @@
     "start": "brunch watch --server"
   },
   "dependencies": {
+    "assetsmanager-brunch": "^1.8.1",
     "auto-reload-brunch": "^1.8.0",
     "babel-brunch": "^5.1.2",
     "bower": "^1.4.1",
