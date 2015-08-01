@@ -30,5 +30,10 @@ function displayFormats(formats) {
         option.appendTo("#format-list");
     });
 
-    Ui.initializeFormats(formats.find(format => format.default));
+    formats.some(value => {
+        if (value.default) {
+            Ui.initializeFormats(value);
+            return true;
+        }
+    });
 }
