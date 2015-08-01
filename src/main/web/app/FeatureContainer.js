@@ -14,7 +14,7 @@ export default class FeatureContainer {
                 $("<div class='item'>").append(checkbox).appendTo(list);
             }
 
-            let column = $("<div class='ui column'>").append(container);
+            let column = $("<div class='ui stretched column'>").append(container);
             Ui.featureContainer.append(column);
         });
     }
