@@ -1,5 +1,5 @@
 import Ui from "./Ui";
-import FeatureList from "./FeatureList";
+import FeatureList from "./FeatureContainer";
 import Generator from "./Generator";
 
 Ui.initializeDefaults();
@@ -14,10 +14,5 @@ function displayFormats(formats) {
         option.appendTo("#format-list");
     });
 
-    formats.some(value => {
-        if (value.default) {
-            Ui.initializeFormats(value);
-            return true;
-        }
-    });
+    Ui.initializeFormats(formats.find(format => format.default));
 }

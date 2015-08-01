@@ -51,7 +51,7 @@ export default class Ui {
     }
 
     static get selectedFeatures() {
-        var selectedCheckboxes = Ui.featureList.find(":checked").parent();
+        var selectedCheckboxes = Ui.featureContainer.find(":checked").parent();
 
         var features = selectedCheckboxes.map(function () {
             return $(this).data();
@@ -64,11 +64,11 @@ export default class Ui {
         $("#url-type").removeClass("disabled").dropdown("restore defaults");
     }
 
-    static get featureList() {
-        return $("#feature-list");
+    static get featureContainer() {
+        return $("#feature-container");
     }
 
     static get features() {
-        return Ui.featureList.find(":checkbox");
+        return Ui.featureContainer.find(":checkbox");
     }
 }
