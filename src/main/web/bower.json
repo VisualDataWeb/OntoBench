@@ -4,6 +4,7 @@
   "private": true,
   "main": "public/app.js",
   "dependencies": {
+    "babel-polyfill": "https://bitbucket.org/linkvt/babel-polyfill.git#master",
     "jquery": "~2.1.4",
     "semantic-ui": "git://github.com/linkvt/Semantic-UI.git#master"
   }
