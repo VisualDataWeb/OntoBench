@@ -3,8 +3,7 @@ package de.linkvt.bachelor.features;
 import java.util.Comparator;
 
 /**
- * Custom comparator for features. Some general features should be created before more specific
- * features.
+ * Custom comparator for features. Some general features should be created before more specific features.
  */
 public class FeatureComparator implements Comparator<Feature> {
   @Override

@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -30,5 +31,10 @@ public class OwlDeprecatedPropertyFeature extends Feature {
   @Override
   public String getToken() {
     return "deprecatedprop";
+  }
+
+  @Override
+  public FeatureCategory getCategory() {
+    return FeatureCategory.PROPERTY;
   }
 }

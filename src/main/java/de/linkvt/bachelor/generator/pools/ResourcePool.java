@@ -19,8 +19,8 @@ public abstract class ResourcePool<T> {
   }
 
   /**
-   * Returns if available an object from the pool or a new one if none is available. The new object
-   * will receive a generic iri.
+   * Returns if available an object from the pool or a new one if none is available. The new object will receive a
+   * generic iri.
    *
    * @return an object from the pool or if not available a new one with a generic name
    */
@@ -29,8 +29,8 @@ public abstract class ResourcePool<T> {
   }
 
   /**
-   * Returns if available an object from the pool or a new one if none is available. The new object
-   * will receive the passed iri.
+   * Returns if available an object from the pool or a new one if none is available. The new object will receive the
+   * passed iri.
    *
    * @param preferredIri the iri of a new object, if one has to be created
    * @return an object from the pool or if not available a new one

@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -27,6 +28,11 @@ public class OwlObjectPropertyFeature extends Feature {
   @Override
   public String getToken() {
     return "objectprop";
+  }
+
+  @Override
+  public FeatureCategory getCategory() {
+    return FeatureCategory.PROPERTY;
   }
 
   @Override

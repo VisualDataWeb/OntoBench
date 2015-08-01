@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.classes;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -34,5 +35,10 @@ public class OwlOneOfFeature extends Feature {
   @Override
   public String getToken() {
     return "oneof";
+  }
+
+  @Override
+  public FeatureCategory getCategory() {
+    return FeatureCategory.CLASS;
   }
 }

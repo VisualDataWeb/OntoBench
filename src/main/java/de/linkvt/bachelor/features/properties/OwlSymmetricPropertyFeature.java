@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.properties;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -30,5 +31,10 @@ public class OwlSymmetricPropertyFeature extends Feature {
   @Override
   public String getToken() {
     return "symmetricprop";
+  }
+
+  @Override
+  public FeatureCategory getCategory() {
+    return FeatureCategory.PROPERTY;
   }
 }

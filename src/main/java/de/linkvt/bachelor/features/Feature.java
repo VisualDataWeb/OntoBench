@@ -57,6 +57,10 @@ public abstract class Feature {
    */
   public abstract String getToken();
 
+  /**
+   * @return the category of this feature
+   */
+  public abstract FeatureCategory getCategory();
 
   /**
    * @return true, if this feature is a base feature

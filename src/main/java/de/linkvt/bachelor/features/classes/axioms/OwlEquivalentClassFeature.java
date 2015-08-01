@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.classes.axioms;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -29,5 +30,10 @@ public class OwlEquivalentClassFeature extends Feature {
   @Override
   public String getToken() {
     return "equivalentclass";
+  }
+
+  @Override
+  public FeatureCategory getCategory() {
+    return FeatureCategory.CLASS;
   }
 }

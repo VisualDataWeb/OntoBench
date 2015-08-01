@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.classes.setoperators;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -32,5 +33,10 @@ public class OwlComplementOfFeature extends Feature {
   @Override
   public String getToken() {
     return "complement";
+  }
+
+  @Override
+  public FeatureCategory getCategory() {
+    return FeatureCategory.PROPERTY;
   }
 }

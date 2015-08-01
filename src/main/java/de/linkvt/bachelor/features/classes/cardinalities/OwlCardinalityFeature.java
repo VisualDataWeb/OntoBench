@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.classes.cardinalities;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
  * An owl functional property.
  */
 @Component
-public class OwlCardinalityPropertyFeature extends Feature {
+public class OwlCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
@@ -32,5 +33,10 @@ public class OwlCardinalityPropertyFeature extends Feature {
   @Override
   public String getToken() {
     return "cardinality";
+  }
+
+  @Override
+  public FeatureCategory getCategory() {
+    return FeatureCategory.CLASS;
   }
 }

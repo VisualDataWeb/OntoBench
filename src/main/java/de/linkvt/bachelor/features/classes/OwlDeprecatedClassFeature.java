@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.features.classes;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -31,5 +32,10 @@ public class OwlDeprecatedClassFeature extends Feature {
   @Override
   public String getToken() {
     return "deprecatedclass";
+  }
+
+  @Override
+  public FeatureCategory getCategory() {
+    return FeatureCategory.CLASS;
   }
 }
