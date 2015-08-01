@@ -16,7 +16,7 @@ public class FeatureDto {
   public FeatureDto(Feature feature) {
     this.token = feature.getToken();
     this.name = feature.getName();
-    this.category = feature.getCategory().getDescription();
+    this.category = feature.getCategory().getName();
   }
 
   public String getToken() {

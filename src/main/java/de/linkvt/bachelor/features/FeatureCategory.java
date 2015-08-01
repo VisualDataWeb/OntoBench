@@ -4,21 +4,21 @@ package de.linkvt.bachelor.features;
  * The category a feature belongs to.
  */
 public enum FeatureCategory {
-  CLASS("Class"),
-  PROPERTY("Property");
+  CLASS("Classes"),
+  PROPERTY("Properties");
 
-  private String description;
+  private String name;
 
-  FeatureCategory(String description) {
-    this.description = description;
+  FeatureCategory(String name) {
+    this.name = name;
   }
 
-  public String getDescription() {
-    return description;
+  public String getName() {
+    return name;
   }
 
   @Override
   public String toString() {
-    return getDescription();
+    return getName();
   }
 }
