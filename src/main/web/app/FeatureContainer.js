@@ -17,6 +17,8 @@ export default class FeatureContainer {
             let column = $("<div class='ui stretched column'>").append(container);
             Ui.featureContainer.append(column);
         });
+
+        Ui.initializeCheckboxes();
     }
 
     static _createCategoryMap(features) {

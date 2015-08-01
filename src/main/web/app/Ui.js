@@ -36,6 +36,10 @@ export default class Ui {
         }
     }
 
+    static initializeCheckboxes() {
+        $(".checkbox").checkbox();
+    }
+
     static displayUrl(url) {
         $("#ontology-url").val(url);
     }
