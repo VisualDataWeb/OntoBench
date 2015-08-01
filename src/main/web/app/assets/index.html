@@ -9,14 +9,19 @@
     <h1 class="ui header">Ontology Visualization Benchmark Generator</h1>
 
     <div class="ui top attached tabular menu">
-        <a class="item" data-tab="features">Features</a>
-        <a class="active item" data-tab="output">Output</a>
+        <a class="active item" data-tab="features">Features</a>
+        <a class="item" data-tab="output">Output</a>
     </div>
-    <div class="ui bottom attached tab segment" data-tab="features">
+    <div class="ui bottom attached tab active segment" data-tab="features">
+        <div class="ui fluid tiny basic buttons">
+            <button id="select-all-button" class="ui button">Select all</button>
+            <button id="select-none-button" class="ui button">Select none</button>
+            <button id="invert-selection-button" class="ui button">Invert selection</button>
+        </div>
+
         <div id="feature-list" class="ui list"></div>
     </div>
-    <div class="ui bottom attached tab active segment" data-tab="output" id="output-tab">
-
+    <div class="ui bottom attached tab segment" data-tab="output" id="output-tab">
         <div class="ui grid">
             <div class="row">
                 <div class="four wide column">
@@ -36,7 +41,8 @@
             <div class="row">
                 <div class="sixteen wide column">
                     <div class="ui right action fluid input">
-                        <input id="ontology-url" autocomplete="off" placeholder="Ontology URL (read only)" readonly="" type="text">
+                        <input id="ontology-url" autocomplete="off" placeholder="Ontology URL (read only)" readonly=""
+                               type="text">
 
                         <div id="url-type" class="ui disabled dropdown button">
                             <div class="text">Long URL</div>

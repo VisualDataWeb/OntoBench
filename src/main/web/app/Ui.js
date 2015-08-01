@@ -15,10 +15,16 @@ export default class Ui {
             }
         }).dropdown("save defaults");
 
-        $("#generate-button").click(function () {
+        $("#generate-button").click(() => {
             Ui.resetUrlType();
             Generator.generateAndDisplay();
         });
+
+        $("#select-all-button").click(() => Ui.features.prop("checked", true));
+        $("#select-none-button").click(() => Ui.features.prop("checked", false));
+        $("#invert-selection-button").click(() => Ui.features.each(function () {
+            $(this).prop("checked", !$(this).prop("checked"));
+        }));
     }
 
     static initializeFormats(defaultFormat) {
@@ -45,7 +51,7 @@ export default class Ui {
     }
 
     static get selectedFeatures() {
-        var selectedCheckboxes = $("#feature-list").find(":checked").parent();
+        var selectedCheckboxes = Ui.featureList.find(":checked").parent();
 
         var features = selectedCheckboxes.map(function () {
             return $(this).data();
@@ -56,5 +62,13 @@ export default class Ui {
 
     static resetUrlType() {
         $("#url-type").removeClass("disabled").dropdown("restore defaults");
+    }
+
+    static get featureList() {
+        return $("#feature-list");
+    }
+
+    static get features() {
+        return Ui.featureList.find(":checkbox");
     }
 }
