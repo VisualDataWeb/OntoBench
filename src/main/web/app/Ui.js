@@ -71,12 +71,13 @@ export default class Ui {
     }
 
     static displayOntology(ontology) {
+        Ui.ontologyTextContainer.removeClass("hidden").siblings(".message").hide();
         Ui.ontologyText.text(ontology.toString());
         Ui.indicateGeneration(false)
     }
 
     static indicateGeneration(shouldIndicate) {
-        let container = Ui.ontologyText.parent().parent();
+        let container = Ui.ontologyTextContainer;
 
         if (arguments.length === 0 || shouldIndicate) {
             container.addClass("loading");
@@ -95,5 +96,9 @@ export default class Ui {
 
     static get ontologyText() {
         return $("#ontology-text");
+    }
+
+    static get ontologyTextContainer() {
+        return Ui.ontologyText.parent().parent();
     }
 }
