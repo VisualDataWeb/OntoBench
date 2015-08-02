@@ -71,13 +71,13 @@ export default class Ui {
     }
 
     static displayOntology(ontology) {
-        Ui.ontologyTextContainer.removeClass("hidden").siblings(".message").hide();
         Ui.ontologyText.text(ontology.toString());
         Ui.indicateGeneration(false)
     }
 
     static indicateGeneration(shouldIndicate) {
         let container = Ui.ontologyTextContainer;
+        container.removeClass("hidden").siblings(".message").hide();
 
         if (arguments.length === 0 || shouldIndicate) {
             container.addClass("loading");
