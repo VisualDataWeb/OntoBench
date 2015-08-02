@@ -21,16 +21,19 @@
 
         <div class="ui divider"></div>
 
-        <div id="feature-container" class="ui equal width grid"></div>
+        <div id="initial-feature-info" class="ui icon message">
+            <i class="notched circle loading icon"></i>
+            Features are being loaded.
+        </div>
+        <div id="feature-container" class="ui hidden equal width grid"></div>
     </div>
     <div class="ui bottom attached tab segment" data-tab="output" id="output-tab">
         <div class="ui grid">
             <div class="row">
                 <div class="four wide column">
-                    <div id="format-dropdown" class="ui fluid selection dropdown">
+                    <div id="format-dropdown" class="ui loading fluid selection dropdown">
                         <input type="hidden" name="gender">
                         <i class="dropdown icon"></i>
-
                         <div class="default text">Ontology Syntax</div>
                         <div id="format-list" class="menu">
                         </div>
@@ -66,7 +69,7 @@
 
         <div class="ui divider"></div>
 
-        <div class="ui icon message">
+        <div id="initial-ontology-info" class="ui icon message">
             <i class="info icon"></i>
             You have to generate an ontology first.
         </div>

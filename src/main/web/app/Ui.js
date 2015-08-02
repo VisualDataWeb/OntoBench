@@ -27,6 +27,16 @@ export default class Ui {
         }));
     }
 
+    static displayFormats(formats) {
+        formats.forEach(function (format) {
+            let option = $("<div class='item' data-value='" + format.extension + "'>");
+            option.data(format).text(format.name);
+            option.appendTo("#format-list");
+        });
+
+        Ui.initializeFormats(formats.find(format => format.default));
+    }
+
     static initializeFormats(defaultFormat) {
         let element = $("#format-dropdown");
         if (defaultFormat) {
@@ -34,10 +44,13 @@ export default class Ui {
         } else {
             element.dropdown();
         }
+        element.removeClass("loading");
     }
 
-    static initializeCheckboxes() {
+    static initializeFeatureListing() {
         $(".checkbox").checkbox();
+        $("#initial-feature-info").hide();
+        Ui.featureContainer.removeClass("hidden");
     }
 
     static displayUrl(url) {
@@ -76,8 +89,8 @@ export default class Ui {
     }
 
     static indicateGeneration(shouldIndicate) {
-        let container = Ui.ontologyTextContainer;
-        container.removeClass("hidden").siblings(".message").hide();
+        let container = Ui.ontologyTextContainer.removeClass("hidden");
+        $("#initial-ontology-info").hide();
 
         if (arguments.length === 0 || shouldIndicate) {
             container.addClass("loading");

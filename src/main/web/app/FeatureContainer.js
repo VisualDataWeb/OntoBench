@@ -16,7 +16,7 @@ export default class FeatureContainer {
             container.append(FeatureContainer._createFeatureList(features));
         });
 
-        Ui.initializeCheckboxes();
+        Ui.initializeFeatureListing();
     }
 
     static _createCategoryMap(features) {
