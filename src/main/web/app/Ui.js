@@ -70,11 +70,30 @@ export default class Ui {
         $("#download-button").removeClass("disabled");
     }
 
+    static displayOntology(ontology) {
+        Ui.ontologyText.text(ontology.toString());
+        Ui.indicateGeneration(false)
+    }
+
+    static indicateGeneration(shouldIndicate) {
+        let container = Ui.ontologyText.parent().parent();
+
+        if (arguments.length === 0 || shouldIndicate) {
+            container.addClass("loading");
+        } else {
+            container.removeClass("loading");
+        }
+    }
+
     static get featureContainer() {
         return $("#feature-container");
     }
 
     static get features() {
         return Ui.featureContainer.find(":checkbox");
+    }
+
+    static get ontologyText() {
+        return $("#ontology-text");
     }
 }

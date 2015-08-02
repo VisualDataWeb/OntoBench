@@ -6,10 +6,13 @@ export default class Generator {
         Generator.storeSettings();
         Ui.displayUrl(Generator.longUrl);
 
+        Ui.indicateGeneration(true);
         $.ajax({
             url: Generator.longUrl,
             dataType: "text"
-        }).done(ontology => $("#ontology-text").text(ontology.toString()));
+        }).done(ontology => {
+            Ui.displayOntology(ontology);
+        });
     }
 
     static storeSettings() {
