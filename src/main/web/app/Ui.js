@@ -16,7 +16,7 @@ export default class Ui {
         }).dropdown("save defaults");
 
         $("#generate-button").click(() => {
-            Ui.resetUrlType();
+            Ui.initializeOntologyUrlInput();
             Generator.generateAndDisplay();
         });
 
@@ -42,6 +42,7 @@ export default class Ui {
 
     static displayUrl(url) {
         $("#ontology-url").val(url);
+        $("#download-button").attr("href", url);
     }
 
     static get selectedExtension() {
@@ -64,8 +65,9 @@ export default class Ui {
         return features.get();
     }
 
-    static resetUrlType() {
+    static initializeOntologyUrlInput() {
         $("#url-type").removeClass("disabled").dropdown("restore defaults");
+        $("#download-button").removeClass("disabled");
     }
 
     static get featureContainer() {
