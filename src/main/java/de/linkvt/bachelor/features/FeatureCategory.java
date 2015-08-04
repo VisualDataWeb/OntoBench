@@ -4,8 +4,9 @@ package de.linkvt.bachelor.features;
  * The category a feature belongs to.
  */
 public enum FeatureCategory {
+  PROPERTY("Properties"),
   CLASS("Classes"),
-  PROPERTY("Properties");
+  ONTOLOGY("Ontology");
 
   private String name;
 

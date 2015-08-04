@@ -8,6 +8,7 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyChange;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -45,6 +46,10 @@ public abstract class Feature {
 
     addAxiomToOntology(domainAxiom);
     addAxiomToOntology(rangeAxiom);
+  }
+
+  protected void addChangeToOntology(OWLOntologyChange change) {
+    ontology.getOWLOntologyManager().applyChange(change);
   }
 
   /**
