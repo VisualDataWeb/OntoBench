@@ -30,4 +30,8 @@ public class OntologyConstants {
   public String getTitle() {
     return "Benchmark Ontology";
   }
+
+  public String getVersion() {
+    return "1.0";
+  }
 }
