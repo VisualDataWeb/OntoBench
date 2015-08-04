@@ -1,8 +1,8 @@
 import Ui from "./Ui";
-import FeatureList from "./FeatureContainer";
+import FeatureContainer from "./FeatureContainer";
 import Generator from "./Generator";
 
 Ui.initializeDefaults();
 
-$.getJSON("/features.json").done(FeatureList.displayFeatures);
+$.getJSON("/features.json").done(FeatureContainer.displayFeatures);
 $.getJSON("/formats.json").done(Ui.displayFormats);

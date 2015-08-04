@@ -2,26 +2,17 @@ import Ui from "./Ui";
 
 export default class Generator {
 
-    static generateAndDisplay() {
-        Generator.storeSettings();
-        Ui.displayUrl(Generator.longUrl);
-
-        Ui.indicateGeneration(true);
-        $.ajax({
-            url: Generator.longUrl,
-            dataType: "text"
-        }).done(ontology => {
-            Ui.displayOntology(ontology);
-        });
+    static resetAndGenerate() {
+        Generator.reset();
+        Generator.useLongUrl();
     }
 
-    static storeSettings() {
+    static reset() {
+        Generator._isInitialized = true;
         Generator._featureString = Ui.selectedFeatures.map(f => f.token).join(",");
         Generator._shortUrlBase = undefined;
-    }
-
-    static get longUrl() {
-        return location.href + "ontology" + Ui.selectedExtension + "?features=" + Generator._featureString;
+        Generator._shortUrlOntology = undefined;
+        Generator._longUrlOntology = undefined;
     }
 
     static get shortUrl() {
@@ -30,22 +21,69 @@ export default class Generator {
         }
     }
 
-    static createOrGetShortUrl(callback) {
-        if (!Generator.shortUrl) {
-            Generator.createShortUrl(callback);
+    static get longUrl() {
+        return location.href + "ontology" + Ui.selectedExtension + "?features=" + Generator._featureString;
+    }
+
+    static useShortUrl() {
+        if (!Generator.isInitialized()) {
+            return;
+        }
+
+        if (Generator._shortUrlOntology) {
+            Generator._displayUrlAndOntology(Generator.shortUrl, Generator._shortUrlOntology);
         } else {
-            callback(Generator.shortUrl);
+            Generator._createShortUrl(Generator._displayUrlAndOntology);
         }
     }
 
-    static createShortUrl(callback) {
+    static useLongUrl() {
+        if (!Generator.isInitialized()) {
+            return;
+        }
+
+        if (Generator._longUrlOntology) {
+            Generator._displayUrlAndOntology(Generator.longUrl, Generator._longUrlOntology);
+        } else {
+            Generator._createLongUrl(Generator._displayUrlAndOntology);
+        }
+    }
+
+    static _createShortUrl(onReady) {
+        Ui.indicateGeneration();
         $.ajax({
             method: "POST",
             url: Generator.longUrl
-        }).done((data, textStatus, xhr) => {
+        }).done((ontology, textStatus, xhr) => {
             Generator._shortUrlBase = location.href.slice(0, -1) + xhr.getResponseHeader("Short-Path");
-            callback(Generator.shortUrl);
+            Generator._shortUrlOntology = ontology;
+            if (onReady) {
+                onReady(Generator.shortUrl, ontology);
+            }
         });
+    }
+
+    static _createLongUrl(onReady) {
+        Ui.indicateGeneration();
+        $.ajax({
+            url: Generator.longUrl,
+            dataType: "text"
+        }).done(ontology => {
+            Generator._longUrlOntology = ontology;
+            Ui.displayOntology(ontology);
+            if (onReady) {
+                onReady(Generator.longUrl, ontology);
+            }
+        });
+    }
+
+    static _displayUrlAndOntology(url, ontology) {
+        Ui.displayUrl(url);
+        Ui.displayOntology(ontology);
+    }
+
+    static isInitialized() {
+        return Generator._isInitialized;
     }
 
 }

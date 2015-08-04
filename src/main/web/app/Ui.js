@@ -4,27 +4,32 @@ export default class Ui {
     static initializeDefaults() {
         $(".menu .item").tab();
 
-        $("#url-type").dropdown({
-            action: "activate",
-            onChange: (value) => {
-                if (value === "short") {
-                    Generator.createOrGetShortUrl(Ui.displayUrl);
-                } else {
-                    Ui.displayUrl(Generator.longUrl);
-                }
-            }
-        }).dropdown("save defaults");
-
-        $("#generate-button").click(() => {
-            Ui.initializeOntologyUrlInput();
-            Generator.generateAndDisplay();
-        });
-
         $("#select-all-button").click(() => Ui.features.prop("checked", true));
         $("#select-none-button").click(() => Ui.features.prop("checked", false));
         $("#invert-selection-button").click(() => Ui.features.each(function () {
             $(this).prop("checked", !$(this).prop("checked"));
         }));
+
+        $("#url-type").dropdown({
+            action: "activate",
+            onChange: (value) => {
+                if (value === "short") {
+                    Generator.useShortUrl();
+                } else {
+                    Generator.useLongUrl();
+                }
+            }
+        }).dropdown("save defaults");
+
+        $("#generate-button").click(() => {
+            Generator.resetAndGenerate();
+            Ui.resetOntologyUrlInput();
+        });
+    }
+
+    static resetOntologyUrlInput() {
+        $("#url-type").removeClass("disabled").dropdown("restore defaults");
+        $("#download-button").removeClass("disabled");
     }
 
     static displayFormats(formats) {
@@ -76,11 +81,6 @@ export default class Ui {
         });
 
         return features.get();
-    }
-
-    static initializeOntologyUrlInput() {
-        $("#url-type").removeClass("disabled").dropdown("restore defaults");
-        $("#download-button").removeClass("disabled");
     }
 
     static displayOntology(ontology) {
