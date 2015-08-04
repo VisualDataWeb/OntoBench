@@ -7,9 +7,6 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.springframework.stereotype.Component;
 
-/**
- * The rdfs:subClassOf axiom.
- */
 @Component
 public class RdfsSubClassOfFeature extends Feature {
 

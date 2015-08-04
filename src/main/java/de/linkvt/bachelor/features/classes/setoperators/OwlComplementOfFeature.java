@@ -9,9 +9,6 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectComplementOf;
 import org.springframework.stereotype.Component;
 
-/**
- * An owl complementOf feature.
- */
 @Component
 public class OwlComplementOfFeature extends Feature {
   @Override

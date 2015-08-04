@@ -8,9 +8,6 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
-/**
- * Property without a domain.
- */
 @Component
 public class DomainlessPropertyFeature extends Feature {
   @Override

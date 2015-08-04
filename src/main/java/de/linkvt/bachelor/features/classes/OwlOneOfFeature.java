@@ -10,9 +10,6 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectOneOf;
 import org.springframework.stereotype.Component;
 
-/**
- * An owl oneOf feature.
- */
 @Component
 public class OwlOneOfFeature extends Feature {
   @Override

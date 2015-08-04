@@ -9,9 +9,6 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectUnionOf;
 import org.springframework.stereotype.Component;
 
-/**
- * An owl unionOf feature.
- */
 @Component
 public class OwlUnionOfFeature extends Feature {
   @Override

@@ -9,9 +9,6 @@ import org.semanticweb.owlapi.model.OWLObjectMaxCardinality;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
-/**
- * An owl functional property.
- */
 @Component
 public class OwlMaxCardinalityFeature extends Feature {
   @Override

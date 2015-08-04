@@ -8,9 +8,6 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
-/**
- * An owl symmetric property.
- */
 @Component
 public class OwlSymmetricPropertyFeature extends Feature {
   @Override

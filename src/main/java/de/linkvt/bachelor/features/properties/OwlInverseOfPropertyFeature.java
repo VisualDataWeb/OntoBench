@@ -7,9 +7,6 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
-/**
- * An owl functional property.
- */
 @Component
 public class OwlInverseOfPropertyFeature extends Feature {
   @Override

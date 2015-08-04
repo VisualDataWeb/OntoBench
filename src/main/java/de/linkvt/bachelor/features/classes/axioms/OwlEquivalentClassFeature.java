@@ -7,9 +7,6 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.springframework.stereotype.Component;
 
-/**
- * Multiple equivalent owl classes.
- */
 @Component
 public class OwlEquivalentClassFeature extends Feature {
   @Override

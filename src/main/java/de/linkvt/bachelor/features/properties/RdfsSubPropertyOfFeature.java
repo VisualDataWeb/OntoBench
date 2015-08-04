@@ -8,9 +8,6 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
-/**
- * An rdfs subPropertyOf feature.
- */
 @Component
 public class RdfsSubPropertyOfFeature extends Feature {
   @Override

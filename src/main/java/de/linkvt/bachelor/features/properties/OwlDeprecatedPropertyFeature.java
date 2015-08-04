@@ -8,9 +8,6 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
-/**
- * An owl deprecated property.
- */
 @Component
 public class OwlDeprecatedPropertyFeature extends Feature {
   @Override

@@ -8,9 +8,6 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
-/**
- * Property without a range.
- */
 @Component
 public class RangelessPropertyFeature extends Feature {
   @Override
