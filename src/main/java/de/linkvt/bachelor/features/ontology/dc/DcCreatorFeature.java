@@ -20,10 +20,10 @@ public class DcCreatorFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty annotationProperty = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "creator"));
-    OWLAnnotation dcCreator = factory.getOWLAnnotation(annotationProperty, factory.getOWLLiteral(ontologyConstants.getCreator()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "creator"));
+    OWLAnnotation creator = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getCreator()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, dcCreator));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, creator));
   }
 
   @Override

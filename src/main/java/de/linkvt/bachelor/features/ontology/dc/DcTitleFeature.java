@@ -20,10 +20,10 @@ public class DcTitleFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty annotationProperty = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "title"));
-    OWLAnnotation dcTitle = factory.getOWLAnnotation(annotationProperty, factory.getOWLLiteral(ontologyConstants.getTitle()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "title"));
+    OWLAnnotation title = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getTitle()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, dcTitle));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, title));
   }
 
   @Override

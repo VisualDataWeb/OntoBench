@@ -20,10 +20,10 @@ public class DcTermsDescriptionFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty annotationProperty = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "description"));
-    OWLAnnotation dcDescription = factory.getOWLAnnotation(annotationProperty, factory.getOWLLiteral(ontologyConstants.getDescription()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "description"));
+    OWLAnnotation description = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getDescription()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, dcDescription));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, description));
   }
 
   @Override

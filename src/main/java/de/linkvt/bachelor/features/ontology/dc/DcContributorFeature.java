@@ -20,10 +20,10 @@ public class DcContributorFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty annotationProperty = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "contributor"));
-    OWLAnnotation dcContributor = factory.getOWLAnnotation(annotationProperty, factory.getOWLLiteral(ontologyConstants.getContributor()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "contributor"));
+    OWLAnnotation contributor = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getContributor()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, dcContributor));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, contributor));
   }
 
   @Override

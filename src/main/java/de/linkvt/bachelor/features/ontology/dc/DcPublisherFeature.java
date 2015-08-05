@@ -20,10 +20,10 @@ public class DcPublisherFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty annotationProperty = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "publisher"));
-    OWLAnnotation dcPublisher = factory.getOWLAnnotation(annotationProperty, factory.getOWLLiteral(ontologyConstants.getCreator()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "publisher"));
+    OWLAnnotation publisher = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getCreator()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, dcPublisher));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, publisher));
   }
 
   @Override

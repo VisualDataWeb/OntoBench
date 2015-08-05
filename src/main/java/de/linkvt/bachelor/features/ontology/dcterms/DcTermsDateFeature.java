@@ -20,10 +20,10 @@ public class DcTermsDateFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty annotationProperty = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "date"));
-    OWLAnnotation dcDate = factory.getOWLAnnotation(annotationProperty, factory.getOWLLiteral(ontologyConstants.getGenerationDate()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "date"));
+    OWLAnnotation date = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getGenerationDate()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, dcDate));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, date));
   }
 
   @Override

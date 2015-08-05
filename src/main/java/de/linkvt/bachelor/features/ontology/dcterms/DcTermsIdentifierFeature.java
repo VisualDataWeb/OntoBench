@@ -1,5 +1,7 @@
 package de.linkvt.bachelor.features.ontology.dcterms;
 
+import com.google.common.base.Optional;
+
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 import de.linkvt.bachelor.features.ontology.OntologyConstants;
@@ -13,27 +15,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DcTermsTitleFeature extends Feature {
+public class DcTermsIdentifierFeature extends Feature {
 
   @Autowired
   private OntologyConstants ontologyConstants;
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "title"));
-    OWLAnnotation title = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getTitle()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "identifier"));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, title));
+    Optional<IRI> optionalIri = ontology.getOntologyID().getOntologyIRI();
+    if (optionalIri.isPresent()) {
+      String iri = optionalIri.get().toString();
+      OWLAnnotation identifier = factory.getOWLAnnotation(property, factory.getOWLLiteral(iri));
+
+      addChangeToOntology(new AddOntologyAnnotation(ontology, identifier));
+    }
   }
 
   @Override
   public String getName() {
-    return "dcterms:title";
+    return "dcterms:identifier";
   }
 
   @Override
   public String getToken() {
-    return "dctermstitle";
+    return "dctermsidentifier";
   }
 
   @Override
