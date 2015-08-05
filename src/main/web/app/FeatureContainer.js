@@ -1,25 +1,28 @@
 import Ui from "./Ui";
 
 export default class FeatureContainer {
-    static displayFeatures(features) {
-        let categoryMap = FeatureContainer._createCategoryMap(features);
+    static displayFeatures(features, categories) {
+        let categoryToFeatureMap = FeatureContainer._mapFeaturesToCategory(features);
+        categories.sort((a, b) => a.index - b.index);
 
         let row;
-        categoryMap.forEach((features, category) => {
+        for (let category of categories) {
+            let features = categoryToFeatureMap.get(category.name);
+
             if (FeatureContainer._needsNewRow()) {
                 row = $("<div class='row'>").appendTo(Ui.featureContainer);
             }
             let column = $("<div class='ui stretched column'>").appendTo(row);
             let container = $("<div class='ui segment'>").appendTo(column);
 
-            container.append("<h3>" + category + "</h3>");
+            container.append("<h3>" + category.name + "</h3>");
             container.append(FeatureContainer._createFeatureList(features));
-        });
+        }
 
         Ui.initializeFeatureListing();
     }
 
-    static _createCategoryMap(features) {
+    static _mapFeaturesToCategory(features) {
         let map = new Map();
 
         for (let feature of features) {

@@ -1,11 +1,13 @@
 package de.linkvt.bachelor.web;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.FeatureCategory;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.persistence.StoredGeneration;
 import de.linkvt.bachelor.persistence.StoredGenerationRepository;
 import de.linkvt.bachelor.web.converters.message.OntologySyntax;
 import de.linkvt.bachelor.web.converters.parameter.FeatureParameterMapping;
+import de.linkvt.bachelor.web.dtos.FeatureCategoryDto;
 import de.linkvt.bachelor.web.dtos.FeatureDto;
 import de.linkvt.bachelor.web.dtos.FormatDto;
 
@@ -93,6 +95,13 @@ public class GeneratorController {
     List<OntologySyntax> syntaxes = Arrays.asList(OntologySyntax.values());
 
     return syntaxes.stream().map(FormatDto::new).collect(Collectors.toList());
+  }
+
+  @RequestMapping("/categories")
+  public List<FeatureCategoryDto> categories() {
+    List<FeatureCategory> categories = Arrays.asList(FeatureCategory.values());
+
+    return categories.stream().map(FeatureCategoryDto::new).collect(Collectors.toList());
   }
 
 }

@@ -3,7 +3,7 @@ package de.linkvt.bachelor.web.dtos;
 import de.linkvt.bachelor.web.converters.message.OntologySyntax;
 
 /**
- * Contains all informations the REST api consumers need.
+ * Contains all format informations the REST api consumers need.
  */
 public class FormatDto {
   private String extension;
