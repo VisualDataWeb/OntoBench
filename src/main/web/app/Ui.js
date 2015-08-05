@@ -33,6 +33,8 @@ export default class Ui {
     }
 
     static displayFormats(formats) {
+        formats.sort((a, b) => a.name.localeCompare(b.name));
+
         formats.forEach(function (format) {
             let option = $("<div class='item' data-value='" + format.extension + "'>");
             option.data(format).text(format.name);
