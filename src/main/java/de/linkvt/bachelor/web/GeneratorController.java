@@ -40,26 +40,26 @@ public class GeneratorController {
     this.repository = repository;
   }
 
-  @RequestMapping("/ontology")
-  public OWLOntology ontology() throws OWLOntologyCreationException {
-    return ontology(featureMapping.getAll());
+  @RequestMapping("/ontology/")
+  public OWLOntology completeOntology() throws OWLOntologyCreationException {
+    return ontologyWithFeatures(featureMapping.getAll());
   }
 
-  @RequestMapping(value = "/ontology", params = "features")
-  public OWLOntology ontology(@RequestParam("features") List<Feature> features) {
-    OntologyGenerator generator = getBean(OntologyGenerator.class);
+  @RequestMapping(value = "/ontology/", params = "features")
+  public OWLOntology ontologyWithFeatures(@RequestParam("features") List<Feature> features) {
+    OntologyGenerator generator = applicationContext.getBean(OntologyGenerator.class);
 
     generator.addFeatures(features);
 
     return generator.generate();
   }
 
-  @RequestMapping(value = "/ontology", params = "features", method = RequestMethod.POST)
+  @RequestMapping(value = "/ontology/", params = "features", method = RequestMethod.POST)
   public void storeAndRedirect(HttpServletResponse response, @RequestParam("features") List<Feature> features) throws IOException {
     List<String> tokens = features.stream().map(Feature::getToken).collect(Collectors.toList());
     StoredGeneration generation = repository.save(new StoredGeneration(tokens));
 
-    response.sendRedirect("/ontology/" + generation.getId());
+    response.sendRedirect("/ontology/" + generation.getId() + "/");
   }
 
   @RequestMapping(value = "/ontology-store", params = "features", method = RequestMethod.GET)
@@ -67,7 +67,7 @@ public class GeneratorController {
     storeAndRedirect(response, features);
   }
 
-  @RequestMapping("/ontology/{id}")
+  @RequestMapping("/ontology/{id}/")
   public OWLOntology ontologyFromId(HttpServletResponse response, @PathVariable("id") Long id) {
     StoredGeneration storedGeneration = repository.findOne(id);
     if (storedGeneration == null) {
@@ -75,14 +75,10 @@ public class GeneratorController {
     }
 
     // required because the web app can't tell to which URL the POST request went
-    response.addHeader("Short-Path", "/ontology/" + id);
+    response.addHeader("Short-Path", "/ontology/" + id + "/");
 
     List<Feature> usedFeatures = featureMapping.get(storedGeneration.getParameters());
-    return ontology(usedFeatures);
-  }
-
-  private <T> T getBean(Class<T> clazz) {
-    return applicationContext.getBean(clazz);
+    return ontologyWithFeatures(usedFeatures);
   }
 
   @RequestMapping("/features")

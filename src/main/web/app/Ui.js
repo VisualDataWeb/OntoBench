@@ -22,8 +22,8 @@ export default class Ui {
         }).dropdown("save defaults");
 
         $("#generate-button").click(() => {
-            Generator.resetAndGenerate();
             Ui.resetOntologyUrlInput();
+            Generator.resetAndGenerate();
         });
     }
 
@@ -64,13 +64,7 @@ export default class Ui {
     }
 
     static get selectedExtension() {
-        var extension = $("#format-list").find(".selected.item").attr("data-value");
-        if (extension) {
-            extension = "." + extension;
-        } else {
-            extension = "";
-        }
-        return extension;
+        return $("#format-list").find(".selected.item").attr("data-value");
     }
 
     static get selectedFeatures() {

@@ -38,6 +38,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
   @Override
   public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
     configurer.ignoreAcceptHeader(true)
+        .favorParameter(true)
         .ignoreUnknownPathExtensions(false)
         .defaultContentType(MediaType.TEXT_PLAIN)
         .mediaType("owx", OntologySyntax.OWL_XML.getMediaType())
