@@ -90,6 +90,7 @@ export default class Ui {
 
         if (arguments.length === 0 || shouldIndicate) {
             container.addClass("loading");
+            Ui.ontologyText.empty();
         } else {
             container.removeClass("loading");
         }
