@@ -5,11 +5,13 @@ import de.linkvt.bachelor.features.FeatureCategory;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.persistence.StoredGeneration;
 import de.linkvt.bachelor.persistence.StoredGenerationRepository;
+import de.linkvt.bachelor.presets.Preset;
 import de.linkvt.bachelor.web.converters.message.OntologySyntax;
 import de.linkvt.bachelor.web.converters.parameter.FeatureParameterMapping;
 import de.linkvt.bachelor.web.dtos.FeatureCategoryDto;
 import de.linkvt.bachelor.web.dtos.FeatureDto;
 import de.linkvt.bachelor.web.dtos.FormatDto;
+import de.linkvt.bachelor.web.dtos.PresetDto;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -23,7 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
@@ -102,6 +106,13 @@ public class GeneratorController {
     List<FeatureCategory> categories = Arrays.asList(FeatureCategory.values());
 
     return categories.stream().map(FeatureCategoryDto::new).collect(Collectors.toList());
+  }
+
+  @RequestMapping("/presets")
+  public Set<PresetDto> presets() {
+    Collection<Preset> presets = applicationContext.getBeansOfType(Preset.class).values();
+
+    return presets.stream().map(PresetDto::new).collect(Collectors.toSet());
   }
 
 }
