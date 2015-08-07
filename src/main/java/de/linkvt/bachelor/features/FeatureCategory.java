@@ -7,7 +7,8 @@ public enum FeatureCategory {
   CLASS("Classes"),
   PROPERTY("Properties"),
   INDIVIDUAL("Individuals"),
-  ONTOLOGY("Ontology");
+  DATATYPE("Datatypes"),
+  ANNOTATION("Annotations");
 
   private String name;
 

@@ -1,10 +1,10 @@
-package de.linkvt.bachelor.features.ontology.dc;
+package de.linkvt.bachelor.features.annotations.dc;
 
 import com.google.common.base.Optional;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
-import de.linkvt.bachelor.features.ontology.OntologyConstants;
+import de.linkvt.bachelor.features.annotations.OntologyConstants;
 
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
@@ -45,6 +45,6 @@ public class DcIdentifierFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.ONTOLOGY;
+    return FeatureCategory.ANNOTATION;
   }
 }

@@ -1,8 +1,8 @@
-package de.linkvt.bachelor.features.ontology.owl;
+package de.linkvt.bachelor.features.annotations.owl;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
-import de.linkvt.bachelor.features.ontology.OntologyConstants;
+import de.linkvt.bachelor.features.annotations.OntologyConstants;
 
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -36,6 +36,6 @@ public class OwlVersionInfoFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.ONTOLOGY;
+    return FeatureCategory.ANNOTATION;
   }
 }

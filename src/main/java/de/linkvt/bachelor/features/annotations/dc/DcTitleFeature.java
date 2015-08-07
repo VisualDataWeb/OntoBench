@@ -1,8 +1,8 @@
-package de.linkvt.bachelor.features.ontology.dc;
+package de.linkvt.bachelor.features.annotations.dc;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
-import de.linkvt.bachelor.features.ontology.OntologyConstants;
+import de.linkvt.bachelor.features.annotations.OntologyConstants;
 
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
@@ -13,31 +13,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DcContributorFeature extends Feature {
+public class DcTitleFeature extends Feature {
 
   @Autowired
-  OntologyConstants ontologyConstants;
+  private OntologyConstants ontologyConstants;
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "contributor"));
-    OWLAnnotation contributor = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getContributor()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "title"));
+    OWLAnnotation title = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getTitle()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, contributor));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, title));
   }
 
   @Override
   public String getName() {
-    return "dc:contributor";
+    return "dc:title";
   }
 
   @Override
   public String getToken() {
-    return "dccontributor";
+    return "dctitle";
   }
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.ONTOLOGY;
+    return FeatureCategory.ANNOTATION;
   }
 }

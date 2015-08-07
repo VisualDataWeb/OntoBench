@@ -1,8 +1,8 @@
-package de.linkvt.bachelor.features.ontology.dcterms;
+package de.linkvt.bachelor.features.annotations.dcterms;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
-import de.linkvt.bachelor.features.ontology.OntologyConstants;
+import de.linkvt.bachelor.features.annotations.OntologyConstants;
 
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
@@ -11,31 +11,31 @@ import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.vocab.Namespaces;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class DcTermsPublisherFeature extends Feature {
+public class DcTermsCreatorFeature extends Feature {
 
   @Autowired
-  private OntologyConstants ontologyConstants;
+  OntologyConstants ontologyConstants;
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "publisher"));
-    OWLAnnotation publisher = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getCreator()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "creator"));
+    OWLAnnotation creator = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getCreator()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, publisher));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, creator));
   }
 
   @Override
   public String getName() {
-    return "dcterms:publisher";
+    return "dcterms:creator";
   }
 
   @Override
   public String getToken() {
-    return "dctermspublisher";
+    return "dctermscreator";
   }
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.ONTOLOGY;
+    return FeatureCategory.ANNOTATION;
   }
 }

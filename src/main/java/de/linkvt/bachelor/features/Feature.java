@@ -6,6 +6,8 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLDataRange;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyChange;
@@ -38,6 +40,13 @@ public abstract class Feature {
   protected void addToGenericDomainAndNewRange(OWLObjectProperty property, OWLClassExpression range) {
     OWLClass domain = featurePool.getReusableClass();
     addProperty(property, domain, range);
+  }
+
+  protected void addToGenericDomainAndNewRange(OWLDataProperty property, OWLDataRange range) {
+    OWLClass domain = featurePool.getReusableClass();
+
+    addAxiomToOntology(factory.getOWLDataPropertyDomainAxiom(property, domain));
+    addAxiomToOntology(factory.getOWLDataPropertyRangeAxiom(property, range));
   }
 
   protected void addProperty(OWLObjectProperty property, OWLClass domain, OWLClassExpression range) {

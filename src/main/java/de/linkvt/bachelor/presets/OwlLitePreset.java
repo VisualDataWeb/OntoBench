@@ -1,5 +1,6 @@
 package de.linkvt.bachelor.presets;
 
+import de.linkvt.bachelor.features.annotations.owl.OwlVersionInfoFeature;
 import de.linkvt.bachelor.features.classes.OwlClassFeature;
 import de.linkvt.bachelor.features.classes.OwlDeprecatedClassFeature;
 import de.linkvt.bachelor.features.classes.OwlNothingFeature;
@@ -15,7 +16,7 @@ import de.linkvt.bachelor.features.classes.values.OwlSomeValuesFromClassFeature;
 import de.linkvt.bachelor.features.individuals.NamedIndividualFeature;
 import de.linkvt.bachelor.features.individuals.OwlAllDifferentFeature;
 import de.linkvt.bachelor.features.individuals.OwlSameAsFeature;
-import de.linkvt.bachelor.features.ontology.owl.OwlVersionInfoFeature;
+import de.linkvt.bachelor.features.properties.OwlDatatypePropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlDeprecatedPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlEquivalentPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlFunctionalPropertyFeature;
@@ -54,6 +55,8 @@ public class OwlLitePreset extends Preset {
 
     addFeatures(NamedIndividualFeature.class);
     addFeatures(OwlSameAsFeature.class, OwlAllDifferentFeature.class);
+
+    addFeatures(OwlDatatypePropertyFeature.class);
 
     addFeatures(OwlVersionInfoFeature.class);
   }

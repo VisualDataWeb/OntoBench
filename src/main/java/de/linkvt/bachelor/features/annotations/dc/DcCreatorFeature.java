@@ -1,8 +1,8 @@
-package de.linkvt.bachelor.features.ontology.dcterms;
+package de.linkvt.bachelor.features.annotations.dc;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
-import de.linkvt.bachelor.features.ontology.OntologyConstants;
+import de.linkvt.bachelor.features.annotations.OntologyConstants;
 
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
@@ -13,31 +13,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DcTermsDateFeature extends Feature {
+public class DcCreatorFeature extends Feature {
 
   @Autowired
-  private OntologyConstants ontologyConstants;
+  OntologyConstants ontologyConstants;
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DCTERMS + "date"));
-    OWLAnnotation date = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getGenerationDate()));
+    OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create(Namespaces.DC + "creator"));
+    OWLAnnotation creator = factory.getOWLAnnotation(property, factory.getOWLLiteral(ontologyConstants.getCreator()));
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, date));
+    addChangeToOntology(new AddOntologyAnnotation(ontology, creator));
   }
 
   @Override
   public String getName() {
-    return "dcterms:date";
+    return "dc:creator";
   }
 
   @Override
   public String getToken() {
-    return "dctermsdate";
+    return "dccreator";
   }
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.ONTOLOGY;
+    return FeatureCategory.ANNOTATION;
   }
 }

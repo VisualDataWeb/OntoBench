@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.ontology;
+package de.linkvt.bachelor.features.annotations;
 
 import org.springframework.stereotype.Component;
 
