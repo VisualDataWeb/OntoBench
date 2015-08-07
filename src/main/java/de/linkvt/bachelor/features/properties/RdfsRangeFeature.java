@@ -9,7 +9,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DomainlessPropertyFeature extends Feature {
+public class RdfsRangeFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass range = featurePool.getExclusiveClass("Range");
@@ -21,12 +21,12 @@ public class DomainlessPropertyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:ObjectProperty without a domain";
+    return "rdfs:range";
   }
 
   @Override
   public String getToken() {
-    return "domainless";
+    return "range";
   }
 
   @Override

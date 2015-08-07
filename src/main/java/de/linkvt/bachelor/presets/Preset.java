@@ -5,6 +5,7 @@ import de.linkvt.bachelor.features.Feature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,13 +25,9 @@ public abstract class Preset {
 
   }
 
-  protected Preset addFeature(Feature feature) {
-    features.add(feature);
-    return this;
-  }
-
-  protected Preset addFeature(Class<? extends Feature> clazz) {
-    features.add(context.getBean(clazz));
+  @SafeVarargs
+  protected final Preset addFeatures(Class<? extends Feature>... classes) {
+    Arrays.asList(classes).stream().map(context::getBean).forEach(this.features::add);
     return this;
   }
 
@@ -39,7 +36,7 @@ public abstract class Preset {
   }
 
   @PostConstruct
-  protected abstract void addFeatures();
+  protected abstract void initialize();
 
   public abstract String getName();
 

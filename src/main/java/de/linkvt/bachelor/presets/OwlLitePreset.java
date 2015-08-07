@@ -1,22 +1,55 @@
 package de.linkvt.bachelor.presets;
 
+import de.linkvt.bachelor.features.classes.OwlClassFeature;
+import de.linkvt.bachelor.features.classes.OwlDeprecatedClassFeature;
+import de.linkvt.bachelor.features.classes.OwlNothingFeature;
+import de.linkvt.bachelor.features.classes.OwlThingFeature;
+import de.linkvt.bachelor.features.classes.axioms.OwlEquivalentClassFeature;
+import de.linkvt.bachelor.features.classes.axioms.RdfsSubClassOfFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.owllite.OwlLiteOwlCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.owllite.OwlLiteOwlMaxCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.owllite.OwlLiteOwlMinCardinalityFeature;
+import de.linkvt.bachelor.features.classes.setoperators.OwlIntersectionOfFeature;
 import de.linkvt.bachelor.features.classes.values.OwlAllValuesFromClassFeature;
 import de.linkvt.bachelor.features.classes.values.OwlSomeValuesFromClassFeature;
+import de.linkvt.bachelor.features.ontology.owl.OwlVersionInfoFeature;
+import de.linkvt.bachelor.features.properties.OwlDeprecatedPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlEquivalentPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlFunctionalPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlInverseFunctionalPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlInverseOfPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlObjectPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlSymmetricPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlTransitivePropertyFeature;
+import de.linkvt.bachelor.features.properties.RdfsDomainFeature;
+import de.linkvt.bachelor.features.properties.RdfsRangeFeature;
+import de.linkvt.bachelor.features.properties.RdfsSubPropertyOfFeature;
+import de.linkvt.bachelor.features.properties.UnboundPropertyFeature;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class OwlLitePreset extends Preset {
   @Override
-  protected void addFeatures() {
-    this.addFeature(OwlLiteOwlCardinalityFeature.class)
-        .addFeature(OwlLiteOwlMaxCardinalityFeature.class)
-        .addFeature(OwlLiteOwlMinCardinalityFeature.class)
-        .addFeature(OwlAllValuesFromClassFeature.class)
-        .addFeature(OwlSomeValuesFromClassFeature.class);
+  protected void initialize() {
+    addFeatures(OwlLiteOwlCardinalityFeature.class, OwlLiteOwlMaxCardinalityFeature.class, OwlLiteOwlMinCardinalityFeature.class);
+    addFeatures(OwlAllValuesFromClassFeature.class, OwlSomeValuesFromClassFeature.class);
+    addFeatures(OwlClassFeature.class, OwlThingFeature.class, OwlNothingFeature.class);
+    addFeatures(OwlEquivalentClassFeature.class);
+    addFeatures(OwlDeprecatedClassFeature.class);
+    addFeatures(OwlIntersectionOfFeature.class);
+
+    addFeatures(OwlObjectPropertyFeature.class);
+    addFeatures(RdfsDomainFeature.class, RdfsRangeFeature.class, UnboundPropertyFeature.class);
+    addFeatures(RdfsSubClassOfFeature.class);
+    addFeatures(RdfsSubPropertyOfFeature.class);
+    addFeatures(OwlEquivalentPropertyFeature.class);
+    addFeatures(OwlDeprecatedPropertyFeature.class);
+    addFeatures(OwlInverseOfPropertyFeature.class);
+    addFeatures(OwlTransitivePropertyFeature.class, OwlSymmetricPropertyFeature.class);
+    addFeatures(OwlFunctionalPropertyFeature.class, OwlInverseFunctionalPropertyFeature.class);
+
+    addFeatures(OwlVersionInfoFeature.class);
   }
 
   @Override
