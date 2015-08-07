@@ -10,7 +10,13 @@ export default class Ui {
             $(this).prop("checked", !$(this).prop("checked"));
         }));
 
-        $("#url-type").dropdown({
+        $("#generate-button").click(() => {
+            Ui.resetOntologyUrlInput();
+            Generator.resetAndGenerate();
+        });
+
+        Ui.ontologyUrl.click(() => Ui.ontologyUrl.select());
+        Ui.urlType.dropdown({
             action: "activate",
             onChange: (value) => {
                 if (value === "short") {
@@ -20,16 +26,11 @@ export default class Ui {
                 }
             }
         }).dropdown("save defaults");
-
-        $("#generate-button").click(() => {
-            Ui.resetOntologyUrlInput();
-            Generator.resetAndGenerate();
-        });
     }
 
     static resetOntologyUrlInput() {
-        $("#url-type").removeClass("disabled").dropdown("restore defaults");
-        $("#download-button").removeClass("disabled");
+        Ui.urlType.removeClass("disabled").dropdown("restore defaults");
+        Ui.downloadButton.removeClass("disabled");
     }
 
     static displayFormats(formats) {
@@ -78,8 +79,8 @@ export default class Ui {
     }
 
     static displayUrl(url) {
-        $("#ontology-url").val(url);
-        $("#download-button").attr("href", url);
+        Ui.ontologyUrl.val(url);
+        Ui.downloadButton.attr("href", url);
     }
 
     static get selectedExtension() {
@@ -121,11 +122,23 @@ export default class Ui {
         return Ui.featureContainer.find(":checkbox");
     }
 
+    static get urlType() {
+        return $("#url-type");
+    }
+
     static get ontologyText() {
         return $("#ontology-text");
     }
 
     static get ontologyTextContainer() {
         return Ui.ontologyText.parent().parent();
+    }
+
+    static get ontologyUrl() {
+        return $("#ontology-url");
+    }
+
+    static get downloadButton() {
+        return $("#download-button");
     }
 }
