@@ -42,4 +42,6 @@ public abstract class Preset {
   protected abstract void addFeatures();
 
   public abstract String getName();
+
+  public abstract int getIndex();
 }

@@ -1,8 +1,8 @@
 import Ui from "./Ui";
 
 export default class FeatureContainer {
-    static displayFeatures(features, categories) {
-        let categoryToFeatureMap = FeatureContainer._mapFeaturesToCategory(features);
+    static displayFeatures(allFeatures, categories) {
+        let categoryToFeatureMap = FeatureContainer._mapFeaturesToCategory(allFeatures);
         categories.sort((a, b) => a.index - b.index);
 
         let row;

@@ -54,6 +54,22 @@ export default class Ui {
         element.removeClass("loading");
     }
 
+    static displayPresets(presets) {
+        presets.sort((a, b) => a.index - b.index);
+
+        presets.forEach(preset => {
+            let button = $("<button class='ui button'>").data(preset).text(preset.name);
+            button.click(() => {
+                Ui.features.filter(function () {
+                    let token = $(this).parent().data().token;
+                    return preset.tokens.includes(token);
+                }).prop("checked", true);
+            });
+
+            button.appendTo($("#preset-buttons"));
+        });
+    }
+
     static initializeFeatureListing() {
         $(".checkbox").checkbox();
         $("#initial-feature-info").hide();

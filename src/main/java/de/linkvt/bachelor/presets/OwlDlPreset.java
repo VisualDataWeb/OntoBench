@@ -19,6 +19,11 @@ public class OwlDlPreset extends OwlLitePreset {
 
   @Override
   public String getName() {
-    return "OWL DL";
+    return "OWL DL (WIP)";
+  }
+
+  @Override
+  public int getIndex() {
+    return 1;
   }
 }

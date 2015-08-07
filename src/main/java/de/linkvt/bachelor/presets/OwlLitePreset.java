@@ -17,6 +17,11 @@ public class OwlLitePreset extends Preset {
 
   @Override
   public String getName() {
-    return "OWL Lite";
+    return "OWL Lite (WIP)";
+  }
+
+  @Override
+  public int getIndex() {
+    return 0;
   }
 }

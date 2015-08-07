@@ -10,11 +10,13 @@ import java.util.stream.Collectors;
  * Dto for presets.
  */
 public class PresetDto {
-  String name;
-  Set<String> tokens;
+  private String name;
+  private int index;
+  private Set<String> tokens;
 
   public PresetDto(Preset preset) {
     this.name = preset.getName();
+    this.index = preset.getIndex();
     this.tokens = preset.getFeatures().stream().map(Feature::getToken).collect(Collectors.toSet());
   }
 
@@ -35,5 +37,13 @@ public class PresetDto {
 
   public void setTokens(Set<String> tokens) {
     this.tokens = tokens;
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
   }
 }
