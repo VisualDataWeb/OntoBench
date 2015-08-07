@@ -6,6 +6,7 @@ package de.linkvt.bachelor.features;
 public enum FeatureCategory {
   CLASS("Classes"),
   PROPERTY("Properties"),
+  INDIVIDUAL("Individuals"),
   ONTOLOGY("Ontology");
 
   private String name;
