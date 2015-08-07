@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.presets;
 
-import de.linkvt.bachelor.features.classes.OwlOneOfFeature;
+import de.linkvt.bachelor.features.classes.axioms.OwlDisjointWithFeature;
+import de.linkvt.bachelor.features.classes.axioms.OwlOneOfFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.OwlCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.OwlMaxCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.OwlMinCardinalityFeature;
@@ -21,6 +22,7 @@ public class OwlDlPreset extends OwlLitePreset {
     addFeatures(OwlHasValueClassFeature.class);
     addFeatures(OwlUnionOfFeature.class, OwlComplementOfFeature.class, OwlIntersectionOfFeature.class);
     addFeatures(OwlOneOfFeature.class);
+    addFeatures(OwlDisjointWithFeature.class);
   }
 
   @Override
