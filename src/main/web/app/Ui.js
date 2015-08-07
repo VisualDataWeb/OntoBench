@@ -61,10 +61,10 @@ export default class Ui {
         presets.forEach(preset => {
             let button = $("<button class='ui fluid green button'>").data(preset).text(preset.name);
             button.click(() => {
-                Ui.features.filter(function () {
+                Ui.features.prop("checked", function () {
                     let token = $(this).parent().data().token;
                     return preset.tokens.includes(token);
-                }).prop("checked", true);
+                });
             });
 
             let column = $("<div class='column'>").appendTo($("#preset-buttons"));
