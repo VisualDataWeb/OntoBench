@@ -1,7 +1,5 @@
 package de.linkvt.bachelor.config;
 
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataFactory;
@@ -32,19 +30,7 @@ public class OwlApiConfig {
   public OWLMutableOntology owlOntology(HttpServletRequest request) throws OWLOntologyCreationException {
     OWLOntologyManager ontologyManager = OWLManager.createOWLOntologyManager();
     // Cast to a mutable ontology to pass OWLApi's strange checks
-    return (OWLMutableOntology) ontologyManager.createOntology(IRI.create(createOntologyUrl(request)));
+    return (OWLMutableOntology) ontologyManager.createOntology(IRI.create(request.getRequestURL().toString()));
   }
 
-  private String createOntologyUrl(HttpServletRequest request) {
-    String url = request.getRequestURL().toString();
-    // trim the extension
-    url = FilenameUtils.removeExtension(url);
-
-    String queryString = request.getQueryString();
-    if (StringUtils.isNotEmpty(queryString)) {
-      url = url + "?" + queryString;
-    }
-
-    return url;
-  }
 }
