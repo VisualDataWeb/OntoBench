@@ -4,28 +4,27 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NamedIndividualFeature extends Feature {
+public class OwlSameAsFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLNamedIndividual namedIndividual = factory.getOWLNamedIndividual(IRI.create("NamedIndividual"));
-    OWLAxiom axiom = factory.getOWLDeclarationAxiom(namedIndividual);
+    OWLNamedIndividual williamClinton = factory.getOWLNamedIndividual(IRI.create("William_Jefferson_Clinton"));
+    OWLNamedIndividual billClinton = factory.getOWLNamedIndividual(IRI.create("BillClinton"));
 
-    addAxiomToOntology(axiom);
+    addAxiomToOntology(factory.getOWLSameIndividualAxiom(williamClinton, billClinton));
   }
 
   @Override
   public String getName() {
-    return "Named Individual";
+    return "owl:sameAs";
   }
 
   @Override
   public String getToken() {
-    return "namedindividual";
+    return "sameas";
   }
 
   @Override
