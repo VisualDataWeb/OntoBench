@@ -9,6 +9,7 @@ import de.linkvt.bachelor.features.classes.setoperators.OwlComplementOfFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlIntersectionOfFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlUnionOfFeature;
 import de.linkvt.bachelor.features.classes.values.OwlHasValueClassFeature;
+import de.linkvt.bachelor.features.datatypes.EnumeratedRdfsDatatypeFeature;
 
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,8 @@ public class OwlDlPreset extends OwlLitePreset {
     addFeatures(OwlUnionOfFeature.class, OwlComplementOfFeature.class, OwlIntersectionOfFeature.class);
     addFeatures(OwlOneOfFeature.class);
     addFeatures(OwlDisjointWithFeature.class);
+
+    addFeatures(EnumeratedRdfsDatatypeFeature.class);
   }
 
   @Override
