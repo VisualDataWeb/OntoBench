@@ -18,7 +18,6 @@ import de.linkvt.bachelor.features.classes.cardinalities.owllite.OwlLiteOwlMinCa
 import de.linkvt.bachelor.features.classes.setoperators.OwlIntersectionOfFeature;
 import de.linkvt.bachelor.features.classes.values.OwlAllValuesFromClassFeature;
 import de.linkvt.bachelor.features.classes.values.OwlSomeValuesFromClassFeature;
-import de.linkvt.bachelor.features.individuals.IndividualFeature;
 import de.linkvt.bachelor.features.individuals.OwlAllDifferentFeature;
 import de.linkvt.bachelor.features.individuals.OwlSameAsFeature;
 import de.linkvt.bachelor.features.properties.OwlDatatypePropertyFeature;
@@ -58,7 +57,6 @@ public class OwlLitePreset extends Preset {
     addFeatures(OwlTransitivePropertyFeature.class, OwlSymmetricPropertyFeature.class);
     addFeatures(OwlFunctionalPropertyFeature.class, OwlInverseFunctionalPropertyFeature.class);
 
-    addFeatures(IndividualFeature.class);
     addFeatures(OwlSameAsFeature.class, OwlAllDifferentFeature.class);
 
     addFeatures(OwlDatatypePropertyFeature.class);

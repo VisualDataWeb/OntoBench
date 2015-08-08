@@ -4,28 +4,31 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAnonymousIndividual;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.springframework.stereotype.Component;
 
 @Component
-public class IndividualFeature extends Feature {
+public class AnonymousIndividualFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass individual = factory.getOWLClass(IRI.create("Individual"));
-    OWLAxiom axiom = factory.getOWLDeclarationAxiom(individual);
+    OWLClass clazz = featurePool.getReusableClass();
+    OWLAnonymousIndividual individual = factory.getOWLAnonymousIndividual();
 
-    addAxiomToOntology(axiom);
+    addAxiomToOntology(factory.getOWLClassAssertionAxiom(clazz, individual));
   }
 
   @Override
   public String getName() {
-    return "Individual";
+    return "Anonymous Individual";
   }
 
   @Override
   public String getToken() {
-    return "individual";
+    return "anonymousindividual";
   }
 
   @Override

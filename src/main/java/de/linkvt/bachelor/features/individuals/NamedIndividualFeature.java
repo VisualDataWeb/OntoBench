@@ -5,6 +5,7 @@ import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +13,10 @@ import org.springframework.stereotype.Component;
 public class NamedIndividualFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLNamedIndividual namedIndividual = factory.getOWLNamedIndividual(IRI.create("NamedIndividual"));
-    OWLAxiom axiom = factory.getOWLDeclarationAxiom(namedIndividual);
+    OWLClass clazz = featurePool.getReusableClass();
+    OWLNamedIndividual individual = factory.getOWLNamedIndividual(IRI.create("AnIndividual"));
 
-    addAxiomToOntology(axiom);
+    addAxiomToOntology(factory.getOWLClassAssertionAxiom(clazz, individual));
   }
 
   @Override
