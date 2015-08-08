@@ -19,20 +19,13 @@ public class RdfsCommentFeature extends Feature {
     OWLClass range = featurePool.getExclusiveClass("ClassWithInfos");
 
     OWLLiteral label = factory.getOWLLiteral("Comment of a property (undefined language)");
-    OWLLiteral deLabel = factory.getOWLLiteral("Kommentar einer Property", "de");
-    OWLLiteral enLabel = factory.getOWLLiteral("Comment of a property", "en");
-    OWLLiteral jpLabel = factory.getOWLLiteral("プロパティのコメント", "jp");
+    OWLAnnotationProperty comment = factory.getRDFSComment();
 
-    OWLAnnotationProperty annotationProperty = factory.getRDFSComment();
-    OWLAnnotation annotation = factory.getOWLAnnotation(annotationProperty, label);
-    OWLAnnotation deAnnotation = factory.getOWLAnnotation(annotationProperty, deLabel);
-    OWLAnnotation enAnnotation = factory.getOWLAnnotation(annotationProperty, enLabel);
-    OWLAnnotation jpAnnotation = factory.getOWLAnnotation(annotationProperty, jpLabel);
+    OWLAnnotation pA = factory.getOWLAnnotation(comment, label);
+    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), pA));
 
-    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), annotation));
-    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), deAnnotation));
-    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), enAnnotation));
-    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), jpAnnotation));
+    OWLAnnotation cA = factory.getOWLAnnotation(comment, factory.getOWLLiteral("Comment of a class (undefined language)"));
+    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(range.getIRI(), cA));
 
     addToGenericDomainAndNewRange(property, range);
   }
