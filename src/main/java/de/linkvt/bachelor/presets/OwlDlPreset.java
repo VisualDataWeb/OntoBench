@@ -27,7 +27,7 @@ public class OwlDlPreset extends OwlLitePreset {
 
   @Override
   public String getName() {
-    return "OWL DL (WIP)";
+    return "OWL DL/Full";
   }
 
   @Override
