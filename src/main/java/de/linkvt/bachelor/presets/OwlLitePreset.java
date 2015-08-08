@@ -1,5 +1,6 @@
 package de.linkvt.bachelor.presets;
 
+import de.linkvt.bachelor.features.annotations.owl.OwlAnnotationPropertyFeature;
 import de.linkvt.bachelor.features.annotations.owl.OwlVersionInfoFeature;
 import de.linkvt.bachelor.features.annotations.rdfs.RdfsCommentFeature;
 import de.linkvt.bachelor.features.annotations.rdfs.RdfsCommentOnOntologyFeature;
@@ -62,6 +63,7 @@ public class OwlLitePreset extends Preset {
 
     addFeatures(OwlDatatypePropertyFeature.class);
 
+    addFeatures(OwlAnnotationPropertyFeature.class);
     addFeatures(OwlVersionInfoFeature.class);
     addFeatures(RdfsCommentFeature.class, RdfsCommentOnOntologyFeature.class);
     addFeatures(RdfsLabelFeature.class, RdfsLabelOnOntologyFeature.class);
