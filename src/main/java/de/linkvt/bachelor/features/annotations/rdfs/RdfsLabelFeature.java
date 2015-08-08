@@ -2,21 +2,16 @@ package de.linkvt.bachelor.features.annotations.rdfs;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
-import de.linkvt.bachelor.features.annotations.OntologyConstants;
 
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RdfsLabelFeature extends Feature {
-
-  @Autowired
-  OntologyConstants ontologyConstants;
 
   @Override
   public void addToOntology() {
