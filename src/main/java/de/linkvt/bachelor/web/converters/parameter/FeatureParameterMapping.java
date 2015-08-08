@@ -32,7 +32,7 @@ public class FeatureParameterMapping {
 
   private void register(String parameter, Feature feature) {
     if (featureMap.containsKey(parameter)) {
-      throw new IllegalArgumentException("Parameter already in use.");
+      throw new IllegalArgumentException("Parameter \"" + parameter + "\" already in use.");
     }
     featureMap.put(parameter, feature);
   }
