@@ -4,9 +4,11 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 import de.linkvt.bachelor.features.annotations.OntologyConstants;
 
-import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotation;
+import org.semanticweb.owlapi.model.OWLAnnotationProperty;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLLiteral;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +20,27 @@ public class RdfsLabelFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLLiteral titleLiteral = factory.getOWLLiteral(ontologyConstants.getTitle());
-    OWLAnnotation title = factory.getOWLAnnotation(factory.getRDFSLabel(), titleLiteral);
+    OWLObjectProperty property = featurePool.getExclusiveProperty("propertyWithInfos");
+    OWLClass range = featurePool.getExclusiveClass("ClassWithInfos");
 
-    addChangeToOntology(new AddOntologyAnnotation(ontology, title));
+    OWLLiteral label = factory.getOWLLiteral("Label of a property (undefined language)");
+    OWLLiteral deLabel = factory.getOWLLiteral("Label einer Property", "de");
+    OWLLiteral enLabel = factory.getOWLLiteral("Label of a property", "en");
+    OWLLiteral jpLabel = factory.getOWLLiteral("プロパティの指定", "jp");
+
+    OWLAnnotationProperty annotationProperty = factory.getRDFSLabel();
+    OWLAnnotation annotation = factory.getOWLAnnotation(annotationProperty, label);
+    OWLAnnotation deAnnotation = factory.getOWLAnnotation(annotationProperty, deLabel);
+    OWLAnnotation enAnnotation = factory.getOWLAnnotation(annotationProperty, enLabel);
+    OWLAnnotation jpAnnotation = factory.getOWLAnnotation(annotationProperty, jpLabel);
+
+    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), annotation));
+    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), deAnnotation));
+    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), enAnnotation));
+    addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), jpAnnotation));
+
+
+    addToGenericDomainAndNewRange(property, range);
   }
 
   @Override
