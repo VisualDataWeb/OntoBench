@@ -62,7 +62,7 @@ export default class FeatureContainer {
     }
 
     static _needsNewRow() {
-        const MAX_CATEGORIES_PER_ROW = 3;
+        const MAX_CATEGORIES_PER_ROW = 2;
         return Ui.featureContainer.find(".column").length % MAX_CATEGORIES_PER_ROW === 0;
     }
 }
