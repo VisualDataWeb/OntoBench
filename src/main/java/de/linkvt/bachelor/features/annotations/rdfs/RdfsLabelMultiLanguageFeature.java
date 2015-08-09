@@ -41,7 +41,7 @@ public class RdfsLabelMultiLanguageFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:label (multi language)";
+    return "rdfs:label (multilingual)";
   }
 
   @Override
