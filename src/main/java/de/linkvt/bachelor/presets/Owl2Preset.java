@@ -19,6 +19,7 @@ import de.linkvt.bachelor.features.classes.values.data.OwlDataHasValueFeature;
 import de.linkvt.bachelor.features.classes.values.data.OwlDataSomeValuesFromFeature;
 import de.linkvt.bachelor.features.classes.values.object.OwlHasSelfFeature;
 import de.linkvt.bachelor.features.properties.OwlPropertyChainAxiomFeature;
+import de.linkvt.bachelor.features.properties.OwlPropertyDisjointWithFeature;
 
 import org.springframework.stereotype.Component;
 
@@ -34,7 +35,7 @@ public class Owl2Preset extends Preset {
     addFeatures(OwlDataUnionOfFeature.class, OwlDataIntersectionOfFeature.class, OwlDataComplementOfFeature.class);
     addFeatures(OwlAllDisjointClassesFeature.class);
     addFeatures(OwlDisjointUnionFeature.class);
-    addFeatures(OwlPropertyChainAxiomFeature.class);
+    addFeatures(OwlPropertyChainAxiomFeature.class, OwlPropertyDisjointWithFeature.class);
   }
 
   @Override
