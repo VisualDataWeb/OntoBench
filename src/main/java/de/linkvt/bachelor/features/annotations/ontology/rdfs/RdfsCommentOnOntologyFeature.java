@@ -26,7 +26,7 @@ public class RdfsCommentOnOntologyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:comment on Ontology";
+    return "rdfs:comment (Ontology)";
   }
 
   @Override
