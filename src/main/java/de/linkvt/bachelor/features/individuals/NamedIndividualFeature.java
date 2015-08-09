@@ -30,6 +30,6 @@ public class NamedIndividualFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.INDIVIDUAL;
+    return FeatureCategory.INDIVIDUALS;
   }
 }

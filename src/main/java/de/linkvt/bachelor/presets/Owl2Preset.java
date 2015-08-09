@@ -1,33 +1,36 @@
 package de.linkvt.bachelor.presets;
 
-import de.linkvt.bachelor.features.classes.axioms.OwlAllDisjointClassesFeature;
-import de.linkvt.bachelor.features.classes.axioms.OwlDisjointUnionFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.data.OwlDataCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.data.OwlDataMaxCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.data.OwlDataMaxQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.data.OwlDataMinCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.data.OwlDataMinQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.data.OwlDataQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMaxQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMinQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.setoperators.data.OwlDataComplementOfFeature;
-import de.linkvt.bachelor.features.classes.setoperators.data.OwlDataIntersectionOfFeature;
-import de.linkvt.bachelor.features.classes.setoperators.data.OwlDataUnionOfFeature;
-import de.linkvt.bachelor.features.classes.values.data.OwlDataAllValuesFromFeature;
-import de.linkvt.bachelor.features.classes.values.data.OwlDataHasValueFeature;
-import de.linkvt.bachelor.features.classes.values.data.OwlDataSomeValuesFromFeature;
-import de.linkvt.bachelor.features.classes.values.object.OwlHasSelfFeature;
-import de.linkvt.bachelor.features.properties.OwlAllDisjointDataPropertiesFeature;
-import de.linkvt.bachelor.features.properties.OwlAllDisjointObjectPropertiesFeature;
-import de.linkvt.bachelor.features.properties.OwlAsymmetricPropertyFeature;
-import de.linkvt.bachelor.features.properties.OwlDataPropertyDisjointWithFeature;
-import de.linkvt.bachelor.features.properties.OwlEquivalentDataPropertyFeature;
-import de.linkvt.bachelor.features.properties.OwlFunctionalDataPropertyFeature;
-import de.linkvt.bachelor.features.properties.OwlIrreflexivePropertyFeature;
-import de.linkvt.bachelor.features.properties.OwlObjectPropertyDisjointWithFeature;
-import de.linkvt.bachelor.features.properties.OwlPropertyChainAxiomFeature;
-import de.linkvt.bachelor.features.properties.OwlReflexivePropertyFeature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlAllDisjointClassesFeature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlDisjointUnionFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlAllDisjointDataPropertiesFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlDataPropertyDisjointWithFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlEquivalentDataPropertyFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlFunctionalDataPropertyFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataDomainFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataRangeFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataSubPropertyOfFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlAllDisjointObjectPropertiesFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlAsymmetricPropertyFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlIrreflexivePropertyFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlObjectPropertyDisjointWithFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlPropertyChainAxiomFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlReflexivePropertyFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinality.OwlDataCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinality.OwlDataMaxCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinality.OwlDataMaxQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinality.OwlDataMinCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinality.OwlDataMinQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinality.OwlDataQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataAllValuesFromFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataHasValueFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataSomeValuesFromFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectMaxQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectMinQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlHasSelfFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataComplementOfFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataUnionOfFeature;
 
 import org.springframework.stereotype.Component;
 
@@ -46,6 +49,7 @@ public class Owl2Preset extends Preset {
     addFeatures(OwlPropertyChainAxiomFeature.class, OwlObjectPropertyDisjointWithFeature.class, OwlAllDisjointObjectPropertiesFeature.class);
     addFeatures(OwlReflexivePropertyFeature.class, OwlIrreflexivePropertyFeature.class, OwlAsymmetricPropertyFeature.class);
     addFeatures(OwlFunctionalDataPropertyFeature.class, OwlDataPropertyDisjointWithFeature.class, OwlAllDisjointDataPropertiesFeature.class, OwlEquivalentDataPropertyFeature.class);
+    addFeatures(RdfsDataDomainFeature.class, RdfsDataRangeFeature.class, RdfsDataSubPropertyOfFeature.class);
   }
 
   @Override

@@ -1,15 +1,15 @@
 package de.linkvt.bachelor.presets;
 
-import de.linkvt.bachelor.features.classes.axioms.OwlDataOneOfFeature;
-import de.linkvt.bachelor.features.classes.axioms.OwlDisjointWithFeature;
-import de.linkvt.bachelor.features.classes.axioms.OwlObjectOneOfFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMaxCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMinCardinalityFeature;
-import de.linkvt.bachelor.features.classes.setoperators.object.OwlObjectComplementOfFeature;
-import de.linkvt.bachelor.features.classes.setoperators.object.OwlObjectIntersectionOfFeature;
-import de.linkvt.bachelor.features.classes.setoperators.object.OwlObjectUnionOfFeature;
-import de.linkvt.bachelor.features.classes.values.object.OwlObjectHasValueFeature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlDisjointWithFeature;
+import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectComplementOfFeature;
+import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectIntersectionOfFeature;
+import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectOneOfFeature;
+import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectUnionOfFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectMaxCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectMinCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectHasValueFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataOneOfFeature;
 
 import org.springframework.stereotype.Component;
 

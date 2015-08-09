@@ -44,17 +44,17 @@ public abstract class Feature {
 
   protected void addToGenericDomainAndNewRange(OWLDataProperty property, OWLDataRange range) {
     OWLClass domain = featurePool.getReusableClass();
-
-    addAxiomToOntology(factory.getOWLDataPropertyDomainAxiom(property, domain));
-    addAxiomToOntology(factory.getOWLDataPropertyRangeAxiom(property, range));
+    addProperty(domain, property, range);
   }
 
   protected void addProperty(OWLClass domain, OWLObjectProperty property, OWLClassExpression range) {
-    OWLAxiom domainAxiom = factory.getOWLObjectPropertyDomainAxiom(property, domain);
-    OWLAxiom rangeAxiom = factory.getOWLObjectPropertyRangeAxiom(property, range);
+    addAxiomToOntology(factory.getOWLObjectPropertyDomainAxiom(property, domain));
+    addAxiomToOntology(factory.getOWLObjectPropertyRangeAxiom(property, range));
+  }
 
-    addAxiomToOntology(domainAxiom);
-    addAxiomToOntology(rangeAxiom);
+  protected void addProperty(OWLClass domain, OWLDataProperty property, OWLDataRange range) {
+    addAxiomToOntology(factory.getOWLDataPropertyDomainAxiom(property, domain));
+    addAxiomToOntology(factory.getOWLDataPropertyRangeAxiom(property, range));
   }
 
   protected void addChangeToOntology(OWLOntologyChange change) {
