@@ -15,7 +15,6 @@ import de.linkvt.bachelor.features.classes.axioms.RdfsSubClassOfFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteOwlObjectCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteOwlObjectMaxCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteOwlObjectMinCardinalityFeature;
-import de.linkvt.bachelor.features.classes.setoperators.OwlIntersectionOfFeature;
 import de.linkvt.bachelor.features.classes.values.object.OwlObjectAllValuesFromFeature;
 import de.linkvt.bachelor.features.classes.values.object.OwlObjectSomeValuesFromFeature;
 import de.linkvt.bachelor.features.individuals.OwlAllDifferentFeature;
@@ -45,7 +44,6 @@ public class OwlLitePreset extends Preset {
     addFeatures(OwlClassFeature.class, OwlThingFeature.class, OwlNothingFeature.class);
     addFeatures(OwlEquivalentClassFeature.class);
     addFeatures(OwlDeprecatedClassFeature.class);
-    addFeatures(OwlIntersectionOfFeature.class);
 
     addFeatures(OwlObjectPropertyFeature.class);
     addFeatures(RdfsDomainFeature.class, RdfsRangeFeature.class, UnboundPropertyFeature.class);

@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.setoperators;
+package de.linkvt.bachelor.features.classes.setoperators.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -10,7 +10,7 @@ import org.semanticweb.owlapi.model.OWLObjectComplementOf;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlComplementOfFeature extends Feature {
+public class OwlObjectComplementOfFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass positive = featurePool.getExclusiveClass("Positive");
@@ -24,16 +24,16 @@ public class OwlComplementOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:complementOf";
+    return "owl:complementOf (Class)";
   }
 
   @Override
   public String getToken() {
-    return "complement";
+    return "complementclass";
   }
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.PROPERTY;
+    return FeatureCategory.CLASS;
   }
 }

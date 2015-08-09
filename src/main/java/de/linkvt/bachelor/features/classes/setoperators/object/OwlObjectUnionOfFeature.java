@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.setoperators;
+package de.linkvt.bachelor.features.classes.setoperators.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -6,35 +6,36 @@ import de.linkvt.bachelor.features.FeatureCategory;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLObjectIntersectionOf;
+import org.semanticweb.owlapi.model.OWLObjectUnionOf;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlIntersectionOfFeature extends Feature {
+public class OwlObjectUnionOfFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass fork = featurePool.getExclusiveClass("Fork");
+    OWLClass knife = featurePool.getExclusiveClass("Knife");
     OWLClass spoon = featurePool.getExclusiveClass("Spoon");
-    OWLObjectIntersectionOf spork = factory.getOWLObjectIntersectionOf(fork, spoon);
+    OWLObjectUnionOf unionOf = factory.getOWLObjectUnionOf(fork, knife, spoon);
 
-    OWLClass owlClass = factory.getOWLClass(IRI.create("Spork"));
+    OWLClass cutlery = factory.getOWLClass(IRI.create("Cutlery"));
 
-    OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(owlClass, spork);
+    OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(cutlery, unionOf);
     addAxiomToOntology(axiom);
   }
 
   @Override
   public String getName() {
-    return "owl:intersectionOf";
+    return "owl:unionOf (Class)";
   }
 
   @Override
   public String getToken() {
-    return "intersection";
+    return "unionclass";
   }
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.PROPERTY;
+    return FeatureCategory.CLASS;
   }
 }
