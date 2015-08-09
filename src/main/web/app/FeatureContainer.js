@@ -8,6 +8,9 @@ export default class FeatureContainer {
         let row;
         for (let category of categories) {
             let features = categoryToFeatureMap.get(category.name);
+            if (!features || !features.length) {
+                continue;
+            }
 
             if (FeatureContainer._needsNewRow()) {
                 row = $("<div class='row'>").appendTo(Ui.featureContainer);
