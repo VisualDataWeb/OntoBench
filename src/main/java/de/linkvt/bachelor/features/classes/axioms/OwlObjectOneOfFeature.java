@@ -11,7 +11,7 @@ import org.semanticweb.owlapi.model.OWLObjectOneOf;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlOneOfFeature extends Feature {
+public class OwlObjectOneOfFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLNamedIndividual black = factory.getOWLNamedIndividual(IRI.create("Black"));
@@ -26,12 +26,12 @@ public class OwlOneOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:oneOf";
+    return "owl:oneOf (Class)";
   }
 
   @Override
   public String getToken() {
-    return "oneof";
+    return "oneofclass";
   }
 
   @Override

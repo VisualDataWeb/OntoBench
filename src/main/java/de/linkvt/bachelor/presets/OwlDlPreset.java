@@ -1,7 +1,8 @@
 package de.linkvt.bachelor.presets;
 
+import de.linkvt.bachelor.features.classes.axioms.OwlDataOneOfFeature;
 import de.linkvt.bachelor.features.classes.axioms.OwlDisjointWithFeature;
-import de.linkvt.bachelor.features.classes.axioms.OwlOneOfFeature;
+import de.linkvt.bachelor.features.classes.axioms.OwlObjectOneOfFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMaxCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMinCardinalityFeature;
@@ -9,7 +10,6 @@ import de.linkvt.bachelor.features.classes.setoperators.object.OwlObjectCompleme
 import de.linkvt.bachelor.features.classes.setoperators.object.OwlObjectIntersectionOfFeature;
 import de.linkvt.bachelor.features.classes.setoperators.object.OwlObjectUnionOfFeature;
 import de.linkvt.bachelor.features.classes.values.object.OwlObjectHasValueFeature;
-import de.linkvt.bachelor.features.datatypes.EnumeratedRdfsDatatypeFeature;
 
 import org.springframework.stereotype.Component;
 
@@ -22,10 +22,10 @@ public class OwlDlPreset extends OwlLitePreset {
     addFeatures(OwlObjectMaxCardinalityFeature.class, OwlObjectMinCardinalityFeature.class, OwlObjectCardinalityFeature.class);
     addFeatures(OwlObjectHasValueFeature.class);
     addFeatures(OwlObjectUnionOfFeature.class, OwlObjectComplementOfFeature.class, OwlObjectIntersectionOfFeature.class);
-    addFeatures(OwlOneOfFeature.class);
+    addFeatures(OwlObjectOneOfFeature.class);
     addFeatures(OwlDisjointWithFeature.class);
 
-    addFeatures(EnumeratedRdfsDatatypeFeature.class);
+    addFeatures(OwlDataOneOfFeature.class);
   }
 
   @Override

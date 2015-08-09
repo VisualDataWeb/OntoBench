@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.datatypes;
+package de.linkvt.bachelor.features.classes.axioms;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -10,7 +10,7 @@ import org.semanticweb.owlapi.model.OWLLiteral;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EnumeratedRdfsDatatypeFeature extends Feature {
+public class OwlDataOneOfFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLDatatype datatype = factory.getOWLDatatype(IRI.create("TennisGameScore"));
@@ -27,16 +27,16 @@ public class EnumeratedRdfsDatatypeFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:Datatype (enumerated)";
+    return "owl:oneOf (Data Range)";
   }
 
   @Override
   public String getToken() {
-    return "enumerateddatatype";
+    return "oneof";
   }
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DATATYPE;
+    return FeatureCategory.CLASS;
   }
 }

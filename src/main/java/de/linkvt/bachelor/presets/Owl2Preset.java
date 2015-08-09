@@ -9,6 +9,9 @@ import de.linkvt.bachelor.features.classes.cardinalities.data.OwlDataQualifiedCa
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMaxQualifiedCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMinQualifiedCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classes.setoperators.data.OwlDataComplementOfFeature;
+import de.linkvt.bachelor.features.classes.setoperators.data.OwlDataIntersectionOfFeature;
+import de.linkvt.bachelor.features.classes.setoperators.data.OwlDataUnionOfFeature;
 import de.linkvt.bachelor.features.classes.values.data.OwlDataAllValuesFromFeature;
 import de.linkvt.bachelor.features.classes.values.data.OwlDataHasValueFeature;
 import de.linkvt.bachelor.features.classes.values.data.OwlDataSomeValuesFromFeature;
@@ -25,6 +28,7 @@ public class Owl2Preset extends Preset {
     addFeatures(OwlObjectQualifiedCardinalityFeature.class, OwlObjectMinQualifiedCardinalityFeature.class, OwlObjectMaxQualifiedCardinalityFeature.class);
     addFeatures(OwlDataCardinalityFeature.class, OwlDataMinCardinalityFeature.class, OwlDataMaxCardinalityFeature.class);
     addFeatures(OwlDataQualifiedCardinalityFeature.class, OwlDataMinQualifiedCardinalityFeature.class, OwlDataMaxQualifiedCardinalityFeature.class);
+    addFeatures(OwlDataUnionOfFeature.class, OwlDataIntersectionOfFeature.class, OwlDataComplementOfFeature.class);
   }
 
   @Override
