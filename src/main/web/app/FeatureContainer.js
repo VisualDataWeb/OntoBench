@@ -16,9 +16,11 @@ export default class FeatureContainer {
                 row = $("<div class='row'>").appendTo(Ui.featureContainer);
             }
             let column = $("<div class='ui stretched column'>").appendTo(row);
-            let container = $("<div class='ui segment'>").appendTo(column);
+            let container = $("<div class='ui olive segment'>").appendTo(column);
 
-            container.append("<h3>" + category.name + "</h3>");
+            let buttons = $("<div class='ui three fluid mini basic buttons'>").appendTo(container);
+            FeatureContainer._addContainerSelectionButtons(buttons);
+            container.append("<h3 class='ui medium header'>" + category.name + "</h3>");
             container.append(FeatureContainer._createFeatureList(features));
         }
 
@@ -59,6 +61,12 @@ export default class FeatureContainer {
         $("<label>").attr("for", id).text(feature.name).appendTo(container);
 
         return container;
+    }
+
+    static _addContainerSelectionButtons(container) {
+        $("<div class='ui button select-all-button'>").text("Select all").appendTo(container);
+        $("<div class='ui button select-none-button'>").text("Select none").appendTo(container);
+        $("<div class='ui button invert-selection-button'>").text("Invert selection").appendTo(container);
     }
 
     static _needsNewRow() {

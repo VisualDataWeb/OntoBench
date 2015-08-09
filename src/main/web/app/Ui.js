@@ -4,12 +4,7 @@ export default class Ui {
     static initializeDefaults() {
         $(".menu .item").tab();
 
-        $("#select-all-button").click(() => Ui.features.prop("checked", true));
-        $("#select-none-button").click(() => Ui.features.prop("checked", false));
-        $("#invert-selection-button").click(() => Ui.features.each(function () {
-            $(this).prop("checked", !$(this).prop("checked"));
-        }));
-
+        Ui._initializeSelectionButtons(Ui.featureTab);
         $("#generate-button").click(() => {
             Ui.resetOntologyUrlInput();
             Generator.resetAndGenerate();
@@ -113,6 +108,25 @@ export default class Ui {
         } else {
             container.removeClass("loading");
         }
+    }
+
+    static _initializeSelectionButtons(container) {
+        container.on("click", ".select-all-button", function () {
+            $(this).parent().parent().find(":checkbox").prop("checked", true)
+        });
+        container.on("click", ".select-none-button", function () {
+            $(this).parent().parent().find(":checkbox").prop("checked", false)
+        });
+        container.on("click", ".invert-selection-button", function () {
+            console.log($(this).parent().parent());
+            $(this).parent().parent().find(":checkbox").each(function () {
+                $(this).prop("checked", !$(this).prop("checked"));
+            });
+        });
+    }
+
+    static get featureTab() {
+        return $("#feature-tab");
     }
 
     static get featureContainer() {
