@@ -22,6 +22,7 @@ import de.linkvt.bachelor.features.properties.OwlAllDisjointDataPropertiesFeatur
 import de.linkvt.bachelor.features.properties.OwlAllDisjointObjectPropertiesFeature;
 import de.linkvt.bachelor.features.properties.OwlAsymmetricPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlDataPropertyDisjointWithFeature;
+import de.linkvt.bachelor.features.properties.OwlEquivalentDataPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlFunctionalDataPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlIrreflexivePropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlObjectPropertyDisjointWithFeature;
@@ -44,7 +45,7 @@ public class Owl2Preset extends Preset {
     addFeatures(OwlDisjointUnionFeature.class);
     addFeatures(OwlPropertyChainAxiomFeature.class, OwlObjectPropertyDisjointWithFeature.class, OwlAllDisjointObjectPropertiesFeature.class);
     addFeatures(OwlReflexivePropertyFeature.class, OwlIrreflexivePropertyFeature.class, OwlAsymmetricPropertyFeature.class);
-    addFeatures(OwlFunctionalDataPropertyFeature.class, OwlDataPropertyDisjointWithFeature.class, OwlAllDisjointDataPropertiesFeature.class);
+    addFeatures(OwlFunctionalDataPropertyFeature.class, OwlDataPropertyDisjointWithFeature.class, OwlAllDisjointDataPropertiesFeature.class, OwlEquivalentDataPropertyFeature.class);
   }
 
   @Override

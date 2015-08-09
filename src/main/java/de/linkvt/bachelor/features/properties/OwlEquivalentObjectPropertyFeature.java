@@ -9,7 +9,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlEquivalentPropertyFeature extends Feature {
+public class OwlEquivalentObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getExclusiveProperty("EquivalentPropertyBase");
@@ -26,7 +26,7 @@ public class OwlEquivalentPropertyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:equivalentProperty";
+    return "owl:equivalentProperty (Object Property)";
   }
 
   @Override
