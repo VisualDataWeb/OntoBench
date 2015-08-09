@@ -7,7 +7,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlPropertyDisjointWithFeature extends Feature {
+public class OwlObjectPropertyDisjointWithFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty hasSpouse = featurePool.getExclusiveProperty("hasSpouse");
@@ -21,7 +21,7 @@ public class OwlPropertyDisjointWithFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:propertyDisjointWith";
+    return "owl:propertyDisjointWith (Object Property)";
   }
 
   @Override

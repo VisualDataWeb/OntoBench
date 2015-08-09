@@ -18,11 +18,14 @@ import de.linkvt.bachelor.features.classes.values.data.OwlDataAllValuesFromFeatu
 import de.linkvt.bachelor.features.classes.values.data.OwlDataHasValueFeature;
 import de.linkvt.bachelor.features.classes.values.data.OwlDataSomeValuesFromFeature;
 import de.linkvt.bachelor.features.classes.values.object.OwlHasSelfFeature;
-import de.linkvt.bachelor.features.properties.OwlAllDisjointPropertiesFeature;
+import de.linkvt.bachelor.features.properties.OwlAllDisjointDataPropertiesFeature;
+import de.linkvt.bachelor.features.properties.OwlAllDisjointObjectPropertiesFeature;
 import de.linkvt.bachelor.features.properties.OwlAsymmetricPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlDataPropertyDisjointWithFeature;
+import de.linkvt.bachelor.features.properties.OwlFunctionalDataPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlIrreflexivePropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlObjectPropertyDisjointWithFeature;
 import de.linkvt.bachelor.features.properties.OwlPropertyChainAxiomFeature;
-import de.linkvt.bachelor.features.properties.OwlPropertyDisjointWithFeature;
 import de.linkvt.bachelor.features.properties.OwlReflexivePropertyFeature;
 
 import org.springframework.stereotype.Component;
@@ -39,8 +42,9 @@ public class Owl2Preset extends Preset {
     addFeatures(OwlDataUnionOfFeature.class, OwlDataIntersectionOfFeature.class, OwlDataComplementOfFeature.class);
     addFeatures(OwlAllDisjointClassesFeature.class);
     addFeatures(OwlDisjointUnionFeature.class);
-    addFeatures(OwlPropertyChainAxiomFeature.class, OwlPropertyDisjointWithFeature.class, OwlAllDisjointPropertiesFeature.class);
+    addFeatures(OwlPropertyChainAxiomFeature.class, OwlObjectPropertyDisjointWithFeature.class, OwlAllDisjointObjectPropertiesFeature.class);
     addFeatures(OwlReflexivePropertyFeature.class, OwlIrreflexivePropertyFeature.class, OwlAsymmetricPropertyFeature.class);
+    addFeatures(OwlFunctionalDataPropertyFeature.class, OwlDataPropertyDisjointWithFeature.class, OwlAllDisjointDataPropertiesFeature.class);
   }
 
   @Override

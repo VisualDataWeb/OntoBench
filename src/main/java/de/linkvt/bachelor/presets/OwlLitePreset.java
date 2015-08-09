@@ -22,7 +22,7 @@ import de.linkvt.bachelor.features.individuals.OwlSameAsFeature;
 import de.linkvt.bachelor.features.properties.OwlDatatypePropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlDeprecatedPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlEquivalentPropertyFeature;
-import de.linkvt.bachelor.features.properties.OwlFunctionalPropertyFeature;
+import de.linkvt.bachelor.features.properties.OwlFunctionalObjectPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlInverseFunctionalPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlInverseOfPropertyFeature;
 import de.linkvt.bachelor.features.properties.OwlObjectPropertyFeature;
@@ -53,7 +53,7 @@ public class OwlLitePreset extends Preset {
     addFeatures(OwlDeprecatedPropertyFeature.class);
     addFeatures(OwlInverseOfPropertyFeature.class);
     addFeatures(OwlTransitivePropertyFeature.class, OwlSymmetricPropertyFeature.class);
-    addFeatures(OwlFunctionalPropertyFeature.class, OwlInverseFunctionalPropertyFeature.class);
+    addFeatures(OwlFunctionalObjectPropertyFeature.class, OwlInverseFunctionalPropertyFeature.class);
 
     addFeatures(OwlSameAsFeature.class, OwlAllDifferentFeature.class);
 
