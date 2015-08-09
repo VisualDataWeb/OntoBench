@@ -1,35 +1,35 @@
-package de.linkvt.bachelor.features.classes.cardinalities;
+package de.linkvt.bachelor.features.classes.cardinalities.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLObjectExactCardinality;
+import org.semanticweb.owlapi.model.OWLObjectMaxCardinality;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlCardinalityFeature extends Feature {
+public class OwlObjectMaxCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass("CardinalityRange");
+    OWLClass range = featurePool.getExclusiveClass("MaxCardinalityRange");
     addToGenericDomainAndNewRange(property, range);
 
-    OWLObjectExactCardinality exactCardinality = factory.getOWLObjectExactCardinality(4, property);
-    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, exactCardinality);
+    OWLObjectMaxCardinality maxCardinality = factory.getOWLObjectMaxCardinality(8, property);
+    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, maxCardinality);
     addAxiomToOntology(axiom);
   }
 
   @Override
   public String getName() {
-    return "owl:cardinality";
+    return "owl:maxCardinality";
   }
 
   @Override
   public String getToken() {
-    return "cardinality";
+    return "maxcardinality";
   }
 
   @Override

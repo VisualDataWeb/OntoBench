@@ -2,9 +2,9 @@ package de.linkvt.bachelor.presets;
 
 import de.linkvt.bachelor.features.classes.axioms.OwlDisjointWithFeature;
 import de.linkvt.bachelor.features.classes.axioms.OwlOneOfFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.OwlCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.OwlMaxCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.OwlMinCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMaxCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMinCardinalityFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlComplementOfFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlIntersectionOfFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlUnionOfFeature;
@@ -19,7 +19,7 @@ public class OwlDlPreset extends OwlLitePreset {
   protected void initialize() {
     super.initialize();
 
-    addFeatures(OwlMaxCardinalityFeature.class, OwlMinCardinalityFeature.class, OwlCardinalityFeature.class);
+    addFeatures(OwlObjectMaxCardinalityFeature.class, OwlObjectMinCardinalityFeature.class, OwlObjectCardinalityFeature.class);
     addFeatures(OwlHasValueClassFeature.class);
     addFeatures(OwlUnionOfFeature.class, OwlComplementOfFeature.class, OwlIntersectionOfFeature.class);
     addFeatures(OwlOneOfFeature.class);

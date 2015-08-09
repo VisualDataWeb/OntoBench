@@ -12,9 +12,9 @@ import de.linkvt.bachelor.features.classes.OwlNothingFeature;
 import de.linkvt.bachelor.features.classes.OwlThingFeature;
 import de.linkvt.bachelor.features.classes.axioms.OwlEquivalentClassFeature;
 import de.linkvt.bachelor.features.classes.axioms.RdfsSubClassOfFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.owllite.OwlLiteOwlCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.owllite.OwlLiteOwlMaxCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.owllite.OwlLiteOwlMinCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteOwlObjectCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteOwlObjectMaxCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteOwlObjectMinCardinalityFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlIntersectionOfFeature;
 import de.linkvt.bachelor.features.classes.values.OwlAllValuesFromClassFeature;
 import de.linkvt.bachelor.features.classes.values.OwlSomeValuesFromClassFeature;
@@ -40,7 +40,7 @@ import org.springframework.stereotype.Component;
 public class OwlLitePreset extends Preset {
   @Override
   protected void initialize() {
-    addFeatures(OwlLiteOwlCardinalityFeature.class, OwlLiteOwlMaxCardinalityFeature.class, OwlLiteOwlMinCardinalityFeature.class);
+    addFeatures(OwlLiteOwlObjectCardinalityFeature.class, OwlLiteOwlObjectMaxCardinalityFeature.class, OwlLiteOwlObjectMinCardinalityFeature.class);
     addFeatures(OwlAllValuesFromClassFeature.class, OwlSomeValuesFromClassFeature.class);
     addFeatures(OwlClassFeature.class, OwlThingFeature.class, OwlNothingFeature.class);
     addFeatures(OwlEquivalentClassFeature.class);

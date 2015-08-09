@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.cardinalities.owllite;
+package de.linkvt.bachelor.features.classes.cardinalities.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -10,26 +10,26 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlLiteOwlMinCardinalityFeature extends Feature {
+public class OwlObjectMinCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
     OWLClass range = featurePool.getExclusiveClass("MinCardinalityRange");
     addToGenericDomainAndNewRange(property, range);
 
-    OWLObjectMinCardinality minCardinality = factory.getOWLObjectMinCardinality(0, property);
+    OWLObjectMinCardinality minCardinality = factory.getOWLObjectMinCardinality(2, property);
     OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, minCardinality);
     addAxiomToOntology(axiom);
   }
 
   @Override
   public String getName() {
-    return "owl:minCardinality (OWL Lite)";
+    return "owl:minCardinality";
   }
 
   @Override
   public String getToken() {
-    return "mincardinalitylite";
+    return "mincardinality";
   }
 
   @Override

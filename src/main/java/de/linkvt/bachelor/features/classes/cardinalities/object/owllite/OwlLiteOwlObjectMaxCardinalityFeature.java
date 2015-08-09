@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.cardinalities.owllite;
+package de.linkvt.bachelor.features.classes.cardinalities.object.owllite;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -10,7 +10,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlLiteOwlMaxCardinalityFeature extends Feature {
+public class OwlLiteOwlObjectMaxCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();

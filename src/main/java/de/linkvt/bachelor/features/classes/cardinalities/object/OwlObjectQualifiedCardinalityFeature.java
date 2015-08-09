@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.cardinalities;
+package de.linkvt.bachelor.features.classes.cardinalities.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -9,7 +9,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlQualifiedCardinalityFeature extends Feature {
+public class OwlObjectQualifiedCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty hasFingers = featurePool.getExclusiveProperty("hasFingers");

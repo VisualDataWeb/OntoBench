@@ -1,8 +1,8 @@
 package de.linkvt.bachelor.presets;
 
-import de.linkvt.bachelor.features.classes.cardinalities.OwlQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.OwlMaxQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.cardinalities.OwlMinQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMaxQualifiedCardinalityFeature;
+import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMinQualifiedCardinalityFeature;
 import de.linkvt.bachelor.features.classes.values.OwlHasSelfFeature;
 
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ public class Owl2Preset extends Preset {
   @Override
   protected void initialize() {
     addFeatures(OwlHasSelfFeature.class);
-    addFeatures(OwlQualifiedCardinalityFeature.class, OwlMinQualifiedCardinalityFeature.class, OwlMaxQualifiedCardinalityFeature.class);
+    addFeatures(OwlObjectQualifiedCardinalityFeature.class, OwlObjectMinQualifiedCardinalityFeature.class, OwlObjectMaxQualifiedCardinalityFeature.class);
   }
 
   @Override
