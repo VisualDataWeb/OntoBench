@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class OwlDataAllValuesFromFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create("hasZipCode"));
+    OWLDataProperty property = factory.getOWLDataProperty(IRI.create("zipCode"));
     OWLDatatype datatype = OWL2Datatype.XSD_INTEGER.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
     OWLDataAllValuesFrom restriction = factory.getOWLDataAllValuesFrom(property, datatype);

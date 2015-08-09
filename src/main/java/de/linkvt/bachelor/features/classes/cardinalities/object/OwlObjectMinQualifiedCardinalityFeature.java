@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class OwlObjectMinQualifiedCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty hasWeels = featurePool.getExclusiveProperty("hasWeels");
+    OWLObjectProperty hasWheels = featurePool.getExclusiveProperty("hasWheels");
     OWLClass range = featurePool.getExclusiveClass("MinQualifiedCardinalityRange");
-    addToGenericDomainAndNewRange(hasWeels, range);
+    addToGenericDomainAndNewRange(hasWheels, range);
 
     OWLClass reserveWheel = featurePool.getExclusiveClass("ReserveWheel");
-    OWLObjectMinCardinality minCardinality = factory.getOWLObjectMinCardinality(1, hasWeels, reserveWheel);
+    OWLObjectMinCardinality minCardinality = factory.getOWLObjectMinCardinality(1, hasWheels, reserveWheel);
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, minCardinality));
   }
 
