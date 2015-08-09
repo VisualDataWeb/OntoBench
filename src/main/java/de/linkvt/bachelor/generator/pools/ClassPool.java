@@ -14,9 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ClassPool extends ResourcePool<OWLClass> {
+  private static final int MAX_REUSES = 16;
+
   @Autowired
   public ClassPool(OWLDataFactory factory) {
-    super(factory);
+    super(factory, MAX_REUSES);
   }
 
   @Override

@@ -1,21 +1,30 @@
 package de.linkvt.bachelor.generator.pools;
 
+import org.apache.commons.lang3.mutable.MutableInt;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * A generic resource pool.
  */
 public abstract class ResourcePool<T> {
   protected OWLDataFactory factory;
-  private Set<T> objectPool = new HashSet<>();
-  private Integer genericCounter = 0;
+  private Set<T> objectPool = Collections.newSetFromMap(new ConcurrentHashMap<>());
+  private int genericCounter = 0;
+  private int maxReuses = Integer.MAX_VALUE;
+  private Map<T, MutableInt> usageMap = new ConcurrentHashMap<>();
 
   public ResourcePool(OWLDataFactory factory) {
     this.factory = factory;
+  }
+
+  public ResourcePool(OWLDataFactory factory, int maxReuses) {
+    this.factory = factory;
+    this.maxReuses = maxReuses;
   }
 
   /**
@@ -48,17 +57,36 @@ public abstract class ResourcePool<T> {
     if (!objectPool.isEmpty()) {
       for (T object : objectPool) {
         if (!differentFrom.contains(object)) {
-          return object;
+          if (canBeUsedAgain(object)) {
+            markAsUsed(object);
+            return object;
+          } else {
+            objectPool.remove(object);
+          }
         }
       }
     }
     return createReusableObject(preferredIri);
   }
 
+  private boolean canBeUsedAgain(T object) {
+    return !usageMap.containsKey(object) || usageMap.get(object).intValue() <= maxReuses;
+  }
+
+  private void markAsUsed(T object) {
+    MutableInt usages = usageMap.get(object);
+    if (usages == null) {
+      usageMap.put(object, new MutableInt(1));
+    } else {
+      usages.increment();
+    }
+  }
+
   private T createReusableObject(String preferredIri) {
     T object;
     object = getExclusiveObject(preferredIri);
     objectPool.add(object);
+    markAsUsed(object);
     return object;
   }
 
