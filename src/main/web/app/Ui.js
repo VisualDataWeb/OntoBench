@@ -59,12 +59,13 @@ export default class Ui {
         presets.sort((a, b) => a.index - b.index);
 
         presets.forEach(preset => {
-            let button = $("<button class='ui fluid green button'>").data(preset).text(preset.name);
+            let button = $("<button class='ui fluid green labeled icon button'>").data(preset).text(preset.name);
+            button.append("<i class='plus icon'>");
             button.click(() => {
-                Ui.features.prop("checked", function () {
+                Ui.features.filter(function () {
                     let token = $(this).parent().data().token;
                     return preset.tokens.includes(token);
-                });
+                }).prop("checked", true);
             });
 
             let column = $("<div class='column'>").appendTo($("#preset-buttons"));

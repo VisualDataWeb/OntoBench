@@ -54,7 +54,7 @@ public class Owl2Preset extends Preset {
 
   @Override
   public String getName() {
-    return "OWL 2 (WIP)";
+    return "OWL 2 only";
   }
 
   @Override
