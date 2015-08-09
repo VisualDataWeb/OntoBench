@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.values;
+package de.linkvt.bachelor.features.classes.values.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;

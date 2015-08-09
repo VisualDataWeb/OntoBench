@@ -8,7 +8,7 @@ import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMinCard
 import de.linkvt.bachelor.features.classes.setoperators.OwlComplementOfFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlIntersectionOfFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlUnionOfFeature;
-import de.linkvt.bachelor.features.classes.values.OwlHasValueClassFeature;
+import de.linkvt.bachelor.features.classes.values.object.OwlObjectHasValueFeature;
 import de.linkvt.bachelor.features.datatypes.EnumeratedRdfsDatatypeFeature;
 
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class OwlDlPreset extends OwlLitePreset {
     super.initialize();
 
     addFeatures(OwlObjectMaxCardinalityFeature.class, OwlObjectMinCardinalityFeature.class, OwlObjectCardinalityFeature.class);
-    addFeatures(OwlHasValueClassFeature.class);
+    addFeatures(OwlObjectHasValueFeature.class);
     addFeatures(OwlUnionOfFeature.class, OwlComplementOfFeature.class, OwlIntersectionOfFeature.class);
     addFeatures(OwlOneOfFeature.class);
     addFeatures(OwlDisjointWithFeature.class);

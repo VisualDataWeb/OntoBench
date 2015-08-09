@@ -3,7 +3,7 @@ package de.linkvt.bachelor.presets;
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectQualifiedCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMaxQualifiedCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.OwlObjectMinQualifiedCardinalityFeature;
-import de.linkvt.bachelor.features.classes.values.OwlHasSelfFeature;
+import de.linkvt.bachelor.features.classes.values.object.OwlHasSelfFeature;
 
 import org.springframework.stereotype.Component;
 

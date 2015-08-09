@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.values;
+package de.linkvt.bachelor.features.classes.values.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -9,7 +9,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlAllValuesFromClassFeature extends Feature {
+public class OwlObjectAllValuesFromFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty hasMaker = featurePool.getExclusiveProperty("hasMaker");
@@ -22,12 +22,12 @@ public class OwlAllValuesFromClassFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:allValuesFrom a class";
+    return "owl:allValuesFrom (Object Property)";
   }
 
   @Override
   public String getToken() {
-    return "allvaluesclass";
+    return "allvaluesclassobject";
   }
 
   @Override

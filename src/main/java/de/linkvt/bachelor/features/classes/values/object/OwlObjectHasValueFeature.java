@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.values;
+package de.linkvt.bachelor.features.classes.values.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -11,7 +11,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlHasValueClassFeature extends Feature {
+public class OwlObjectHasValueFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty hasSugar = featurePool.getExclusiveProperty("hasSugar");
@@ -25,12 +25,12 @@ public class OwlHasValueClassFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:hasValue";
+    return "owl:hasValue (Object Property)";
   }
 
   @Override
   public String getToken() {
-    return "hasvalue";
+    return "hasvalueobject";
   }
 
   @Override

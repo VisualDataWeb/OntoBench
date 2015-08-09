@@ -16,8 +16,8 @@ import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteO
 import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteOwlObjectMaxCardinalityFeature;
 import de.linkvt.bachelor.features.classes.cardinalities.object.owllite.OwlLiteOwlObjectMinCardinalityFeature;
 import de.linkvt.bachelor.features.classes.setoperators.OwlIntersectionOfFeature;
-import de.linkvt.bachelor.features.classes.values.OwlAllValuesFromClassFeature;
-import de.linkvt.bachelor.features.classes.values.OwlSomeValuesFromClassFeature;
+import de.linkvt.bachelor.features.classes.values.object.OwlObjectAllValuesFromFeature;
+import de.linkvt.bachelor.features.classes.values.object.OwlObjectSomeValuesFromFeature;
 import de.linkvt.bachelor.features.individuals.OwlAllDifferentFeature;
 import de.linkvt.bachelor.features.individuals.OwlSameAsFeature;
 import de.linkvt.bachelor.features.properties.OwlDatatypePropertyFeature;
@@ -41,7 +41,7 @@ public class OwlLitePreset extends Preset {
   @Override
   protected void initialize() {
     addFeatures(OwlLiteOwlObjectCardinalityFeature.class, OwlLiteOwlObjectMaxCardinalityFeature.class, OwlLiteOwlObjectMinCardinalityFeature.class);
-    addFeatures(OwlAllValuesFromClassFeature.class, OwlSomeValuesFromClassFeature.class);
+    addFeatures(OwlObjectAllValuesFromFeature.class, OwlObjectSomeValuesFromFeature.class);
     addFeatures(OwlClassFeature.class, OwlThingFeature.class, OwlNothingFeature.class);
     addFeatures(OwlEquivalentClassFeature.class);
     addFeatures(OwlDeprecatedClassFeature.class);

@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classes.values;
+package de.linkvt.bachelor.features.classes.values.object;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -9,7 +9,7 @@ import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlSomeValuesFromClassFeature extends Feature {
+public class OwlObjectSomeValuesFromFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty builtBy = featurePool.getExclusiveProperty("builtBy");
@@ -22,12 +22,12 @@ public class OwlSomeValuesFromClassFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:someValuesFrom a class";
+    return "owl:someValuesFrom (Object Property)";
   }
 
   @Override
   public String getToken() {
-    return "somevaluesclass";
+    return "somevaluesobject";
   }
 
   @Override
