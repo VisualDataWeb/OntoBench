@@ -37,7 +37,7 @@ public class FeaturePool {
     return classPool.getReusableObject(preferredIri);
   }
 
-  public OWLClass getReusableClossDifferentFrom(OWLClass... differentFrom) {
+  public OWLClass getReusableClassDifferentFrom(OWLClass... differentFrom) {
     return classPool.getResuableObjectDifferentFrom(new HashSet<>(Arrays.asList(differentFrom)));
   }
 

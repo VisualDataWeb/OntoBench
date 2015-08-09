@@ -39,7 +39,7 @@ public abstract class Feature {
 
   protected void addToGenericDomainAndNewRange(OWLObjectProperty property, OWLClassExpression range) {
     OWLClass domain = featurePool.getReusableClass();
-    addProperty(property, domain, range);
+    addProperty(domain, property, range);
   }
 
   protected void addToGenericDomainAndNewRange(OWLDataProperty property, OWLDataRange range) {
@@ -49,7 +49,7 @@ public abstract class Feature {
     addAxiomToOntology(factory.getOWLDataPropertyRangeAxiom(property, range));
   }
 
-  protected void addProperty(OWLObjectProperty property, OWLClass domain, OWLClassExpression range) {
+  protected void addProperty(OWLClass domain, OWLObjectProperty property, OWLClassExpression range) {
     OWLAxiom domainAxiom = factory.getOWLObjectPropertyDomainAxiom(property, domain);
     OWLAxiom rangeAxiom = factory.getOWLObjectPropertyRangeAxiom(property, range);
 

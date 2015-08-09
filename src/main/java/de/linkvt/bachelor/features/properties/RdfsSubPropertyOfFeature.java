@@ -13,13 +13,13 @@ public class RdfsSubPropertyOfFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass start = featurePool.getReusableClass();
-    OWLClass middle = featurePool.getReusableClossDifferentFrom(start);
-    OWLClass end = featurePool.getReusableClossDifferentFrom(start, middle);
+    OWLClass middle = featurePool.getReusableClassDifferentFrom(start);
+    OWLClass end = featurePool.getReusableClassDifferentFrom(start, middle);
 
     OWLObjectProperty subProperty = featurePool.getExclusiveProperty("SubProperty");
     OWLObjectProperty superProperty = featurePool.getExclusiveProperty("SuperProperty");
-    addProperty(subProperty, start, middle);
-    addProperty(superProperty, middle, end);
+    addProperty(start, subProperty, middle);
+    addProperty(middle, superProperty, end);
 
     OWLAxiom axiom = factory.getOWLSubObjectPropertyOfAxiom(subProperty, superProperty);
     addAxiomToOntology(axiom);
