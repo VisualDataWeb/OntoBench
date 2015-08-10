@@ -5,17 +5,13 @@ export default class FeatureContainer {
         let categoryToFeatureMap = FeatureContainer._mapFeaturesToCategory(allFeatures);
         categories.sort((a, b) => a.index - b.index);
 
-        let row;
         for (let category of categories) {
             let features = categoryToFeatureMap.get(category.name);
             if (!features || !features.length) {
                 continue;
             }
 
-            if (FeatureContainer._needsNewRow()) {
-                row = $("<div class='row'>").appendTo(Ui.featureContainer);
-            }
-            let column = $("<div class='ui stretched column'>").appendTo(row);
+            let column = $("<div class='ui stretched column'>").appendTo(Ui.featureContainer);
             let container = $("<div class='ui olive segment'>").appendTo(column);
 
             let buttons = $("<div class='ui three fluid mini basic buttons'>").appendTo(container);
@@ -67,10 +63,5 @@ export default class FeatureContainer {
         $("<div class='ui button select-all-button'>").text("Select all").appendTo(container);
         $("<div class='ui button select-none-button'>").text("Select none").appendTo(container);
         $("<div class='ui button invert-selection-button'>").text("Invert selection").appendTo(container);
-    }
-
-    static _needsNewRow() {
-        const MAX_CATEGORIES_PER_ROW = 2;
-        return Ui.featureContainer.find(".column").length % MAX_CATEGORIES_PER_ROW === 0;
     }
 }
