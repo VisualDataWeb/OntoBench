@@ -1,7 +1,6 @@
 package de.linkvt.bachelor.web.converters.parameter;
 
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.features.FeatureComparator;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,13 +41,7 @@ public class StringToFeaturesConverter implements Converter<String, List<Feature
       }
     }
 
-    normalizeFeatureOrder(features);
-
     return Collections.unmodifiableList(features);
-  }
-
-  private void normalizeFeatureOrder(List<Feature> features) {
-    Collections.sort(features, new FeatureComparator());
   }
 
   private List<String> getParameters(String query) {

@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
@@ -109,10 +108,10 @@ public class GeneratorController {
   }
 
   @RequestMapping("/presets")
-  public Set<PresetDto> presets() {
+  public List<PresetDto> presets() {
     Collection<Preset> presets = applicationContext.getBeansOfType(Preset.class).values();
 
-    return presets.stream().map(PresetDto::new).collect(Collectors.toSet());
+    return presets.stream().map(PresetDto::new).collect(Collectors.toList());
   }
 
 }
