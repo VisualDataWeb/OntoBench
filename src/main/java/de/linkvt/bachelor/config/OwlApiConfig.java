@@ -48,7 +48,7 @@ public class OwlApiConfig {
     String url = request.getRequestURL().toString();
 
     // ignore urls of stored generations
-    if (!url.matches("[0-9]/$")) {
+    if (!url.matches(".*\\d+/$")) {
       SortedSet<Feature> features = new TreeSet<>(new FeatureComparator());
       features.addAll(generator.getFeatures());
       String featureString = features.stream().map(Feature::getToken).collect(Collectors.joining(","));
