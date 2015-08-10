@@ -15,7 +15,8 @@ public class OwlAnnotationPropertyFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLAnnotationProperty annotationProperty = factory.getOWLAnnotationProperty(IRI.create("customAnnotationProperty"));
+    String ontologyIri = ontology.getOntologyID().getOntologyIRI().get().toString();
+    OWLAnnotationProperty annotationProperty = factory.getOWLAnnotationProperty(IRI.create(ontologyIri + "customAnnotationProperty"));
     addAxiomToOntology(factory.getOWLDeclarationAxiom(annotationProperty));
 
     OWLLiteral annotationValue = factory.getOWLLiteral("Custom Annotation Value");
