@@ -60,7 +60,7 @@ export default class Generator {
             if (onReady) {
                 onReady(Generator.shortUrl, ontology);
             }
-        });
+        }).fail(() => Ui.showErrorMessage());
     }
 
     static _createLongUrl(onReady) {
@@ -73,7 +73,7 @@ export default class Generator {
             if (onReady) {
                 onReady(Generator.longUrl, ontology);
             }
-        });
+        }).fail(() => Ui.showErrorMessage());
     }
 
     static _displayUrlAndOntology(url, ontology) {

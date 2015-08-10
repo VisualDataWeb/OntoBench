@@ -36,6 +36,7 @@
                     <div id="format-dropdown" class="ui loading fluid selection dropdown">
                         <input type="hidden" name="gender">
                         <i class="dropdown icon"></i>
+
                         <div class="default text">Ontology Syntax</div>
                         <div id="format-list" class="menu">
                         </div>
@@ -75,6 +76,15 @@
             <i class="info icon"></i>
             You have to generate an ontology first.
         </div>
+        <div id="ontology-generation-error-info" class="ui hidden negative icon message">
+            <i class="warning sign icon"></i>
+
+            <div class="content">
+                <div class="header">There was an error while generating the ontology.</div>
+                <p>Please try again later.</p>
+            </div>
+        </div>
+
         <div class="ui hidden segment">
             <pre><code id="ontology-text" class=""></code></pre>
         </div>

@@ -95,18 +95,30 @@ export default class Ui {
 
     static displayOntology(ontology) {
         Ui.ontologyText.text(ontology.toString());
-        Ui.indicateGeneration(false)
+        Ui.indicateGeneration(false);
+        Ui.showErrorMessage(false);
     }
 
-    static indicateGeneration(shouldIndicate) {
+    static indicateGeneration(shouldIndicate = true) {
         let container = Ui.ontologyTextContainer.removeClass("hidden");
         $("#initial-ontology-info").hide();
 
-        if (arguments.length === 0 || shouldIndicate) {
+        if (shouldIndicate) {
             container.addClass("loading");
             Ui.ontologyText.empty();
         } else {
             container.removeClass("loading");
+        }
+    }
+
+    static showErrorMessage(shouldShow = true) {
+        Ui.indicateGeneration(false);
+        if (shouldShow) {
+            Ui.ontologyTextContainer.hide();
+            $("#ontology-generation-error-info").removeClass("hidden").show();
+        } else {
+            $("#ontology-generation-error-info").hide();
+            Ui.ontologyTextContainer.show();
         }
     }
 
