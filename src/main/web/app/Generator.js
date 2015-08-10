@@ -53,7 +53,8 @@ export default class Generator {
         Ui.indicateGeneration();
         $.ajax({
             method: "POST",
-            url: Generator.longUrl
+            url: Generator.longUrl,
+            dataType: "text"
         }).done((ontology, textStatus, xhr) => {
             Generator._shortUrlBase = location.href.slice(0, -1) + xhr.getResponseHeader("Short-Path");
             Generator._shortUrlOntology = ontology;
