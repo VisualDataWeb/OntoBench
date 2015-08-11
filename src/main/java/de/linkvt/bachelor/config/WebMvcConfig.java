@@ -17,7 +17,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,13 +48,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         .mediaType("ofn", OntologySyntax.FUNCTIONAL.getMediaType())
         .mediaType("omn", OntologySyntax.MANCHESTER.getMediaType())
         .mediaType("ttl", OntologySyntax.TURTLE.getMediaType());
-  }
-
-  @Bean
-  public InternalResourceViewResolver viewResolver() {
-    InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-    viewResolver.setRedirectHttp10Compatible(false);
-    return viewResolver;
   }
 
   @Bean
