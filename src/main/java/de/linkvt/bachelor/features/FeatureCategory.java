@@ -16,7 +16,8 @@ public enum FeatureCategory {
   DATA_PROPERTY_AXIOMS("Data Property Axioms"),
   ANNOTATIONS("Annotations"),
   DC("DC & DC Terms Annotations"),
-  ASSERTIONS("Assertions");
+  ASSERTIONS("Assertions"),
+  VISUALIZATION("Visualization");
 
   private String name;
 
