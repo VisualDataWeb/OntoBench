@@ -28,6 +28,13 @@ public abstract class ResourcePool<T> {
   }
 
   /**
+   * @return an exlusive object with a generic name
+   */
+  public T getExclusiveObject() {
+    return getExclusiveObject(createGenericName());
+  }
+
+  /**
    * Returns if available an object from the pool or a new one if none is available. The new object will receive a
    * generic iri.
    *
@@ -61,7 +68,7 @@ public abstract class ResourcePool<T> {
             markAsUsed(object);
             return object;
           } else {
-            objectPool.remove(object);
+            removeFromPool(object);
           }
         }
       }
@@ -83,8 +90,7 @@ public abstract class ResourcePool<T> {
   }
 
   private T createReusableObject(String preferredIri) {
-    T object;
-    object = getExclusiveObject(preferredIri);
+    T object = getExclusiveObject(preferredIri);
     objectPool.add(object);
     markAsUsed(object);
     return object;
@@ -115,6 +121,7 @@ public abstract class ResourcePool<T> {
    * @return true, if removing was successful
    */
   public boolean removeFromPool(T object) {
+    usageMap.remove(object);
     return objectPool.remove(object);
   }
 
