@@ -8,13 +8,13 @@ import org.semanticweb.owlapi.model.OWLProperty;
 import org.springframework.stereotype.Component;
 
 /**
- * Property without domain and range.
+ * Object Property without domain and range.
  */
 @Component
 public class UnboundObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLProperty property = featurePool.getExclusiveProperty("HasNoDomainAndRange");
+    OWLProperty property = featurePool.getExclusiveProperty("NoDomainAndRangeObjectProperty");
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(property);
 
     addAxiomToOntology(axiom);
