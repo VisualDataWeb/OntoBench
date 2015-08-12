@@ -12,6 +12,8 @@ import de.linkvt.bachelor.features.assertions.OwlAllDifferentFeature;
 import de.linkvt.bachelor.features.assertions.OwlSameAsFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.OwlEquivalentClassFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.RdfsSubClassOfFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataDomainFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataRangeFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlEquivalentObjectPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlFunctionalObjectPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlInverseFunctionalPropertyFeature;
@@ -30,6 +32,7 @@ import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinal
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectAllValuesFromFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectSomeValuesFromFeature;
 import de.linkvt.bachelor.features.properties.dataproperty.OwlDatatypePropertyFeature;
+import de.linkvt.bachelor.features.properties.dataproperty.UnboundDataPropertyFeature;
 import de.linkvt.bachelor.features.properties.objectproperty.OwlObjectPropertyFeature;
 import de.linkvt.bachelor.features.properties.objectproperty.UnboundObjectPropertyFeature;
 
@@ -47,6 +50,7 @@ public class OwlLitePreset extends Preset {
 
     addFeatures(OwlObjectPropertyFeature.class);
     addFeatures(RdfsObjectDomainFeature.class, RdfsObjectRangeFeature.class, UnboundObjectPropertyFeature.class);
+    addFeatures(RdfsDataDomainFeature.class, RdfsDataRangeFeature.class, UnboundDataPropertyFeature.class);
     addFeatures(RdfsSubClassOfFeature.class);
     addFeatures(RdfsObjectSubPropertyOfFeature.class);
     addFeatures(OwlEquivalentObjectPropertyFeature.class);
