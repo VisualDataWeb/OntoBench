@@ -14,10 +14,11 @@ public enum FeatureCategory {
   CLASS_EXPRESSION_AXIOMS("Class Expression Axioms"),
   OBJECT_PROPERTY_AXIOMS("Object Property Axioms"),
   DATA_PROPERTY_AXIOMS("Data Property Axioms"),
-  ANNOTATIONS("Annotations"),
-  DC("DC & DC Terms Annotations"),
   ASSERTIONS("Assertions"),
   KEYS("Keys"),
+  DECLARATIONS("Declarations"),
+  ANNOTATIONS("Annotations"),
+  DC("DC & DC Terms Annotations"),
   VISUALIZATION("Visualization");
 
   private String name;

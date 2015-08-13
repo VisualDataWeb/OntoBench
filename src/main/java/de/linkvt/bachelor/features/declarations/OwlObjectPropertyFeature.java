@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.properties.objectproperty;
+package de.linkvt.bachelor.features.declarations;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -29,7 +29,7 @@ public class OwlObjectPropertyFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.PROPERTY_EXPRESSIONS;
+    return FeatureCategory.DECLARATIONS;
   }
 
   @Override

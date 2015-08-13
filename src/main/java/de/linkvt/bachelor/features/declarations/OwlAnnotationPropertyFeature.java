@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.annotations.ontology.owl;
+package de.linkvt.bachelor.features.declarations;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -39,6 +39,6 @@ public class OwlAnnotationPropertyFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.ANNOTATIONS;
+    return FeatureCategory.DECLARATIONS;
   }
 }

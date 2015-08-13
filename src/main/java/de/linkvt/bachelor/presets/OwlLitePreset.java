@@ -2,7 +2,6 @@ package de.linkvt.bachelor.presets;
 
 import de.linkvt.bachelor.features.annotations.OwlDeprecatedClassFeature;
 import de.linkvt.bachelor.features.annotations.OwlDeprecatedPropertyFeature;
-import de.linkvt.bachelor.features.annotations.ontology.owl.OwlAnnotationPropertyFeature;
 import de.linkvt.bachelor.features.annotations.ontology.owl.OwlVersionInfoFeature;
 import de.linkvt.bachelor.features.annotations.ontology.rdfs.RdfsCommentFeature;
 import de.linkvt.bachelor.features.annotations.ontology.rdfs.RdfsCommentOnOntologyFeature;
@@ -23,7 +22,6 @@ import de.linkvt.bachelor.features.axioms.objectproperty.OwlTransitivePropertyFe
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectDomainFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectRangeFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectSubPropertyOfFeature;
-import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlClassFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlNothingFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlThingFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.owllite.OwlLiteOwlObjectCardinalityFeature;
@@ -31,10 +29,12 @@ import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinal
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.owllite.OwlLiteOwlObjectMinCardinalityFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectAllValuesFromFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectSomeValuesFromFeature;
-import de.linkvt.bachelor.features.properties.dataproperty.OwlDatatypePropertyFeature;
-import de.linkvt.bachelor.features.properties.dataproperty.UnboundDataPropertyFeature;
-import de.linkvt.bachelor.features.properties.objectproperty.OwlObjectPropertyFeature;
-import de.linkvt.bachelor.features.properties.objectproperty.UnboundObjectPropertyFeature;
+import de.linkvt.bachelor.features.declarations.OwlAnnotationPropertyFeature;
+import de.linkvt.bachelor.features.declarations.OwlClassFeature;
+import de.linkvt.bachelor.features.declarations.OwlDatatypePropertyFeature;
+import de.linkvt.bachelor.features.declarations.OwlObjectPropertyFeature;
+import de.linkvt.bachelor.features.declarations.UnboundDataPropertyFeature;
+import de.linkvt.bachelor.features.declarations.UnboundObjectPropertyFeature;
 
 import org.springframework.stereotype.Component;
 

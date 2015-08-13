@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.classexpressions.predefinedandnamed;
+package de.linkvt.bachelor.features.declarations;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -29,7 +29,7 @@ public class OwlClassFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.PREDEFINED_CLASSES;
+    return FeatureCategory.DECLARATIONS;
   }
 
   @Override
