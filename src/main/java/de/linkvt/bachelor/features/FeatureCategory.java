@@ -10,7 +10,7 @@ public enum FeatureCategory {
   DATA_PROPERTY_RESTRICTIONS("Data Property Restrictions"),
   PROPERTY_EXPRESSIONS("Property Expressions"),
   INDIVIDUALS("Individuals"),
-  DATA_RANGE_EXPRESSIONS("Data Ranges Expressions"),
+  DATA_RANGE_EXPRESSIONS("Data Range Expressions"),
   CLASS_EXPRESSION_AXIOMS("Class Expression Axioms"),
   OBJECT_PROPERTY_AXIOMS("Object Property Axioms"),
   DATA_PROPERTY_AXIOMS("Data Property Axioms"),
