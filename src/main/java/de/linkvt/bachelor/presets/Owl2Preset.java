@@ -31,6 +31,7 @@ import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.Ow
 import de.linkvt.bachelor.features.dataranges.OwlDataComplementOfFeature;
 import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfFeature;
 import de.linkvt.bachelor.features.dataranges.OwlDataUnionOfFeature;
+import de.linkvt.bachelor.features.keys.OwlHasKeyFeature;
 
 import org.springframework.stereotype.Component;
 
@@ -50,6 +51,7 @@ public class Owl2Preset extends Preset {
     addFeatures(OwlReflexivePropertyFeature.class, OwlIrreflexivePropertyFeature.class, OwlAsymmetricPropertyFeature.class);
     addFeatures(OwlFunctionalDataPropertyFeature.class, OwlDataPropertyDisjointWithFeature.class, OwlAllDisjointDataPropertiesFeature.class, OwlEquivalentDataPropertyFeature.class);
     addFeatures(RdfsDataDomainFeature.class, RdfsDataRangeFeature.class, RdfsDataSubPropertyOfFeature.class);
+    addFeatures(OwlHasKeyFeature.class);
   }
 
   @Override

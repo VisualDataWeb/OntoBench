@@ -17,6 +17,7 @@ public enum FeatureCategory {
   ANNOTATIONS("Annotations"),
   DC("DC & DC Terms Annotations"),
   ASSERTIONS("Assertions"),
+  KEYS("Keys"),
   VISUALIZATION("Visualization");
 
   private String name;
