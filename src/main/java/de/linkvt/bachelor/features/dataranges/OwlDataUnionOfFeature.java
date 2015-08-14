@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 public class OwlDataUnionOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype evenIntegers = factory.getOWLDatatype(IRI.create("EvenIntegers"));
-    OWLDatatype oddIntegers = factory.getOWLDatatype(IRI.create("OddIntegers"));
+    OWLDatatype evenIntegers = factory.getOWLDatatype(IRI.create(":EvenIntegers"));
+    OWLDatatype oddIntegers = factory.getOWLDatatype(IRI.create(":OddIntegers"));
     OWLDataUnionOf union = factory.getOWLDataUnionOf(evenIntegers, oddIntegers);
 
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create("unionOfPositiveAndOddIntegers"));
+    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":unionOfPositiveAndOddIntegers"));
     addToGenericDomainAndNewRange(property, union);
   }
 

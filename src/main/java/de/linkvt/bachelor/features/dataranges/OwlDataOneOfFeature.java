@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class OwlDataOneOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype datatype = factory.getOWLDatatype(IRI.create("TennisGameScore"));
+    OWLDatatype datatype = factory.getOWLDatatype(IRI.create(":TennisGameScore"));
 
     OWLLiteral zero = factory.getOWLLiteral(0);
     OWLLiteral fifteen = factory.getOWLLiteral(15);

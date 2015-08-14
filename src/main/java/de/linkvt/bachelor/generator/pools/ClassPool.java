@@ -28,6 +28,6 @@ public class ClassPool extends ResourcePool<OWLClass> {
 
   @Override
   protected String getGenericNameBase() {
-    return "Class";
+    return ":Class";
   }
 }

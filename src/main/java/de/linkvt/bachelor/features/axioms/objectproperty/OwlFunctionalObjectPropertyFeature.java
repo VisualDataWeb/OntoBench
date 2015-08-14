@@ -12,7 +12,7 @@ public class OwlFunctionalObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass("FunctionalPropertyRange");
+    OWLClass range = featurePool.getExclusiveClass(":FunctionalPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     addAxiomToOntology(factory.getOWLFunctionalObjectPropertyAxiom(property));

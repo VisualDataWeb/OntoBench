@@ -14,8 +14,8 @@ public class RdfsLabelMultiLanguageFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty("propertyWithInfos");
-    OWLClass range = featurePool.getExclusiveClass("ClassWithInfos");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":propertyWithInfos");
+    OWLClass range = featurePool.getExclusiveClass(":ClassWithInfos");
     OWLAnnotationProperty label = factory.getRDFSLabel();
 
     OWLAnnotation deAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Bezeichnung einer Property", "de"));

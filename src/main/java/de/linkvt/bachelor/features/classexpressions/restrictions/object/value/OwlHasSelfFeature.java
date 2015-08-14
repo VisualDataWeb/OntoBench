@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 public class OwlHasSelfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty loves = featurePool.getExclusiveProperty("loves");
+    OWLObjectProperty loves = featurePool.getExclusiveProperty(":loves");
 
-    OWLClass narcisticPerson = featurePool.getExclusiveClass("NarcisticPerson");
+    OWLClass narcisticPerson = featurePool.getExclusiveClass(":NarcisticPerson");
 
     OWLObjectHasSelf restriction = factory.getOWLObjectHasSelf(loves);
     addAxiomToOntology(factory.getOWLEquivalentClassesAxiom(narcisticPerson, restriction));

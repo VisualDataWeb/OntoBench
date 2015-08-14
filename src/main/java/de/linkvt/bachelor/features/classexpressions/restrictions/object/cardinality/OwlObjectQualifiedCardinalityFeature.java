@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 public class OwlObjectQualifiedCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty hasFingers = featurePool.getExclusiveProperty("hasFingers");
-    OWLClass range = featurePool.getExclusiveClass("QualifiedCardinalityRange");
+    OWLObjectProperty hasFingers = featurePool.getExclusiveProperty(":hasFingers");
+    OWLClass range = featurePool.getExclusiveClass(":QualifiedCardinalityRange");
     addToGenericDomainAndNewRange(hasFingers, range);
 
-    OWLClass thumb = featurePool.getExclusiveClass("Thumb");
+    OWLClass thumb = featurePool.getExclusiveClass(":Thumb");
     OWLObjectExactCardinality exactCardinality = factory.getOWLObjectExactCardinality(1, hasFingers, thumb);
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, exactCardinality));
   }

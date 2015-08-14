@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 public class OwlDataIntersectionOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype evenIntegers = factory.getOWLDatatype(IRI.create("EvenIntegers"));
-    OWLDatatype oddIntegers = factory.getOWLDatatype(IRI.create("OddIntegers"));
+    OWLDatatype evenIntegers = factory.getOWLDatatype(IRI.create(":EvenIntegers"));
+    OWLDatatype oddIntegers = factory.getOWLDatatype(IRI.create(":OddIntegers"));
     OWLDataIntersectionOf intersection = factory.getOWLDataIntersectionOf(evenIntegers, oddIntegers);
 
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create("intersectionOfPositiveAndOddIntegers"));
+    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":intersectionOfPositiveAndOddIntegers"));
     addToGenericDomainAndNewRange(property, intersection);
   }
 

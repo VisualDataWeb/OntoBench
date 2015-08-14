@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 public class OwlAllDifferentFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLNamedIndividual donGiovanni = factory.getOWLNamedIndividual(IRI.create("Don_Giovanni"));
-    OWLNamedIndividual tosca = factory.getOWLNamedIndividual(IRI.create("Tosca"));
-    OWLNamedIndividual salome = factory.getOWLNamedIndividual(IRI.create("Salome"));
-    OWLNamedIndividual nozzeDiFigaro = factory.getOWLNamedIndividual(IRI.create("Nozze_di_Figaro"));
+    OWLNamedIndividual donGiovanni = factory.getOWLNamedIndividual(IRI.create(":Don_Giovanni"));
+    OWLNamedIndividual tosca = factory.getOWLNamedIndividual(IRI.create(":Tosca"));
+    OWLNamedIndividual salome = factory.getOWLNamedIndividual(IRI.create(":Salome"));
+    OWLNamedIndividual nozzeDiFigaro = factory.getOWLNamedIndividual(IRI.create(":Nozze_di_Figaro"));
 
     addAxiomToOntology(factory.getOWLDifferentIndividualsAxiom(donGiovanni, tosca, salome, nozzeDiFigaro));
   }

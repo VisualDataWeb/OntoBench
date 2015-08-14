@@ -15,12 +15,12 @@ public class OwlHasKeyFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLClass person = featurePool.getExclusiveClass("Person");
-    OWLDataProperty taxId = factory.getOWLDataProperty(IRI.create("taxId"));
+    OWLClass person = featurePool.getExclusiveClass(":Person");
+    OWLDataProperty taxId = factory.getOWLDataProperty(IRI.create(":taxId"));
     addProperty(person, taxId, OWL2Datatype.XSD_STRING.getDatatype(factory));
 
-    OWLObjectProperty hasHomeland = featurePool.getExclusiveProperty("hasHomeland");
-    OWLClass country = featurePool.getExclusiveClass("Country");
+    OWLObjectProperty hasHomeland = featurePool.getExclusiveProperty(":hasHomeland");
+    OWLClass country = featurePool.getExclusiveClass(":Country");
     addProperty(person, hasHomeland, country);
 
     addAxiomToOntology(factory.getOWLHasKeyAxiom(person, taxId, hasHomeland));

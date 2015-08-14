@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 public class OwlAllDisjointDataPropertiesFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty street = factory.getOWLDataProperty(IRI.create("street"));
-    OWLDataProperty name = factory.getOWLDataProperty(IRI.create("name"));
-    OWLDataProperty favoriteColor = factory.getOWLDataProperty(IRI.create("favoriteColor"));
+    OWLDataProperty street = factory.getOWLDataProperty(IRI.create(":street"));
+    OWLDataProperty name = factory.getOWLDataProperty(IRI.create(":name"));
+    OWLDataProperty favoriteColor = factory.getOWLDataProperty(IRI.create(":favoriteColor"));
 
     addAxiomToOntology(factory.getOWLDisjointDataPropertiesAxiom(street, name, favoriteColor));
 

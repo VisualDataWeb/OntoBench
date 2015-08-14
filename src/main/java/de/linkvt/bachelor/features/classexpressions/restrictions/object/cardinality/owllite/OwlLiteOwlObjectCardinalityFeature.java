@@ -14,7 +14,7 @@ public class OwlLiteOwlObjectCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass("CardinalityRange");
+    OWLClass range = featurePool.getExclusiveClass(":CardinalityRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectExactCardinality exactCardinality = factory.getOWLObjectExactCardinality(1, property);

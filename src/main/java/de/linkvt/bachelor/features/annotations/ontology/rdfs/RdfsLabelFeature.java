@@ -14,8 +14,8 @@ public class RdfsLabelFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty("propertyWithInfos");
-    OWLClass range = featurePool.getExclusiveClass("ClassWithInfos");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":propertyWithInfos");
+    OWLClass range = featurePool.getExclusiveClass(":ClassWithInfos");
     OWLAnnotationProperty label = factory.getRDFSLabel();
 
     OWLAnnotation pA = factory.getOWLAnnotation(label, factory.getOWLLiteral("Label of a property (undefined language)"));

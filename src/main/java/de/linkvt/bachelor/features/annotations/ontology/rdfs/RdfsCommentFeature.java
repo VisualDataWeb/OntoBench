@@ -15,8 +15,8 @@ public class RdfsCommentFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty("propertyWithInfos");
-    OWLClass range = featurePool.getExclusiveClass("ClassWithInfos");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":propertyWithInfos");
+    OWLClass range = featurePool.getExclusiveClass(":ClassWithInfos");
 
     OWLLiteral label = factory.getOWLLiteral("Comment of a property (undefined language)");
     OWLAnnotationProperty comment = factory.getRDFSComment();

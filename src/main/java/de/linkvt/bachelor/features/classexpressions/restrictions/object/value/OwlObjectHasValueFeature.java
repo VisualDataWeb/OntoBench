@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 public class OwlObjectHasValueFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty hasSugar = featurePool.getExclusiveProperty("hasSugar");
+    OWLObjectProperty hasSugar = featurePool.getExclusiveProperty(":hasSugar");
 
-    OWLClass burgundy = featurePool.getExclusiveClass("Burgundy");
-    OWLIndividual dry = factory.getOWLNamedIndividual(IRI.create("Dry"));
+    OWLClass burgundy = featurePool.getExclusiveClass(":Burgundy");
+    OWLIndividual dry = factory.getOWLNamedIndividual(IRI.create(":Dry"));
 
     OWLObjectHasValue restriction = factory.getOWLObjectHasValue(hasSugar, dry);
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(burgundy, restriction));

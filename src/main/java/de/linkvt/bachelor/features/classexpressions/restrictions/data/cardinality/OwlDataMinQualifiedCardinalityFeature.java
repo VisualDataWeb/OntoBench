@@ -15,13 +15,13 @@ import org.springframework.stereotype.Component;
 public class OwlDataMinQualifiedCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create("dataMinQualifiedCardinality"));
+    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":dataMinQualifiedCardinality"));
     OWLDatatype datatype = OWL2Datatype.XSD_FLOAT.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
 
     OWLDatatype affectedDatatype = OWL2Datatype.XSD_DATE_TIME.getDatatype(factory);
     OWLDataExactCardinality cardinality = factory.getOWLDataExactCardinality(9, property, affectedDatatype);
-    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(featurePool.getExclusiveClass("DataMinQualifiedCardinalityRange"), cardinality);
+    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(featurePool.getExclusiveClass(":DataMinQualifiedCardinalityRange"), cardinality);
     addAxiomToOntology(axiom);
   }
 

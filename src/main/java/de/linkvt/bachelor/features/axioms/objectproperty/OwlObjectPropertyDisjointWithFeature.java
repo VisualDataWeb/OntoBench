@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 public class OwlObjectPropertyDisjointWithFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty hasSpouse = featurePool.getExclusiveProperty("hasSpouse");
-    OWLObjectProperty hasParent = featurePool.getExclusiveProperty("hasParent");
+    OWLObjectProperty hasSpouse = featurePool.getExclusiveProperty(":hasSpouse");
+    OWLObjectProperty hasParent = featurePool.getExclusiveProperty(":hasParent");
 
     addAxiomToOntology(factory.getOWLDisjointObjectPropertiesAxiom(hasSpouse, hasParent));
 
-    addToGenericDomainAndNewRange(hasSpouse, featurePool.getExclusiveClass("Wife"));
-    addToGenericDomainAndNewRange(hasParent, featurePool.getExclusiveClass("Child"));
+    addToGenericDomainAndNewRange(hasSpouse, featurePool.getExclusiveClass(":Wife"));
+    addToGenericDomainAndNewRange(hasParent, featurePool.getExclusiveClass(":Child"));
   }
 
   @Override

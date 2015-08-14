@@ -13,7 +13,7 @@ public class OwlSymmetricPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass("SymmetricPropertyRange");
+    OWLClass range = featurePool.getExclusiveClass(":SymmetricPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLAxiom axiom = factory.getOWLSymmetricObjectPropertyAxiom(property);

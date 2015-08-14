@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class OwlDeprecatedClassFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass owlClass = featurePool.getExclusiveClass("DeprecatedClass");
+    OWLClass owlClass = featurePool.getExclusiveClass(":DeprecatedClass");
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(owlClass);
     addAxiomToOntology(axiom);
 

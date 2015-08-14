@@ -15,11 +15,11 @@ public class OwlPropertyChainAxiomFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass grandParent = featurePool.getReusableClass();
-    OWLClass parent = featurePool.getExclusiveClass("Parent");
-    OWLClass child = featurePool.getExclusiveClass("Child");
+    OWLClass parent = featurePool.getExclusiveClass(":Parent");
+    OWLClass child = featurePool.getExclusiveClass(":Child");
 
-    OWLObjectProperty hasParent = featurePool.getExclusiveProperty("hasParent");
-    OWLObjectProperty hasGrandParent = featurePool.getExclusiveProperty("hasGrandParent");
+    OWLObjectProperty hasParent = featurePool.getExclusiveProperty(":hasParent");
+    OWLObjectProperty hasGrandParent = featurePool.getExclusiveProperty(":hasGrandParent");
 
     List<OWLObjectProperty> propertyChain = Arrays.asList(hasParent, hasParent);
     addAxiomToOntology(factory.getOWLSubPropertyChainOfAxiom(propertyChain, hasGrandParent));

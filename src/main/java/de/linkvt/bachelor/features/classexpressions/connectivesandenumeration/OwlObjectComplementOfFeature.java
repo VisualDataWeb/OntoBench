@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
 public class OwlObjectComplementOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass positive = featurePool.getExclusiveClass("Positive");
+    OWLClass positive = featurePool.getExclusiveClass(":Positive");
     OWLObjectComplementOf negative = factory.getOWLObjectComplementOf(positive);
 
-    OWLClass owlClass = factory.getOWLClass(IRI.create("Negative"));
+    OWLClass owlClass = factory.getOWLClass(IRI.create(":Negative"));
 
     OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(owlClass, negative);
     addAxiomToOntology(axiom);

@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 public class OwlReflexivePropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty("hasRelative");
-    OWLClass range = featurePool.getExclusiveClass("ReflexivePropertyRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":hasRelative");
+    OWLClass range = featurePool.getExclusiveClass(":ReflexivePropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     addAxiomToOntology(factory.getOWLReflexiveObjectPropertyAxiom(property));

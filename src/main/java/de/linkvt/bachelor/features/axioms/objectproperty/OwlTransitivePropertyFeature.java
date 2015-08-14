@@ -13,7 +13,7 @@ public class OwlTransitivePropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass("TransitivePropertyRange");
+    OWLClass range = featurePool.getExclusiveClass(":TransitivePropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLAxiom axiom = factory.getOWLTransitiveObjectPropertyAxiom(property);

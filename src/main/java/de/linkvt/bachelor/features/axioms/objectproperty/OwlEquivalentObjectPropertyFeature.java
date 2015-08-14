@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 public class OwlEquivalentObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty("EquivalentPropertyBase");
-    OWLObjectProperty equivalentProperty1 = featurePool.getExclusiveProperty("EquivalentProperty1");
-    OWLObjectProperty equivalentProperty2 = featurePool.getExclusiveProperty("EquivalentProperty2");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":EquivalentPropertyBase");
+    OWLObjectProperty equivalentProperty1 = featurePool.getExclusiveProperty(":EquivalentProperty1");
+    OWLObjectProperty equivalentProperty2 = featurePool.getExclusiveProperty(":EquivalentProperty2");
 
     OWLAxiom equivalentAxiom = factory.getOWLEquivalentObjectPropertiesAxiom(property, equivalentProperty1, equivalentProperty2);
 
-    OWLClass range = featurePool.getExclusiveClass("EquivalentPropertyRange");
+    OWLClass range = featurePool.getExclusiveClass(":EquivalentPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     addAxiomToOntology(equivalentAxiom);

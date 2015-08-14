@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class RdfsObjectRangeFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass range = featurePool.getExclusiveClass("Range");
-    OWLObjectProperty objectProperty = featurePool.getExclusiveProperty("NoDomainObjectProperty");
+    OWLClass range = featurePool.getExclusiveClass(":Range");
+    OWLObjectProperty objectProperty = featurePool.getExclusiveProperty(":NoDomainObjectProperty");
     OWLAxiom axiom = factory.getOWLObjectPropertyRangeAxiom(objectProperty, range);
 
     addAxiomToOntology(axiom);

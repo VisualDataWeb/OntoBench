@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 public class OwlDataMinCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create("dataMinCardinality"));
+    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":dataMinCardinality"));
     OWLDatatype datatype = OWL2Datatype.XSD_BOOLEAN.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
 
-    OWLClass range = featurePool.getExclusiveClass("DataMinCardinalityRange");
+    OWLClass range = featurePool.getExclusiveClass(":DataMinCardinalityRange");
     OWLDataExactCardinality cardinality = factory.getOWLDataExactCardinality(3, property);
     OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, cardinality);
     addAxiomToOntology(axiom);

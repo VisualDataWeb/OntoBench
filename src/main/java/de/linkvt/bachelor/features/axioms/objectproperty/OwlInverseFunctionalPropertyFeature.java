@@ -13,7 +13,7 @@ public class OwlInverseFunctionalPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass("InverseFunctionalPropertyRange");
+    OWLClass range = featurePool.getExclusiveClass(":InverseFunctionalPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLAxiom axiom = factory.getOWLInverseFunctionalObjectPropertyAxiom(property);

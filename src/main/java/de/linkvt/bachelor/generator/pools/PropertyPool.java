@@ -26,7 +26,7 @@ public class PropertyPool extends ResourcePool<OWLObjectProperty> {
 
   @Override
   protected String getGenericNameBase() {
-    return "Property";
+    return ":Property";
   }
 
 }

@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 public class OwlDataPropertyDisjointWithFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty icqNumber = factory.getOWLDataProperty(IRI.create("icqNumber"));
-    OWLDataProperty volume = factory.getOWLDataProperty(IRI.create("volume"));
+    OWLDataProperty icqNumber = factory.getOWLDataProperty(IRI.create(":icqNumber"));
+    OWLDataProperty volume = factory.getOWLDataProperty(IRI.create(":volume"));
 
     addAxiomToOntology(factory.getOWLDisjointDataPropertiesAxiom(icqNumber, volume));
 

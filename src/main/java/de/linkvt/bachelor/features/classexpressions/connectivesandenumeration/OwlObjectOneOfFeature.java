@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
 public class OwlObjectOneOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLNamedIndividual black = factory.getOWLNamedIndividual(IRI.create("Black"));
-    OWLNamedIndividual white = factory.getOWLNamedIndividual(IRI.create("White"));
+    OWLNamedIndividual black = factory.getOWLNamedIndividual(IRI.create(":Black"));
+    OWLNamedIndividual white = factory.getOWLNamedIndividual(IRI.create(":White"));
     OWLObjectOneOf oneOf = factory.getOWLObjectOneOf(black, white);
 
-    OWLClass oneOfClass = factory.getOWLClass(IRI.create("BlackOrWhite"));
+    OWLClass oneOfClass = factory.getOWLClass(IRI.create(":BlackOrWhite"));
 
     OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(oneOfClass, oneOf);
     addAxiomToOntology(axiom);

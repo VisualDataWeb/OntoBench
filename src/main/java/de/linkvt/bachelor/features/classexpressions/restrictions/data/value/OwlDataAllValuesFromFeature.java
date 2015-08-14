@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 public class OwlDataAllValuesFromFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create("zipCode"));
+    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":zipCode"));
     OWLDatatype datatype = OWL2Datatype.XSD_INTEGER.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
     OWLDataAllValuesFrom restriction = factory.getOWLDataAllValuesFrom(property, datatype);
 
-    OWLClass address = featurePool.getExclusiveClass("Address");
+    OWLClass address = featurePool.getExclusiveClass(":Address");
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(address, restriction));
   }
 

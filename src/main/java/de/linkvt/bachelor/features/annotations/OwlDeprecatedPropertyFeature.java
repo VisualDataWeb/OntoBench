@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlDeprecatedPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty("DeprecatedProperty");
-    addToGenericDomainAndNewRange(property, featurePool.getExclusiveClass("DeprecatedPropertyRange"));
+    OWLObjectProperty property = featurePool.getExclusiveProperty("::DeprecatedProperty");
+    addToGenericDomainAndNewRange(property, featurePool.getExclusiveClass(":DeprecatedPropertyRange"));
 
     OWLAnnotation annotation = factory.getOWLAnnotation(factory.getOWLDeprecated(), factory.getOWLLiteral(true));
     OWLAxiom deprecatedAxiom = factory.getOWLAnnotationAssertionAxiom(property.getIRI(), annotation);

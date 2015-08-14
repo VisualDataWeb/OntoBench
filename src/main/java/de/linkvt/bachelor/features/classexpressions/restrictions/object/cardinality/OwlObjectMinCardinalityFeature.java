@@ -14,7 +14,7 @@ public class OwlObjectMinCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass("MinCardinalityRange");
+    OWLClass range = featurePool.getExclusiveClass(":MinCardinalityRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectMinCardinality minCardinality = factory.getOWLObjectMinCardinality(2, property);

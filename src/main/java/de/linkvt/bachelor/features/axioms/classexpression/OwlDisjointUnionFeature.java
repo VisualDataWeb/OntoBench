@@ -13,9 +13,9 @@ import java.util.HashSet;
 public class OwlDisjointUnionFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass boy = featurePool.getExclusiveClass("Boy");
-    OWLClass girl = featurePool.getExclusiveClass("Girl");
-    OWLClass child = featurePool.getExclusiveClass("Child");
+    OWLClass boy = featurePool.getExclusiveClass(":Boy");
+    OWLClass girl = featurePool.getExclusiveClass(":Girl");
+    OWLClass child = featurePool.getExclusiveClass(":Child");
 
     addAxiomToOntology(factory.getOWLDisjointUnionAxiom(child, new HashSet<>(Arrays.asList(boy, girl))));
   }

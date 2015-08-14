@@ -14,8 +14,8 @@ public class RdfsCommentMultiLanguageFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty("propertyWithInfos");
-    OWLClass range = featurePool.getExclusiveClass("ClassWithInfos");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":propertyWithInfos");
+    OWLClass range = featurePool.getExclusiveClass(":ClassWithInfos");
     OWLAnnotationProperty comment = factory.getRDFSComment();
 
     OWLAnnotation deAnnotation = factory.getOWLAnnotation(comment, factory.getOWLLiteral("Kommentar einer Property", "de"));

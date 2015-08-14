@@ -18,8 +18,8 @@ public class RdfsDataSubPropertyOfFeature extends Feature {
     OWLDatatype subRange = OWL2Datatype.XSD_STRING.getDatatype(factory);
     OWLDatatype superRange = OWL2Datatype.XSD_STRING.getDatatype(factory);
 
-    OWLDataProperty subProperty = factory.getOWLDataProperty(IRI.create("SubDataProperty"));
-    OWLDataProperty superProperty = factory.getOWLDataProperty(IRI.create("SuperDataProperty"));
+    OWLDataProperty subProperty = factory.getOWLDataProperty(IRI.create(":SubDataProperty"));
+    OWLDataProperty superProperty = factory.getOWLDataProperty(IRI.create(":SuperDataProperty"));
     addProperty(start, subProperty, subRange);
     addProperty(start, superProperty, superRange);
 

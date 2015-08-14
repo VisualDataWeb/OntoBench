@@ -14,7 +14,7 @@ public class OwlLiteOwlObjectMaxCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass("MaxCardinalityRange");
+    OWLClass range = featurePool.getExclusiveClass(":MaxCardinalityRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectMaxCardinality maxCardinality = factory.getOWLObjectMaxCardinality(1, property);

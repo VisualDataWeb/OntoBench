@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 public class OwlAsymmetricPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty("hasChild");
-    OWLClass range = featurePool.getExclusiveClass("AsymmetricPropertyRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":hasChild");
+    OWLClass range = featurePool.getExclusiveClass(":AsymmetricPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     addAxiomToOntology(factory.getOWLAsymmetricObjectPropertyAxiom(property));

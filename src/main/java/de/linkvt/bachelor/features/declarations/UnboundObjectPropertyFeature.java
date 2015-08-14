@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class UnboundObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLProperty property = featurePool.getExclusiveProperty("NoDomainAndRangeObjectProperty");
+    OWLProperty property = featurePool.getExclusiveProperty(":NoDomainAndRangeObjectProperty");
     OWLAxiom axiom = factory.getOWLDeclarationAxiom(property);
 
     addAxiomToOntology(axiom);

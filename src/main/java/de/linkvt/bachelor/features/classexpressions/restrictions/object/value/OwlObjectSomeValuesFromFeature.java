@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 public class OwlObjectSomeValuesFromFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty builtBy = featurePool.getExclusiveProperty("builtBy");
+    OWLObjectProperty builtBy = featurePool.getExclusiveProperty(":builtBy");
 
-    OWLClass mercedes = featurePool.getExclusiveClass("Mercedes");
-    OWLClass car = featurePool.getExclusiveClass("Car");
+    OWLClass mercedes = featurePool.getExclusiveClass(":Mercedes");
+    OWLClass car = featurePool.getExclusiveClass(":Car");
     OWLObjectSomeValuesFrom restriction = factory.getOWLObjectSomeValuesFrom(builtBy, mercedes);
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(car, restriction));
   }
