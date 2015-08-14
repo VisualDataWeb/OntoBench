@@ -46,6 +46,9 @@ public class OwlApiConfig {
 
   private String createOntologyIri(HttpServletRequest request, OntologyGenerator generator) {
     String url = request.getRequestURL().toString();
+    if (!url.endsWith("/")) {
+      url += "/";
+    }
 
     // ignore urls of stored generations
     if (!url.matches(".*\\d+/$")) {
