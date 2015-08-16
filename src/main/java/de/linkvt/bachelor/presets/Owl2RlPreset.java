@@ -36,7 +36,7 @@ import de.linkvt.bachelor.features.keys.OwlHasKeyFeature;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Owl2Preset extends Preset {
+public class Owl2RlPreset extends Preset {
   @Override
   protected void initialize() {
     addFeatures(OwlHasSelfFeature.class);
