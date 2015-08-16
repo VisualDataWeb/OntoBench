@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 public class MultipleLinksFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass domain = featurePool.getReusableClass("MultiLinkDomain");
-    OWLClass range = featurePool.getExclusiveClass("MultiLinkRange");
+    OWLClass domain = featurePool.getReusableClass(":MultiLinkDomain");
+    OWLClass range = featurePool.getExclusiveClass(":MultiLinkRange");
 
-    addProperty(domain, featurePool.getExclusiveProperty("MultiProperty1"), range);
-    addProperty(domain, featurePool.getExclusiveProperty("MultiProperty2"), range);
-    addProperty(domain, featurePool.getExclusiveProperty("MultiProperty3"), range);
-    addProperty(domain, featurePool.getExclusiveProperty("MultiProperty4"), range);
-    addProperty(domain, featurePool.getExclusiveProperty("MultiProperty5"), range);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiProperty1"), range);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiProperty2"), range);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiProperty3"), range);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiProperty4"), range);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiProperty5"), range);
   }
 
   @Override

@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 public class MultipleSymmetricPropertiesFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass domain = featurePool.getExclusiveClass("MultipleSymmetricProperties");
+    OWLClass domain = featurePool.getExclusiveClass(":MultipleSymmetricProperties");
 
-    addProperty(domain, featurePool.getExclusiveProperty("MultiSymmetric1"), domain);
-    addProperty(domain, featurePool.getExclusiveProperty("MultiSymmetric2"), domain);
-    addProperty(domain, featurePool.getExclusiveProperty("MultiSymmetric3"), domain);
-    addProperty(domain, featurePool.getExclusiveProperty("MultiSymmetric4"), domain);
-    addProperty(domain, featurePool.getExclusiveProperty("MultiSymmetric5"), domain);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiSymmetric1"), domain);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiSymmetric2"), domain);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiSymmetric3"), domain);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiSymmetric4"), domain);
+    addProperty(domain, featurePool.getExclusiveProperty(":MultiSymmetric5"), domain);
   }
 
   @Override
