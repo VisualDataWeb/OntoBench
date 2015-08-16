@@ -14,7 +14,7 @@ public class OwlFunctionalDataPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":hasAge"));
-    OWLDatatype datatype = OWL2Datatype.XSD_POSITIVE_INTEGER.getDatatype(factory);
+    OWLDatatype datatype = OWL2Datatype.XSD_NON_NEGATIVE_INTEGER.getDatatype(factory);
 
     addToGenericDomainAndNewRange(property, datatype);
     addAxiomToOntology(factory.getOWLFunctionalDataPropertyAxiom(property));

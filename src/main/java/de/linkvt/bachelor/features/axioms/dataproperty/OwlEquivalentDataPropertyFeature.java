@@ -19,7 +19,7 @@ public class OwlEquivalentDataPropertyFeature extends Feature {
 
     addAxiomToOntology(factory.getOWLEquivalentDataPropertiesAxiom(age, alter, edad));
 
-    OWLDatatype datatype = OWL2Datatype.XSD_POSITIVE_INTEGER.getDatatype(factory);
+    OWLDatatype datatype = OWL2Datatype.XSD_NON_NEGATIVE_INTEGER.getDatatype(factory);
     addToGenericDomainAndNewRange(age, datatype);
     addToGenericDomainAndNewRange(alter, datatype);
     addToGenericDomainAndNewRange(edad, datatype);

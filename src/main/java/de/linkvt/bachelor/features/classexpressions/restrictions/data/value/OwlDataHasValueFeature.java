@@ -16,7 +16,7 @@ public class OwlDataHasValueFeature extends Feature {
   public void addToOntology() {
     OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":hasValueData"));
     OWLDataHasValue hasValue = factory.getOWLDataHasValue(property, factory.getOWLLiteral(6));
-    addToGenericDomainAndNewRange(property, OWL2Datatype.XSD_POSITIVE_INTEGER.getDatatype(factory));
+    addToGenericDomainAndNewRange(property, OWL2Datatype.XSD_NON_NEGATIVE_INTEGER.getDatatype(factory));
 
     OWLClass range = featurePool.getReusableClass(":HasValueDataRange");
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, hasValue));
