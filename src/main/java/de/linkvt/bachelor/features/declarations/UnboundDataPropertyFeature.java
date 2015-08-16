@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.declarations;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLProperty;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class UnboundDataPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLProperty property = factory.getOWLDataProperty(IRI.create(":NoDomainAndRangeDataProperty"));
+    OWLProperty property = factory.getOWLDataProperty(":NoDomainAndRangeDataProperty", pm);
 
     addAxiomToOntology(factory.getOWLDeclarationAxiom(property));
   }

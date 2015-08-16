@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinali
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataExactCardinality;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class OwlDataMaxCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":dataMaxQualifiedCardinality"));
+    OWLDataProperty property = factory.getOWLDataProperty(":dataMaxQualifiedCardinality", pm);
     OWLDatatype datatype = OWL2Datatype.XSD_FLOAT.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
 

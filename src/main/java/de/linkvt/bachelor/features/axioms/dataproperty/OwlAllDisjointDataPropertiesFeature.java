@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.axioms.dataproperty;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
@@ -12,9 +11,9 @@ import org.springframework.stereotype.Component;
 public class OwlAllDisjointDataPropertiesFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty street = factory.getOWLDataProperty(IRI.create(":street"));
-    OWLDataProperty name = factory.getOWLDataProperty(IRI.create(":name"));
-    OWLDataProperty favoriteColor = factory.getOWLDataProperty(IRI.create(":favoriteColor"));
+    OWLDataProperty street = factory.getOWLDataProperty(":street", pm);
+    OWLDataProperty name = factory.getOWLDataProperty(":name", pm);
+    OWLDataProperty favoriteColor = factory.getOWLDataProperty(":favoriteColor", pm);
 
     addAxiomToOntology(factory.getOWLDisjointDataPropertiesAxiom(street, name, favoriteColor));
 

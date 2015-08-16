@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.declarations;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class RdfsDatatypeFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype datatype = factory.getOWLDatatype(IRI.create(":SomeCustomDatatype"));
+    OWLDatatype datatype = factory.getOWLDatatype(":SomeCustomDatatype", pm);
     addAxiomToOntology(factory.getOWLDeclarationAxiom(datatype));
   }
 

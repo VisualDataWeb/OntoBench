@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.connectivesandenumeration;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectUnionOf;
@@ -18,7 +17,7 @@ public class OwlObjectUnionOfFeature extends Feature {
     OWLClass spoon = featurePool.getExclusiveClass(":Spoon");
     OWLObjectUnionOf unionOf = factory.getOWLObjectUnionOf(fork, knife, spoon);
 
-    OWLClass cutlery = factory.getOWLClass(IRI.create(":Cutlery"));
+    OWLClass cutlery = featurePool.getExclusiveClass(":Cutlery");
 
     OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(cutlery, unionOf);
     addAxiomToOntology(axiom);

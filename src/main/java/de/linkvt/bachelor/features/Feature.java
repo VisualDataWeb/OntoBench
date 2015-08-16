@@ -11,6 +11,7 @@ import org.semanticweb.owlapi.model.OWLDataRange;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyChange;
+import org.semanticweb.owlapi.model.PrefixManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -23,6 +24,9 @@ public abstract class Feature {
 
   @Autowired
   protected FeaturePool featurePool;
+
+  @Autowired
+  protected PrefixManager pm;
 
   @Autowired
   protected OWLOntology ontology;

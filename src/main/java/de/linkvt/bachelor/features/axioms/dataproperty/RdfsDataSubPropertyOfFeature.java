@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.axioms.dataproperty;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDatatype;
@@ -18,8 +17,8 @@ public class RdfsDataSubPropertyOfFeature extends Feature {
     OWLDatatype subRange = OWL2Datatype.XSD_STRING.getDatatype(factory);
     OWLDatatype superRange = OWL2Datatype.XSD_STRING.getDatatype(factory);
 
-    OWLDataProperty subProperty = factory.getOWLDataProperty(IRI.create(":SubDataProperty"));
-    OWLDataProperty superProperty = factory.getOWLDataProperty(IRI.create(":SuperDataProperty"));
+    OWLDataProperty subProperty = factory.getOWLDataProperty(":SubDataProperty", pm);
+    OWLDataProperty superProperty = factory.getOWLDataProperty(":SuperDataProperty", pm);
     addProperty(start, subProperty, subRange);
     addProperty(start, superProperty, superRange);
 

@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.restrictions.data.value;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataHasValue;
 import org.semanticweb.owlapi.model.OWLDataProperty;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class OwlDataHasValueFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":hasValueData"));
+    OWLDataProperty property = factory.getOWLDataProperty(":hasValueData", pm);
     OWLDataHasValue hasValue = factory.getOWLDataHasValue(property, factory.getOWLLiteral(6));
     addToGenericDomainAndNewRange(property, OWL2Datatype.XSD_NON_NEGATIVE_INTEGER.getDatatype(factory));
 

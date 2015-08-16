@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.axioms.dataproperty;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
@@ -14,7 +13,7 @@ public class RdfsDataRangeFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLDatatype datatype = OWL2Datatype.RDFS_LITERAL.getDatatype(factory);
-    OWLDataProperty objectProperty = factory.getOWLDataProperty(IRI.create(":NoDomainDataProperty"));
+    OWLDataProperty objectProperty = factory.getOWLDataProperty(":NoDomainDataProperty", pm);
 
     addAxiomToOntology(factory.getOWLDataPropertyRangeAxiom(objectProperty, datatype));
   }

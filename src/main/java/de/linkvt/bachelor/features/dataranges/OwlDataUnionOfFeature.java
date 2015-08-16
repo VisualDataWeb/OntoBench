@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.dataranges;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDataUnionOf;
 import org.semanticweb.owlapi.model.OWLDatatype;
@@ -13,11 +12,11 @@ import org.springframework.stereotype.Component;
 public class OwlDataUnionOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype evenIntegers = factory.getOWLDatatype(IRI.create(":EvenIntegers"));
-    OWLDatatype oddIntegers = factory.getOWLDatatype(IRI.create(":OddIntegers"));
+    OWLDatatype evenIntegers = factory.getOWLDatatype(":EvenIntegers", pm);
+    OWLDatatype oddIntegers = factory.getOWLDatatype(":OddIntegers", pm);
     OWLDataUnionOf union = factory.getOWLDataUnionOf(evenIntegers, oddIntegers);
 
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":unionOfPositiveAndOddIntegers"));
+    OWLDataProperty property = factory.getOWLDataProperty(":unionOfPositiveAndOddIntegers", pm);
     addToGenericDomainAndNewRange(property, union);
   }
 

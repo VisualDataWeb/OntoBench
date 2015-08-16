@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.declarations;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class OwlDatatypePropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(IRI.create(":favoriteNumber"));
+    OWLDataProperty property = factory.getOWLDataProperty(":favoriteNumber", pm);
     OWLDatatype datatype = factory.getIntegerOWLDatatype();
 
     addToGenericDomainAndNewRange(property, datatype);

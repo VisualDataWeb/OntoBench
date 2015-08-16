@@ -11,6 +11,8 @@ import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLMutableOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.PrefixManager;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -38,10 +40,20 @@ public class OwlApiConfig {
 
   @Bean
   @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.INTERFACES)
-  public OWLMutableOntology owlOntology(HttpServletRequest request, OntologyGenerator generator) throws OWLOntologyCreationException {
+  public PrefixManager prefixManager(HttpServletRequest request, OntologyGenerator generator) {
+    return new DefaultPrefixManager(null, null, createOntologyIri(request, generator));
+  }
+
+  @Bean
+  @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.INTERFACES)
+  public OWLMutableOntology owlOntology(PrefixManager prefixManager) throws OWLOntologyCreationException {
+    if (prefixManager.getDefaultPrefix() == null) {
+      throw new IllegalStateException("Default ontology prefix must not be null.");
+    }
+
     OWLOntologyManager ontologyManager = OWLManager.createOWLOntologyManager();
     // Cast to a mutable ontology to pass OWLApi's strange checks
-    return (OWLMutableOntology) ontologyManager.createOntology(IRI.create(createOntologyIri(request, generator)));
+    return (OWLMutableOntology) ontologyManager.createOntology(IRI.create(prefixManager.getDefaultPrefix()));
   }
 
   private String createOntologyIri(HttpServletRequest request, OntologyGenerator generator) {

@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.dataranges;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataOneOf;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.model.OWLLiteral;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class OwlDataOneOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype datatype = factory.getOWLDatatype(IRI.create(":TennisGameScore"));
+    OWLDatatype datatype = factory.getOWLDatatype(":TennisGameScore", pm);
 
     OWLLiteral zero = factory.getOWLLiteral(0);
     OWLLiteral fifteen = factory.getOWLLiteral(15);

@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.connectivesandenumeration;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectIntersectionOf;
@@ -17,7 +16,7 @@ public class OwlObjectIntersectionOfFeature extends Feature {
     OWLClass spoon = featurePool.getExclusiveClass(":Spoon");
     OWLObjectIntersectionOf spork = factory.getOWLObjectIntersectionOf(fork, spoon);
 
-    OWLClass owlClass = factory.getOWLClass(IRI.create(":Spork"));
+    OWLClass owlClass = featurePool.getExclusiveClass(":Spork");
 
     OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(owlClass, spork);
     addAxiomToOntology(axiom);

@@ -1,7 +1,6 @@
 package de.linkvt.bachelor.generator.pools;
 
 import org.apache.commons.lang3.mutable.MutableInt;
-import org.semanticweb.owlapi.model.OWLDataFactory;
 
 import java.util.Collections;
 import java.util.Map;
@@ -12,18 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
  * A generic resource pool.
  */
 public abstract class ResourcePool<T> {
-  protected OWLDataFactory factory;
   private Set<T> objectPool = Collections.newSetFromMap(new ConcurrentHashMap<>());
   private int genericCounter = 0;
   private int maxReuses = Integer.MAX_VALUE;
   private Map<T, MutableInt> usageMap = new ConcurrentHashMap<>();
 
-  public ResourcePool(OWLDataFactory factory) {
-    this.factory = factory;
+  public ResourcePool() {
   }
 
-  public ResourcePool(OWLDataFactory factory, int maxReuses) {
-    this.factory = factory;
+  public ResourcePool(int maxReuses) {
     this.maxReuses = maxReuses;
   }
 

@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.axioms.dataproperty;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.springframework.stereotype.Component;
 
@@ -11,8 +10,8 @@ import org.springframework.stereotype.Component;
 public class OwlDataPropertyDisjointWithFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty icqNumber = factory.getOWLDataProperty(IRI.create(":icqNumber"));
-    OWLDataProperty volume = factory.getOWLDataProperty(IRI.create(":volume"));
+    OWLDataProperty icqNumber = factory.getOWLDataProperty(":icqNumber", pm);
+    OWLDataProperty volume = factory.getOWLDataProperty(":volume", pm);
 
     addAxiomToOntology(factory.getOWLDisjointDataPropertiesAxiom(icqNumber, volume));
 

@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.dataranges;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataComplementOf;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
@@ -16,7 +15,7 @@ public class OwlDataComplementOfFeature extends Feature {
     OWLDatatype datatype = OWL2Datatype.XSD_STRING.getDatatype(factory);
     OWLDataComplementOf complement = factory.getOWLDataComplementOf(datatype);
 
-    addToGenericDomainAndNewRange(factory.getOWLDataProperty(IRI.create(":complementOfString")), complement);
+    addToGenericDomainAndNewRange(factory.getOWLDataProperty(":complementOfString", pm), complement);
   }
 
   @Override

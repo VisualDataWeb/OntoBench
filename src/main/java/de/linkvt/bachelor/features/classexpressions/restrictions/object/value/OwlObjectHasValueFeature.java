@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.restrictions.object.value;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLObjectHasValue;
@@ -17,7 +16,7 @@ public class OwlObjectHasValueFeature extends Feature {
     OWLObjectProperty hasSugar = featurePool.getExclusiveProperty(":hasSugar");
 
     OWLClass burgundy = featurePool.getExclusiveClass(":Burgundy");
-    OWLIndividual dry = factory.getOWLNamedIndividual(IRI.create(":Dry"));
+    OWLIndividual dry = factory.getOWLNamedIndividual(":Dry", pm);
 
     OWLObjectHasValue restriction = factory.getOWLObjectHasValue(hasSugar, dry);
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(burgundy, restriction));

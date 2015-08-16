@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.axioms.dataproperty;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.springframework.stereotype.Component;
@@ -13,7 +12,7 @@ public class RdfsDataDomainFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass domain = featurePool.getExclusiveClass(":Domain");
-    OWLDataProperty objectProperty = factory.getOWLDataProperty(IRI.create(":NoRangeDataProperty"));
+    OWLDataProperty objectProperty = factory.getOWLDataProperty(":NoRangeDataProperty", pm);
 
     addAxiomToOntology(factory.getOWLDataPropertyDomainAxiom(objectProperty, domain));
   }
