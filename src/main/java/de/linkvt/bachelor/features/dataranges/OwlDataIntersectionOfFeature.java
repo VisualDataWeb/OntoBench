@@ -27,7 +27,7 @@ public class OwlDataIntersectionOfFeature extends Feature {
 
   @Override
   public String getToken() {
-    return "intersectiondata";
+    return "intersectionofdata";
   }
 
   @Override

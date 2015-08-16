@@ -5,31 +5,31 @@ import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLObjectIntersectionOf;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObjectOneOf;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlObjectIntersectionOfFeature extends Feature {
+public class OwlObjectOneOfOwl2Feature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass fork = featurePool.getExclusiveClass(":Fork");
-    OWLClass spoon = featurePool.getExclusiveClass(":Spoon");
-    OWLObjectIntersectionOf spork = factory.getOWLObjectIntersectionOf(fork, spoon);
+    OWLNamedIndividual black = factory.getOWLNamedIndividual(":BarackObama", pm);
+    OWLObjectOneOf oneOf = factory.getOWLObjectOneOf(black);
 
-    OWLClass owlClass = featurePool.getExclusiveClass(":Spork");
+    OWLClass oneOfClass = featurePool.getExclusiveClass(":PresidentOfTheUsaIn2015");
 
-    OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(owlClass, spork);
+    OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(oneOfClass, oneOf);
     addAxiomToOntology(axiom);
   }
 
   @Override
   public String getName() {
-    return "owl:intersectionOf (Class)";
+    return "owl:oneOf (Class, OWL 2 EL)";
   }
 
   @Override
   public String getToken() {
-    return "intersectionofclass";
+    return "oneofsingleclass";
   }
 
   @Override
