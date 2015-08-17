@@ -21,7 +21,7 @@ import de.linkvt.bachelor.features.axioms.objectproperty.OwlSymmetricPropertyFea
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectDomainFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectRangeFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectSubPropertyOfFeature;
-import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectIntersectionOfFeature;
+import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectIntersectionOfOwl2QlFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlNothingFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlThingFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataSomeValuesFromFeature;
@@ -64,7 +64,7 @@ public class Owl2QlPreset extends Preset {
     addFeatures(OwlNothingFeature.class);
 //    addFeatures(OwlObjectAllValuesFromFeature.class); TODO unklar ob erlaubt
 //    addFeatures(OwlObjectComplementOfFeature.class); TODO stimmt mMn
-    addFeatures(OwlObjectIntersectionOfFeature.class);
+    addFeatures(OwlObjectIntersectionOfOwl2QlFeature.class);
     addFeatures(OwlObjectPropertyDisjointWithFeature.class);
     addFeatures(OwlObjectPropertyFeature.class);
     addFeatures(OwlObjectSomeValuesFromFeature.class);

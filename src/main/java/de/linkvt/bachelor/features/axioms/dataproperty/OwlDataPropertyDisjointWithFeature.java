@@ -4,6 +4,7 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,7 +17,7 @@ public class OwlDataPropertyDisjointWithFeature extends Feature {
     addAxiomToOntology(factory.getOWLDisjointDataPropertiesAxiom(icqNumber, volume));
 
     addToGenericDomainAndNewRange(icqNumber, factory.getIntegerOWLDatatype());
-    addToGenericDomainAndNewRange(volume, factory.getFloatOWLDatatype());
+    addToGenericDomainAndNewRange(volume, OWL2Datatype.XSD_DECIMAL.getDatatype(factory));
   }
 
   @Override
