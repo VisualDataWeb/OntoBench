@@ -1,0 +1,12 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{java,js}]
+indent_style = space
+
+[pom.xml]
+indent_style = tab
