@@ -3,33 +3,32 @@ package de.linkvt.bachelor.features.classexpressions.connectivesandenumeration;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectOneOf;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlObjectOneOfOwl2Feature extends Feature {
+public class OwlObjectOneOfOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLNamedIndividual black = factory.getOWLNamedIndividual(":BarackObama", pm);
-    OWLObjectOneOf oneOf = factory.getOWLObjectOneOf(black);
+    OWLNamedIndividual lincoln = factory.getOWLNamedIndividual(":AbrahamLincoln", pm);
+    OWLNamedIndividual nixon = factory.getOWLNamedIndividual(":RichardNixon", pm);
+    OWLObjectOneOf oneOf = factory.getOWLObjectOneOf(nixon, lincoln);
 
-    OWLClass oneOfClass = featurePool.getExclusiveClass(":PresidentOfTheUsaIn2015");
+    OWLClass oneOfClass = featurePool.getExclusiveClass(":PresidentsOfTheUsa");
 
-    OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(oneOfClass, oneOf);
-    addAxiomToOntology(axiom);
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(oneOf, oneOfClass));
   }
 
   @Override
   public String getName() {
-    return "owl:oneOf (Class, OWL 2 EL)";
+    return "owl:oneOf (Class, OWL 2 RL)";
   }
 
   @Override
   public String getToken() {
-    return "oneofsingleclass";
+    return "oneofrlclass";
   }
 
   @Override

@@ -21,7 +21,7 @@ import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectDomainFeature
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectRangeFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectSubPropertyOfFeature;
 import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectIntersectionOfFeature;
-import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectOneOfOwl2Feature;
+import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectOneOfOwl2ElFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlNothingFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlThingFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataHasValueFeature;
@@ -48,7 +48,7 @@ public class Owl2ElPreset extends Preset {
     addFeatures(OwlObjectSomeValuesFromFeature.class, OwlDataSomeValuesFromFeature.class);
     addFeatures(OwlObjectHasValueFeature.class, OwlDataHasValueFeature.class);
     addFeatures(OwlHasSelfFeature.class);
-    addFeatures(OwlObjectOneOfOwl2Feature.class);
+    addFeatures(OwlObjectOneOfOwl2ElFeature.class);
 //    addFeatures(OwlDataOneOfOwl2Feature.class); TODO IllegalDataRange
     addFeatures(OwlObjectIntersectionOfFeature.class);
 //    addFeatures(OwlDataIntersectionOfFeature.class); TODO IllegalDataRange
