@@ -9,25 +9,25 @@ import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlObjectSomeValuesFromFeature extends Feature {
+public class OwlObjectSomeValuesFromOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty builtBy = featurePool.getExclusiveProperty(":builtBy");
-    OWLClass mercedes = featurePool.getExclusiveClass(":Mercedes");
-    OWLObjectSomeValuesFrom restriction = factory.getOWLObjectSomeValuesFrom(builtBy, mercedes);
-    OWLClass car = featurePool.getExclusiveClass(":Car");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":someValuesFromOwl2Rl");
+    OWLClass someValues = featurePool.getExclusiveClass(":SomeOwl2RlValues");
+    OWLObjectSomeValuesFrom restriction = factory.getOWLObjectSomeValuesFrom(property, someValues);
+    OWLClass manyValues = featurePool.getExclusiveClass(":ManyOwl2RlValues");
 
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(car, restriction));
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(restriction, manyValues));
   }
 
   @Override
   public String getName() {
-    return "owl:someValuesFrom (Object Property)";
+    return "owl:someValuesFrom (Object Property, OWL 2 RL)";
   }
 
   @Override
   public String getToken() {
-    return "somevaluesobject";
+    return "somevaluesrlobject";
   }
 
   @Override

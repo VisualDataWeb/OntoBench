@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.restrictions.object.cardina
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectMaxCardinality;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -18,8 +17,8 @@ public class OwlObjectMaxCardinalityFeature extends Feature {
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectMaxCardinality maxCardinality = factory.getOWLObjectMaxCardinality(8, property);
-    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, maxCardinality);
-    addAxiomToOntology(axiom);
+
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, maxCardinality));
   }
 
   @Override

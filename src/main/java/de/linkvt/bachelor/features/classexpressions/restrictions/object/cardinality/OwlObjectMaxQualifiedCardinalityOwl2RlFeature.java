@@ -9,27 +9,27 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlObjectMaxQualifiedCardinalityFeature extends Feature {
+public class OwlObjectMaxQualifiedCardinalityOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty hasRoommates = featurePool.getExclusiveProperty(":hasRoommates");
-    OWLClass range = featurePool.getExclusiveClass(":MaxQualifiedCardinalityRange");
-    addToGenericDomainAndNewRange(hasRoommates, range);
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":owl2RlObjectMaxQualifiedCardinalityProperty");
+    OWLClass range = featurePool.getExclusiveClass(":Owl2RlMaxQualifiedCardinalityRange");
+    addToGenericDomainAndNewRange(property, range);
 
-    OWLClass student = featurePool.getExclusiveClass(":Student");
-    OWLObjectMaxCardinality maxCardinality = factory.getOWLObjectMaxCardinality(3, hasRoommates, student);
+    OWLClass affectedClass = featurePool.getExclusiveClass(":Owl2RlMaxCardinalityAffectedClass");
+    OWLObjectMaxCardinality maxCardinality = factory.getOWLObjectMaxCardinality(0, property, affectedClass);
 
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, maxCardinality));
   }
 
   @Override
   public String getName() {
-    return "owl:maxQualifiedCardinality (Object Property)";
+    return "owl:maxQualifiedCardinality (Object Property, OWL 2 RL)";
   }
 
   @Override
   public String getToken() {
-    return "maxqualifiedcardinality";
+    return "maxqualifiedrlcardinality";
   }
 
   @Override

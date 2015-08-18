@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.restrictions.object.cardina
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectExactCardinality;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -18,8 +17,8 @@ public class OwlObjectCardinalityFeature extends Feature {
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectExactCardinality exactCardinality = factory.getOWLObjectExactCardinality(4, property);
-    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, exactCardinality);
-    addAxiomToOntology(axiom);
+
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, exactCardinality));
   }
 
   @Override

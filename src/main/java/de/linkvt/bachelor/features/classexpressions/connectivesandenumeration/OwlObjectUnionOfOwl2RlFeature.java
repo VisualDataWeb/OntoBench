@@ -8,27 +8,27 @@ import org.semanticweb.owlapi.model.OWLObjectUnionOf;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlObjectUnionOfFeature extends Feature {
+public class OwlObjectUnionOfOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass fork = featurePool.getExclusiveClass(":Fork");
-    OWLClass knife = featurePool.getExclusiveClass(":Knife");
-    OWLClass spoon = featurePool.getExclusiveClass(":Spoon");
-    OWLObjectUnionOf unionOf = factory.getOWLObjectUnionOf(fork, knife, spoon);
+    OWLClass a = featurePool.getExclusiveClass(":UnionClassA");
+    OWLClass b = featurePool.getExclusiveClass(":UnionClassB");
+    OWLClass c = featurePool.getExclusiveClass(":UnionClassC");
+    OWLObjectUnionOf unionOf = factory.getOWLObjectUnionOf(a, b, c);
 
-    OWLClass cutlery = featurePool.getExclusiveClass(":Cutlery");
+    OWLClass abc = featurePool.getExclusiveClass(":UnionOfABC");
 
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(cutlery, unionOf));
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(unionOf, abc));
   }
 
   @Override
   public String getName() {
-    return "owl:unionOf (Class)";
+    return "owl:unionOf (Class, OWL 2 RL)";
   }
 
   @Override
   public String getToken() {
-    return "unionclass";
+    return "unionrlclass";
   }
 
   @Override

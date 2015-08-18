@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinali
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataExactCardinality;
 import org.semanticweb.owlapi.model.OWLDataProperty;
@@ -21,8 +20,8 @@ public class OwlDataCardinalityFeature extends Feature {
 
     OWLClass range = featurePool.getExclusiveClass(":DataExactCardinalityRange");
     OWLDataExactCardinality cardinality = factory.getOWLDataExactCardinality(11, property);
-    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, cardinality);
-    addAxiomToOntology(axiom);
+
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, cardinality));
   }
 
   @Override

@@ -24,9 +24,9 @@ import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectRangeFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectSubPropertyOfFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlNothingFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlThingFeature;
-import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.owllite.OwlLiteOwlObjectCardinalityFeature;
-import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.owllite.OwlLiteOwlObjectMaxCardinalityFeature;
-import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.owllite.OwlLiteOwlObjectMinCardinalityFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectCardinalityOwlLiteFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectMaxCardinalityOwlLiteAnd2RlFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectMinCardinalityOwlLiteFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectAllValuesFromFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectSomeValuesFromFeature;
 import de.linkvt.bachelor.features.declarations.OwlAnnotationPropertyFeature;
@@ -42,7 +42,7 @@ import org.springframework.stereotype.Component;
 public class OwlLitePreset extends Preset {
   @Override
   protected void initialize() {
-    addFeatures(OwlLiteOwlObjectCardinalityFeature.class, OwlLiteOwlObjectMaxCardinalityFeature.class, OwlLiteOwlObjectMinCardinalityFeature.class);
+    addFeatures(OwlObjectCardinalityOwlLiteFeature.class, OwlObjectMaxCardinalityOwlLiteAnd2RlFeature.class, OwlObjectMinCardinalityOwlLiteFeature.class);
     addFeatures(OwlObjectAllValuesFromFeature.class, OwlObjectSomeValuesFromFeature.class);
     addFeatures(OwlClassFeature.class, OwlThingFeature.class, OwlNothingFeature.class);
     addFeatures(OwlEquivalentClassFeature.class);

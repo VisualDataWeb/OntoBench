@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.restrictions.object.cardina
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectMinCardinality;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -18,8 +17,8 @@ public class OwlObjectMinCardinalityFeature extends Feature {
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectMinCardinality minCardinality = factory.getOWLObjectMinCardinality(2, property);
-    OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, minCardinality);
-    addAxiomToOntology(axiom);
+
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, minCardinality));
   }
 
   @Override

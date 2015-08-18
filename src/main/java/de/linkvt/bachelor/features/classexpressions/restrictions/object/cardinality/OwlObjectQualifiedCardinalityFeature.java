@@ -18,6 +18,7 @@ public class OwlObjectQualifiedCardinalityFeature extends Feature {
 
     OWLClass thumb = featurePool.getExclusiveClass(":Thumb");
     OWLObjectExactCardinality exactCardinality = factory.getOWLObjectExactCardinality(1, hasFingers, thumb);
+
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, exactCardinality));
   }
 

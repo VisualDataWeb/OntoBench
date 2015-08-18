@@ -18,6 +18,7 @@ public class OwlObjectMinQualifiedCardinalityFeature extends Feature {
 
     OWLClass reserveWheel = featurePool.getExclusiveClass(":ReserveWheel");
     OWLObjectMinCardinality minCardinality = factory.getOWLObjectMinCardinality(1, hasWheels, reserveWheel);
+
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, minCardinality));
   }
 

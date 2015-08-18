@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinali
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataMaxCardinality;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDatatype;
@@ -11,27 +10,27 @@ import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlDataMaxCardinalityFeature extends Feature {
+public class OwlDataMaxQualifiedCardinalityOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":dataMaxCardinality", pm);
-    OWLDatatype datatype = OWL2Datatype.XSD_FLOAT.getDatatype(factory);
+    OWLDataProperty property = factory.getOWLDataProperty(":owl2RlDataMaxQualifiedCardinality", pm);
+    OWLDatatype datatype = OWL2Datatype.RDFS_LITERAL.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
 
-    OWLClass range = featurePool.getExclusiveClass(":DataMaxCardinalityRange");
-    OWLDataMaxCardinality cardinality = factory.getOWLDataMaxCardinality(19, property);
+    OWLDatatype affectedDatatype = OWL2Datatype.XSD_BYTE.getDatatype(factory);
+    OWLDataMaxCardinality cardinality = factory.getOWLDataMaxCardinality(1, property, affectedDatatype);
 
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, cardinality));
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(featurePool.getExclusiveClass(":Owl2RlDataMaxQualifiedCardinalityRange"), cardinality));
   }
 
   @Override
   public String getName() {
-    return "owl:maxCardinality (Data Property)";
+    return "owl:maxQualifiedCardinality (Data Property, OWL 2 RL)";
   }
 
   @Override
   public String getToken() {
-    return "maxcardinalitydata";
+    return "maxqualifiedrlcardinalitydata";
   }
 
   @Override

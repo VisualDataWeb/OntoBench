@@ -4,34 +4,34 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataMinCardinality;
+import org.semanticweb.owlapi.model.OWLDataMaxCardinality;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlDataMinCardinalityFeature extends Feature {
+public class OwlDataMaxCardinalityOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":dataMinCardinality", pm);
-    OWLDatatype datatype = OWL2Datatype.XSD_BOOLEAN.getDatatype(factory);
+    OWLDataProperty property = factory.getOWLDataProperty(":owl2RlDataMaxCardinality", pm);
+    OWLDatatype datatype = OWL2Datatype.XSD_FLOAT.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
 
-    OWLClass range = featurePool.getExclusiveClass(":DataMinCardinalityRange");
-    OWLDataMinCardinality cardinality = factory.getOWLDataMinCardinality(3, property);
+    OWLClass range = featurePool.getExclusiveClass(":Owl2RlDataMaxCardinalityRange");
+    OWLDataMaxCardinality cardinality = factory.getOWLDataMaxCardinality(1, property);
 
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, cardinality));
   }
 
   @Override
   public String getName() {
-    return "owl:minCardinality (Data Property)";
+    return "owl:maxCardinality (Data Property, OWL 2 RL)";
   }
 
   @Override
   public String getToken() {
-    return "mincardinalitydata";
+    return "maxcardinalityrldata";
   }
 
   @Override
