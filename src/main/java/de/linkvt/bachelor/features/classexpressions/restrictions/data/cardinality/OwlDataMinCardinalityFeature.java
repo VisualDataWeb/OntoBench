@@ -5,7 +5,7 @@ import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataExactCardinality;
+import org.semanticweb.owlapi.model.OWLDataMinCardinality;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
@@ -20,7 +20,7 @@ public class OwlDataMinCardinalityFeature extends Feature {
     addToGenericDomainAndNewRange(property, datatype);
 
     OWLClass range = featurePool.getExclusiveClass(":DataMinCardinalityRange");
-    OWLDataExactCardinality cardinality = factory.getOWLDataExactCardinality(3, property);
+    OWLDataMinCardinality cardinality = factory.getOWLDataMinCardinality(3, property);
     OWLAxiom axiom = factory.getOWLSubClassOfAxiom(range, cardinality);
     addAxiomToOntology(axiom);
   }

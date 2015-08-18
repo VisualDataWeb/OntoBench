@@ -4,7 +4,7 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLDataExactCardinality;
+import org.semanticweb.owlapi.model.OWLDataMaxCardinality;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
@@ -19,7 +19,7 @@ public class OwlDataMaxQualifiedCardinalityFeature extends Feature {
     addToGenericDomainAndNewRange(property, datatype);
 
     OWLDatatype affectedDatatype = OWL2Datatype.XSD_BYTE.getDatatype(factory);
-    OWLDataExactCardinality cardinality = factory.getOWLDataExactCardinality(18, property, affectedDatatype);
+    OWLDataMaxCardinality cardinality = factory.getOWLDataMaxCardinality(18, property, affectedDatatype);
     OWLAxiom axiom = factory.getOWLSubClassOfAxiom(featurePool.getExclusiveClass(":DataMaxQualifiedCardinalityRange"), cardinality);
     addAxiomToOntology(axiom);
   }
