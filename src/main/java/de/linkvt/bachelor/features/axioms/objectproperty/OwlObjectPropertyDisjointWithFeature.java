@@ -11,12 +11,12 @@ public class OwlObjectPropertyDisjointWithFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLObjectProperty hasSpouse = featurePool.getExclusiveProperty(":hasSpouse");
-    OWLObjectProperty hasParent = featurePool.getExclusiveProperty(":hasParent");
+    OWLObjectProperty hasFavoriteMusicGenre = featurePool.getExclusiveProperty(":hasFavoriteMusicGenre");
 
-    addAxiomToOntology(factory.getOWLDisjointObjectPropertiesAxiom(hasSpouse, hasParent));
+    addAxiomToOntology(factory.getOWLDisjointObjectPropertiesAxiom(hasSpouse, hasFavoriteMusicGenre));
 
     addToGenericDomainAndNewRange(hasSpouse, featurePool.getExclusiveClass(":Wife"));
-    addToGenericDomainAndNewRange(hasParent, featurePool.getExclusiveClass(":Child"));
+    addToGenericDomainAndNewRange(hasFavoriteMusicGenre, featurePool.getExclusiveClass(":DarkDiscoElectro"));
   }
 
   @Override
