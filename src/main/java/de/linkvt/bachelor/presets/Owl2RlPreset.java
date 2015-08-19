@@ -34,6 +34,7 @@ import de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinalit
 import de.linkvt.bachelor.features.classexpressions.restrictions.data.cardinality.OwlDataMaxQualifiedCardinalityOwl2RlFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataAllValuesFromFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataHasValueFeature;
+import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataSomeValuesFromOwl2RlFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectMaxCardinalityOwlLiteAnd2RlFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinality.OwlObjectMaxQualifiedCardinalityOwl2RlFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectAllValuesFromFeature;
@@ -78,7 +79,7 @@ public class Owl2RlPreset extends Preset {
 //    addFeatures(OwlDataOneOfFeature.class); // TODO unklar ob erlaubt (nichts angegeben)
 //    addFeatures(OwlDataOneOfOwl2Feature.class); // TODO unklar ob erlaubt (nichts angegeben)
 //    addFeatures(OwlDataPropertyDisjointWithFeature.class); // TODO laut Spec. eigentlich erlaubt
-//    addFeatures(OwlDataSomeValuesFromFeature.class); // TODO stimmt mMn, NonSuperClassExpression
+    addFeatures(OwlDataSomeValuesFromOwl2RlFeature.class);
 //    addFeatures(OwlDataUnionOfFeature.class); // TODO unklar ob erlaubt (nichts angegeben)
     addFeatures(OwlDatatypePropertyFeature.class);
     addFeatures(OwlDeprecatedClassFeature.class);

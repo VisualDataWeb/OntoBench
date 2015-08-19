@@ -27,7 +27,7 @@ public class OwlObjectAllValuesFromFeature extends Feature {
 
   @Override
   public String getToken() {
-    return "allvaluesclassobject";
+    return "allvaluesobject";
   }
 
   @Override

@@ -11,26 +11,26 @@ import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlDataSomeValuesFromFeature extends Feature {
+public class OwlDataSomeValuesFromOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":someValuesFromData", pm);
+    OWLDataProperty property = factory.getOWLDataProperty(":owl2RlSomeValuesFromData", pm);
     OWLDatatype datatype = OWL2Datatype.XSD_DATE_TIME.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
 
-    OWLClass range = featurePool.getExclusiveClass(":SomeValuesFromDataRange");
+    OWLClass range = featurePool.getExclusiveClass(":Owl2RlSomeValuesFromDataRange");
     OWLDataSomeValuesFrom restriction = factory.getOWLDataSomeValuesFrom(property, datatype);
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, restriction));
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(restriction, range));
   }
 
   @Override
   public String getName() {
-    return "owl:someValuesFrom (Data Property)";
+    return "owl:someValuesFrom (Data Property, OWL 2 RL)";
   }
 
   @Override
   public String getToken() {
-    return "somevaluesdata";
+    return "somevaluesrldata";
   }
 
   @Override
