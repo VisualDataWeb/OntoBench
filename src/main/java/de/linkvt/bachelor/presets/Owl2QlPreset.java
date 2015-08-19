@@ -21,6 +21,7 @@ import de.linkvt.bachelor.features.axioms.objectproperty.OwlSymmetricPropertyFea
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectDomainFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectRangeFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectSubPropertyOfFeature;
+import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectComplementOfFeature;
 import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectIntersectionOfOwl2QlFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlNothingFeature;
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlThingFeature;
@@ -41,29 +42,29 @@ public class Owl2QlPreset extends Preset {
   protected void initialize() {
     addFeatures(NamedIndividualFeature.class);
     addFeatures(OwlAllDifferentFeature.class);
-//    addFeatures(OwlAllDisjointClassesFeature.class); TODO stimmt mMn
+//    addFeatures(OwlAllDisjointClassesFeature.class); // TODO stimmt mMn
     addFeatures(OwlAllDisjointDataPropertiesFeature.class);
     addFeatures(OwlAllDisjointObjectPropertiesFeature.class);
     addFeatures(OwlAnnotationPropertyFeature.class);
     addFeatures(OwlAsymmetricPropertyFeature.class);
     addFeatures(OwlClassFeature.class);
-//    addFeatures(OwlDataAllValuesFromFeature.class); TODO unklar ob erlaubt
-//    addFeatures(OwlDataComplementOfFeature.class); TODO unklar ob erlaubt
-//    addFeatures(OwlDataIntersectionOfFeature.class); TODO stimmt mMn, IllegalDataRange
+//    addFeatures(OwlDataAllValuesFromFeature.class); // TODO unklar ob erlaubt
+//    addFeatures(OwlDataComplementOfFeature.class); // TODO unklar ob erlaubt
+//    addFeatures(OwlDataIntersectionOfFeature.class); // TODO stimmt mMn, IllegalDataRange
     addFeatures(OwlDataPropertyDisjointWithFeature.class);
     addFeatures(OwlDataSomeValuesFromFeature.class);
     addFeatures(OwlDatatypePropertyFeature.class);
     addFeatures(OwlDeprecatedClassFeature.class);
     addFeatures(OwlDeprecatedPropertyFeature.class);
-//    addFeatures(OwlDisjointWithFeature.class); TODO stimmt mMn
+//    addFeatures(OwlDisjointWithFeature.class); // TODO stimmt mMn
     addFeatures(OwlEquivalentClassFeature.class);
     addFeatures(OwlEquivalentDataPropertyFeature.class);
     addFeatures(OwlEquivalentObjectPropertyFeature.class);
     addFeatures(OwlInverseOfPropertyFeature.class);
-//    addFeatures(OwlIrreflexivePropertyFeature.class); TODO stimmt mMn
+//    addFeatures(OwlIrreflexivePropertyFeature.class); // TODO stimmt mMn, laut Spec. eigentlich erlaubt
     addFeatures(OwlNothingFeature.class);
-//    addFeatures(OwlObjectAllValuesFromFeature.class); TODO unklar ob erlaubt
-//    addFeatures(OwlObjectComplementOfFeature.class); TODO stimmt mMn
+//    addFeatures(OwlObjectAllValuesFromFeature.class); // TODO unklar ob erlaubt
+    addFeatures(OwlObjectComplementOfFeature.class);
     addFeatures(OwlObjectIntersectionOfOwl2QlFeature.class);
     addFeatures(OwlObjectPropertyDisjointWithFeature.class);
     addFeatures(OwlObjectPropertyFeature.class);
