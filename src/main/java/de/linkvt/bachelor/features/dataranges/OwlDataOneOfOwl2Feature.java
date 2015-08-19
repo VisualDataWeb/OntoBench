@@ -6,8 +6,9 @@ import de.linkvt.bachelor.features.FeatureCategory;
 import org.semanticweb.owlapi.model.OWLDataOneOf;
 import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.model.OWLLiteral;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class OwlDataOneOfOwl2Feature extends Feature {
   @Override
   public void addToOntology() {

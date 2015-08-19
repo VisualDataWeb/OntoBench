@@ -49,9 +49,9 @@ public class Owl2ElPreset extends Preset {
     addFeatures(OwlObjectHasValueFeature.class, OwlDataHasValueFeature.class);
     addFeatures(OwlHasSelfFeature.class);
     addFeatures(OwlObjectOneOfOwl2ElFeature.class);
-//    addFeatures(OwlDataOneOfOwl2Feature.class); TODO IllegalDataRange
+//    addFeatures(OwlDataOneOfOwl2Feature.class); // TODO stimmt mMn, laut Spec. eigentlich erlaubt
     addFeatures(OwlObjectIntersectionOfFeature.class);
-//    addFeatures(OwlDataIntersectionOfFeature.class); TODO IllegalDataRange
+//    addFeatures(OwlDataIntersectionOfFeature.class); // TODO stimmt mMn, laut Spec. eigentlich erlaubt
 
     addFeatures(RdfsSubClassOfFeature.class);
     addFeatures(OwlEquivalentClassFeature.class);
