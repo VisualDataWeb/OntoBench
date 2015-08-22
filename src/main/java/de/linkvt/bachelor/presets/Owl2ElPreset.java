@@ -29,6 +29,8 @@ import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlD
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlHasSelfFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectHasValueFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectSomeValuesFromFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataOneOfOwl2Feature;
 import de.linkvt.bachelor.features.declarations.NamedIndividualFeature;
 import de.linkvt.bachelor.features.declarations.OwlAnnotationPropertyFeature;
 import de.linkvt.bachelor.features.declarations.OwlClassFeature;
@@ -49,9 +51,9 @@ public class Owl2ElPreset extends Preset {
     addFeatures(OwlObjectHasValueFeature.class, OwlDataHasValueFeature.class);
     addFeatures(OwlHasSelfFeature.class);
     addFeatures(OwlObjectOneOfOwl2ElFeature.class);
-//    addFeatures(OwlDataOneOfOwl2Feature.class); // TODO stimmt mMn, laut Spec. eigentlich erlaubt
+    addFeatures(OwlDataOneOfOwl2Feature.class); // OWLApi marks this as a violation
     addFeatures(OwlObjectIntersectionOfFeature.class);
-//    addFeatures(OwlDataIntersectionOfFeature.class); // TODO stimmt mMn, laut Spec. eigentlich erlaubt
+    addFeatures(OwlDataIntersectionOfFeature.class); // OWLApi marks this as a violation
 
     addFeatures(RdfsSubClassOfFeature.class);
     addFeatures(OwlEquivalentClassFeature.class);

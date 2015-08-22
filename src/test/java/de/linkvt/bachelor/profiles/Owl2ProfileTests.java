@@ -1,6 +1,15 @@
 package de.linkvt.bachelor.profiles;
 
 import de.linkvt.bachelor.Application;
+import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlAllDisjointClassesFeature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlDisjointWithFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlAllDisjointDataPropertiesFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlDataPropertyDisjointWithFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlEquivalentDataPropertyFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlIrreflexivePropertyFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataOneOfOwl2Feature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.presets.Owl2ElPreset;
 import de.linkvt.bachelor.presets.Owl2QlPreset;
@@ -20,6 +29,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,21 +59,42 @@ public class Owl2ProfileTests {
 
   @Test
   public void testOwl2ElProfile() {
-    testPreset(owl2ElPreset, new OWL2ELProfile());
+    Collection<Class<? extends Feature>> excluded = new ArrayList<>();
+    excluded.add(OwlDataOneOfOwl2Feature.class);
+    excluded.add(OwlDataIntersectionOfFeature.class);
+
+    testPreset(owl2ElPreset, new OWL2ELProfile(), excluded);
   }
 
   @Test
   public void testOwl2QlProfile() {
-    testPreset(owl2QlPreset, new OWL2QLProfile());
+    Collection<Class<? extends Feature>> excluded = new ArrayList<>();
+    excluded.add(OwlAllDisjointClassesFeature.class);
+    excluded.add(OwlDataIntersectionOfFeature.class);
+    excluded.add(OwlDisjointWithFeature.class);
+    excluded.add(OwlIrreflexivePropertyFeature.class);
+
+    testPreset(owl2QlPreset, new OWL2QLProfile(), excluded);
   }
 
   @Test
   public void testOwl2RlProfile() {
-    testPreset(owl2RlPreset, new OWL2RLProfile());
+    Collection<Class<? extends Feature>> excluded = new ArrayList<>();
+    excluded.add(OwlAllDisjointClassesFeature.class);
+    excluded.add(OwlAllDisjointDataPropertiesFeature.class);
+    excluded.add(OwlDataIntersectionOfFeature.class);
+    excluded.add(OwlDataPropertyDisjointWithFeature.class);
+    excluded.add(OwlDisjointWithFeature.class);
+    excluded.add(OwlEquivalentDataPropertyFeature.class);
+
+    testPreset(owl2RlPreset, new OWL2RLProfile(), excluded);
   }
 
-  private void testPreset(Preset preset, OWLProfile profile) {
-    generator.addFeatures(preset.getFeatures());
+  private void testPreset(Preset preset, OWLProfile profile, Collection<Class<? extends Feature>> excluded) {
+    Collection<Feature> features = preset.getFeatures();
+    features.removeIf(f -> excluded.contains(f.getClass()));
+    generator.addFeatures(features);
+
     OWLOntology ontology = generator.generate();
 
     List<OWLProfileViolation> violations = profile.checkOntology(ontology).getViolations()

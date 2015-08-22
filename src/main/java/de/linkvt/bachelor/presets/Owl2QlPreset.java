@@ -3,6 +3,8 @@ package de.linkvt.bachelor.presets;
 import de.linkvt.bachelor.features.annotations.OwlDeprecatedClassFeature;
 import de.linkvt.bachelor.features.annotations.OwlDeprecatedPropertyFeature;
 import de.linkvt.bachelor.features.assertions.OwlAllDifferentFeature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlAllDisjointClassesFeature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlDisjointWithFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.OwlEquivalentClassFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.RdfsSubClassOfFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.OwlAllDisjointDataPropertiesFeature;
@@ -15,6 +17,7 @@ import de.linkvt.bachelor.features.axioms.objectproperty.OwlAllDisjointObjectPro
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlAsymmetricPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlEquivalentObjectPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlInverseOfPropertyFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlIrreflexivePropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlObjectPropertyDisjointWithFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlReflexivePropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlSymmetricPropertyFeature;
@@ -27,6 +30,7 @@ import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlNothin
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlThingFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataSomeValuesFromFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectSomeValuesFromFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfFeature;
 import de.linkvt.bachelor.features.declarations.NamedIndividualFeature;
 import de.linkvt.bachelor.features.declarations.OwlAnnotationPropertyFeature;
 import de.linkvt.bachelor.features.declarations.OwlClassFeature;
@@ -42,7 +46,7 @@ public class Owl2QlPreset extends Preset {
   protected void initialize() {
     addFeatures(NamedIndividualFeature.class);
     addFeatures(OwlAllDifferentFeature.class);
-//    addFeatures(OwlAllDisjointClassesFeature.class); // TODO stimmt mMn
+    addFeatures(OwlAllDisjointClassesFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlAllDisjointDataPropertiesFeature.class);
     addFeatures(OwlAllDisjointObjectPropertiesFeature.class);
     addFeatures(OwlAnnotationPropertyFeature.class);
@@ -50,18 +54,18 @@ public class Owl2QlPreset extends Preset {
     addFeatures(OwlClassFeature.class);
 //    addFeatures(OwlDataAllValuesFromFeature.class); // TODO unklar ob erlaubt
 //    addFeatures(OwlDataComplementOfFeature.class); // TODO unklar ob erlaubt
-//    addFeatures(OwlDataIntersectionOfFeature.class); // TODO stimmt mMn, IllegalDataRange
+    addFeatures(OwlDataIntersectionOfFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlDataPropertyDisjointWithFeature.class);
     addFeatures(OwlDataSomeValuesFromFeature.class);
     addFeatures(OwlDatatypePropertyFeature.class);
     addFeatures(OwlDeprecatedClassFeature.class);
     addFeatures(OwlDeprecatedPropertyFeature.class);
-//    addFeatures(OwlDisjointWithFeature.class); // TODO stimmt mMn
+    addFeatures(OwlDisjointWithFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlEquivalentClassFeature.class);
     addFeatures(OwlEquivalentDataPropertyFeature.class);
     addFeatures(OwlEquivalentObjectPropertyFeature.class);
     addFeatures(OwlInverseOfPropertyFeature.class);
-//    addFeatures(OwlIrreflexivePropertyFeature.class); // TODO stimmt mMn, laut Spec. eigentlich erlaubt
+    addFeatures(OwlIrreflexivePropertyFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlNothingFeature.class);
 //    addFeatures(OwlObjectAllValuesFromFeature.class); // TODO unklar ob erlaubt
     addFeatures(OwlObjectComplementOfFeature.class);

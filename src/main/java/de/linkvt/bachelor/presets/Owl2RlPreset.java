@@ -4,8 +4,13 @@ import de.linkvt.bachelor.features.annotations.OwlDeprecatedClassFeature;
 import de.linkvt.bachelor.features.annotations.OwlDeprecatedPropertyFeature;
 import de.linkvt.bachelor.features.assertions.OwlAllDifferentFeature;
 import de.linkvt.bachelor.features.assertions.OwlSameAsFeature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlAllDisjointClassesFeature;
+import de.linkvt.bachelor.features.axioms.classexpression.OwlDisjointWithFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.OwlEquivalentClassFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.RdfsSubClassOfFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlAllDisjointDataPropertiesFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlDataPropertyDisjointWithFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlEquivalentDataPropertyFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.OwlFunctionalDataPropertyFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataDomainFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataRangeFeature;
@@ -40,6 +45,7 @@ import de.linkvt.bachelor.features.classexpressions.restrictions.object.cardinal
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectAllValuesFromFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectHasValueFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectSomeValuesFromOwl2RlFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfFeature;
 import de.linkvt.bachelor.features.declarations.NamedIndividualFeature;
 import de.linkvt.bachelor.features.declarations.OwlAnnotationPropertyFeature;
 import de.linkvt.bachelor.features.declarations.OwlClassFeature;
@@ -64,8 +70,8 @@ public class Owl2RlPreset extends Preset {
     addFeatures(MultipleSymmetricPropertiesFeature.class);
     addFeatures(NamedIndividualFeature.class);
     addFeatures(OwlAllDifferentFeature.class);
-//    addFeatures(OwlAllDisjointClassesFeature.class); // TODO laut Spec. eigentlich erlaubt
-//    addFeatures(OwlAllDisjointDataPropertiesFeature.class); // TODO laut Spec. eigentlich erlaubt
+    addFeatures(OwlAllDisjointClassesFeature.class); // OWLApi marks this as a violation
+    addFeatures(OwlAllDisjointDataPropertiesFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlAllDisjointObjectPropertiesFeature.class);
     addFeatures(OwlAnnotationPropertyFeature.class);
     addFeatures(OwlAsymmetricPropertyFeature.class);
@@ -73,20 +79,20 @@ public class Owl2RlPreset extends Preset {
     addFeatures(OwlDataAllValuesFromFeature.class);
 //    addFeatures(OwlDataComplementOfFeature.class); // TODO unklar ob erlaubt (nichts angegeben)
     addFeatures(OwlDataHasValueFeature.class);
-//    addFeatures(OwlDataIntersectionOfFeature.class); // TODO stimmt mMn, IllegalDataRange
+    addFeatures(OwlDataIntersectionOfFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlDataMaxCardinalityOwl2RlFeature.class);
     addFeatures(OwlDataMaxQualifiedCardinalityOwl2RlFeature.class);
 //    addFeatures(OwlDataOneOfFeature.class); // TODO unklar ob erlaubt (nichts angegeben)
 //    addFeatures(OwlDataOneOfOwl2Feature.class); // TODO unklar ob erlaubt (nichts angegeben)
-//    addFeatures(OwlDataPropertyDisjointWithFeature.class); // TODO laut Spec. eigentlich erlaubt
+    addFeatures(OwlDataPropertyDisjointWithFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlDataSomeValuesFromOwl2RlFeature.class);
 //    addFeatures(OwlDataUnionOfFeature.class); // TODO unklar ob erlaubt (nichts angegeben)
     addFeatures(OwlDatatypePropertyFeature.class);
     addFeatures(OwlDeprecatedClassFeature.class);
     addFeatures(OwlDeprecatedPropertyFeature.class);
-//    addFeatures(OwlDisjointWithFeature.class); // TODO laut Spec. eigentlich erlaubt
+    addFeatures(OwlDisjointWithFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlEquivalentClassFeature.class);
-//    addFeatures(OwlEquivalentDataPropertyFeature.class); // TODO laut Spec. eigentlich erlaubt
+    addFeatures(OwlEquivalentDataPropertyFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlEquivalentObjectPropertyFeature.class);
     addFeatures(OwlFunctionalDataPropertyFeature.class);
     addFeatures(OwlFunctionalObjectPropertyFeature.class);
