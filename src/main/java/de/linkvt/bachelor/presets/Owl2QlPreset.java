@@ -52,8 +52,6 @@ public class Owl2QlPreset extends Preset {
     addFeatures(OwlAnnotationPropertyFeature.class);
     addFeatures(OwlAsymmetricPropertyFeature.class);
     addFeatures(OwlClassFeature.class);
-//    addFeatures(OwlDataAllValuesFromFeature.class); // TODO unklar ob erlaubt
-//    addFeatures(OwlDataComplementOfFeature.class); // TODO unklar ob erlaubt
     addFeatures(OwlDataIntersectionOfFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlDataPropertyDisjointWithFeature.class);
     addFeatures(OwlDataSomeValuesFromFeature.class);
@@ -67,7 +65,6 @@ public class Owl2QlPreset extends Preset {
     addFeatures(OwlInverseOfPropertyFeature.class);
     addFeatures(OwlIrreflexivePropertyFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlNothingFeature.class);
-//    addFeatures(OwlObjectAllValuesFromFeature.class); // TODO unklar ob erlaubt
     addFeatures(OwlObjectComplementOfFeature.class);
     addFeatures(OwlObjectIntersectionOfOwl2QlFeature.class);
     addFeatures(OwlObjectPropertyDisjointWithFeature.class);

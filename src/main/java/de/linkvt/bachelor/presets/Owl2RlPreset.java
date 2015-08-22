@@ -77,16 +77,12 @@ public class Owl2RlPreset extends Preset {
     addFeatures(OwlAsymmetricPropertyFeature.class);
     addFeatures(OwlClassFeature.class);
     addFeatures(OwlDataAllValuesFromFeature.class);
-//    addFeatures(OwlDataComplementOfFeature.class); // TODO unklar ob erlaubt (nichts angegeben)
     addFeatures(OwlDataHasValueFeature.class);
     addFeatures(OwlDataIntersectionOfFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlDataMaxCardinalityOwl2RlFeature.class);
     addFeatures(OwlDataMaxQualifiedCardinalityOwl2RlFeature.class);
-//    addFeatures(OwlDataOneOfFeature.class); // TODO unklar ob erlaubt (nichts angegeben)
-//    addFeatures(OwlDataOneOfOwl2Feature.class); // TODO unklar ob erlaubt (nichts angegeben)
     addFeatures(OwlDataPropertyDisjointWithFeature.class); // OWLApi marks this as a violation
     addFeatures(OwlDataSomeValuesFromOwl2RlFeature.class);
-//    addFeatures(OwlDataUnionOfFeature.class); // TODO unklar ob erlaubt (nichts angegeben)
     addFeatures(OwlDatatypePropertyFeature.class);
     addFeatures(OwlDeprecatedClassFeature.class);
     addFeatures(OwlDeprecatedPropertyFeature.class);
@@ -97,7 +93,6 @@ public class Owl2RlPreset extends Preset {
     addFeatures(OwlFunctionalDataPropertyFeature.class);
     addFeatures(OwlFunctionalObjectPropertyFeature.class);
     addFeatures(OwlHasKeyFeature.class);
-//    addFeatures(OwlHasSelfFeature.class); // TODO unklar ob erlaubt (nichts angegeben, OWLAPI meckert aber nicht)
     addFeatures(OwlInverseFunctionalPropertyFeature.class);
     addFeatures(OwlInverseOfPropertyFeature.class);
     addFeatures(OwlIrreflexivePropertyFeature.class);
