@@ -16,7 +16,7 @@ public class OwlDataUnionOfFeature extends Feature {
     OWLDatatype oddIntegers = factory.getOWLDatatype(":OddIntegers", pm);
     OWLDataUnionOf union = factory.getOWLDataUnionOf(evenIntegers, oddIntegers);
 
-    OWLDataProperty property = factory.getOWLDataProperty(":unionOfPositiveAndOddIntegers", pm);
+    OWLDataProperty property = factory.getOWLDataProperty(":unionOfEvenAndOddIntegers", pm);
     addToGenericDomainAndNewRange(property, union);
   }
 

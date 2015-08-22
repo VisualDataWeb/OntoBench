@@ -16,7 +16,7 @@ public class OwlDataIntersectionOfFeature extends Feature {
     OWLDatatype oddIntegers = factory.getOWLDatatype(":OddIntegers", pm);
     OWLDataIntersectionOf intersection = factory.getOWLDataIntersectionOf(evenIntegers, oddIntegers);
 
-    OWLDataProperty property = factory.getOWLDataProperty(":intersectionOfPositiveAndOddIntegers", pm);
+    OWLDataProperty property = factory.getOWLDataProperty(":intersectionOfEvenAndOddIntegers", pm);
     addToGenericDomainAndNewRange(property, intersection);
   }
 
