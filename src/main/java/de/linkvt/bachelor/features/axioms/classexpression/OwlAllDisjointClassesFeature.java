@@ -19,7 +19,7 @@ public class OwlAllDisjointClassesFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:AllDistjointClasses";
+    return "owl:AllDisjointClasses";
   }
 
   @Override
