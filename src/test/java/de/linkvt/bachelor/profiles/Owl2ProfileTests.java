@@ -8,7 +8,7 @@ import de.linkvt.bachelor.features.axioms.dataproperty.OwlAllDisjointDataPropert
 import de.linkvt.bachelor.features.axioms.dataproperty.OwlDataPropertyDisjointWithFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.OwlEquivalentDataPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlIrreflexivePropertyFeature;
-import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfOwl2Feature;
 import de.linkvt.bachelor.features.dataranges.OwlDataOneOfOwl2Feature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.presets.Owl2ElPreset;
@@ -61,7 +61,6 @@ public class Owl2ProfileTests {
   public void testOwl2ElProfile() {
     Collection<Class<? extends Feature>> excluded = new ArrayList<>();
     excluded.add(OwlDataOneOfOwl2Feature.class);
-    excluded.add(OwlDataIntersectionOfFeature.class);
 
     testPreset(owl2ElPreset, new OWL2ELProfile(), excluded);
   }
@@ -70,7 +69,6 @@ public class Owl2ProfileTests {
   public void testOwl2QlProfile() {
     Collection<Class<? extends Feature>> excluded = new ArrayList<>();
     excluded.add(OwlAllDisjointClassesFeature.class);
-    excluded.add(OwlDataIntersectionOfFeature.class);
     excluded.add(OwlDisjointWithFeature.class);
     excluded.add(OwlIrreflexivePropertyFeature.class);
 
@@ -82,7 +80,7 @@ public class Owl2ProfileTests {
     Collection<Class<? extends Feature>> excluded = new ArrayList<>();
     excluded.add(OwlAllDisjointClassesFeature.class);
     excluded.add(OwlAllDisjointDataPropertiesFeature.class);
-    excluded.add(OwlDataIntersectionOfFeature.class);
+    excluded.add(OwlDataIntersectionOfOwl2Feature.class);
     excluded.add(OwlDataPropertyDisjointWithFeature.class);
     excluded.add(OwlDisjointWithFeature.class);
     excluded.add(OwlEquivalentDataPropertyFeature.class);

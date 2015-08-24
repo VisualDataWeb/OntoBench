@@ -30,7 +30,7 @@ import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlNothin
 import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlThingFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataSomeValuesFromFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectSomeValuesFromFeature;
-import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfFeature;
+import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfOwl2Feature;
 import de.linkvt.bachelor.features.declarations.NamedIndividualFeature;
 import de.linkvt.bachelor.features.declarations.OwlAnnotationPropertyFeature;
 import de.linkvt.bachelor.features.declarations.OwlClassFeature;
@@ -52,7 +52,7 @@ public class Owl2QlPreset extends Preset {
     addFeatures(OwlAnnotationPropertyFeature.class);
     addFeatures(OwlAsymmetricPropertyFeature.class);
     addFeatures(OwlClassFeature.class);
-    addFeatures(OwlDataIntersectionOfFeature.class); // OWLApi marks this as a violation
+    addFeatures(OwlDataIntersectionOfOwl2Feature.class);
     addFeatures(OwlDataPropertyDisjointWithFeature.class);
     addFeatures(OwlDataSomeValuesFromFeature.class);
     addFeatures(OwlDatatypePropertyFeature.class);

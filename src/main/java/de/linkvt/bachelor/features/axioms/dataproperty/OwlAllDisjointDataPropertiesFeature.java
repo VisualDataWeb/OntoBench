@@ -4,6 +4,7 @@ import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
 
@@ -17,9 +18,10 @@ public class OwlAllDisjointDataPropertiesFeature extends Feature {
 
     addAxiomToOntology(factory.getOWLDisjointDataPropertiesAxiom(street, name, favoriteColor));
 
-    addToGenericDomainAndNewRange(street, OWL2Datatype.XSD_STRING.getDatatype(factory));
-    addToGenericDomainAndNewRange(name, OWL2Datatype.XSD_STRING.getDatatype(factory));
-    addToGenericDomainAndNewRange(favoriteColor, OWL2Datatype.XSD_STRING.getDatatype(factory));
+    OWLDatatype stringDatatype = OWL2Datatype.XSD_STRING.getDatatype(factory);
+    addToGenericDomainAndNewRange(street, stringDatatype);
+    addToGenericDomainAndNewRange(name, stringDatatype);
+    addToGenericDomainAndNewRange(favoriteColor, stringDatatype);
   }
 
   @Override
