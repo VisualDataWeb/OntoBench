@@ -13,7 +13,7 @@
         <a class="item" data-tab="output">Generator</a>
     </div>
     <div id="feature-tab" class="ui bottom attached tab active segment" data-tab="features">
-        <div id="preset-buttons" class="ui equal width grid"></div>
+        <div id="preset-buttons" class="ui stackable equal width grid"></div>
         <div class="ui small divider"></div>
         <div class="ui three fluid tiny buttons">
             <button class="ui button select-all-button">Select all</button>
@@ -27,10 +27,10 @@
             <i class="notched circle loading icon"></i>
             Features are being loaded.
         </div>
-        <div id="feature-container" class="ui hidden two columns grid"></div>
+        <div id="feature-container" class="ui doubling hidden two columns grid"></div>
     </div>
     <div class="ui bottom attached tab segment" data-tab="output" id="output-tab">
-        <div class="ui grid">
+        <div class="ui doubling stackable grid">
             <div class="row">
                 <div class="four wide column">
                     <div id="format-dropdown" class="ui loading fluid selection dropdown">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="two wide column">
+                <div class="three wide column">
                     <button id="generate-button" class="ui fluid primary button">Generate</button>
                 </div>
             </div>
