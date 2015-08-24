@@ -14,7 +14,7 @@ export default class FeatureContainer {
             let column = $("<div class='ui stretched column'>").appendTo(Ui.featureContainer);
             let container = $("<div class='ui olive segment'>").appendTo(column);
 
-            let buttons = $("<div class='ui three fluid mini basic buttons'>").appendTo(container);
+            let buttons = $("<div class='ui three fluid mini buttons'>").appendTo(container);
             FeatureContainer._addContainerSelectionButtons(buttons);
             container.append("<h3 class='ui medium header'>" + category.name + "</h3>");
             container.append(FeatureContainer._createFeatureList(features));
