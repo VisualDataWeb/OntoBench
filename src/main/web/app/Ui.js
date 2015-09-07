@@ -135,7 +135,6 @@ export default class Ui {
             $(this).parent().parent().find(":checkbox").prop("checked", false)
         });
         container.on("click", ".invert-selection-button", function () {
-            console.log($(this).parent().parent());
             $(this).parent().parent().find(":checkbox").each(function () {
                 $(this).prop("checked", !$(this).prop("checked"));
             });
