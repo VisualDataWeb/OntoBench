@@ -3,8 +3,8 @@ import Generator from "./Generator";
 export default class Ui {
     static initializeDefaults() {
         $(".menu .item").tab();
-        $('.message .close').on('click', function () {
-            $(this).closest('.message').transition('fade');
+        $(".message .close").on("click", function () {
+            $(this).closest(".message").transition("fade");
         });
 
         Ui._setupQuickGuide();
