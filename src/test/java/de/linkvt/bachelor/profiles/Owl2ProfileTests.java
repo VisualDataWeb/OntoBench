@@ -68,9 +68,6 @@ public class Owl2ProfileTests {
   @Test
   public void testOwl2QlProfile() {
     Collection<Class<? extends Feature>> excluded = new ArrayList<>();
-    excluded.add(OwlAllDisjointClassesFeature.class);
-    excluded.add(OwlDisjointWithFeature.class);
-    excluded.add(OwlIrreflexivePropertyFeature.class);
 
     testPreset(owl2QlPreset, new OWL2QLProfile(), excluded);
   }
@@ -78,12 +75,6 @@ public class Owl2ProfileTests {
   @Test
   public void testOwl2RlProfile() {
     Collection<Class<? extends Feature>> excluded = new ArrayList<>();
-    excluded.add(OwlAllDisjointClassesFeature.class);
-    excluded.add(OwlAllDisjointDataPropertiesFeature.class);
-    excluded.add(OwlDataIntersectionOfOwl2Feature.class);
-    excluded.add(OwlDataPropertyDisjointWithFeature.class);
-    excluded.add(OwlDisjointWithFeature.class);
-    excluded.add(OwlEquivalentDataPropertyFeature.class);
 
     testPreset(owl2RlPreset, new OWL2RLProfile(), excluded);
   }
