@@ -29,9 +29,7 @@ public enum OntologySyntax {
   private boolean isDefault = false;
 
   private OntologySyntax(OWLDocumentFormat documentFormat, String extension, MediaType mediaType) {
-    this.documentFormat = documentFormat;
-    this.extension = extension;
-    this.mediaType = mediaType;
+    this(documentFormat, extension, mediaType, false);
   }
 
   private OntologySyntax(OWLDocumentFormat documentFormat, String extension, MediaType mediaType, boolean isDefault) {
