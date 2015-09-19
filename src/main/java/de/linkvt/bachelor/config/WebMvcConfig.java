@@ -13,7 +13,6 @@ import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -40,7 +39,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     configurer.ignoreAcceptHeader(true)
         .favorParameter(true)
         .ignoreUnknownPathExtensions(false)
-        .defaultContentType(MediaType.TEXT_PLAIN)
+        .defaultContentType(OntologySyntax.RDF_XML.getMediaType())
         .mediaType("owx", OntologySyntax.OWL_XML.getMediaType())
         .mediaType("owl", OntologySyntax.RDF_XML.getMediaType())
         .mediaType("rdf", OntologySyntax.RDF_XML.getMediaType())
