@@ -8,7 +8,6 @@ export default class Generator {
     }
 
     static reset() {
-        Generator._isInitialized = true;
         Generator._featureString = Ui.selectedFeatures.map(f => f.token).join(",");
         Generator._shortUrlBase = undefined;
         Generator._ontology = undefined;
