@@ -9,8 +9,8 @@ export default class Ui {
 
         Ui.tabMenu.find(".item").tab();
         Ui.tabMenu.find("[data-tab='generator']").click(() => {
-            Ui.resetOntologyUrlInput();
-            Generator.resetAndGenerate();
+            Ui._resetOntologyUrlInput();
+            Ui._generate();
         });
         $("#generator-shortcut-button").click(() => $("[data-tab='generator']").click());
 
@@ -26,7 +26,7 @@ export default class Ui {
         Ui.ontologyText.click(() => Ui.ontologyText.select());
     }
 
-    static resetOntologyUrlInput() {
+    static _resetOntologyUrlInput() {
         Ui.urlType.removeClass("disabled");
         Ui.downloadButton.removeClass("disabled");
     }
@@ -40,10 +40,10 @@ export default class Ui {
             option.appendTo("#format-list");
         });
 
-        Ui.initializeFormats(formats.find(format => format.default));
+        Ui._initializeFormats(formats.find(format => format.default));
     }
 
-    static initializeFormats(defaultFormat) {
+    static _initializeFormats(defaultFormat) {
         let element = $("#format-dropdown");
         if (defaultFormat) {
             element.dropdown("set selected", defaultFormat.extension);
@@ -53,7 +53,7 @@ export default class Ui {
         element.dropdown({
             action: "activate",
             onChange: () => {
-                Generator.resetAndGenerate();
+                Ui._generate();
             }
         });
         element.removeClass("loading");
@@ -162,6 +162,11 @@ export default class Ui {
         quickGuide.find(".close").on("click", () => {
             Cookies.set(COOKIE_NAME, true, {expires: 10 * 365})
         });
+    }
+
+    static _generate() {
+        Ui.displayOntology("");
+        Generator.resetAndGenerate();
     }
 
     static get tabMenu() {
