@@ -4,10 +4,12 @@ import de.linkvt.bachelor.features.Feature;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -15,7 +17,8 @@ import javax.persistence.Id;
 public class StoredFeature {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stored_feature_seq_gen")
+  @GenericGenerator(name = "stored_feature_seq_gen", strategy = "sequence")
   private Long id;
 
   @Column(name = "token")

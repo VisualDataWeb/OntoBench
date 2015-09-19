@@ -62,7 +62,7 @@ public class GeneratorController {
     OntologyGenerator generator = applicationContext.getBean(OntologyGenerator.class);
     RequestInformation information = applicationContext.getBean(RequestInformation.class);
 
-    StoredGeneration generation = storeGenerationIfRequired(features, information);
+    StoredGeneration generation = storeGenerationIfRequired(features);
     response.addHeader("Short-Path", "/ontology/" + generation.getId() + "/" + generation.getId());
 
     information.setGenerationId(generation.getId());
@@ -71,7 +71,7 @@ public class GeneratorController {
     return generator.generate();
   }
 
-  private StoredGeneration storeGenerationIfRequired(@RequestParam("features") List<Feature> features, RequestInformation information) {
+  private StoredGeneration storeGenerationIfRequired(@RequestParam("features") List<Feature> features) {
     List<StoredFeature> storedFeatures = features.stream().map(StoredFeature::new).collect(Collectors.toList());
     ArrayList<StoredGeneration> generations = new ArrayList<>();
     repository.findAll().forEach(generations::add);
