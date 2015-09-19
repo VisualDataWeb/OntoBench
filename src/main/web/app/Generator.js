@@ -31,13 +31,13 @@ export default class Generator {
             Generator._ontology = ontology;
             Generator._shortUrlBase = location.href.slice(0, -1) + xhr.getResponseHeader("Short-Path");
             if (onReady) {
-                onReady(Generator.longUrl, ontology);
+                onReady(ontology);
             }
         }).fail(() => Ui.showErrorMessage());
     }
 
-    static _displayUrlAndOntology(url, ontology) {
-        Ui.displayUrl(url);
+    static _displayUrlAndOntology(ontology) {
+        Ui.displayUrl();
         Ui.displayOntology(ontology);
     }
 

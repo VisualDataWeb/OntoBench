@@ -22,17 +22,13 @@ export default class Ui {
         Ui.urlType.dropdown({
             action: "activate",
             onChange: (value) => {
-                if (value === "short") {
-                    Ui.displayUrl(Generator.shortUrl);
-                } else {
-                    Ui.displayUrl(Generator.longUrl);
-                }
+                Ui.displayUrl();
             }
-        }).dropdown("save defaults");
+        });
     }
 
     static resetOntologyUrlInput() {
-        Ui.urlType.removeClass("disabled").dropdown("restore defaults");
+        Ui.urlType.removeClass("disabled");
         Ui.downloadButton.removeClass("disabled");
     }
 
@@ -82,7 +78,10 @@ export default class Ui {
         Ui.featureContainer.removeClass("hidden");
     }
 
-    static displayUrl(url) {
+    static displayUrl() {
+        let type = Ui.urlType.dropdown("get value");
+        let url = type === "short" ? Generator.shortUrl : Generator.longUrl;
+
         Ui.ontologyUrl.val(url);
         Ui.downloadButton.attr("href", url);
     }
