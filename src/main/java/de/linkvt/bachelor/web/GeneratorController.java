@@ -13,6 +13,8 @@ import de.linkvt.bachelor.web.dtos.FeatureDto;
 import de.linkvt.bachelor.web.dtos.FormatDto;
 import de.linkvt.bachelor.web.dtos.PresetDto;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +49,16 @@ public class GeneratorController {
 
   @RequestMapping("/ontology/")
   public OWLOntology completeOntology() throws OWLOntologyCreationException {
-    return ontologyWithFeatures(featureMapping.getAll());
+    return ontologyFromParameters(featureMapping.getAll());
   }
 
   @RequestMapping(value = "/ontology/", params = "features")
-  public OWLOntology ontologyWithFeatures(@RequestParam("features") List<Feature> features) {
+  public OWLOntology ontologyFromParameters(@RequestParam("features") List<Feature> features) {
+    return ontologyFromParametersWithFilename(features);
+  }
+
+  @RequestMapping(value = "/ontology/{filename}", params = "features", method = RequestMethod.GET)
+  public OWLOntology ontologyFromParametersWithFilename(@RequestParam("features") List<Feature> features) {
     OntologyGenerator generator = applicationContext.getBean(OntologyGenerator.class);
 
     generator.addFeatures(features);
@@ -61,12 +68,17 @@ public class GeneratorController {
 
   @RequestMapping(value = "/ontology/", params = "features", method = RequestMethod.POST)
   public void storeAndRedirect(HttpServletResponse response, @RequestParam("features") List<Feature> features, @RequestParam(value = "format", required = false) String format) throws IOException {
+    storeAndRedirectWithFilename(response, "", features);
+  }
+
+  @RequestMapping(value = "/ontology/{filename}{extension:\\.\\w+}", params = "features", method = RequestMethod.POST)
+  public void storeAndRedirectWithFilename(HttpServletResponse response, @PathVariable("extension") String extension, @RequestParam("features") List<Feature> features) throws IOException {
     List<String> tokens = features.stream().map(Feature::getToken).collect(Collectors.toList());
     StoredGeneration generation = repository.save(new StoredGeneration(tokens));
 
-    String url = "/ontology/" + generation.getId() + "/";
-    if (format != null) {
-      url += "?format=" + format;
+    String url = "/ontology/" + generation.getId() + "/" + generation.getId();
+    if (StringUtils.isNotEmpty(extension)) {
+      url += extension;
     }
     response.sendRedirect(url);
   }
@@ -78,16 +90,21 @@ public class GeneratorController {
 
   @RequestMapping("/ontology/{id}/")
   public OWLOntology ontologyFromId(HttpServletResponse response, @PathVariable("id") Long id) {
+    return ontologyFromIdWithFilename(response, id);
+  }
+
+  @RequestMapping("/ontology/{id}/{filename}")
+  public OWLOntology ontologyFromIdWithFilename(HttpServletResponse response, @PathVariable("id") Long id) {
     StoredGeneration storedGeneration = repository.findOne(id);
     if (storedGeneration == null) {
       throw new IllegalArgumentException("No generation stored for the passed id.");
     }
 
     // required because the web app can't tell to which URL the POST request went
-    response.addHeader("Short-Path", "/ontology/" + id + "/");
+    response.addHeader("Short-Path", "/ontology/" + id + "/" + id);
 
     List<Feature> usedFeatures = featureMapping.get(storedGeneration.getParameters());
-    return ontologyWithFeatures(usedFeatures);
+    return ontologyFromParameters(usedFeatures);
   }
 
   @RequestMapping("/features")

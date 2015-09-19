@@ -17,12 +17,12 @@ export default class Generator {
 
     static get shortUrl() {
         if (Generator._shortUrlBase) {
-            return Generator._shortUrlBase + "?format=" + Ui.selectedExtension;
+            return Generator._shortUrlBase + "." + Ui.selectedExtension;
         }
     }
 
     static get longUrl() {
-        return location.href + "ontology/?format=" + Ui.selectedExtension + "&features=" + Generator._featureString;
+        return location.href + "ontology/ontology." + Ui.selectedExtension + "?features=" + Generator._featureString;
     }
 
     static useShortUrl() {

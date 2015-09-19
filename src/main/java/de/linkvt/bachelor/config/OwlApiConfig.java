@@ -1,10 +1,7 @@
 package de.linkvt.bachelor.config;
 
-import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.features.FeatureComparator;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 
-import org.apache.commons.codec.binary.Hex;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataFactory;
@@ -18,12 +15,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.context.WebApplicationContext;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,8 +31,9 @@ public class OwlApiConfig {
 
   @Bean
   @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.INTERFACES)
-  public PrefixManager prefixManager(HttpServletRequest request, OntologyGenerator generator) {
-    return new DefaultPrefixManager(null, null, createOntologyIri(request, generator));
+  public PrefixManager prefixManager(OntologyIriExtractor extractor, HttpServletRequest request, OntologyGenerator generator) {
+    String ontologyIri = extractor.extractOntologyIri(request.getRequestURL().toString(), generator);
+    return new DefaultPrefixManager(null, null, ontologyIri);
   }
 
   @Bean
@@ -54,30 +46,6 @@ public class OwlApiConfig {
     OWLOntologyManager ontologyManager = OWLManager.createOWLOntologyManager();
     // Cast to a mutable ontology to pass OWLApi's strange checks
     return (OWLMutableOntology) ontologyManager.createOntology(IRI.create(prefixManager.getDefaultPrefix()));
-  }
-
-  private String createOntologyIri(HttpServletRequest request, OntologyGenerator generator) {
-    String url = request.getRequestURL().toString();
-    if (!url.endsWith("/")) {
-      url += "/";
-    }
-
-    // ignore urls of stored generations
-    if (!url.matches(".*\\d+/$")) {
-      SortedSet<Feature> features = new TreeSet<>(new FeatureComparator());
-      features.addAll(generator.getFeatures());
-      String featureString = features.stream().map(Feature::getToken).collect(Collectors.joining(","));
-
-      try {
-        MessageDigest digest = MessageDigest.getInstance("MD5");
-        digest.update(featureString.getBytes());
-        url += "tmp/" + String.valueOf(Hex.encodeHex(digest.digest())) + "/";
-      } catch (NoSuchAlgorithmException e) {
-        e.printStackTrace();
-      }
-    }
-
-    return url;
   }
 
 }
