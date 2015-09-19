@@ -23,9 +23,9 @@ export default class Ui {
             action: "activate",
             onChange: (value) => {
                 if (value === "short") {
-                    Generator.useShortUrl();
+                    Ui.displayUrl(Generator.shortUrl);
                 } else {
-                    Generator.useLongUrl();
+                    Ui.displayUrl(Generator.longUrl);
                 }
             }
         }).dropdown("save defaults");

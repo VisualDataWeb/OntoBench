@@ -2,12 +2,11 @@ package de.linkvt.bachelor.persistence;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  * Combines parameters with a unique id.
@@ -19,22 +18,21 @@ public class StoredGeneration {
   @GeneratedValue
   private Long id;
 
-  @Column(nullable = false)
-  @ElementCollection(fetch = FetchType.EAGER)
-  private List<String> parameters;
+  @ManyToMany(cascade = CascadeType.ALL)
+  private List<StoredFeature> parameters;
 
   protected StoredGeneration() {
   }
 
-  public StoredGeneration(List<String> parameters) {
+  public StoredGeneration(List<StoredFeature> parameters) {
     this.parameters = parameters;
   }
 
-  public List<String> getParameters() {
+  public List<StoredFeature> getParameters() {
     return parameters;
   }
 
-  public void setParameters(List<String> parameters) {
+  public void setParameters(List<StoredFeature> parameters) {
     this.parameters = parameters;
   }
 

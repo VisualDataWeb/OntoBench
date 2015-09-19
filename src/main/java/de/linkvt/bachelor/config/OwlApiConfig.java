@@ -1,6 +1,6 @@
 package de.linkvt.bachelor.config;
 
-import de.linkvt.bachelor.generator.OntologyGenerator;
+import de.linkvt.bachelor.web.RequestInformation;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -16,8 +16,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.context.WebApplicationContext;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * Creates beans for OWL API classes.
  */
@@ -31,9 +29,8 @@ public class OwlApiConfig {
 
   @Bean
   @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.INTERFACES)
-  public PrefixManager prefixManager(OntologyIriExtractor extractor, HttpServletRequest request, OntologyGenerator generator) {
-    String ontologyIri = extractor.extractOntologyIri(request.getRequestURL().toString(), generator);
-    return new DefaultPrefixManager(null, null, ontologyIri);
+  public PrefixManager prefixManager(RequestInformation requestInformation) {
+    return new DefaultPrefixManager(null, null, requestInformation.getOntologyIri());
   }
 
   @Bean
