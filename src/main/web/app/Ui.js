@@ -12,9 +12,7 @@ export default class Ui {
             Ui.resetOntologyUrlInput();
             Generator.resetAndGenerate();
         });
-        $("#generator-shortcut-button").click(() => {
-            $("[data-tab='generator']").click();
-        });
+        $("#generator-shortcut-button").click(() => $("[data-tab='generator']").click());
 
         Ui._initializeSelectionButtons(Ui.featureTab);
 
@@ -25,6 +23,7 @@ export default class Ui {
                 Ui.displayUrl();
             }
         });
+        Ui.ontologyText.click(() => Ui.ontologyText.select());
     }
 
     static resetOntologyUrlInput() {
@@ -107,7 +106,9 @@ export default class Ui {
     }
 
     static displayOntology(ontology) {
+        Ui.ontologyText.css("height", 0);
         Ui.ontologyText.text(ontology.toString());
+        Ui.ontologyText.css("height", Ui.ontologyText.prop("scrollHeight") + 2); // 2px let the scrollbar disappear
         Ui.indicateGeneration(false);
         Ui.showErrorMessage(false);
     }
