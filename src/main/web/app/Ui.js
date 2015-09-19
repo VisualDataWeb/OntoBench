@@ -14,6 +14,9 @@ export default class Ui {
             Ui.resetOntologyUrlInput();
             Generator.resetAndGenerate();
         });
+        $("#generator-shortcut-button").click(() => {
+            $("[data-tab='generator']").click();
+        });
 
         Ui.ontologyUrl.click(() => Ui.ontologyUrl.select());
         Ui.urlType.dropdown({
