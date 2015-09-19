@@ -2,15 +2,13 @@ import Generator from "./Generator";
 
 export default class Ui {
     static initializeDefaults() {
-        $(".menu .item").tab();
+        Ui._setupQuickGuide();
         $(".message .close").on("click", function () {
             $(this).closest(".message").transition("fade");
         });
 
-        Ui._setupQuickGuide();
-
-        Ui._initializeSelectionButtons(Ui.featureTab);
-        $("#generate-button").click(() => {
+        Ui.tabMenu.find(".item").tab();
+        Ui.tabMenu.find("[data-tab='generator']").click(() => {
             Ui.resetOntologyUrlInput();
             Generator.resetAndGenerate();
         });
@@ -18,10 +16,12 @@ export default class Ui {
             $("[data-tab='generator']").click();
         });
 
+        Ui._initializeSelectionButtons(Ui.featureTab);
+
         Ui.ontologyUrl.click(() => Ui.ontologyUrl.select());
         Ui.urlType.dropdown({
             action: "activate",
-            onChange: (value) => {
+            onChange: () => {
                 Ui.displayUrl();
             }
         });
@@ -51,6 +51,12 @@ export default class Ui {
         } else {
             element.dropdown();
         }
+        element.dropdown({
+            action: "activate",
+            onChange: () => {
+                Generator.resetAndGenerate();
+            }
+        });
         element.removeClass("loading");
     }
 
@@ -87,7 +93,7 @@ export default class Ui {
     }
 
     static get selectedExtension() {
-        return $("#format-list").find(".selected.item").attr("data-value");
+        return $("#format-dropdown").dropdown("get value");
     }
 
     static get selectedFeatures() {
@@ -155,6 +161,10 @@ export default class Ui {
         quickGuide.find(".close").on("click", () => {
             Cookies.set(COOKIE_NAME, true, {expires: 10 * 365})
         });
+    }
+
+    static get tabMenu() {
+        return $("#tab-menu");
     }
 
     static get featureTab() {
