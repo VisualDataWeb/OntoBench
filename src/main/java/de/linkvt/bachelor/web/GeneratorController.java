@@ -14,7 +14,7 @@ import de.linkvt.bachelor.web.dtos.FeatureDto;
 import de.linkvt.bachelor.web.dtos.FormatDto;
 import de.linkvt.bachelor.web.dtos.PresetDto;
 
-import org.apache.commons.collections4.ListUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,10 +72,11 @@ public class GeneratorController {
   }
 
   private StoredGeneration storeGenerationIfRequired(@RequestParam("features") List<Feature> features) {
-    ArrayList<StoredGeneration> generations = new ArrayList<>();
+    List<StoredFeature> storedFeatures = features.stream().map(Feature::getStoredFeature).collect(Collectors.toList());
+    List<StoredGeneration> generations = new ArrayList<>();
     repository.findAll().forEach(generations::add);
     StoredGeneration generation = generations.stream()
-        .filter(g -> ListUtils.isEqualList(g.getParameters(), features))
+        .filter(g -> CollectionUtils.isEqualCollection(g.getParameters(), storedFeatures))
         .findFirst()
         .orElse(null);
 
