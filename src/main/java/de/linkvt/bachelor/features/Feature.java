@@ -1,6 +1,8 @@
 package de.linkvt.bachelor.features;
 
 import de.linkvt.bachelor.generator.FeaturePool;
+import de.linkvt.bachelor.persistence.StoredFeature;
+import de.linkvt.bachelor.persistence.StoredFeatureRepository;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -14,6 +16,8 @@ import org.semanticweb.owlapi.model.OWLOntologyChange;
 import org.semanticweb.owlapi.model.PrefixManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Base class for ontology features.
  */
@@ -21,16 +25,26 @@ public abstract class Feature {
 
   @Autowired
   protected OWLDataFactory factory;
-
   @Autowired
   protected FeaturePool featurePool;
-
   @Autowired
   protected PrefixManager pm;
-
   @Autowired
   protected OWLOntology ontology;
+  @Autowired
+  private StoredFeatureRepository repository;
 
+  private StoredFeature storedFeature;
+
+  @PostConstruct
+  private void setupForDatabase() {
+    StoredFeature possiblyStoredFeature = repository.findByToken(getToken());
+    if (possiblyStoredFeature != null) {
+      this.storedFeature = possiblyStoredFeature;
+    } else {
+      this.storedFeature = repository.save(new StoredFeature(this));
+    }
+  }
 
   /**
    * Adds this feature to the passed ontology.
@@ -85,6 +99,10 @@ public abstract class Feature {
    */
   public boolean isGeneral() {
     return false;
+  }
+
+  public StoredFeature getStoredFeature() {
+    return storedFeature;
   }
 
   @Override

@@ -4,24 +4,21 @@ import de.linkvt.bachelor.features.Feature;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 
 @Entity
+@Table(name = "FEATURE",
+    uniqueConstraints = @UniqueConstraint(name = "UNIQUE_TOKEN", columnNames = "TOKEN"))
 public class StoredFeature {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stored_feature_seq_gen")
-  @GenericGenerator(name = "stored_feature_seq_gen", strategy = "sequence")
-  private Long id;
-
-  @Column(name = "token")
+  @Column(name = "TOKEN")
   private String token;
 
   protected StoredFeature() {

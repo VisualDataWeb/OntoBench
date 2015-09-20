@@ -72,16 +72,15 @@ public class GeneratorController {
   }
 
   private StoredGeneration storeGenerationIfRequired(@RequestParam("features") List<Feature> features) {
-    List<StoredFeature> storedFeatures = features.stream().map(StoredFeature::new).collect(Collectors.toList());
     ArrayList<StoredGeneration> generations = new ArrayList<>();
     repository.findAll().forEach(generations::add);
     StoredGeneration generation = generations.stream()
-        .filter(g -> ListUtils.isEqualList(g.getParameters(), storedFeatures))
+        .filter(g -> ListUtils.isEqualList(g.getParameters(), features))
         .findFirst()
         .orElse(null);
 
     if (generation == null) {
-      generation = repository.save(new StoredGeneration(storedFeatures));
+      generation = repository.save(new StoredGeneration(features));
     }
 
     return generation;
