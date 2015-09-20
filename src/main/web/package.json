@@ -9,7 +9,7 @@
     "url": "https://github.com/linkvt/bachelor.git"
   },
   "scripts": {
-    "postinstall": "bower install && brunch build",
+    "postinstall": "bower install && brunch build --production",
     "start": "brunch watch --server"
   },
   "dependencies": {
