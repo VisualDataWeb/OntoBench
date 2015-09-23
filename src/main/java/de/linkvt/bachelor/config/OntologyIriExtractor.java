@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 public class OntologyIriExtractor {
 
   public String extractOntologyIri(String url, Long generationId) {
-    String urlWithoutFilename = trimFilename(url);
+    String urlWithoutFilename = trimFilenameAndId(url);
 
     return urlWithoutFilename + generationId + "/";
   }
 
-  private String trimFilename(String url) {
-    return url.replaceAll("[^/]+$", "");
+  private String trimFilenameAndId(String url) {
+    return url.replaceAll("(\\d+/)?[^/]+$", "");
   }
 }
