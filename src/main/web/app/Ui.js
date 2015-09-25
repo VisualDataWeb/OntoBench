@@ -63,7 +63,7 @@ export default class Ui {
         presets.sort((a, b) => a.index - b.index);
 
         presets.forEach(preset => {
-            let button = $("<button class='ui fluid green labeled icon button'>").data(preset).text(preset.name);
+            let button = $("<button class='ui fluid green labeled icon button'>").text(preset.name);
             button.append("<i class='plus icon'>");
             button.click(() => {
                 Ui.features.filter(function () {
