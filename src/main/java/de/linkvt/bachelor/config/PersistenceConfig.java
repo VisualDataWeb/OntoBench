@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 import javax.sql.DataSource;
 
 /**
- * Configuration for the database
+ * Configuration for the database.
  */
 @Configuration
 public class PersistenceConfig {
