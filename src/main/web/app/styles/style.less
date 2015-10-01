@@ -1,3 +1,5 @@
+@selection-column-padding: 0.25rem !important;
+
 .page.header {
   padding-top: 1rem;
 }
@@ -23,5 +25,20 @@ pre {
     resize: none;
     min-height: 5rem;
     max-height: none;
+  }
+}
+
+.selection {
+  .column:not(:first-child):not(:last-child) {
+    padding-left: @selection-column-padding;
+    padding-right: @selection-column-padding;
+  }
+
+  .column:first-child {
+    padding-right: @selection-column-padding;
+  }
+
+  .column:last-child {
+    padding-left: @selection-column-padding;
   }
 }

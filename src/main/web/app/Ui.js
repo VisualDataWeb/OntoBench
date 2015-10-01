@@ -138,13 +138,13 @@ export default class Ui {
 
     static _initializeSelectionButtons(container) {
         container.on("click", ".select-all-button", function () {
-            $(this).parent().parent().find(":checkbox").prop("checked", true)
+            $(this).parent().parent().parent().find(":checkbox").prop("checked", true)
         });
         container.on("click", ".select-none-button", function () {
-            $(this).parent().parent().find(":checkbox").prop("checked", false)
+            $(this).parent().parent().parent().find(":checkbox").prop("checked", false)
         });
         container.on("click", ".invert-selection-button", function () {
-            $(this).parent().parent().find(":checkbox").each(function () {
+            $(this).parent().parent().parent().find(":checkbox").each(function () {
                 $(this).prop("checked", !$(this).prop("checked"));
             });
         });
