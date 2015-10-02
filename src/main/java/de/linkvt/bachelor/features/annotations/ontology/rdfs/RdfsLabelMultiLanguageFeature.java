@@ -9,6 +9,8 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
+import java.util.Locale;
+
 @Component
 public class RdfsLabelMultiLanguageFeature extends Feature {
 
@@ -18,18 +20,17 @@ public class RdfsLabelMultiLanguageFeature extends Feature {
     OWLClass range = featurePool.getExclusiveClass(":ClassWithInfos");
     OWLAnnotationProperty label = factory.getRDFSLabel();
 
-    OWLAnnotation deAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Bezeichnung einer Property", "de"));
-    OWLAnnotation enAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Label of a property", "en"));
-    OWLAnnotation jpAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("プロパティの指定", "jp"));
+    OWLAnnotation enAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Label of a property", Locale.ENGLISH.getLanguage()));
+    OWLAnnotation deAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Bezeichnung einer Property", Locale.GERMAN.getLanguage()));
+    OWLAnnotation jpAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("プロパティの指定", Locale.JAPANESE.getLanguage()));
 
     addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), deAnnotation));
     addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), enAnnotation));
     addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(property.getIRI(), jpAnnotation));
 
-
-    OWLAnnotation enClassAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Label of a class", "en"));
-    OWLAnnotation deClassAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Bezeichnung einer Klasse", "de"));
-    OWLAnnotation jpClassAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("どうもありがとうミスターロボット", "jp"));
+    OWLAnnotation enClassAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Label of a class", Locale.ENGLISH.getLanguage()));
+    OWLAnnotation deClassAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("Bezeichnung einer Klasse", Locale.GERMAN.getLanguage()));
+    OWLAnnotation jpClassAnnotation = factory.getOWLAnnotation(label, factory.getOWLLiteral("どうもありがとうミスターロボット", Locale.JAPANESE.getLanguage()));
 
     addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(range.getIRI(), enClassAnnotation));
     addAxiomToOntology(factory.getOWLAnnotationAssertionAxiom(range.getIRI(), deClassAnnotation));
