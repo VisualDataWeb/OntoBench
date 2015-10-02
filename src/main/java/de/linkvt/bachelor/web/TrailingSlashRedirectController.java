@@ -21,7 +21,7 @@ public class TrailingSlashRedirectController {
     response.sendRedirect(appendQueryString("/ontology/", request));
   }
 
-  @RequestMapping("/ontology/{id:[^/]+}")
+  @RequestMapping("/ontology/{id}")
   public void ontologyFromIdRedirect(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Long id) throws IOException {
     response.sendRedirect(appendQueryString("/ontology/" + id + "/", request));
   }

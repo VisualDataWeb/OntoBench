@@ -15,6 +15,6 @@ public class OntologyIriExtractor {
   }
 
   private String trimFilenameAndId(String url) {
-    return url.replaceAll("(\\d+/)?[^/]+$", "");
+    return url.replaceAll("(\\d+/)?[^/]*$", "");
   }
 }

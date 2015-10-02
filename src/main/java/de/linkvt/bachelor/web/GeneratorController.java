@@ -71,7 +71,7 @@ public class GeneratorController {
     return generator.generate();
   }
 
-  private StoredGeneration storeGenerationIfRequired(@RequestParam("features") List<Feature> features) {
+  private StoredGeneration storeGenerationIfRequired(List<Feature> features) {
     List<StoredFeature> storedFeatures = features.stream().map(Feature::getStoredFeature).collect(Collectors.toList());
     List<StoredGeneration> generations = new ArrayList<>();
     repository.findAll().forEach(generations::add);
