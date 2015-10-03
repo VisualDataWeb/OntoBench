@@ -18,7 +18,7 @@ public class OwlDataHasValueFeature extends Feature {
     OWLDataHasValue restriction = factory.getOWLDataHasValue(property, factory.getOWLLiteral(6));
     addToGenericDomainAndNewRange(property, OWL2Datatype.XSD_NON_NEGATIVE_INTEGER.getDatatype(factory));
 
-    OWLClass hasValue = featurePool.getReusableClass(":DataHasValue");
+    OWLClass hasValue = featurePool.getExclusiveClass(":DataHasValue");
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(hasValue, restriction));
   }
 
