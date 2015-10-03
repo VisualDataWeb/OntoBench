@@ -16,8 +16,8 @@ public class RdfsObjectSubPropertyOfFeature extends Feature {
     OWLClass middle = featurePool.getReusableClassDifferentFrom(start);
     OWLClass end = featurePool.getReusableClassDifferentFrom(start, middle);
 
-    OWLObjectProperty subProperty = featurePool.getExclusiveProperty(":SubObjectProperty");
-    OWLObjectProperty superProperty = featurePool.getExclusiveProperty(":SuperObjectProperty");
+    OWLObjectProperty subProperty = featurePool.getExclusiveProperty(":subObjectProperty");
+    OWLObjectProperty superProperty = featurePool.getExclusiveProperty(":superObjectProperty");
     addProperty(start, subProperty, middle);
     addProperty(middle, superProperty, end);
 

@@ -13,7 +13,7 @@ public class RdfsDataRangeFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLDatatype datatype = OWL2Datatype.RDFS_LITERAL.getDatatype(factory);
-    OWLDataProperty objectProperty = factory.getOWLDataProperty(":NoDomainDataProperty", pm);
+    OWLDataProperty objectProperty = factory.getOWLDataProperty(":noDomainDataProperty", pm);
 
     addAxiomToOntology(factory.getOWLDataPropertyRangeAxiom(objectProperty, datatype));
   }

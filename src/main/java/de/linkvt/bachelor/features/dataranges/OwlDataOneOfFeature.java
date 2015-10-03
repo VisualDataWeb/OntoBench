@@ -14,13 +14,11 @@ public class OwlDataOneOfFeature extends Feature {
   public void addToOntology() {
     OWLDatatype datatype = factory.getOWLDatatype(":DataOneOf", pm);
 
-    OWLLiteral zero = factory.getOWLLiteral(0);
-    OWLLiteral fifteen = factory.getOWLLiteral(15);
-    OWLLiteral thirty = factory.getOWLLiteral(30);
-    OWLLiteral fourty = factory.getOWLLiteral(40);
+    OWLLiteral l1 = factory.getOWLLiteral("DataOneOf_Literal1");
+    OWLLiteral l2 = factory.getOWLLiteral("DataOneOf_Literal2");
+    OWLLiteral l3 = factory.getOWLLiteral("DataOneOf_Literal3");
 
-    OWLDataOneOf owlDataOneOf = factory.getOWLDataOneOf(zero, fifteen, thirty, fourty);
-
+    OWLDataOneOf owlDataOneOf = factory.getOWLDataOneOf(l1, l2, l3);
     addAxiomToOntology(factory.getOWLDatatypeDefinitionAxiom(datatype, owlDataOneOf));
   }
 

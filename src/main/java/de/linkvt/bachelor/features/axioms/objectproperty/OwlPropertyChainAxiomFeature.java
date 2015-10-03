@@ -18,8 +18,8 @@ public class OwlPropertyChainAxiomFeature extends Feature {
     OWLClass middle = featurePool.getExclusiveClass(":PropertyChainMiddle");
     OWLClass end = featurePool.getExclusiveClass(":PropertyChainEnd");
 
-    OWLObjectProperty singleStep = featurePool.getExclusiveProperty(":propertyChainSingleStep");
-    OWLObjectProperty doubleStep = featurePool.getExclusiveProperty(":propertyChainDoubleStep");
+    OWLObjectProperty singleStep = featurePool.getExclusiveProperty(":propertyChainProperty_SingleStep");
+    OWLObjectProperty doubleStep = featurePool.getExclusiveProperty(":propertyChainProperty_DoubleStep");
 
     List<OWLObjectProperty> propertyChain = Arrays.asList(singleStep, singleStep);
     addAxiomToOntology(factory.getOWLSubPropertyChainOfAxiom(propertyChain, doubleStep));

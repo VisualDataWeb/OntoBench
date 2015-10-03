@@ -12,7 +12,7 @@ public class RdfsDataDomainFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass domain = featurePool.getExclusiveClass(":Domain");
-    OWLDataProperty objectProperty = factory.getOWLDataProperty(":NoRangeDataProperty", pm);
+    OWLDataProperty objectProperty = factory.getOWLDataProperty(":noRangeDataProperty", pm);
 
     addAxiomToOntology(factory.getOWLDataPropertyDomainAxiom(objectProperty, domain));
   }

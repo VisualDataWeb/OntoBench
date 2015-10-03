@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlDataIntersectionOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype d1 = factory.getOWLDatatype(":DatatypeIntersectionOf_1", pm);
-    OWLDatatype d2 = factory.getOWLDatatype(":DatatypeIntersectionOf_2", pm);
+    OWLDatatype d1 = factory.getOWLDatatype(":DatatypeIntersectionOf_Datatype1", pm);
+    OWLDatatype d2 = factory.getOWLDatatype(":DatatypeIntersectionOf_Datatype2", pm);
     OWLDataIntersectionOf intersection = factory.getOWLDataIntersectionOf(d1, d2);
 
     OWLDataProperty property = factory.getOWLDataProperty(":datatypeIntersectionOfProperty", pm);

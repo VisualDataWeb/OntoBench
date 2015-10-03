@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 public class OwlObjectUnionOfOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass c1 = featurePool.getExclusiveClass(":ObjectUnionOf_RL_1");
-    OWLClass c2 = featurePool.getExclusiveClass(":ObjectUnionOf_RL_2");
-    OWLClass c3 = featurePool.getExclusiveClass(":ObjectUnionOf_RL_3");
+    OWLClass c1 = featurePool.getExclusiveClass(":ObjectUnionOf_RL_Class1");
+    OWLClass c2 = featurePool.getExclusiveClass(":ObjectUnionOf_RL_Class2");
+    OWLClass c3 = featurePool.getExclusiveClass(":ObjectUnionOf_RL_Class3");
     OWLObjectUnionOf unionOf = factory.getOWLObjectUnionOf(c1, c2, c3);
 
     OWLClass unionClass = featurePool.getExclusiveClass(":ObjectUnionOf_RL");

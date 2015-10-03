@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlObjectIntersectionOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass c1 = featurePool.getExclusiveClass(":ObjectIntersectionOf_1");
-    OWLClass c2 = featurePool.getExclusiveClass(":ObjectIntersectionOf_2");
+    OWLClass c1 = featurePool.getExclusiveClass(":ObjectIntersectionOf_Class1");
+    OWLClass c2 = featurePool.getExclusiveClass(":ObjectIntersectionOf_Class2");
     OWLObjectIntersectionOf spork = factory.getOWLObjectIntersectionOf(c1, c2);
 
     OWLClass owlClass = featurePool.getExclusiveClass(":ObjectIntersectionOf");

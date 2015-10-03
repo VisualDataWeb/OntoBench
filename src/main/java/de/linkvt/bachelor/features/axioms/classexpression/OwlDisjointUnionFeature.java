@@ -13,8 +13,8 @@ import java.util.HashSet;
 public class OwlDisjointUnionFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass c1 = featurePool.getExclusiveClass(":DisjointUnion_1");
-    OWLClass c2 = featurePool.getExclusiveClass(":DisjointUnion_2");
+    OWLClass c1 = featurePool.getExclusiveClass(":DisjointUnion_Class1");
+    OWLClass c2 = featurePool.getExclusiveClass(":DisjointUnion_Class2");
     OWLClass disjointUnionClass = featurePool.getExclusiveClass(":DisjointUnion");
 
     addAxiomToOntology(factory.getOWLDisjointUnionAxiom(disjointUnionClass, new HashSet<>(Arrays.asList(c1, c2))));

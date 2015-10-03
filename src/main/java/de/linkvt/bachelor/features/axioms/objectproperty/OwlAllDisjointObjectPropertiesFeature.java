@@ -10,15 +10,15 @@ import org.springframework.stereotype.Component;
 public class OwlAllDisjointObjectPropertiesFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty p1 = featurePool.getExclusiveProperty(":allDisjointObjectProperties_1");
-    OWLObjectProperty p2 = featurePool.getExclusiveProperty(":allDisjointObjectProperties_2");
-    OWLObjectProperty p3 = featurePool.getExclusiveProperty(":allDisjointObjectProperties_3");
+    OWLObjectProperty p1 = featurePool.getExclusiveProperty(":allDisjointObjectProperties_Property1");
+    OWLObjectProperty p2 = featurePool.getExclusiveProperty(":allDisjointObjectProperties_Property2");
+    OWLObjectProperty p3 = featurePool.getExclusiveProperty(":allDisjointObjectProperties_Property3");
 
     addAxiomToOntology(factory.getOWLDisjointObjectPropertiesAxiom(p1, p2, p3));
 
-    addToGenericDomainAndNewRange(p1, featurePool.getExclusiveClass(":DisjointObjectPropertyRange_1"));
-    addToGenericDomainAndNewRange(p2, featurePool.getExclusiveClass(":DisjointObjectPropertyRange_2"));
-    addToGenericDomainAndNewRange(p3, featurePool.getExclusiveClass(":DisjointObjectPropertyRange_3"));
+    addToGenericDomainAndNewRange(p1, featurePool.getExclusiveClass(":DisjointObjectProperty_Range1"));
+    addToGenericDomainAndNewRange(p2, featurePool.getExclusiveClass(":DisjointObjectProperty_Range2"));
+    addToGenericDomainAndNewRange(p3, featurePool.getExclusiveClass(":DisjointObjectProperty_Range3"));
   }
 
   @Override

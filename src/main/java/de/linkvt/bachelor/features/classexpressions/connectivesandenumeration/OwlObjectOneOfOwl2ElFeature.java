@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class OwlObjectOneOfOwl2ElFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLNamedIndividual individual = factory.getOWLNamedIndividual(":ObjectOneOf_EL_1", pm);
+    OWLNamedIndividual individual = factory.getOWLNamedIndividual(":ObjectOneOf_EL_Individual", pm);
     OWLObjectOneOf oneOf = factory.getOWLObjectOneOf(individual);
 
     OWLClass oneOfClass = featurePool.getExclusiveClass(":ObjectOneOf_EL");

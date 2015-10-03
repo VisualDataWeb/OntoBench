@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlDataUnionOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype d1 = factory.getOWLDatatype(":DataUnionOf_1", pm);
-    OWLDatatype d2 = factory.getOWLDatatype(":DataUnionOf_2", pm);
+    OWLDatatype d1 = factory.getOWLDatatype(":DataUnionOf_Datatype1", pm);
+    OWLDatatype d2 = factory.getOWLDatatype(":DataUnionOf_Datatype2", pm);
     OWLDataUnionOf union = factory.getOWLDataUnionOf(d1, d2);
 
     OWLDataProperty property = factory.getOWLDataProperty(":DataUnionOf", pm);

@@ -16,9 +16,9 @@ public class OwlEquivalentObjectPropertyFeature extends Feature {
 
     addAxiomToOntology(factory.getOWLEquivalentObjectPropertiesAxiom(p1, p2, p3));
 
-    addToGenericDomainAndNewRange(p1, featurePool.getExclusiveClass(":EquivalentObjectPropertyRange_1"));
-    addToGenericDomainAndNewRange(p2, featurePool.getExclusiveClass(":EquivalentObjectPropertyRange_2"));
-    addToGenericDomainAndNewRange(p3, featurePool.getExclusiveClass(":EquivalentObjectPropertyRange_3"));
+    addToGenericDomainAndNewRange(p1, featurePool.getExclusiveClass(":EquivalentObjectProperty_Range1"));
+    addToGenericDomainAndNewRange(p2, featurePool.getExclusiveClass(":EquivalentObjectProperty_Range2"));
+    addToGenericDomainAndNewRange(p3, featurePool.getExclusiveClass(":EquivalentObjectProperty_Range3"));
   }
 
   @Override

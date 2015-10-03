@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 public class OwlSameAsFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLNamedIndividual i1 = factory.getOWLNamedIndividual(":SameAs_1", pm);
-    OWLNamedIndividual i2 = factory.getOWLNamedIndividual(":SameAs_2", pm);
+    OWLNamedIndividual i1 = factory.getOWLNamedIndividual(":SameAs_Individual1", pm);
+    OWLNamedIndividual i2 = factory.getOWLNamedIndividual(":SameAs_Individual2", pm);
 
     addAxiomToOntology(factory.getOWLSameIndividualAxiom(i1, i2));
   }

@@ -13,7 +13,7 @@ public class OwlDataOneOfOwl2ELFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLDatatype datatype = factory.getOWLDatatype(":DataOneOf_EL", pm);
-    OWLLiteral singleLiteral = factory.getOWLLiteral("DataOneOf_EL_1");
+    OWLLiteral singleLiteral = factory.getOWLLiteral("DataOneOf_EL_Literal1");
     OWLDataOneOf owlDataOneOf = factory.getOWLDataOneOf(singleLiteral);
 
     addAxiomToOntology(factory.getOWLDatatypeDefinitionAxiom(datatype, owlDataOneOf));

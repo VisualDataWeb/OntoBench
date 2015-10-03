@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public class OwlDisjointWithFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass c1 = featurePool.getExclusiveClass(":DisjointWith_1");
-    OWLClass c2 = featurePool.getExclusiveClass(":DisjointWith_2");
-    OWLClass c3 = featurePool.getExclusiveClass(":DisjointWith_3");
+    OWLClass c1 = featurePool.getExclusiveClass(":DisjointWith_Class1");
+    OWLClass c2 = featurePool.getExclusiveClass(":DisjointWith_Class2");
+    OWLClass c3 = featurePool.getExclusiveClass(":DisjointWith_Class3");
 
     addAxiomToOntology(factory.getOWLDisjointClassesAxiom(c1, c2));
     addAxiomToOntology(factory.getOWLDisjointClassesAxiom(c2, c3));

@@ -13,7 +13,7 @@ public class RdfsObjectRangeFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass range = featurePool.getExclusiveClass(":Range");
-    OWLObjectProperty objectProperty = featurePool.getExclusiveProperty(":NoDomainObjectProperty");
+    OWLObjectProperty objectProperty = featurePool.getExclusiveProperty(":noDomainObjectProperty");
     OWLAxiom axiom = factory.getOWLObjectPropertyRangeAxiom(objectProperty, range);
 
     addAxiomToOntology(axiom);

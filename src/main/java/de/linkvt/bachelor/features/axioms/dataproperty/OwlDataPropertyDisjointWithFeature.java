@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 public class OwlDataPropertyDisjointWithFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty p1 = factory.getOWLDataProperty(":dataPropertyDisjointWith_1", pm);
-    OWLDataProperty p2 = factory.getOWLDataProperty(":dataPropertyDisjointWith_2", pm);
+    OWLDataProperty p1 = factory.getOWLDataProperty(":dataPropertyDisjointWith_Property1", pm);
+    OWLDataProperty p2 = factory.getOWLDataProperty(":dataPropertyDisjointWith_Property2", pm);
 
     addAxiomToOntology(factory.getOWLDisjointDataPropertiesAxiom(p1, p2));
 
