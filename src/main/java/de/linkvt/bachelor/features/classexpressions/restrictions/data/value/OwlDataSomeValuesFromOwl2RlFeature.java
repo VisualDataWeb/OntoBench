@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
 public class OwlDataSomeValuesFromOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":owl2RlSomeValuesFromData", pm);
+    OWLDataProperty property = factory.getOWLDataProperty(":dataSomeValuesFromProperty_RL", pm);
     OWLDatatype datatype = OWL2Datatype.XSD_DATE_TIME.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
 
-    OWLClass range = featurePool.getExclusiveClass(":Owl2RlSomeValuesFromDataRange");
+    OWLClass range = featurePool.getExclusiveClass(":DataSomeValuesFrom_RL");
     OWLDataSomeValuesFrom restriction = factory.getOWLDataSomeValuesFrom(property, datatype);
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(restriction, range));
   }

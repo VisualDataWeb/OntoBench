@@ -9,7 +9,7 @@ import de.linkvt.bachelor.features.axioms.dataproperty.OwlDataPropertyDisjointWi
 import de.linkvt.bachelor.features.axioms.dataproperty.OwlEquivalentDataPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlIrreflexivePropertyFeature;
 import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfOwl2Feature;
-import de.linkvt.bachelor.features.dataranges.OwlDataOneOfOwl2Feature;
+import de.linkvt.bachelor.features.dataranges.OwlDataOneOfOwl2ELFeature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.presets.Owl2ElPreset;
 import de.linkvt.bachelor.presets.Owl2QlPreset;
@@ -60,7 +60,7 @@ public class Owl2ProfileTests {
   @Test
   public void testOwl2ElProfile() {
     Collection<Class<? extends Feature>> excluded = new ArrayList<>();
-    excluded.add(OwlDataOneOfOwl2Feature.class);
+    excluded.add(OwlDataOneOfOwl2ELFeature.class);
 
     testPreset(owl2ElPreset, new OWL2ELProfile(), excluded);
   }

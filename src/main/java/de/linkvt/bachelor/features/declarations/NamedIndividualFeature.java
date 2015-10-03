@@ -12,7 +12,7 @@ public class NamedIndividualFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass clazz = featurePool.getReusableClass();
-    OWLNamedIndividual individual = factory.getOWLNamedIndividual(":AnIndividual", pm);
+    OWLNamedIndividual individual = factory.getOWLNamedIndividual(":NamedIndividual", pm);
 
     addAxiomToOntology(factory.getOWLClassAssertionAxiom(clazz, individual));
   }

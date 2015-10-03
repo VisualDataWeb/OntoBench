@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 public class OwlDataIntersectionOfOwl2Feature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype first = OWL2Datatype.XSD_STRING.getDatatype(factory);
-    OWLDatatype second = OWL2Datatype.XSD_DATE_TIME.getDatatype(factory);
-    OWLDataIntersectionOf intersection = factory.getOWLDataIntersectionOf(first, second);
+    OWLDatatype d1 = OWL2Datatype.XSD_STRING.getDatatype(factory);
+    OWLDatatype d2 = OWL2Datatype.XSD_DATE_TIME.getDatatype(factory);
+    OWLDataIntersectionOf intersection = factory.getOWLDataIntersectionOf(d1, d2);
 
-    OWLDataProperty property = factory.getOWLDataProperty(":intersectionOfOwl2Datatypes", pm);
+    OWLDataProperty property = factory.getOWLDataProperty(":datatypeIntersectionOfProperty_OWL2", pm);
     addToGenericDomainAndNewRange(property, intersection);
   }
 

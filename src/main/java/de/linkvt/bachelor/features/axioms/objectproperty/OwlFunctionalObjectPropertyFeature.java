@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 public class OwlFunctionalObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass(":FunctionalPropertyRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":functionalObjectProperty");
+    OWLClass range = featurePool.getExclusiveClass(":FunctionalObjectPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     addAxiomToOntology(factory.getOWLFunctionalObjectPropertyAxiom(property));

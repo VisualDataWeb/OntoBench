@@ -12,16 +12,16 @@ import org.springframework.stereotype.Component;
 public class OwlEquivalentDataPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty age = factory.getOWLDataProperty(":age", pm);
-    OWLDataProperty alter = factory.getOWLDataProperty(":alter", pm);
-    OWLDataProperty edad = factory.getOWLDataProperty(":edad", pm);
+    OWLDataProperty p1 = factory.getOWLDataProperty(":equivalentDataProperty_1", pm);
+    OWLDataProperty p2 = factory.getOWLDataProperty(":equivalentDataProperty_2", pm);
+    OWLDataProperty p3 = factory.getOWLDataProperty(":equivalentDataProperty_3", pm);
 
-    addAxiomToOntology(factory.getOWLEquivalentDataPropertiesAxiom(age, alter, edad));
+    addAxiomToOntology(factory.getOWLEquivalentDataPropertiesAxiom(p1, p2, p3));
 
     OWLDatatype datatype = OWL2Datatype.XSD_NON_NEGATIVE_INTEGER.getDatatype(factory);
-    addToGenericDomainAndNewRange(age, datatype);
-    addToGenericDomainAndNewRange(alter, datatype);
-    addToGenericDomainAndNewRange(edad, datatype);
+    addToGenericDomainAndNewRange(p1, datatype);
+    addToGenericDomainAndNewRange(p2, datatype);
+    addToGenericDomainAndNewRange(p3, datatype);
   }
 
   @Override

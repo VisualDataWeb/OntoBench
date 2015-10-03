@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlTransitivePropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass(":TransitivePropertyRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":transitiveObjectProperty");
+    OWLClass range = featurePool.getExclusiveClass(":TransitiveObjectPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLAxiom axiom = factory.getOWLTransitiveObjectPropertyAxiom(property);

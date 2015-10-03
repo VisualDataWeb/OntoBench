@@ -15,7 +15,7 @@ public class OwlDataComplementOfFeature extends Feature {
     OWLDatatype datatype = OWL2Datatype.XSD_STRING.getDatatype(factory);
     OWLDataComplementOf complement = factory.getOWLDataComplementOf(datatype);
 
-    addToGenericDomainAndNewRange(factory.getOWLDataProperty(":complementOfString", pm), complement);
+    addToGenericDomainAndNewRange(factory.getOWLDataProperty(":dataComplementOfProperty", pm), complement);
   }
 
   @Override

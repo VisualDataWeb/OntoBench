@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlObjectMinCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass(":MinCardinalityRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":objectMinCardinalityProperty");
+    OWLClass range = featurePool.getExclusiveClass(":ObjectMinCardinalityRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectMinCardinality minCardinality = factory.getOWLObjectMinCardinality(2, property);

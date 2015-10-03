@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class OwlObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty objectProperty = featurePool.getExclusiveProperty(":ObjectProperty");
+    OWLObjectProperty objectProperty = featurePool.getExclusiveProperty(":objectProperty");
     OWLClass range = featurePool.getExclusiveClass(":ObjectPropertyRange");
 
     addToGenericDomainAndNewRange(objectProperty, range);

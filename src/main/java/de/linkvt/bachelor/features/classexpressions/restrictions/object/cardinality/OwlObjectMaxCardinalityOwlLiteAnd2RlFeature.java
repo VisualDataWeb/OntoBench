@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlObjectMaxCardinalityOwlLiteAnd2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass(":MaxCardinalityRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":objectMaxCardinalityProperty_LiteRL");
+    OWLClass range = featurePool.getExclusiveClass(":ObjectMaxCardinalityRange_LiteRL");
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectMaxCardinality maxCardinality = factory.getOWLObjectMaxCardinality(1, property);

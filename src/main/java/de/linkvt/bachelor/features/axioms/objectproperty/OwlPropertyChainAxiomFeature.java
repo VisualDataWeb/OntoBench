@@ -14,19 +14,19 @@ import java.util.List;
 public class OwlPropertyChainAxiomFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass grandParent = featurePool.getReusableClass();
-    OWLClass parent = featurePool.getExclusiveClass(":Parent");
-    OWLClass child = featurePool.getExclusiveClass(":Child");
+    OWLClass start = featurePool.getReusableClass();
+    OWLClass middle = featurePool.getExclusiveClass(":PropertyChainMiddle");
+    OWLClass end = featurePool.getExclusiveClass(":PropertyChainEnd");
 
-    OWLObjectProperty hasParent = featurePool.getExclusiveProperty(":hasParent");
-    OWLObjectProperty hasGrandParent = featurePool.getExclusiveProperty(":hasGrandParent");
+    OWLObjectProperty singleStep = featurePool.getExclusiveProperty(":propertyChainSingleStep");
+    OWLObjectProperty doubleStep = featurePool.getExclusiveProperty(":propertyChainDoubleStep");
 
-    List<OWLObjectProperty> propertyChain = Arrays.asList(hasParent, hasParent);
-    addAxiomToOntology(factory.getOWLSubPropertyChainOfAxiom(propertyChain, hasGrandParent));
+    List<OWLObjectProperty> propertyChain = Arrays.asList(singleStep, singleStep);
+    addAxiomToOntology(factory.getOWLSubPropertyChainOfAxiom(propertyChain, doubleStep));
 
-    addProperty(child, hasParent, parent);
-    addProperty(parent, hasParent, grandParent);
-    addProperty(child, hasGrandParent, grandParent);
+    addProperty(end, singleStep, middle);
+    addProperty(middle, singleStep, start);
+    addProperty(end, doubleStep, start);
   }
 
   @Override

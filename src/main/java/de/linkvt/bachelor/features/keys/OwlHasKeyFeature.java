@@ -5,6 +5,7 @@ import de.linkvt.bachelor.features.FeatureCategory;
 
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
@@ -14,15 +15,17 @@ public class OwlHasKeyFeature extends Feature {
 
   @Override
   public void addToOntology() {
-    OWLClass person = featurePool.getExclusiveClass(":Person");
-    OWLDataProperty taxId = factory.getOWLDataProperty(":taxId", pm);
-    addProperty(person, taxId, OWL2Datatype.XSD_STRING.getDatatype(factory));
+    OWLClass hasKeyClass = featurePool.getExclusiveClass(":HasKeyClass");
 
-    OWLObjectProperty hasHomeland = featurePool.getExclusiveProperty(":hasHomeland");
-    OWLClass country = featurePool.getExclusiveClass(":Country");
-    addProperty(person, hasHomeland, country);
+    OWLDataProperty hasKeyProperty1 = factory.getOWLDataProperty(":hasKeyProperty_1", pm);
+    OWLDatatype hasKeyRange1 = OWL2Datatype.XSD_STRING.getDatatype(factory);
+    addProperty(hasKeyClass, hasKeyProperty1, hasKeyRange1);
 
-    addAxiomToOntology(factory.getOWLHasKeyAxiom(person, taxId, hasHomeland));
+    OWLObjectProperty hasKeyProperty_2 = featurePool.getExclusiveProperty(":hasKeyProperty_2");
+    OWLClass hasKeyRange2 = featurePool.getExclusiveClass(":HasKeyPropertyRange_2");
+    addProperty(hasKeyClass, hasKeyProperty_2, hasKeyRange2);
+
+    addAxiomToOntology(factory.getOWLHasKeyAxiom(hasKeyClass, hasKeyProperty1, hasKeyProperty_2));
   }
 
   @Override

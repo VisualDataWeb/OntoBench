@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlObjectCardinalityOwlLiteFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass(":CardinalityRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":objectExactCardinalityProperty_Lite");
+    OWLClass range = featurePool.getExclusiveClass(":ObjectExactCardinalityRange_Lite");
     addToGenericDomainAndNewRange(property, range);
 
     OWLObjectExactCardinality exactCardinality = factory.getOWLObjectExactCardinality(1, property);

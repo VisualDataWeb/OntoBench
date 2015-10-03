@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class OwlObjectMaxQualifiedCardinalityFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty hasRoommates = featurePool.getExclusiveProperty(":hasRoommates");
-    OWLClass range = featurePool.getExclusiveClass(":MaxQualifiedCardinalityRange");
-    addToGenericDomainAndNewRange(hasRoommates, range);
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":objectMaxQualifiedCardinalityProperty");
+    OWLClass range = featurePool.getExclusiveClass(":ObjectMaxQualifiedCardinalityRange");
+    addToGenericDomainAndNewRange(property, range);
 
-    OWLClass student = featurePool.getExclusiveClass(":Student");
-    OWLObjectMaxCardinality maxCardinality = factory.getOWLObjectMaxCardinality(3, hasRoommates, student);
+    OWLClass qualifier = featurePool.getExclusiveClass(":ObjectMaxQualifiedCardinality_Qualifier");
+    OWLObjectMaxCardinality maxCardinality = factory.getOWLObjectMaxCardinality(3, property, qualifier);
 
     addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, maxCardinality));
   }

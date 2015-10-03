@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class RdfsDatatypeFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype datatype = factory.getOWLDatatype(":SomeCustomDatatype", pm);
+    OWLDatatype datatype = factory.getOWLDatatype(":RdfsDatatype", pm);
     addAxiomToOntology(factory.getOWLDeclarationAxiom(datatype));
   }
 

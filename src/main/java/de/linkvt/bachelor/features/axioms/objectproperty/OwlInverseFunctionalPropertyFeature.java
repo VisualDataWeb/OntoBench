@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlInverseFunctionalPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass(":InverseFunctionalPropertyRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":inverseFunctionalObjectProperty");
+    OWLClass range = featurePool.getExclusiveClass(":InverseFunctionalObjectPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLAxiom axiom = factory.getOWLInverseFunctionalObjectPropertyAxiom(property);

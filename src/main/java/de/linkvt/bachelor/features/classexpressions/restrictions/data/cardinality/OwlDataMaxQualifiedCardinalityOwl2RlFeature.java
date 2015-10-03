@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 public class OwlDataMaxQualifiedCardinalityOwl2RlFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":owl2RlDataMaxQualifiedCardinality", pm);
+    OWLDataProperty property = factory.getOWLDataProperty(":dataMaxQualifiedCardinality_RL", pm);
     OWLDatatype datatype = OWL2Datatype.RDFS_LITERAL.getDatatype(factory);
     addToGenericDomainAndNewRange(property, datatype);
 
     OWLDatatype affectedDatatype = OWL2Datatype.XSD_BYTE.getDatatype(factory);
     OWLDataMaxCardinality cardinality = factory.getOWLDataMaxCardinality(1, property, affectedDatatype);
 
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(featurePool.getExclusiveClass(":Owl2RlDataMaxQualifiedCardinalityRange"), cardinality));
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(featurePool.getExclusiveClass(":DataMaxQualifiedCardinalityRange_RL"), cardinality));
   }
 
   @Override

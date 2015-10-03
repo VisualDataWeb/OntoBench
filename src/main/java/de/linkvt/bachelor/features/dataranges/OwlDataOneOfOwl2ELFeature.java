@@ -9,11 +9,11 @@ import org.semanticweb.owlapi.model.OWLLiteral;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlDataOneOfOwl2Feature extends Feature {
+public class OwlDataOneOfOwl2ELFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDatatype datatype = factory.getOWLDatatype(":DataOneOfSingleLiteral", pm);
-    OWLLiteral singleLiteral = factory.getOWLLiteral("singleLiteral");
+    OWLDatatype datatype = factory.getOWLDatatype(":DataOneOf_EL", pm);
+    OWLLiteral singleLiteral = factory.getOWLLiteral("DataOneOf_EL_1");
     OWLDataOneOf owlDataOneOf = factory.getOWLDataOneOf(singleLiteral);
 
     addAxiomToOntology(factory.getOWLDatatypeDefinitionAxiom(datatype, owlDataOneOf));

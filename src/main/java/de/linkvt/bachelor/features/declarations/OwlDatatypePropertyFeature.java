@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class OwlDatatypePropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":favoriteNumber", pm);
+    OWLDataProperty property = factory.getOWLDataProperty(":dataProperty", pm);
     OWLDatatype datatype = factory.getIntegerOWLDatatype();
 
     addToGenericDomainAndNewRange(property, datatype);

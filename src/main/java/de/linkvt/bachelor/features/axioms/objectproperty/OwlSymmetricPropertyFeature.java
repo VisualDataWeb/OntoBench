@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class OwlSymmetricPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getReusablePropertyAndRemoveFromPool();
-    OWLClass range = featurePool.getExclusiveClass(":SymmetricPropertyRange");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":symmetricObjectProperty");
+    OWLClass range = featurePool.getExclusiveClass(":SymmetricObjectPropertyRange");
     addToGenericDomainAndNewRange(property, range);
 
     OWLAxiom axiom = factory.getOWLSymmetricObjectPropertyAxiom(property);

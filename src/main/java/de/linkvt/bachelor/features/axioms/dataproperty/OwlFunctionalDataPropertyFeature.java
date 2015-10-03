@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 public class OwlFunctionalDataPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":hasAge", pm);
+    OWLDataProperty dataProperty = factory.getOWLDataProperty(":functionalDataProperty", pm);
     OWLDatatype datatype = OWL2Datatype.XSD_NON_NEGATIVE_INTEGER.getDatatype(factory);
 
-    addToGenericDomainAndNewRange(property, datatype);
-    addAxiomToOntology(factory.getOWLFunctionalDataPropertyAxiom(property));
+    addToGenericDomainAndNewRange(dataProperty, datatype);
+    addAxiomToOntology(factory.getOWLFunctionalDataPropertyAxiom(dataProperty));
   }
 
   @Override

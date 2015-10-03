@@ -12,8 +12,8 @@ public class OwlEquivalentClassFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass owlClass = featurePool.getReusableClassAndRemoveFromPool();
-    OWLClass equivalentClass1 = featurePool.getExclusiveClass(":EquivalentClass1");
-    OWLClass equivalentClass2 = featurePool.getExclusiveClass(":EquivalentClass2");
+    OWLClass equivalentClass1 = featurePool.getExclusiveClass(":EquivalentClass_1");
+    OWLClass equivalentClass2 = featurePool.getExclusiveClass(":EquivalentClass_2");
     OWLAxiom equivalentAxiom = factory.getOWLEquivalentClassesAxiom(owlClass, equivalentClass1, equivalentClass2);
 
     addAxiomToOntology(equivalentAxiom);

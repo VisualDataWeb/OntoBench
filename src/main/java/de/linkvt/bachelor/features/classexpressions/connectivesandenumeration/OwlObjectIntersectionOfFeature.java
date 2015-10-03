@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 public class OwlObjectIntersectionOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass fork = featurePool.getExclusiveClass(":Fork");
-    OWLClass spoon = featurePool.getExclusiveClass(":Spoon");
-    OWLObjectIntersectionOf spork = factory.getOWLObjectIntersectionOf(fork, spoon);
+    OWLClass c1 = featurePool.getExclusiveClass(":ObjectIntersectionOf_1");
+    OWLClass c2 = featurePool.getExclusiveClass(":ObjectIntersectionOf_2");
+    OWLObjectIntersectionOf spork = factory.getOWLObjectIntersectionOf(c1, c2);
 
-    OWLClass owlClass = featurePool.getExclusiveClass(":Spork");
+    OWLClass owlClass = featurePool.getExclusiveClass(":ObjectIntersectionOf");
 
     OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(owlClass, spork);
     addAxiomToOntology(axiom);

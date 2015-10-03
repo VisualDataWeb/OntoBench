@@ -12,12 +12,12 @@ public class OwlInverseOfPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
     OWLClass domain = featurePool.getReusableClass();
-    OWLClass range = featurePool.getExclusiveClass(":Holidays");
+    OWLClass range = featurePool.getExclusiveClass(":InverseOfPropertyRange");
 
-    OWLObjectProperty property = featurePool.getExclusiveProperty(":comesFrom");
+    OWLObjectProperty property = featurePool.getExclusiveProperty(":nonInverseProperty");
     addProperty(domain, property, range);
 
-    OWLObjectProperty inverseProperty = featurePool.getExclusiveProperty(":goesTo");
+    OWLObjectProperty inverseProperty = featurePool.getExclusiveProperty(":inverseProperty");
     addProperty(range, inverseProperty, domain);
 
     addAxiomToOntology(factory.getOWLInverseObjectPropertiesAxiom(property, inverseProperty));

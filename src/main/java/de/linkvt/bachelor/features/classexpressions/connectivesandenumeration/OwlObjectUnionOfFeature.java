@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 public class OwlObjectUnionOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass fork = featurePool.getExclusiveClass(":Fork");
-    OWLClass knife = featurePool.getExclusiveClass(":Knife");
-    OWLClass spoon = featurePool.getExclusiveClass(":Spoon");
-    OWLObjectUnionOf unionOf = factory.getOWLObjectUnionOf(fork, knife, spoon);
+    OWLClass c1 = featurePool.getExclusiveClass(":ObjectUnionOf_1");
+    OWLClass c2 = featurePool.getExclusiveClass(":ObjectUnionOf_2");
+    OWLClass c3 = featurePool.getExclusiveClass(":ObjectUnionOf_3");
+    OWLObjectUnionOf unionOf = factory.getOWLObjectUnionOf(c1, c2, c3);
 
-    OWLClass cutlery = featurePool.getExclusiveClass(":Cutlery");
+    OWLClass unionClass = featurePool.getExclusiveClass(":ObjectUnionOf");
 
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(cutlery, unionOf));
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(unionClass, unionOf));
   }
 
   @Override

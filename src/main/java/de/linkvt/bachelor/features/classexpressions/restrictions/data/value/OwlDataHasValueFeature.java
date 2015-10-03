@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 public class OwlDataHasValueFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":hasValueData", pm);
-    OWLDataHasValue hasValue = factory.getOWLDataHasValue(property, factory.getOWLLiteral(6));
+    OWLDataProperty property = factory.getOWLDataProperty(":dataHasValueProperty", pm);
+
+    OWLDataHasValue restriction = factory.getOWLDataHasValue(property, factory.getOWLLiteral(6));
     addToGenericDomainAndNewRange(property, OWL2Datatype.XSD_NON_NEGATIVE_INTEGER.getDatatype(factory));
 
-    OWLClass range = featurePool.getReusableClass(":HasValueDataRange");
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, hasValue));
+    OWLClass hasValue = featurePool.getReusableClass(":DataHasValue");
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(hasValue, restriction));
   }
 
   @Override

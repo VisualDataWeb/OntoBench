@@ -3,7 +3,6 @@ package de.linkvt.bachelor.features.classexpressions.connectivesandenumeration;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectOneOf;
@@ -13,14 +12,13 @@ import org.springframework.stereotype.Component;
 public class OwlObjectOneOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLNamedIndividual black = factory.getOWLNamedIndividual(":Black", pm);
-    OWLNamedIndividual white = factory.getOWLNamedIndividual(":White", pm);
-    OWLObjectOneOf oneOf = factory.getOWLObjectOneOf(black, white);
+    OWLNamedIndividual i1 = factory.getOWLNamedIndividual(":ObjectOneOf_1", pm);
+    OWLNamedIndividual i2 = factory.getOWLNamedIndividual(":ObjectOneOf_2", pm);
+    OWLObjectOneOf oneOf = factory.getOWLObjectOneOf(i1, i2);
 
-    OWLClass oneOfClass = featurePool.getExclusiveClass(":BlackOrWhite");
+    OWLClass oneOfClass = featurePool.getExclusiveClass(":ObjectOneOf");
 
-    OWLAxiom axiom = factory.getOWLEquivalentClassesAxiom(oneOfClass, oneOf);
-    addAxiomToOntology(axiom);
+    addAxiomToOntology(factory.getOWLEquivalentClassesAxiom(oneOfClass, oneOf));
   }
 
   @Override

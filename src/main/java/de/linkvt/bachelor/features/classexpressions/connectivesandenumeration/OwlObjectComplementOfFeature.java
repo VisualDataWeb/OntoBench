@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 public class OwlObjectComplementOfFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass positive = featurePool.getExclusiveClass(":Positive");
-    OWLObjectComplementOf negative = factory.getOWLObjectComplementOf(positive);
+    OWLClass nonComplement = featurePool.getExclusiveClass(":NoObjectComplementOf");
+    OWLObjectComplementOf complement = factory.getOWLObjectComplementOf(nonComplement);
 
-    OWLClass owlClass = featurePool.getExclusiveClass(":Negative");
+    OWLClass owlClass = featurePool.getExclusiveClass(":ObjectComplementOf");
 
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(owlClass, negative));
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(owlClass, complement));
   }
 
   @Override

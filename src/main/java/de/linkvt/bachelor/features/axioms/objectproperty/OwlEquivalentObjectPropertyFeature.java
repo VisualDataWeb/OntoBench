@@ -3,8 +3,6 @@ package de.linkvt.bachelor.features.axioms.objectproperty;
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
@@ -12,16 +10,15 @@ import org.springframework.stereotype.Component;
 public class OwlEquivalentObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty property = featurePool.getExclusiveProperty(":EquivalentPropertyBase");
-    OWLObjectProperty equivalentProperty1 = featurePool.getExclusiveProperty(":EquivalentProperty1");
-    OWLObjectProperty equivalentProperty2 = featurePool.getExclusiveProperty(":EquivalentProperty2");
+    OWLObjectProperty p1 = featurePool.getExclusiveProperty(":equivalentObjectProperty_1");
+    OWLObjectProperty p2 = featurePool.getExclusiveProperty(":equivalentObjectProperty_2");
+    OWLObjectProperty p3 = featurePool.getExclusiveProperty(":equivalentObjectProperty_3");
 
-    OWLAxiom equivalentAxiom = factory.getOWLEquivalentObjectPropertiesAxiom(property, equivalentProperty1, equivalentProperty2);
+    addAxiomToOntology(factory.getOWLEquivalentObjectPropertiesAxiom(p1, p2, p3));
 
-    OWLClass range = featurePool.getExclusiveClass(":EquivalentPropertyRange");
-    addToGenericDomainAndNewRange(property, range);
-
-    addAxiomToOntology(equivalentAxiom);
+    addToGenericDomainAndNewRange(p1, featurePool.getExclusiveClass(":EquivalentObjectPropertyRange_1"));
+    addToGenericDomainAndNewRange(p2, featurePool.getExclusiveClass(":EquivalentObjectPropertyRange_2"));
+    addToGenericDomainAndNewRange(p3, featurePool.getExclusiveClass(":EquivalentObjectPropertyRange_3"));
   }
 
   @Override
