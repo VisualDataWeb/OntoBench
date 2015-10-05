@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.special.parallelproperties;
+package de.linkvt.bachelor.features.special.properties.parallel;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -30,7 +30,7 @@ public abstract class MultipleParallelPropertiesFeature extends Feature {
 
   @Override
   public String getToken() {
-    return propertyCount + "parallelproperties";
+    return propertyCount + "parallel";
   }
 
   @Override

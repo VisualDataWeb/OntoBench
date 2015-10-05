@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.special.parallelproperties;
+package de.linkvt.bachelor.features.special.properties.parallel;
 
 import org.semanticweb.owlapi.model.OWLClass;
 import org.springframework.stereotype.Component;
