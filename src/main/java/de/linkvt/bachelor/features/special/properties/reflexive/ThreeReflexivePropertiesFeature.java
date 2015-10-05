@@ -1,14 +1,14 @@
-package de.linkvt.bachelor.features.special.properties.symmetric;
+package de.linkvt.bachelor.features.special.properties.reflexive;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class ThreeSymmetricPropertiesFeature extends MultipleSymmetricPropertiesFeature {
+public class ThreeReflexivePropertiesFeature extends MultipleReflexivePropertiesFeature {
 
   public static final String BASE_IRI = ":ThreeSymmetricProperties";
   public static final int PROPERTY_COUNT = 3;
 
-  public ThreeSymmetricPropertiesFeature() {
+  public ThreeReflexivePropertiesFeature() {
     super(BASE_IRI, PROPERTY_COUNT);
   }
 

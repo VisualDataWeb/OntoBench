@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.special.properties.symmetric;
+package de.linkvt.bachelor.features.special.properties.reflexive;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -7,12 +7,12 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.springframework.stereotype.Component;
 
 @Component
-public abstract class MultipleSymmetricPropertiesFeature extends Feature {
+public abstract class MultipleReflexivePropertiesFeature extends Feature {
 
   private String baseIri;
   private int propertyCount;
 
-  public MultipleSymmetricPropertiesFeature(String baseIri, int propertyCount) {
+  public MultipleReflexivePropertiesFeature(String baseIri, int propertyCount) {
     this.baseIri = baseIri;
     this.propertyCount = propertyCount;
   }
@@ -27,12 +27,12 @@ public abstract class MultipleSymmetricPropertiesFeature extends Feature {
 
   @Override
   public String getName() {
-    return propertyCount + " symmetric properties";
+    return propertyCount + " reflexive properties";
   }
 
   @Override
   public String getToken() {
-    return propertyCount + "symmetric";
+    return propertyCount + "reflexive";
   }
 
   @Override
