@@ -12,13 +12,4 @@ public class HundredIndividualsFeature extends MultipleIndividualsFeature {
     super(BASE_IRI, INDIVIDUAL_COUNT);
   }
 
-  @Override
-  public String getName() {
-    return "Hundred instances of a class";
-  }
-
-  @Override
-  public String getToken() {
-    return "hundredinstances";
-  }
 }

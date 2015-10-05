@@ -38,4 +38,14 @@ public abstract class MultipleIndividualsFeature extends Feature {
     return FeatureCategory.SPECIAL_TEST_CASES;
   }
 
+  @Override
+  public String getName() {
+    return individualCount + " instances of a class";
+  }
+
+  @Override
+  public String getToken() {
+    return individualCount + "instances";
+  }
+
 }

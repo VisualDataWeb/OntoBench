@@ -12,13 +12,4 @@ public class TenIndividualsFeature extends MultipleIndividualsFeature {
     super(BASE_IRI, INDIVIDUAL_COUNT);
   }
 
-  @Override
-  public String getName() {
-    return "Ten instances of a class";
-  }
-
-  @Override
-  public String getToken() {
-    return "teninstances";
-  }
 }
