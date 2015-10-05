@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.visualization;
+package de.linkvt.bachelor.features.special;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -31,6 +31,6 @@ public class MultipleSymmetricPropertiesFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.VISUALIZATION;
+    return FeatureCategory.SPECIAL_TEST_CASES;
   }
 }

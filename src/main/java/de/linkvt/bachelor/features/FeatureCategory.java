@@ -19,7 +19,7 @@ public enum FeatureCategory {
   DECLARATIONS("Declarations"),
   ANNOTATIONS("Annotations"),
   DC("DC & DC Terms Annotations"),
-  VISUALIZATION("Visualization");
+  SPECIAL_TEST_CASES("Special Test Cases");
 
   private String name;
 

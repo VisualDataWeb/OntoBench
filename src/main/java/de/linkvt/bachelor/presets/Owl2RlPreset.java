@@ -56,8 +56,6 @@ import de.linkvt.bachelor.features.declarations.UnboundDataPropertyFeature;
 import de.linkvt.bachelor.features.declarations.UnboundObjectPropertyFeature;
 import de.linkvt.bachelor.features.individuals.AnonymousIndividualFeature;
 import de.linkvt.bachelor.features.keys.OwlHasKeyFeature;
-import de.linkvt.bachelor.features.visualization.MultipleLinksFeature;
-import de.linkvt.bachelor.features.visualization.MultipleSymmetricPropertiesFeature;
 
 import org.springframework.stereotype.Component;
 
@@ -66,8 +64,6 @@ public class Owl2RlPreset extends Preset {
   @Override
   protected void initialize() {
     addFeatures(AnonymousIndividualFeature.class);
-    addFeatures(MultipleLinksFeature.class);
-    addFeatures(MultipleSymmetricPropertiesFeature.class);
     addFeatures(NamedIndividualFeature.class);
     addFeatures(OwlAllDifferentFeature.class);
     addFeatures(OwlAllDisjointClassesFeature.class); // OWLApi marks this as a violation
