@@ -19,7 +19,7 @@ public class NamedIndividualFeature extends Feature {
 
   @Override
   public String getName() {
-    return "Named Individual";
+    return "owl:NamedIndividual";
   }
 
   @Override
