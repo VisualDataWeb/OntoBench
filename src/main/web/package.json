@@ -9,15 +9,15 @@
     "url": "https://github.com/linkvt/bachelor.git"
   },
   "scripts": {
-    "postinstall": "bower install && brunch build --production",
+    "postinstall": "bower install --config.interactive=false && brunch build --production",
     "start": "brunch watch --server"
   },
   "dependencies": {
     "assetsmanager-brunch": "^1.8.1",
     "auto-reload-brunch": "^1.8.0",
     "babel-brunch": "^5.1.2",
-    "bower": "^1.4.1",
-    "brunch": "^1.8.3",
+    "bower": "^1.5.3",
+    "brunch": "^1.8.5",
     "clean-css-brunch": "^1.7.2",
     "javascript-brunch": "^1.7.1",
     "less-brunch": "^1.8.1",
