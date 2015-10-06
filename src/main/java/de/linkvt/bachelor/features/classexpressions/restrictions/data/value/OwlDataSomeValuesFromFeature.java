@@ -16,7 +16,6 @@ public class OwlDataSomeValuesFromFeature extends Feature {
   public void addToOntology() {
     OWLDataProperty property = factory.getOWLDataProperty(":dataSomeValuesFromProperty", pm);
     OWLDatatype datatype = OWL2Datatype.XSD_DATE_TIME.getDatatype(factory);
-    addToGenericDomainAndNewRange(property, datatype);
 
     OWLClass someValuesFrom = featurePool.getExclusiveClass(":DataSomeValuesFrom");
     OWLDataSomeValuesFrom restriction = factory.getOWLDataSomeValuesFrom(property, datatype);
