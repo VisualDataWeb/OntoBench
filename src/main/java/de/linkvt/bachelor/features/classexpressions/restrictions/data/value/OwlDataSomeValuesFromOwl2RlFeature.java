@@ -19,7 +19,7 @@ public class OwlDataSomeValuesFromOwl2RlFeature extends Feature {
 
     OWLClass range = featurePool.getExclusiveClass(":DataSomeValuesFrom_RL");
     OWLDataSomeValuesFrom restriction = factory.getOWLDataSomeValuesFrom(property, datatype);
-    addAxiomToOntology(factory.getOWLSubClassOfAxiom(range, restriction));
+    addAxiomToOntology(factory.getOWLSubClassOfAxiom(restriction, range));
   }
 
   @Override
