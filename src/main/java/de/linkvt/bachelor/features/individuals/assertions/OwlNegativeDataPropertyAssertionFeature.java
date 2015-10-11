@@ -21,7 +21,12 @@ public class OwlNegativeDataPropertyAssertionFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:NegativePropertyAssertion (on Data Property)";
+    return "owl:NegativePropertyAssertion";
+  }
+
+  @Override
+  public String getClarification() {
+    return "on Data Property";
   }
 
   @Override

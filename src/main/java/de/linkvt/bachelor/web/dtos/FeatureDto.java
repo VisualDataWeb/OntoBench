@@ -8,6 +8,7 @@ import de.linkvt.bachelor.features.Feature;
 public class FeatureDto {
   private String token;
   private String name;
+  private String clarification;
   private String category;
 
   public FeatureDto() {
@@ -16,6 +17,7 @@ public class FeatureDto {
   public FeatureDto(Feature feature) {
     this.token = feature.getToken();
     this.name = feature.getName();
+    this.clarification = feature.getClarification();
     this.category = feature.getCategory().getName();
   }
 
@@ -33,6 +35,14 @@ public class FeatureDto {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getClarification() {
+    return clarification;
+  }
+
+  public void setClarification(String clarification) {
+    this.clarification = clarification;
   }
 
   public String getCategory() {

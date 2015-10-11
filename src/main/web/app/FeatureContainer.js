@@ -51,10 +51,14 @@ export default class FeatureContainer {
 
     static _createFeatureCheckbox(feature) {
         let id = feature.token + "-feature";
+        let label = feature.name;
+        if (feature.clarification) {
+            label += " <i class='clarification'>(" + feature.clarification + ")</i>"
+        }
 
         let container = $("<div>").data(feature).addClass("ui checkbox");
         $("<input type='checkbox' id='" + id + "'>").appendTo(container);
-        $("<label>").attr("for", id).text(feature.name).appendTo(container);
+        $("<label>").attr("for", id).html(label).appendTo(container);
 
         return container;
     }

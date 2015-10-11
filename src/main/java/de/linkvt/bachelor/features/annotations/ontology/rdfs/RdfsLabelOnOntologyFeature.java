@@ -26,7 +26,12 @@ public class RdfsLabelOnOntologyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:label (on Ontology)";
+    return "rdfs:label";
+  }
+
+  @Override
+  public String getClarification() {
+    return "on Ontology";
   }
 
   @Override

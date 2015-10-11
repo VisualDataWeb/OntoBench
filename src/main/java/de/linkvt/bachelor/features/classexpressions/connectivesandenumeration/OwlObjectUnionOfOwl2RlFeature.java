@@ -23,7 +23,12 @@ public class OwlObjectUnionOfOwl2RlFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:unionOf (adjusted to OWL 2 RL)";
+    return "owl:unionOf";
+  }
+
+  @Override
+  public String getClarification() {
+    return "adjusted to OWL 2 RL";
   }
 
   @Override

@@ -26,7 +26,12 @@ public class OwlDataMaxCardinalityOwl2RlFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:maxCardinality (adjusted to OWL 2 RL)";
+    return "owl:maxCardinality";
+  }
+
+  @Override
+  public String getClarification() {
+    return "adjusted to OWL 2 RL";
   }
 
   @Override

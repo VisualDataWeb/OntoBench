@@ -23,7 +23,12 @@ public class OwlObjectMinCardinalityOwlLiteFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:minCardinality (adjusted to OWL Lite)";
+    return "owl:minCardinality";
+  }
+
+  @Override
+  public String getClarification() {
+    return "adjusted to OWL Lite";
   }
 
   @Override

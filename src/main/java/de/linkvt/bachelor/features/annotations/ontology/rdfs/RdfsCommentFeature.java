@@ -32,7 +32,12 @@ public class RdfsCommentFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:comment (on Class & Property)";
+    return "rdfs:comment";
+  }
+
+  @Override
+  public String getClarification() {
+    return "on Class & Property";
   }
 
   @Override

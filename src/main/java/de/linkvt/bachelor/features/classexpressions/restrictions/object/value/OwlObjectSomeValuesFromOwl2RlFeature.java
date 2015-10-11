@@ -22,7 +22,12 @@ public class OwlObjectSomeValuesFromOwl2RlFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:someValuesFrom (adjusted to OWL 2 RL)";
+    return "owl:someValuesFrom";
+  }
+
+  @Override
+  public String getClarification() {
+    return "adjusted to OWL 2 RL";
   }
 
   @Override
