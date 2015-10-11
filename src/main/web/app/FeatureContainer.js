@@ -42,6 +42,8 @@ export default class FeatureContainer {
 
     static _createFeatureList(features) {
         let list = $("<div class='ui list'>");
+
+        features.sort((a, b) => createFeatureLabel(a).localeCompare(createFeatureLabel(b)));
         for (let feature of features) {
             let checkbox = FeatureContainer._createFeatureCheckbox(feature);
             $("<div class='item'>").append(checkbox).appendTo(list);
@@ -51,10 +53,7 @@ export default class FeatureContainer {
 
     static _createFeatureCheckbox(feature) {
         let id = feature.token + "-feature";
-        let label = feature.name;
-        if (feature.clarification) {
-            label += " <i class='clarification'>(" + feature.clarification + ")</i>"
-        }
+        let label = createFeatureLabel(feature);
 
         let container = $("<div>").data(feature).addClass("ui checkbox");
         $("<input type='checkbox' id='" + id + "'>").appendTo(container);
@@ -72,4 +71,13 @@ export default class FeatureContainer {
         $("<button class='ui fluid mini button select-none-button'>").text("Select none").appendTo(columnIn(container));
         $("<button class='ui fluid mini button invert-selection-button'>").text("Invert selection").appendTo(columnIn(container));
     }
+
+}
+
+function createFeatureLabel(feature) {
+    let label = feature.name;
+    if (feature.clarification) {
+        label += " <i class='clarification'>(" + feature.clarification + ")</i>"
+    }
+    return label;
 }
