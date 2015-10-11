@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.declarations;
+package de.linkvt.bachelor.features.classexpressions;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -8,32 +8,27 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlClassFeature extends Feature {
+public class OwlThingFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLClass owlClass = featurePool.getReusableClass();
-    OWLAxiom axiom = factory.getOWLDeclarationAxiom(owlClass);
+    OWLClass owlThing = factory.getOWLThing();
+    OWLAxiom axiom = factory.getOWLDeclarationAxiom(owlThing);
 
     addAxiomToOntology(axiom);
   }
 
   @Override
   public String getName() {
-    return "owl:Class";
+    return "owl:Thing";
   }
 
   @Override
   public String getToken() {
-    return "class";
+    return "thing";
   }
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DECLARATIONS;
-  }
-
-  @Override
-  public boolean isGeneral() {
-    return true;
+    return FeatureCategory.CLASS_EXPRESSIONS;
   }
 }

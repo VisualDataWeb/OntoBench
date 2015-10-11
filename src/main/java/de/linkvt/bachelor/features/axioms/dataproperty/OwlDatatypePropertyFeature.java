@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.declarations;
+package de.linkvt.bachelor.features.axioms.dataproperty;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class OwlDatatypePropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLDataProperty property = factory.getOWLDataProperty(":dataProperty", pm);
+    OWLDataProperty property = factory.getOWLDataProperty(":datatypeProperty", pm);
     OWLDatatype datatype = factory.getIntegerOWLDatatype();
 
     addToGenericDomainAndNewRange(property, datatype);
@@ -29,6 +29,6 @@ public class OwlDatatypePropertyFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DECLARATIONS;
+    return FeatureCategory.DATA_PROPERTIES;
   }
 }

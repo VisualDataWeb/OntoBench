@@ -4,16 +4,15 @@ package de.linkvt.bachelor.features;
  * The category a feature belongs to.
  */
 public enum FeatureCategory {
-  PREDEFINED_CLASSES("Predefined and Named Classes"),
-  CONNECTIVES_AND_ENUMERATION("Boolean Connectives and Enumeration"),
+  CLASS_EXPRESSIONS("Predefined Classes, Boolean Connectives and Enumerations"),
+  CLASS_EXPRESSION_AXIOMS("Class Expression Axioms"),
+  OBJECT_PROPERTIES("Object Properties and Axioms"),
   OBJECT_PROPERTY_RESTRICTIONS("Object Property Restrictions"),
+  DATA_PROPERTIES("Data Properties and Axioms"),
   DATA_PROPERTY_RESTRICTIONS("Data Property Restrictions"),
   PROPERTY_EXPRESSIONS("Property Expressions"),
-  INDIVIDUALS("Individuals"),
   DATA_RANGE_EXPRESSIONS("Data Range Expressions"),
-  CLASS_EXPRESSION_AXIOMS("Class Expression Axioms"),
-  OBJECT_PROPERTY_AXIOMS("Object Property Axioms"),
-  DATA_PROPERTY_AXIOMS("Data Property Axioms"),
+  INDIVIDUALS("Individuals"),
   ASSERTIONS("Assertions"),
   KEYS("Keys"),
   DECLARATIONS("Declarations"),

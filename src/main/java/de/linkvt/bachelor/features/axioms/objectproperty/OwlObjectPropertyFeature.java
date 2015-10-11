@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.declarations;
+package de.linkvt.bachelor.features.axioms.objectproperty;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -8,28 +8,28 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwlBottomObjectPropertyFeature extends Feature {
+public class OwlObjectPropertyFeature extends Feature {
   @Override
   public void addToOntology() {
-    OWLObjectProperty objectProperty = factory.getOWLBottomObjectProperty();
-    OWLClass range = featurePool.getExclusiveClass(":BottomObjectPropertyRange");
+    OWLObjectProperty objectProperty = featurePool.getExclusiveProperty(":objectProperty");
+    OWLClass range = featurePool.getExclusiveClass(":ObjectPropertyRange");
 
     addToGenericDomainAndNewRange(objectProperty, range);
   }
 
   @Override
   public String getName() {
-    return "owl:bottomObjectProperty";
+    return "owl:ObjectProperty";
   }
 
   @Override
   public String getToken() {
-    return "bottomobjectprop";
+    return "objectprop";
   }
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DECLARATIONS;
+    return FeatureCategory.OBJECT_PROPERTIES;
   }
 
   @Override

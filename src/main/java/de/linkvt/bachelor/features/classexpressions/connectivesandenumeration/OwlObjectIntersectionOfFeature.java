@@ -34,6 +34,6 @@ public class OwlObjectIntersectionOfFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.CONNECTIVES_AND_ENUMERATION;
+    return FeatureCategory.CLASS_EXPRESSIONS;
   }
 }

@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.declarations;
+package de.linkvt.bachelor.features.axioms.objectproperty;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -32,6 +32,6 @@ public class UnboundObjectPropertyFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DECLARATIONS;
+    return FeatureCategory.OBJECT_PROPERTIES;
   }
 }

@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.declarations;
+package de.linkvt.bachelor.features.dataranges;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
@@ -26,7 +26,7 @@ public class RdfsDatatypeFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DECLARATIONS;
+    return FeatureCategory.DATA_RANGE_EXPRESSIONS;
   }
 
   @Override

@@ -1,14 +1,15 @@
 package de.linkvt.bachelor.presets;
 
+import de.linkvt.bachelor.features.annotations.OwlAnnotationPropertyFeature;
 import de.linkvt.bachelor.features.annotations.OwlDeprecatedClassFeature;
 import de.linkvt.bachelor.features.annotations.OwlDeprecatedPropertyFeature;
-import de.linkvt.bachelor.features.assertions.OwlAllDifferentFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.OwlAllDisjointClassesFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.OwlDisjointWithFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.OwlEquivalentClassFeature;
 import de.linkvt.bachelor.features.axioms.classexpression.RdfsSubClassOfFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.OwlAllDisjointDataPropertiesFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.OwlDataPropertyDisjointWithFeature;
+import de.linkvt.bachelor.features.axioms.dataproperty.OwlDatatypePropertyFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.OwlEquivalentDataPropertyFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataDomainFeature;
 import de.linkvt.bachelor.features.axioms.dataproperty.RdfsDataRangeFeature;
@@ -19,24 +20,23 @@ import de.linkvt.bachelor.features.axioms.objectproperty.OwlEquivalentObjectProp
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlInverseOfPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlIrreflexivePropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlObjectPropertyDisjointWithFeature;
+import de.linkvt.bachelor.features.axioms.objectproperty.OwlObjectPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlReflexivePropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.OwlSymmetricPropertyFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectDomainFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectRangeFeature;
 import de.linkvt.bachelor.features.axioms.objectproperty.RdfsObjectSubPropertyOfFeature;
+import de.linkvt.bachelor.features.classexpressions.OwlClassFeature;
+import de.linkvt.bachelor.features.classexpressions.OwlNothingFeature;
+import de.linkvt.bachelor.features.classexpressions.OwlThingFeature;
 import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectComplementOfFeature;
 import de.linkvt.bachelor.features.classexpressions.connectivesandenumeration.OwlObjectIntersectionOfOwl2QlFeature;
-import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlNothingFeature;
-import de.linkvt.bachelor.features.classexpressions.predefinedandnamed.OwlThingFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.data.value.OwlDataSomeValuesFromFeature;
 import de.linkvt.bachelor.features.classexpressions.restrictions.object.value.OwlObjectSomeValuesFromFeature;
 import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfOwl2Feature;
-import de.linkvt.bachelor.features.declarations.NamedIndividualFeature;
-import de.linkvt.bachelor.features.declarations.OwlAnnotationPropertyFeature;
-import de.linkvt.bachelor.features.declarations.OwlClassFeature;
-import de.linkvt.bachelor.features.declarations.OwlDatatypePropertyFeature;
-import de.linkvt.bachelor.features.declarations.OwlObjectPropertyFeature;
-import de.linkvt.bachelor.features.declarations.RdfsDatatypeFeature;
+import de.linkvt.bachelor.features.dataranges.RdfsDatatypeFeature;
+import de.linkvt.bachelor.features.individuals.NamedIndividualFeature;
+import de.linkvt.bachelor.features.individuals.assertions.OwlAllDifferentFeature;
 
 import org.springframework.stereotype.Component;
 

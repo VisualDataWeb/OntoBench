@@ -41,6 +41,6 @@ public class OwlPropertyChainAxiomFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.OBJECT_PROPERTY_AXIOMS;
+    return FeatureCategory.OBJECT_PROPERTIES;
   }
 }

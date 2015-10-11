@@ -1,4 +1,4 @@
-package de.linkvt.bachelor.features.assertions;
+package de.linkvt.bachelor.features.individuals.assertions;
 
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;

@@ -29,6 +29,6 @@ public class RdfsDataDomainFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DATA_PROPERTY_AXIOMS;
+    return FeatureCategory.DATA_PROPERTIES;
   }
 }
