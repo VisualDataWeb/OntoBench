@@ -20,7 +20,7 @@ public class OwlDataComplementOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:complementOf (Data Range)";
+    return "owl:complementOf";
   }
 
   @Override

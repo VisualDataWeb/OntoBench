@@ -24,7 +24,7 @@ public class OwlDataSomeValuesFromOwl2RlFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:someValuesFrom (Data Property, OWL 2 RL)";
+    return "owl:someValuesFrom (adjusted to OWL 2 RL)";
   }
 
   @Override

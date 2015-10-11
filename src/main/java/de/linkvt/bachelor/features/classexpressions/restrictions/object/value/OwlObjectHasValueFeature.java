@@ -24,7 +24,7 @@ public class OwlObjectHasValueFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:hasValue (Object Property)";
+    return "owl:hasValue";
   }
 
   @Override

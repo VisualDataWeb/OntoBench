@@ -24,7 +24,7 @@ public class OwlDataOneOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:oneOf (Data Range)";
+    return "owl:oneOf";
   }
 
   @Override

@@ -26,7 +26,7 @@ public class OwlAllDisjointDataPropertiesFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:AllDisjointProperties (Data Property)";
+    return "owl:AllDisjointProperties";
   }
 
   @Override

@@ -20,7 +20,7 @@ public class RdfsDataRangeFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:range (Data Property)";
+    return "rdfs:range";
   }
 
   @Override

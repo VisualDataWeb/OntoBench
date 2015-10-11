@@ -22,7 +22,7 @@ public class OwlObjectSomeValuesFromFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:someValuesFrom (Object Property)";
+    return "owl:someValuesFrom";
   }
 
   @Override

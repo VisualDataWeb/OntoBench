@@ -21,7 +21,7 @@ public class OwlFunctionalDataPropertyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:FunctionalProperty (Data Property)";
+    return "owl:FunctionalProperty";
   }
 
   @Override

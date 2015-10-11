@@ -23,7 +23,7 @@ public class OwlObjectOneOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:oneOf (Class)";
+    return "owl:oneOf";
   }
 
   @Override

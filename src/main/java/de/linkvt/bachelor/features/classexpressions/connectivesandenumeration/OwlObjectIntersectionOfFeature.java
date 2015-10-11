@@ -24,7 +24,7 @@ public class OwlObjectIntersectionOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:intersectionOf (Class)";
+    return "owl:intersectionOf";
   }
 
   @Override

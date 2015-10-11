@@ -23,7 +23,7 @@ public class OwlDataIntersectionOfOwl2Feature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:intersectionOf (Data Range, OWL 2)";
+    return "owl:intersectionOf (adjusted to OWL 2)";
   }
 
   @Override

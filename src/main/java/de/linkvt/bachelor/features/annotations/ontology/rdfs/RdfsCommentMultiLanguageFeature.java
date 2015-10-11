@@ -42,7 +42,7 @@ public class RdfsCommentMultiLanguageFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:comment (Class & Property, multilingual)";
+    return "rdfs:comment (on Class & Property, multilingual)";
   }
 
   @Override

@@ -22,7 +22,7 @@ public class OwlDataUnionOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:unionOf (Data Range)";
+    return "owl:unionOf";
   }
 
   @Override

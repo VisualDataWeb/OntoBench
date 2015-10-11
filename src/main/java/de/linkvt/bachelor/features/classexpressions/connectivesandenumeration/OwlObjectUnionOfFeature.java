@@ -23,7 +23,7 @@ public class OwlObjectUnionOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:unionOf (Class)";
+    return "owl:unionOf";
   }
 
   @Override

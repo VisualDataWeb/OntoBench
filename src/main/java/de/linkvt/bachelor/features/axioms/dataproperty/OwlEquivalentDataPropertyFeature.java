@@ -26,7 +26,7 @@ public class OwlEquivalentDataPropertyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:equivalentProperty (Data Property)";
+    return "owl:equivalentProperty";
   }
 
   @Override

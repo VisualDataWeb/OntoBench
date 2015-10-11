@@ -29,7 +29,7 @@ public class RdfsLabelFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:label (Class & Property)";
+    return "rdfs:label (on Class & Property)";
   }
 
   @Override

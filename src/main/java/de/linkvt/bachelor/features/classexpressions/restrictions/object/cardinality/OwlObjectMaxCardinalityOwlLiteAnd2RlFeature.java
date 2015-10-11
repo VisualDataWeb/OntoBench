@@ -23,7 +23,7 @@ public class OwlObjectMaxCardinalityOwlLiteAnd2RlFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:maxCardinality (Object Property, OWL Lite, OWL 2 RL)";
+    return "owl:maxCardinality (adjusted to OWL Lite & OWL 2 RL)";
   }
 
   @Override

@@ -24,7 +24,7 @@ public class OwlObjectQualifiedCardinalityFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:qualifiedCardinality (Object Property)";
+    return "owl:qualifiedCardinality";
   }
 
   @Override

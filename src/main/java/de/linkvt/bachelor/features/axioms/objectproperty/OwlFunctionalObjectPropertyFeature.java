@@ -20,7 +20,7 @@ public class OwlFunctionalObjectPropertyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:FunctionalProperty (Object Property)";
+    return "owl:FunctionalProperty";
   }
 
   @Override

@@ -27,7 +27,7 @@ public class RdfsDataSubPropertyOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:subPropertyOf (Data Property)";
+    return "rdfs:subPropertyOf";
   }
 
   @Override

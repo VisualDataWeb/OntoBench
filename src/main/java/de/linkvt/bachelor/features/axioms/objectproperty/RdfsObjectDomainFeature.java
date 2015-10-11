@@ -21,7 +21,7 @@ public class RdfsObjectDomainFeature extends Feature {
 
   @Override
   public String getName() {
-    return "rdfs:domain (Object Property)";
+    return "rdfs:domain";
   }
 
   @Override

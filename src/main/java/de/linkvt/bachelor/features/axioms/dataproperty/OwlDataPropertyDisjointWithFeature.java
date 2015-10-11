@@ -22,7 +22,7 @@ public class OwlDataPropertyDisjointWithFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:propertyDisjointWith (Data Property)";
+    return "owl:propertyDisjointWith";
   }
 
   @Override

@@ -26,7 +26,7 @@ public class OwlDataCardinalityFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:cardinality (Data Property)";
+    return "owl:cardinality";
   }
 
   @Override

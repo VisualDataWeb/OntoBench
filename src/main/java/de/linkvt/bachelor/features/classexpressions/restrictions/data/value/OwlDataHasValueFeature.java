@@ -24,7 +24,7 @@ public class OwlDataHasValueFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:hasValue (Data Property)";
+    return "owl:hasValue";
   }
 
   @Override

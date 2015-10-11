@@ -21,7 +21,7 @@ public class OwlObjectPropertyDisjointWithFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:propertyDisjointWith (Object Property)";
+    return "owl:propertyDisjointWith";
   }
 
   @Override

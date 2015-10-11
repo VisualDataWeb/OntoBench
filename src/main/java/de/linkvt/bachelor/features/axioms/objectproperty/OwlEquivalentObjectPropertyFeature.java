@@ -23,7 +23,7 @@ public class OwlEquivalentObjectPropertyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:equivalentProperty (Object Property)";
+    return "owl:equivalentProperty";
   }
 
   @Override

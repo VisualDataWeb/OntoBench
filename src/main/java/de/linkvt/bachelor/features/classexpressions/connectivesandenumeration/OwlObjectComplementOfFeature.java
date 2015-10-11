@@ -21,7 +21,7 @@ public class OwlObjectComplementOfFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:complementOf (Class)";
+    return "owl:complementOf";
   }
 
   @Override

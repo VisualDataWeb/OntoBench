@@ -21,7 +21,7 @@ public class OwlDataOneOfOwl2ELFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:oneOf (Data Range, OWL 2 EL)";
+    return "owl:oneOf (adjusted to OWL 2 EL)";
   }
 
   @Override
