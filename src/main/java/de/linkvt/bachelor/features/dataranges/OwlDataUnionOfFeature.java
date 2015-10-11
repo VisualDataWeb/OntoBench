@@ -32,6 +32,6 @@ public class OwlDataUnionOfFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DATA_RANGE_EXPRESSIONS;
+    return FeatureCategory.DATA_RANGES;
   }
 }

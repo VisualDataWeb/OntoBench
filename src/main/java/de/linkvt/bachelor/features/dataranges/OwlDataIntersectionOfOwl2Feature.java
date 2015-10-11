@@ -33,6 +33,6 @@ public class OwlDataIntersectionOfOwl2Feature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.DATA_RANGE_EXPRESSIONS;
+    return FeatureCategory.DATA_RANGES;
   }
 }

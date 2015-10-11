@@ -10,13 +10,12 @@ public enum FeatureCategory {
   OBJECT_PROPERTY_RESTRICTIONS("Object Property Restrictions"),
   DATA_PROPERTIES("Data Properties and Axioms"),
   DATA_PROPERTY_RESTRICTIONS("Data Property Restrictions"),
-  PROPERTY_EXPRESSIONS("Property Expressions"),
-  DATA_RANGE_EXPRESSIONS("Data Range Expressions"),
+  DATA_RANGES("Data Ranges"),
   INDIVIDUALS("Individuals"),
   ASSERTIONS("Assertions"),
   KEYS("Keys"),
   DECLARATIONS("Declarations"),
-  ANNOTATIONS("Annotations"),
+  ANNOTATIONS("OWL Annotations"),
   DC("DC & DC Terms Annotations"),
   SPECIAL_TEST_CASES("Special Test Cases");
 
