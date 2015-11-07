@@ -38,6 +38,8 @@ import de.linkvt.bachelor.features.dataranges.OwlDataOneOfOwl2ELFeature;
 import de.linkvt.bachelor.features.dataranges.RdfsDatatypeFeature;
 import de.linkvt.bachelor.features.individuals.NamedIndividualFeature;
 import de.linkvt.bachelor.features.individuals.assertions.OwlAllDifferentFeature;
+import de.linkvt.bachelor.features.individuals.assertions.OwlNegativeDataPropertyAssertionFeature;
+import de.linkvt.bachelor.features.individuals.assertions.OwlNegativeObjectPropertyAssertionFeature;
 import de.linkvt.bachelor.features.individuals.assertions.OwlSameAsFeature;
 import de.linkvt.bachelor.features.keys.OwlHasKeyFeature;
 
@@ -64,7 +66,8 @@ public class Owl2ElPreset extends Preset {
     addFeatures(OwlReflexivePropertyFeature.class);
     addFeatures(RdfsObjectDomainFeature.class, RdfsObjectRangeFeature.class, UnboundObjectPropertyFeature.class);
     addFeatures(RdfsDataDomainFeature.class, RdfsDataRangeFeature.class, UnboundDataPropertyFeature.class);
-    addFeatures(OwlSameAsFeature.class, OwlAllDifferentFeature.class); // TODO more assertions
+    addFeatures(OwlSameAsFeature.class, OwlAllDifferentFeature.class);
+    addFeatures(OwlNegativeDataPropertyAssertionFeature.class, OwlNegativeObjectPropertyAssertionFeature.class);
     addFeatures(OwlFunctionalDataPropertyFeature.class);
     addFeatures(OwlHasKeyFeature.class);
 
