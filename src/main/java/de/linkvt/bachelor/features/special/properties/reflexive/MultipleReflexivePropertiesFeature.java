@@ -21,13 +21,18 @@ public abstract class MultipleReflexivePropertiesFeature extends Feature {
   public void addToOntology() {
     OWLClass domain = featurePool.getExclusiveClass(baseIri);
     for (int i = 1; i <= propertyCount; i++) {
-      addProperty(domain, featurePool.getExclusiveProperty(baseIri + "_" + i), domain);
+      String propertyIri = convertToCamelCaseIri(baseIri);
+      addProperty(domain, featurePool.getExclusiveProperty(propertyIri + "_" + i), domain);
     }
+  }
+
+  private String convertToCamelCaseIri(String iri) {
+    return iri.substring(0, 1) + Character.toLowerCase(iri.charAt(1)) + iri.substring(2);
   }
 
   @Override
   public String getName() {
-    return propertyCount + " reflexive properties";
+    return propertyCount + " reflexive " + (propertyCount <= 1 ? "property" : "properties");
   }
 
   @Override
