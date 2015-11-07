@@ -2,13 +2,6 @@ package de.linkvt.bachelor.profiles;
 
 import de.linkvt.bachelor.Application;
 import de.linkvt.bachelor.features.Feature;
-import de.linkvt.bachelor.features.axioms.classexpression.OwlAllDisjointClassesFeature;
-import de.linkvt.bachelor.features.axioms.classexpression.OwlDisjointWithFeature;
-import de.linkvt.bachelor.features.axioms.dataproperty.OwlAllDisjointDataPropertiesFeature;
-import de.linkvt.bachelor.features.axioms.dataproperty.OwlDataPropertyDisjointWithFeature;
-import de.linkvt.bachelor.features.axioms.dataproperty.OwlEquivalentDataPropertyFeature;
-import de.linkvt.bachelor.features.axioms.objectproperty.OwlIrreflexivePropertyFeature;
-import de.linkvt.bachelor.features.dataranges.OwlDataIntersectionOfOwl2Feature;
 import de.linkvt.bachelor.features.dataranges.OwlDataOneOfOwl2ELFeature;
 import de.linkvt.bachelor.generator.OntologyGenerator;
 import de.linkvt.bachelor.presets.Owl2ElPreset;
@@ -31,6 +24,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -67,25 +61,12 @@ public class Owl2ProfileTests {
 
   @Test
   public void testOwl2QlProfile() {
-    Collection<Class<? extends Feature>> excluded = new ArrayList<>();
-    excluded.add(OwlAllDisjointClassesFeature.class);
-    excluded.add(OwlDisjointWithFeature.class);
-    excluded.add(OwlIrreflexivePropertyFeature.class);
-
-    testPreset(owl2QlPreset, new OWL2QLProfile(), excluded);
+    testPreset(owl2QlPreset, new OWL2QLProfile(), Collections.emptySet());
   }
 
   @Test
   public void testOwl2RlProfile() {
-    Collection<Class<? extends Feature>> excluded = new ArrayList<>();
-    excluded.add(OwlAllDisjointClassesFeature.class);
-    excluded.add(OwlAllDisjointDataPropertiesFeature.class);
-    excluded.add(OwlDataIntersectionOfOwl2Feature.class);
-    excluded.add(OwlDataPropertyDisjointWithFeature.class);
-    excluded.add(OwlDisjointWithFeature.class);
-    excluded.add(OwlEquivalentDataPropertyFeature.class);
-
-    testPreset(owl2RlPreset, new OWL2RLProfile(), excluded);
+    testPreset(owl2RlPreset, new OWL2RLProfile(), Collections.emptySet());
   }
 
   private void testPreset(Preset preset, OWLProfile profile, Collection<Class<? extends Feature>> excluded) {
