@@ -53,43 +53,50 @@
     </div>
     <div id="generator-tab" class="ui bottom attached tab segment" data-tab="generator">
         <div class="ui doubling stackable grid">
-            <div class="row">
-                <div class="four wide column">
-                    <div id="format-dropdown" class="ui loading fluid selection dropdown">
-                        <input type="hidden" name="gender">
+            <div class="four wide column">
+                <div id="format-dropdown" class="ui loading fluid selection dropdown">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+
+                    <div class="default text">Ontology Syntax</div>
+                    <div id="format-list" class="menu">
+                    </div>
+                </div>
+            </div>
+            <div class="eight wide column">
+                <div class="ui right action fluid input">
+                    <input id="ontology-url" autocomplete="off" placeholder="Ontology URL (read only)" readonly=""
+                           type="text">
+
+                    <div id="url-type" class="ui dropdown button">
+                        <div class="text">Long URL</div>
                         <i class="dropdown icon"></i>
 
-                        <div class="default text">Ontology Syntax</div>
-                        <div id="format-list" class="menu">
+                        <div class="menu">
+                            <div class="item" data-value="long">Long URL</div>
+                            <div class="item" data-value="short">Short URL</div>
                         </div>
                     </div>
                 </div>
-                <div class="eight wide column">
-                    <div class="ui right action fluid input">
-                        <input id="ontology-url" autocomplete="off" placeholder="Ontology URL (read only)" readonly=""
-                               type="text">
-
-                        <div id="url-type" class="ui disabled dropdown button">
-                            <div class="text">Long URL</div>
-                            <i class="dropdown icon"></i>
-
-                            <div class="menu">
-                                <div class="item" data-value="long">Long URL</div>
-                                <div class="item" data-value="short">Short URL</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="four wide column">
-                    <a id="download-button" class="ui disabled fluid primary labeled icon button" download="">
-                        <i class="download icon"></i>
-                        Download
-                    </a>
-                </div>
+            </div>
+            <div class="four wide column">
+                <a id="download-button" class="ui fluid primary labeled icon button" download="">
+                    <i class="download icon"></i>
+                    Download
+                </a>
             </div>
         </div>
 
         <div class="ui divider"></div>
+
+        <div class="ui doubling stackable grid">
+            <div class=" sixteen wide column">
+                <a id="webvowl-button" class="ui tiny fluid teal labeled icon button">
+                    <i class="external icon"></i>
+                    Visualize with WebVOWL
+                </a>
+            </div>
+        </div>
 
         <div id="initial-ontology-info" class="ui icon message">
             <i class="info icon"></i>

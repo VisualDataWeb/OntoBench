@@ -1,5 +1,7 @@
 import Generator from "./Generator";
 
+const WEBVOWL_URL = "http://vowl.visualdataweb.org/webvowl/#iri=";
+
 export default class Ui {
     static initializeDefaults() {
         Ui._setupQuickGuide();
@@ -8,11 +10,9 @@ export default class Ui {
         });
 
         Ui.tabMenu.find(".item").tab();
-        Ui.tabMenu.find("[data-tab='generator']").click(() => {
-            Ui._resetOntologyUrlInput();
-            Ui._generate();
-        });
+        Ui.tabMenu.find("[data-tab='generator']").click(() => Ui._generate());
         $("#generator-shortcut-button").click(() => $("[data-tab='generator']").click());
+        Ui.webvowlButton.click(() => window.open(WEBVOWL_URL + Generator.longUrl, "_blank"));
 
         Ui._initializeSelectionButtons(Ui.featureTab);
 
@@ -24,11 +24,6 @@ export default class Ui {
             }
         });
         Ui.ontologyText.click(() => Ui.ontologyText.select());
-    }
-
-    static _resetOntologyUrlInput() {
-        Ui.urlType.removeClass("disabled");
-        Ui.downloadButton.removeClass("disabled");
     }
 
     static displayFormats(formats) {
@@ -128,10 +123,12 @@ export default class Ui {
     static showErrorMessage(shouldShow = true) {
         Ui.indicateGeneration(false);
         if (shouldShow) {
+            Ui.webvowlButton.hide();
             Ui.ontologyTextContainer.hide();
             $("#ontology-generation-error-info").removeClass("hidden").show();
         } else {
             $("#ontology-generation-error-info").hide();
+            Ui.webvowlButton.show();
             Ui.ontologyTextContainer.show();
         }
     }
@@ -203,5 +200,9 @@ export default class Ui {
 
     static get downloadButton() {
         return $("#download-button");
+    }
+
+    static get webvowlButton() {
+        return $("#webvowl-button");
     }
 }
