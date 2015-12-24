@@ -5,7 +5,7 @@ exports.config =
     autoRequire:
       "app.js": ["app"]
   paths:
-    public: "../../../static"
+    public: "../resources/static"
   files:
     javascripts:
       joinTo:

@@ -4,4 +4,4 @@
 
 # Build directories
 target/
-/static/
+src/main/resources/static

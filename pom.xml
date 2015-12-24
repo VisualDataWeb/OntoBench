@@ -25,7 +25,7 @@
 				<configuration>
 					<filesets>
 						<fileset>
-							<directory>static/</directory>
+							<directory>src/main/resources/static</directory>
 							<followSymlinks>false</followSymlinks>
 						</fileset>
 					</filesets>
