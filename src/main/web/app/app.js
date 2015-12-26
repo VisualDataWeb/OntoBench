@@ -4,8 +4,8 @@ import Generator from "./Generator";
 
 Ui.initializeDefaults();
 
-$.getJSON("/categories.json").done((categories) => {
-    $.getJSON("/features.json").done(features => FeatureContainer.displayFeatures(features, categories));
+$.getJSON("categories.json").done((categories) => {
+    $.getJSON("features.json").done(features => FeatureContainer.displayFeatures(features, categories));
 });
-$.getJSON("/formats.json").done(Ui.displayFormats);
-$.getJSON("/presets.json").done(Ui.displayPresets);
+$.getJSON("formats.json").done(Ui.displayFormats);
+$.getJSON("presets.json").done(Ui.displayPresets);
