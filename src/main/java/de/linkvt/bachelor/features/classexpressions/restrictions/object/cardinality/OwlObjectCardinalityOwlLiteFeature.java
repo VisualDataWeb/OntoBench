@@ -27,8 +27,8 @@ public class OwlObjectCardinalityOwlLiteFeature extends Feature {
   }
 
   @Override
-  public String getClarification() {
-    return "adjusted to OWL Lite";
+  public String getCompliance() {
+    return "OWL Lite";
   }
 
   @Override

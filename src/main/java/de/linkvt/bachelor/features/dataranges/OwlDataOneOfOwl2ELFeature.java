@@ -25,8 +25,8 @@ public class OwlDataOneOfOwl2ELFeature extends Feature {
   }
 
   @Override
-  public String getClarification() {
-    return "adjusted to OWL 2 EL";
+  public String getCompliance() {
+    return "OWL 2 EL";
   }
 
   @Override

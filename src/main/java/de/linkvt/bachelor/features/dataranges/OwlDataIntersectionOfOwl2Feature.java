@@ -27,8 +27,8 @@ public class OwlDataIntersectionOfOwl2Feature extends Feature {
   }
 
   @Override
-  public String getClarification() {
-    return "adjusted to OWL 2";
+  public String getCompliance() {
+    return "OWL 2";
   }
 
   @Override

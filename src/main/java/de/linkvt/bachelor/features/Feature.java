@@ -85,9 +85,16 @@ public abstract class Feature {
   public abstract String getName();
 
   /**
-   * @return the a clarification of the feature name
+   * @return a clarification of the feature name
    */
   public String getClarification() {
+    return null;
+  }
+
+  /**
+    * @return a description of compliant profiles
+   */
+  public String getCompliance() {
     return null;
   }
 

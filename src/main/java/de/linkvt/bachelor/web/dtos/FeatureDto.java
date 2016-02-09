@@ -9,6 +9,7 @@ public class FeatureDto {
   private String token;
   private String name;
   private String clarification;
+  private String compliance;
   private String category;
 
   public FeatureDto() {
@@ -18,6 +19,7 @@ public class FeatureDto {
     this.token = feature.getToken();
     this.name = feature.getName();
     this.clarification = feature.getClarification();
+    this.compliance = feature.getCompliance();
     this.category = feature.getCategory().getName();
   }
 
@@ -43,6 +45,14 @@ public class FeatureDto {
 
   public void setClarification(String clarification) {
     this.clarification = clarification;
+  }
+
+  public String getCompliance() {
+    return compliance;
+  }
+
+  public void setCompliance(String compliance) {
+    this.compliance = compliance;
   }
 
   public String getCategory() {

@@ -79,5 +79,8 @@ function createFeatureLabel(feature) {
     if (feature.clarification) {
         label += " <i class='clarification'>(" + feature.clarification + ")</i>"
     }
+    if (feature.compliance) {
+        label += " <i class='compliance'>(" + feature.compliance + " compliant)</i>"
+    }
     return label;
 }

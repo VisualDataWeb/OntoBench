@@ -27,8 +27,8 @@ public class OwlObjectOneOfOwl2RlFeature extends Feature {
   }
 
   @Override
-  public String getClarification() {
-    return "adjusted to OWL 2 RL";
+  public String getCompliance() {
+    return "OWL 2 RL";
   }
 
   @Override
