@@ -1,5 +1,6 @@
 # Npm Maven Plugin
 node/
+npm.tar.gz
 
 # Numerous always-ignore extensions
 *.diff
