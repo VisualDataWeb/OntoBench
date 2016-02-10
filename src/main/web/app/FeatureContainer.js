@@ -13,6 +13,11 @@ export default class FeatureContainer {
 
             let column = $("<div class='ui stretched column'>").appendTo(Ui.featureContainer);
             let container = $("<div class='ui olive segment'>").appendTo(column);
+            if (category.owlSpecific) {
+                container.addClass("olive");
+            } else {
+                container.addClass("blue");
+            }
 
             let buttons = $("<div class='selection ui equal width grid'>").appendTo(container);
             FeatureContainer._addContainerSelectionButtons(buttons);

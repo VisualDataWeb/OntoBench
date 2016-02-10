@@ -16,17 +16,27 @@ public enum FeatureCategory {
   KEYS("Keys"),
   DECLARATIONS("Declarations"),
   ANNOTATIONS("OWL Annotations"),
-  DC("DC & DC Terms Annotations"),
-  SPECIAL_TEST_CASES("Special Test Cases");
+  DC("DC & DC Terms Annotations", false),
+  SPECIAL_TEST_CASES("Special Test Cases", false);
 
   private String name;
+  private boolean owlSpecific;
 
   FeatureCategory(String name) {
+    this(name, true);
+  }
+
+  FeatureCategory(String name, boolean owlSpecific) {
     this.name = name;
+    this.owlSpecific = owlSpecific;
   }
 
   public String getName() {
     return name;
+  }
+
+  public boolean isOwlSpecific() {
+    return owlSpecific;
   }
 
   @Override
