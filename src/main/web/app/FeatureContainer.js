@@ -61,6 +61,10 @@ export default class FeatureContainer {
         let label = createFeatureLabel(feature);
 
         let container = $("<div>").data(feature).addClass("ui checkbox");
+        if (feature.compliance) {
+            container.addClass("indented");
+        }
+
         $("<input type='checkbox' id='" + id + "'>").appendTo(container);
         $("<label>").attr("for", id).html(label).appendTo(container);
 
