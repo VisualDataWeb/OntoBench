@@ -1,7 +1,5 @@
 package de.linkvt.bachelor.features.annotations.ontology.dc;
 
-import com.google.common.base.Optional;
-
 import de.linkvt.bachelor.features.Feature;
 import de.linkvt.bachelor.features.FeatureCategory;
 import de.linkvt.bachelor.features.annotations.ontology.OntologyConstants;
@@ -13,6 +11,8 @@ import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.vocab.Namespaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class DcIdentifierFeature extends Feature {
