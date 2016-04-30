@@ -59,10 +59,11 @@ import de.linkvt.bachelor.features.individuals.assertions.OwlNegativeObjectPrope
 import de.linkvt.bachelor.features.individuals.assertions.OwlSameAsFeature;
 import de.linkvt.bachelor.features.keys.OwlHasKeyFeature;
 
+import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Owl2RlPreset extends Preset {
+public class Owl2RlPreset extends Owl2Preset {
   @Override
   protected void initialize() {
     addFeatures(AnonymousIndividualFeature.class);
@@ -124,6 +125,7 @@ public class Owl2RlPreset extends Preset {
     addFeatures(UnboundDataPropertyFeature.class);
     addFeatures(UnboundObjectPropertyFeature.class);
 
+    addCompatibleOwl2DatatypeFeatures(OWL2Datatype.RL_DATATYPES);
     // also possible
 //    addFeatures(OwlVersionInfoFeature.class);
 //    addFeatures(RdfsCommentFeature.class);

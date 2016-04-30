@@ -1,6 +1,7 @@
 package de.linkvt.bachelor.presets;
 
 import de.linkvt.bachelor.features.Feature;
+import de.linkvt.bachelor.web.converters.parameter.FeatureParameterMapping;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -16,10 +17,14 @@ import javax.annotation.PostConstruct;
  * Base class for a preset
  */
 public abstract class Preset {
-  private Set<Feature> features = new HashSet<>();
+
+  @Autowired
+  protected FeatureParameterMapping featureMapping;
 
   @Autowired
   private ApplicationContext context;
+
+  private Set<Feature> features = new HashSet<>();
 
   public Preset() {
 
@@ -27,7 +32,12 @@ public abstract class Preset {
 
   @SafeVarargs
   protected final Preset addFeatures(Class<? extends Feature>... classes) {
-    Arrays.asList(classes).stream().map(context::getBean).forEach(this.features::add);
+    addFeatures(Arrays.asList(classes));
+    return this;
+  }
+
+  protected final Preset addFeatures(Collection<Class<? extends Feature>> classes) {
+    classes.stream().map(context::getBean).forEach(this.features::add);
     return this;
   }
 

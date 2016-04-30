@@ -38,10 +38,11 @@ import de.linkvt.bachelor.features.dataranges.RdfsDatatypeFeature;
 import de.linkvt.bachelor.features.individuals.NamedIndividualFeature;
 import de.linkvt.bachelor.features.individuals.assertions.OwlAllDifferentFeature;
 
+import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Owl2QlPreset extends Preset {
+public class Owl2QlPreset extends Owl2Preset {
   @Override
   protected void initialize() {
     addFeatures(NamedIndividualFeature.class);
@@ -81,6 +82,9 @@ public class Owl2QlPreset extends Preset {
     addFeatures(RdfsObjectRangeFeature.class);
     addFeatures(RdfsObjectSubPropertyOfFeature.class);
     addFeatures(RdfsSubClassOfFeature.class);
+
+    // the datatypes of OWL 2 EL and OWL 2 QL are equal
+    addCompatibleOwl2DatatypeFeatures(OWL2Datatype.EL_DATATYPES);
 
     // also possible
 //    addFeatures(OwlVersionInfoFeature.class);
