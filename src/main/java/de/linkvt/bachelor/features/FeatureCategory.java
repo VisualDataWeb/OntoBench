@@ -11,6 +11,7 @@ public enum FeatureCategory {
   DATA_PROPERTIES("Data Properties and Axioms"),
   DATA_PROPERTY_RESTRICTIONS("Data Property Restrictions"),
   DATA_RANGES("Data Ranges"),
+  DATATYPE_MAPS("Datatype Maps"),
   INDIVIDUALS("Individuals"),
   ASSERTIONS("Assertions"),
   KEYS("Keys"),
