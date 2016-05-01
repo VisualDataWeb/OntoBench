@@ -14,7 +14,7 @@ public class OntologyIriExtractor {
   public String extractGeneratorIri(String url) {
     String urlWithoutIdAndFilename = trimFilenameAndId(url);
 
-    return trimOntologyPath(urlWithoutIdAndFilename);
+    return removeOntologyPath(urlWithoutIdAndFilename);
   }
 
   public String extractOntologyIri(String url, Long generationId) {
@@ -27,8 +27,8 @@ public class OntologyIriExtractor {
     return url.replaceAll("(\\d+/)?[^/]*$", "");
   }
 
-  private String trimOntologyPath(String url) {
-    return StringUtils.stripEnd(url, GeneratorController.ONTOLOGY_PATH);
+  private String removeOntologyPath(String url) {
+    return StringUtils.removeEndIgnoreCase(url, GeneratorController.ONTOLOGY_PATH);
   }
 
 }
