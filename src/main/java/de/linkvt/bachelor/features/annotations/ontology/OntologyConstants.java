@@ -1,5 +1,6 @@
 package de.linkvt.bachelor.features.annotations.ontology;
 
+import org.semanticweb.owlapi.model.IRI;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -7,6 +8,9 @@ import java.util.Date;
 
 @Component
 public class OntologyConstants {
+
+  public static final IRI ONTOVIBE_CORE_IRI = IRI.create("http://ontovibe.visualdataweb.org/");
+  public static final IRI ONTOVIBE_MINIMAL_IRI = IRI.create("http://ontovibe.visualdataweb.org/minimal/");
 
   public String getContributor() {
     return "Vincent Link";

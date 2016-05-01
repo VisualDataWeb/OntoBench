@@ -5,6 +5,7 @@ import de.linkvt.bachelor.generator.OntologyGenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Component
-@Scope(WebApplicationContext.SCOPE_REQUEST)
+@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class RequestInformation {
 
   private HttpServletRequest request;
@@ -42,5 +43,9 @@ public class RequestInformation {
 
   public String getOntologyIri() {
     return ontologyIriExtractor.extractOntologyIri(request.getRequestURL().toString(), generationId);
+  }
+
+  public String getGeneratorIri() {
+    return ontologyIriExtractor.extractGeneratorIri(request.getRequestURL().toString());
   }
 }
