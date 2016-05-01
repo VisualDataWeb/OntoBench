@@ -36,6 +36,9 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 public class GeneratorController {
 
+  public static final String ONTOLOGY_PATH_WITHOUT_SLASH = "ontology";
+  public static final String ONTOLOGY_PATH = ONTOLOGY_PATH_WITHOUT_SLASH + "/";
+
   private ApplicationContext applicationContext;
   private FeatureParameterMapping featureMapping;
   private StoredGenerationRepository repository;
@@ -47,23 +50,23 @@ public class GeneratorController {
     this.repository = repository;
   }
 
-  @RequestMapping("/ontology/")
+  @RequestMapping(ONTOLOGY_PATH)
   public OWLOntology completeOntology(HttpServletResponse response) throws OWLOntologyCreationException {
     return ontologyFromParameters(response, featureMapping.getAll());
   }
 
-  @RequestMapping(value = "/ontology/", params = "features")
+  @RequestMapping(value = ONTOLOGY_PATH, params = "features")
   public OWLOntology ontologyFromParameters(HttpServletResponse response, @RequestParam("features") List<Feature> features) {
     return ontologyFromParametersWithFilename(response, features);
   }
 
-  @RequestMapping(value = "/ontology/{filename}", params = "features", method = RequestMethod.GET)
+  @RequestMapping(value = ONTOLOGY_PATH + "{filename}", params = "features", method = RequestMethod.GET)
   public OWLOntology ontologyFromParametersWithFilename(HttpServletResponse response, @RequestParam("features") List<Feature> features) {
     OntologyGenerator generator = applicationContext.getBean(OntologyGenerator.class);
     RequestInformation information = applicationContext.getBean(RequestInformation.class);
 
     StoredGeneration generation = storeGenerationIfRequired(features);
-    response.addHeader("Short-Path", "/ontology/" + generation.getId() + "/" + generation.getId());
+    response.addHeader("Short-Path", "/" + ONTOLOGY_PATH + generation.getId() + "/" + generation.getId());
 
     information.setGenerationId(generation.getId());
 
@@ -87,12 +90,12 @@ public class GeneratorController {
     return generation;
   }
 
-  @RequestMapping("/ontology/{id}/")
+  @RequestMapping(ONTOLOGY_PATH + "{id}/")
   public OWLOntology ontologyFromId(HttpServletResponse response, @PathVariable("id") Long id) {
     return ontologyFromIdWithFilename(response, id);
   }
 
-  @RequestMapping("/ontology/{id}/{filename}")
+  @RequestMapping(ONTOLOGY_PATH + "{id}/{filename}")
   public OWLOntology ontologyFromIdWithFilename(HttpServletResponse response, @PathVariable("id") Long id) {
     StoredGeneration storedGeneration = repository.findOne(id);
     if (storedGeneration == null) {

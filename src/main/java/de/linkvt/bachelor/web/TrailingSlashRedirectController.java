@@ -1,6 +1,6 @@
 package de.linkvt.bachelor.web;
 
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,14 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 public class TrailingSlashRedirectController {
 
-  @RequestMapping("/ontology")
+  @RequestMapping(GeneratorController.ONTOLOGY_PATH_WITHOUT_SLASH)
   public void ontologyRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.sendRedirect(appendQueryString("/ontology/", request));
+    response.sendRedirect(appendQueryString("/" + GeneratorController.ONTOLOGY_PATH, request));
   }
 
-  @RequestMapping("/ontology/{id}")
+  @RequestMapping(GeneratorController.ONTOLOGY_PATH + "{id}")
   public void ontologyFromIdRedirect(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Long id) throws IOException {
-    response.sendRedirect(appendQueryString("/ontology/" + id + "/", request));
+    response.sendRedirect(appendQueryString("/" + GeneratorController.ONTOLOGY_PATH + id + "/", request));
   }
 
   private String appendQueryString(String path, HttpServletRequest request) {
