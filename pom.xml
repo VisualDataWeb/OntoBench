@@ -14,7 +14,7 @@
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<sprint.boot.version>1.3.3.RELEASE</sprint.boot.version>
-		<mainClass>de.linkvt.bachelor.Application</mainClass>
+		<mainClass>de.linkvt.ontobench.Application</mainClass>
 	</properties>
 
 	<build>
