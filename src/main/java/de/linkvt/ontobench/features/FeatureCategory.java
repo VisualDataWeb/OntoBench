@@ -14,7 +14,6 @@ public enum FeatureCategory {
   DATATYPE_MAPS("Datatype Maps"),
   INDIVIDUALS("Individuals"),
   ASSERTIONS("Assertions"),
-  KEYS("Keys"),
   DECLARATIONS("Declarations"),
   ANNOTATIONS("OWL Annotations"),
   DC("DC & DC Terms Annotations", false),

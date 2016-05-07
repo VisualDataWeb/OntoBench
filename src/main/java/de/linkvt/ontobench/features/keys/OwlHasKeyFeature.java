@@ -40,6 +40,6 @@ public class OwlHasKeyFeature extends Feature {
 
   @Override
   public FeatureCategory getCategory() {
-    return FeatureCategory.KEYS;
+    return FeatureCategory.ASSERTIONS;
   }
 }
