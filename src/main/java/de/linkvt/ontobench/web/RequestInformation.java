@@ -1,6 +1,5 @@
 package de.linkvt.ontobench.web;
 
-import de.linkvt.ontobench.config.OntologyIriExtractor;
 import de.linkvt.ontobench.generator.OntologyGenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;

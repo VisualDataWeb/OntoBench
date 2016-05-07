@@ -1,4 +1,4 @@
-package de.linkvt.ontobench.config;
+package de.linkvt.ontobench.web;
 
 import de.linkvt.ontobench.web.GeneratorController;
 
