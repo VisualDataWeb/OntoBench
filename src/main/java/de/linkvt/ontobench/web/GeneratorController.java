@@ -18,6 +18,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,9 @@ public class GeneratorController {
 
   public static final String ONTOLOGY_PATH_WITHOUT_SLASH = "ontology";
   public static final String ONTOLOGY_PATH = ONTOLOGY_PATH_WITHOUT_SLASH + "/";
+
+  @Value("${ontobench.version}")
+  private String version;
 
   private ApplicationContext applicationContext;
   private FeatureParameterMapping featureMapping;
@@ -107,32 +111,37 @@ public class GeneratorController {
   }
 
 
-  @RequestMapping("/features")
+  @RequestMapping("features")
   public List<FeatureDto> features() {
     List<Feature> features = featureMapping.getAll();
 
     return features.stream().map(FeatureDto::new).collect(Collectors.toList());
   }
 
-  @RequestMapping("/formats")
+  @RequestMapping("formats")
   public List<FormatDto> formats() {
     List<OntologySyntax> syntaxes = Arrays.asList(OntologySyntax.values());
 
     return syntaxes.stream().map(FormatDto::new).collect(Collectors.toList());
   }
 
-  @RequestMapping("/categories")
+  @RequestMapping("categories")
   public List<FeatureCategoryDto> categories() {
     List<FeatureCategory> categories = Arrays.asList(FeatureCategory.values());
 
     return categories.stream().map(FeatureCategoryDto::new).collect(Collectors.toList());
   }
 
-  @RequestMapping("/presets")
+  @RequestMapping("presets")
   public List<PresetDto> presets() {
     Collection<Preset> presets = applicationContext.getBeansOfType(Preset.class).values();
 
     return presets.stream().map(PresetDto::new).collect(Collectors.toList());
+  }
+
+  @RequestMapping("version")
+  public String version() {
+    return version;
   }
 
 }

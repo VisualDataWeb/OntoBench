@@ -1,6 +1,7 @@
 import Ui from "./Ui";
 import FeatureContainer from "./FeatureContainer";
-import Generator from "./Generator";
+
+$.ajax({url: "version", dataType: "text"}).done((version) => $("#version").text("v" + version));
 
 Ui.initializeDefaults();
 
