@@ -30,7 +30,7 @@ public class OwlHasKeyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:HasKey";
+    return "owl:hasKey";
   }
 
   @Override
