@@ -23,6 +23,10 @@ export default class Ui {
                 Ui.displayUrl();
             }
         });
+        Ui.urlType.find("[data-value='short']").popup({
+            on: "click",
+            target: Ui.urlType
+        });
         Ui.ontologyText.click(() => Ui.ontologyText.select());
     }
 
