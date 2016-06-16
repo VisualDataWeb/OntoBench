@@ -18,7 +18,8 @@ export default class Generator {
     }
 
     static get longUrl() {
-        return location.href + "ontology/ontology." + Ui.selectedExtension + "?features=" + Generator._featureString;
+        let baseUrl = location.href.split("#")[0];
+        return baseUrl + "ontology/ontology." + Ui.selectedExtension + "?features=" + Generator._featureString;
     }
 
     static _generate(onReady) {
