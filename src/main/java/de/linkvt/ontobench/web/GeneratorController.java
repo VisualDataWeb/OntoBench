@@ -94,7 +94,7 @@ public class GeneratorController {
     return generation;
   }
 
-  @RequestMapping(ONTOLOGY_PATH + "{id}/")
+  @RequestMapping(ONTOLOGY_PATH + "{id}")
   public OWLOntology ontologyFromId(HttpServletResponse response, @PathVariable("id") Long id) {
     return ontologyFromIdWithFilename(response, id);
   }
