@@ -3,7 +3,7 @@ package de.linkvt.ontobench.web.dtos;
 import de.linkvt.ontobench.features.Feature;
 
 /**
- * Contains all feature informations the REST api consumers need.
+ * Contains all feature informations the REST api consumers need of a {@link Feature}.
  */
 public class FeatureDto {
   private String token;
@@ -11,6 +11,7 @@ public class FeatureDto {
   private String clarification;
   private String compliance;
   private String category;
+  private boolean specialization;
 
   public FeatureDto() {
   }
@@ -21,6 +22,7 @@ public class FeatureDto {
     this.clarification = feature.getClarification();
     this.compliance = feature.getCompliance();
     this.category = feature.getCategory().getName();
+    this.specialization = feature.isSpecialization();
   }
 
   public String getToken() {
@@ -61,5 +63,13 @@ public class FeatureDto {
 
   public void setCategory(String category) {
     this.category = category;
+  }
+
+  public boolean isSpecialization() {
+    return specialization;
+  }
+
+  public void setSpecialization(boolean specialization) {
+    this.specialization = specialization;
   }
 }

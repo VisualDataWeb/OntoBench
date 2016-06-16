@@ -61,7 +61,7 @@ export default class FeatureContainer {
         let label = createFeatureLabel(feature);
 
         let container = $("<div>").data(feature).addClass("ui checkbox");
-        if (feature.compliance) {
+        if (feature.compliance || feature.specialization) {
             container.addClass("indented");
         }
 

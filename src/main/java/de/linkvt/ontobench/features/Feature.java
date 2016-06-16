@@ -92,10 +92,17 @@ public abstract class Feature {
   }
 
   /**
-    * @return a description of compliant profiles
+   * @return a description of compliant profiles
    */
   public String getCompliance() {
     return null;
+  }
+
+  /**
+   * @return true if this feature is a specialization of another feature
+   */
+  public boolean isSpecialization() {
+    return false;
   }
 
   /**

@@ -20,7 +20,7 @@ public class UnboundDataPropertyFeature extends Feature {
 
   @Override
   public String getName() {
-    return "owl:DatatypeProperty without domain and range";
+    return "owl:DatatypeProperty";
   }
 
   @Override
@@ -31,5 +31,15 @@ public class UnboundDataPropertyFeature extends Feature {
   @Override
   public FeatureCategory getCategory() {
     return FeatureCategory.DATA_PROPERTIES;
+  }
+
+  @Override
+  public String getClarification() {
+    return "without domain and range";
+  }
+
+  @Override
+  public boolean isSpecialization() {
+    return true;
   }
 }
