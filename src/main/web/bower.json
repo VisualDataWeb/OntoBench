@@ -7,6 +7,7 @@
     "babel-polyfill": "https://bitbucket.org/linkvt/babel-polyfill.git#master",
     "jquery": "~2.2.3",
     "semantic-ui": "git://github.com/linkvt/Semantic-UI.git#master",
-    "js-cookie": "~2.1.1"
+    "js-cookie": "~2.1.1",
+    "clipboard": "^1.5.12"
   }
 }

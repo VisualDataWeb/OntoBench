@@ -27,7 +27,7 @@ export default class Ui {
             on: "click",
             target: Ui.urlType
         });
-        Ui.ontologyText.click(() => Ui.ontologyText.select());
+        new Clipboard("#copy-ontology-to-clipboard-button");
     }
 
     static displayFormats(formats) {
