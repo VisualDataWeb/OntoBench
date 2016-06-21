@@ -11,3 +11,6 @@ Start the server from its main class `Application.java`.
 The web interface will be accessible by default on `localhost:8080`.
 
 For additional automatic rebuilds of the web interface you can switch to the `src/main/web` directory and execute `npm start`.
+
+## Infos and Demo
+More information on OntoBench, including a public demo, is available at http://ontobench.visualdataweb.org
