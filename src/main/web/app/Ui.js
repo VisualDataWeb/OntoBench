@@ -27,7 +27,16 @@ export default class Ui {
             on: "click",
             target: Ui.urlType
         });
-        new Clipboard("#copy-ontology-to-clipboard-button");
+
+        let clipboard = new Clipboard(Ui.copyToClipboardButton[0]);
+        clipboard.on("success", e => {
+            e.clearSelection();
+            Ui.showCopyToClipboardResult();
+        });
+        clipboard.on("error", e => {
+            Ui.showCopyToClipboardResult(false);
+        });
+        Ui.copyToClipboardButton.on("mouseleave", () => Ui.copyToClipboardButton.popup("hide"));
     }
 
     static displayFormats(formats) {
@@ -137,6 +146,14 @@ export default class Ui {
         }
     }
 
+    static showCopyToClipboardResult(success = true) {
+        Ui.copyToClipboardButton.popup({
+            content: success ? "Copied!" : "Press Ctrl+C to copy",
+            position: "bottom center",
+            on: "manual"
+        }).popup("show");
+    }
+
     static _initializeSelectionButtons(container) {
         container.on("click", ".select-all-button", function () {
             $(this).parent().parent().parent().find(":checkbox").prop("checked", true)
@@ -208,5 +225,9 @@ export default class Ui {
 
     static get webvowlButton() {
         return $("#webvowl-button");
+    }
+
+    static get copyToClipboardButton() {
+        return $("#copy-ontology-to-clipboard-button");
     }
 }
